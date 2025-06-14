@@ -10,6 +10,12 @@ const roboto = Roboto({
   variable: "--font-roboto", // Optional: use in CSS
 });
 
+export const metadata: Metadata = {
+  icons: {
+    icon: "/icons/icon.svg",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
