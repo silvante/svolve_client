@@ -4,10 +4,10 @@ import Svolve from "./Svolve";
 export default function Header() {
   return (
     <header className="p-3 shadow-lg flex justify-between items-center">
-      <div>
+      <div className="h-full flex">
         <Svolve />
       </div>
-      <div className="space-x-5">
+      <div className="space-x-3">
         <Link href={"/signin"} className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl">
           Sign in
         </Link>
