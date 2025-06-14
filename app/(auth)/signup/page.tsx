@@ -1,6 +1,7 @@
 import Heading from "@/app/(global_components)/Heading";
 import SignupForm from "./SignupForm";
 import Socials from "@/app/(auth)/(socials)/Socials";
+import Link from "next/link";
 
 export default function SignUp() {
   return (
@@ -8,6 +9,9 @@ export default function SignUp() {
       <Heading text="Sign up to Svolve" />
       <SignupForm />
       <Socials />
+      <div className="flex text_color justify-center">
+        <p>Already have an account? <Link href={"/signin"} className="text-violet-600">Sign in</Link></p>
+      </div>
     </div>
   );
 }
