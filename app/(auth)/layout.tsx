@@ -22,15 +22,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} antialiased flex justify-center items-center h-screen`}
+        className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-5`}
       >
         <Image
           src="/backgraund/group.svg"
           alt="Backgraund"
           fill
           className=" object-cover fixed top-0 left-0 z-0"
-        ></Image>
-        <div className="z-10 bg-white rounded-2xl p-8 min-w-xl space-y-4">
+        />
+        <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4">
           <Svolve />
           {children}
         </div>
