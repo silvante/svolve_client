@@ -2,6 +2,12 @@ import Heading from "@/app/(global_components)/Heading";
 import SigninForm from "./SigninForm";
 import Socials from "../(socials)/Socials";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Svolve | Sign In",
+  description: "Easy to use payment API for startups | sign in page",
+};
 
 export default function SignIn() {
   return (
