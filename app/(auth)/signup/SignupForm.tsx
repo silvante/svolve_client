@@ -1,11 +1,13 @@
 "use client";
 import authService from "@/app/api/services/authService";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BeatLoader } from "react-spinners";
 
 export default function SignupForm() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,6 +21,7 @@ export default function SignupForm() {
       const data: any = await authService.signup(register_data);
       toast.success(data.message);
       setLoading(false);
+      router.push(`/onboarding?email=${email}`);
     } catch (error: any) {
       console.log(error);
       setLoading(false);
