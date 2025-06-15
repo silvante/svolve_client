@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "../globals.css";
 import Image from "next/image";
 import Svolve from "../(global_components)/Svolve";
+import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,13 +27,14 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-5`}
       >
+        <Toaster position="top-right" reverseOrder={true} />
         <Image
           src="/backgraund/group.svg"
           alt="Backgraund"
           fill
           className=" object-cover fixed top-0 left-0 z-0"
         />
-        <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4">
+        <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4 shadow-2xl">
           <Svolve />
           {children}
         </div>
