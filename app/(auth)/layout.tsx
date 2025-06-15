@@ -32,7 +32,7 @@ export default function RootLayout({
           src="/backgraund/group.svg"
           alt="Backgraund"
           fill
-          className=" object-cover fixed top-0 left-0 z-0"
+          className=" object-cover fixed top-0 left-0 z-0 select-none"
         />
         <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4 shadow-2xl">
           <Svolve />
