@@ -7,7 +7,8 @@ import toast from "react-hot-toast";
 import { HashLoader } from "react-spinners";
 
 export default function Verification() {
-  const [loading, setLoading] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -17,11 +18,18 @@ export default function Verification() {
       return router.push("/signup");
     }
     try {
+      setLoading1(true);
       const data: any = await authService.verifyEmail(token);
       const access_token = data.access_token;
       const reset_token = data.reset_token;
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("reset_token", reset_token);
+      setLoading1(false);
+      setLoading2(true);
+      const user_data = await authService.getProfile();
+      // there user data shoul be saved to redux
+      router.push("/");
+      setLoading2(false);
     } catch (error) {
       console.log(error);
       toast.error("Sothing went wrong");
@@ -37,8 +45,10 @@ export default function Verification() {
     <div className="space-y-4">
       <Heading text="Veriying your email..." />
       <HashLoader color="#7c3aed" size={80} />
-      <p></p>
-      <p className="text-violet-600">email@example.com</p>
+      {loading1 && <p>Verifying your email and setting your accaunt...</p>}
+      {loading2 && <p>Receiving and saving you account data...</p>}
+      {!loading1 && !loading2 && <p>Welcome to Svolve!</p>}
+      <p className="text-violet-600">Do not close the page</p>
     </div>
   );
 }
