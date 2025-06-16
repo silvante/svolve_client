@@ -18,8 +18,8 @@ export default function SigninForm() {
       const login_data = { email, password };
       const data: any = await authService.login(login_data);
       toast.success(data.message);
-      setLoading(false);
       router.push(`/onboarding?email=${email}`);
+      setLoading(false);
     } catch (error: any) {
       console.log(error);
       setLoading(false);

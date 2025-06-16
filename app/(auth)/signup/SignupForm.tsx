@@ -20,8 +20,8 @@ export default function SignupForm() {
       const register_data = { name, email, password };
       const data: any = await authService.signup(register_data);
       toast.success(data.message);
-      setLoading(false);
       router.push(`/onboarding?email=${email}`);
+      setLoading(false);
     } catch (error: any) {
       console.log(error);
       setLoading(false);
