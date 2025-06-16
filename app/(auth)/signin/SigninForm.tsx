@@ -1,6 +1,6 @@
 "use client";
 import authService from "@/app/api/services/authService";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BeatLoader } from "react-spinners";
