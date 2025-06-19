@@ -17,3 +17,7 @@ body {
 .main_body {
   @apply w-full px-5 xl:px-0 xl:w-[1200px] mx-auto;
 }
+
+.special_shadowing {
+  box-shadow: 0px 0px 15px #282b332e;
+}
