@@ -1,3 +1,4 @@
+"use client"
 import Github from "./(providers)/Github";
 import Google from "./(providers)/Google";
 
