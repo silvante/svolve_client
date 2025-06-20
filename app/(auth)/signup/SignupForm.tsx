@@ -3,11 +3,11 @@ import authService from "@/app/api/services/authService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { BeatLoader } from "react-spinners";
 
 export default function SignupForm() {
   const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,24 +18,24 @@ export default function SignupForm() {
     try {
       setLoading(true);
       const register_data = { name, email, password };
-      const data: any = await authService.signup(register_data);
-      toast.success(data.message);
+      await authService.signup(register_data);
       router.push(`/onboarding?email=${email}`);
       setLoading(false);
     } catch (error: any) {
-      console.log(error);
       setLoading(false);
-      console.log(error.response);
       if (!error.response) {
-        toast.error("Something went wrong, try again later!");
+        setErrorMessage("Something went wrong, try again later!");
       } else {
-        toast.error(error.response.data.message);
+        setErrorMessage(error.response.data.message);
       }
     }
   }
 
   return (
     <form className="text_color space-y-3" onSubmit={handleRegister}>
+      {errorMessage !== "" && (
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">{errorMessage}</p>
+      )}
       <div className="flex flex-col space-x-0.5">
         <label htmlFor="name">Name</label>
         <input

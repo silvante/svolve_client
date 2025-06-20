@@ -2,11 +2,11 @@
 import authService from "@/app/api/services/authService";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
 import { BeatLoader } from "react-spinners";
 
 export default function SigninForm() {
   const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,19 +16,26 @@ export default function SigninForm() {
     try {
       setLoading(true);
       const login_data = { email, password };
-      const data: any = await authService.login(login_data);
-      toast.success(data.message);
+      await authService.login(login_data);
       router.push(`/onboarding?email=${email}`);
       setLoading(false);
     } catch (error: any) {
-      console.log(error);
       setLoading(false);
-      toast.error(error.response.data.message);
+      if (!error.response) {
+        setErrorMessage("Something went wrong, try again later!");
+      } else {
+        setErrorMessage(error.response.data.message);
+      }
     }
   }
 
   return (
     <form className="text_color space-y-3" onSubmit={handleLogin}>
+      {errorMessage !== "" && (
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+          {errorMessage}
+        </p>
+      )}
       <div className="flex flex-col space-x-0.5">
         <label htmlFor="email">Email</label>
         <input
