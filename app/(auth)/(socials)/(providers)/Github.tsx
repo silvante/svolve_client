@@ -1,8 +1,10 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export default function Github() {
+  const router = useRouter();
   const handleGithubLogin = () => {
     try {
       const popup = window.open(
@@ -19,13 +21,14 @@ export default function Github() {
           localStorage.setItem("reset_token", event.data.reset_token);
         }
         if (event.data.is_ok == false) {
-          toast.error(
+          return toast.error(
             event.data.message
               ? event.data.message
               : "Something went wrong, please try again"
           );
         }
-        console.log(event);
+        toast.success("Registered successfully");
+        router.push("/panel");
       };
 
       window.addEventListener("message", receiveMessage, false);

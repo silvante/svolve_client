@@ -28,7 +28,7 @@ export default function Verification() {
       setLoading2(true);
       const user_data = await authService.getProfile();
       // there user data shoul be saved to redux
-      router.push("/");
+      router.push("/panel");
       setLoading2(false);
     } catch (error) {
       console.log(error);
