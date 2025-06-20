@@ -7,6 +7,8 @@ const apiEndpoints = {
   profile: "/auth/profile",
   verify_magic_link: (token: string) =>
     `/auth/verify-magic-link/?token=${token}`,
+  google: "/auth/google",
+  github: "/auth/github",
 
   // organisations
 };
