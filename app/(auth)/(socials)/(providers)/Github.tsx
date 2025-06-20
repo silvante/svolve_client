@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function Github() {
+export default function Github({ setErrorMessage }: any) {
   const router = useRouter();
   const handleGithubLogin = () => {
     try {
@@ -21,20 +21,19 @@ export default function Github() {
           localStorage.setItem("reset_token", event.data.reset_token);
         }
         if (event.data.is_ok == false) {
-          return toast.error(
+          return setErrorMessage(
             event.data.message
               ? event.data.message
-              : "Something went wrong, please try again"
+              : "Something went wrong, please try again later"
           );
         }
-        toast.success("Registered successfully");
+        // toast.success("Registered successfully");
         router.push("/panel");
       };
 
       window.addEventListener("message", receiveMessage, false);
     } catch (error) {
-      console.log(error);
-      toast.error("something went wrong");
+      setErrorMessage("something went wrong, please try again later");
     }
   };
 

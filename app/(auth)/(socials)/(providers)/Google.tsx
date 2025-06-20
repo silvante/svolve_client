@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function Google() {
+export default function Google({ setErrorMessage }: any) {
   const router = useRouter();
   const handleGoogleLogin = () => {
     try {
@@ -21,24 +21,26 @@ export default function Google() {
           localStorage.setItem("reset_token", event.data.reset_token);
         }
         if (event.data.is_ok == false) {
-          return toast.error(
+          return setErrorMessage(
             event.data.message
               ? event.data.message
-              : "Something went wrong, please try again"
+              : "Something went wrong, please try again later"
           );
         }
-        toast.success("Registered successfully");
+        // toast.success("Registered successfully");
         router.push("/panel");
       };
 
       window.addEventListener("message", receiveMessage, false);
     } catch (error) {
-      console.log(error);
-      toast.error("something went wrong");
+      setErrorMessage("Something went wrong, please try again later");
     }
   };
   return (
-    <button onClick={handleGoogleLogin} className="flex gap-3 cursor-pointer w-full border border-gray-400 p-3 rounded-xl items-center justify-center">
+    <button
+      onClick={handleGoogleLogin}
+      className="flex gap-3 cursor-pointer w-full border border-gray-400 p-3 rounded-xl items-center justify-center"
+    >
       <Image
         src={"/social_icons/Google.svg"}
         alt="google icon"
