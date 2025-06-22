@@ -3,10 +3,16 @@ import { useState } from "react";
 import { BeatLoader } from "react-spinners";
 
 export default function ForgotPasswordForm() {
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   return (
     <form className="text_color space-y-3">
+      {errorMessage !== "" && (
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+          {errorMessage}
+        </p>
+      )}
       <p>
         We will send <span className="font-semibold">verification email</span>{" "}
         that helps you to change your password
