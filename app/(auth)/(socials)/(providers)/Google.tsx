@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
 export default function Google({ setErrorMessage }: any) {
   const router = useRouter();

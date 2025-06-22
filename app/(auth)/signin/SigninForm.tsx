@@ -1,5 +1,6 @@
 "use client";
 import authService from "@/app/api/services/authService";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BeatLoader } from "react-spinners";
@@ -60,7 +61,9 @@ export default function SigninForm() {
           required
         />
       </div>
-      <p className="inline-block">welcome back!</p>
+      <Link href={"/identity/forgot-password"} className="inline-block">
+        Forgot password?
+      </Link>
       <button
         type="submit"
         className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer w-full flex justify-center items-center h-10"
