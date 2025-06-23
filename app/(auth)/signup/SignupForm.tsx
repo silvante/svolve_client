@@ -1,5 +1,6 @@
 "use client";
 import authService from "@/app/api/services/authService";
+import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -12,10 +13,20 @@ export default function SignupForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const [acception, setAcception] = useState(false);
+
+  const handleCheckbox = (check: boolean) => {
+    setAcception(check);
+  };
+
   async function handleRegister(e: any) {
     e.preventDefault();
     try {
       setLoading(true);
+      if (!acception) {
+        setLoading(false);
+        return setErrorMessage("pleace read and accept the terms");
+      }
       const register_data = { name, email };
       await authService.signup(register_data);
       router.push(`/onboarding?email=${email}`);
@@ -61,8 +72,13 @@ export default function SignupForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="flex gap-2">
-        <input type="checkbox" id="check" />
+      <div className="flex gap-2 items-center">
+        <Checkbox
+          id="check"
+          checked={acception}
+          onCheckedChange={handleCheckbox}
+          className="border-gray-400 data-[state=checked]:bg-violet-600 data-[state=checked]:text-white data-[state=checked]:border-violet-600"
+        />
         <label htmlFor="check">
           Accept all{" "}
           <Link href={"/terms"} className="inline-block text-violet-600">
