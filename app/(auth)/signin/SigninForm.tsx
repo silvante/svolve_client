@@ -49,21 +49,15 @@ export default function SigninForm() {
           required
         />
       </div>
-      <div className="flex flex-col space-x-0.5">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          className="global_input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+      <div className="flex gap-2">
+        <input type="checkbox" id="check" />
+        <label htmlFor="check">
+          Accept all{" "}
+          <Link href={"/terms"} className="inline-block text-violet-600">
+            terms
+          </Link>
+        </label>
       </div>
-      <Link href={"/identity/forgot-password"} className="inline-block">
-        Forgot password?
-      </Link>
       <button
         type="submit"
         className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer w-full flex justify-center items-center h-10"

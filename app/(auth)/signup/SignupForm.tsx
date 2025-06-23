@@ -34,7 +34,9 @@ export default function SignupForm() {
   return (
     <form className="text_color space-y-3" onSubmit={handleRegister}>
       {errorMessage !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">{errorMessage}</p>
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+          {errorMessage}
+        </p>
       )}
       <div className="flex flex-col space-x-0.5">
         <label htmlFor="name">Name</label>
@@ -60,21 +62,15 @@ export default function SignupForm() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div className="flex flex-col space-x-0.5">
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          className="global_input"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <div className="flex gap-2">
+        <input type="checkbox" id="check" />
+        <label htmlFor="check">
+          Accept all{" "}
+          <Link href={"/terms"} className="inline-block text-violet-600">
+            terms
+          </Link>
+        </label>
       </div>
-      <Link href={"/terms"} className=" inline-block">
-        Read terms first
-      </Link>
       <button
         type="submit"
         className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer w-full"
