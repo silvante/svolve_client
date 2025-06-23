@@ -10,13 +10,12 @@ export default function SigninForm() {
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   async function handleLogin(e: any) {
     e.preventDefault();
     try {
       setLoading(true);
-      const login_data = { email, password };
+      const login_data = { email };
       await authService.login(login_data);
       router.push(`/onboarding?email=${email}`);
       setLoading(false);

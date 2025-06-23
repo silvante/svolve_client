@@ -11,13 +11,12 @@ export default function SignupForm() {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   async function handleRegister(e: any) {
     e.preventDefault();
     try {
       setLoading(true);
-      const register_data = { name, email, password };
+      const register_data = { name, email };
       await authService.signup(register_data);
       router.push(`/onboarding?email=${email}`);
       setLoading(false);
