@@ -12,8 +12,6 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Payment SaaS of Uzbekistan | Authentication",
-  description: "Easy to use payment API for startups",
   icons: {
     icon: "/icons/icon.svg",
   },

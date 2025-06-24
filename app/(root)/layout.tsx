@@ -23,9 +23,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${roboto.className} antialiased`}>
+    <div className={`${roboto.className} antialiased`}>
       <Header />
       <main className="main_body">{children}</main>
-    </html>
+    </div>
   );
 }
