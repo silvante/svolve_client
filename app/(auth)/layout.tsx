@@ -12,6 +12,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  title: "Svolve | Payment SaaS of Uzbekistan | Authentication",
+  description: "Easy to use payment API for startups",
   icons: {
     icon: "/icons/icon.svg",
   },
@@ -23,22 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-5`}
-      >
-        <Toaster position="top-right" reverseOrder={true} />
-        <Image
-          src="/backgraund/group.svg"
-          alt="Backgraund"
-          fill
-          className=" object-cover fixed top-0 left-0 z-0 select-none"
-        />
-        <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4 shadow-2xl">
-          <Svolve />
-          {children}
-        </div>
-      </body>
-    </html>
+    <div
+      className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-5`}
+    >
+      <Toaster position="top-right" reverseOrder={true} />
+      <Image
+        src="/backgraund/group.svg"
+        alt="Backgraund"
+        fill
+        className=" object-cover fixed top-0 left-0 z-0 select-none"
+      />
+      <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4 shadow-2xl">
+        <Svolve />
+        {children}
+      </div>
+    </div>
   );
 }
