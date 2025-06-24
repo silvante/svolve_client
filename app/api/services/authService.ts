@@ -1,3 +1,4 @@
+import User from "@/app/types/User";
 import api from "../api.config";
 import apiEndpoints from "../api.endpoint";
 import { LoginData, RegisterData } from "./utils/authTypes";
@@ -29,7 +30,8 @@ const authService = {
 
   getProfile: async () => {
     try {
-      return await api.get(apiEndpoints.profile);
+      const user: User = await api.get(apiEndpoints.profile);
+      return user;
     } catch (error) {
       throw error;
     }

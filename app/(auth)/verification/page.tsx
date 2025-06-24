@@ -1,9 +1,11 @@
 "use client";
 import Heading from "@/app/(global_components)/Heading";
 import authService from "@/app/api/services/authService";
+import { updateUser } from "@/app/store/slices/userSlice";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { HashLoader } from "react-spinners";
 
 export default function Verification() {
@@ -12,6 +14,7 @@ export default function Verification() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
+  const dispatch = useDispatch();
 
   async function Verify() {
     if (!token) {
@@ -28,6 +31,7 @@ export default function Verification() {
       setLoading2(true);
       const user_data = await authService.getProfile();
       // there user data shoul be saved to redux
+      dispatch(updateUser(user_data));
       router.push("/panel");
       setLoading2(false);
     } catch (error) {
