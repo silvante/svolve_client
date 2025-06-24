@@ -1,9 +1,14 @@
 "use client";
+import authService from "@/app/api/services/authService";
+import { updateUser } from "@/app/store/slices/userSlice";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
 
 export default function Google({ setErrorMessage }: any) {
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const handleGoogleLogin = () => {
     try {
       const popup = window.open(
@@ -12,7 +17,7 @@ export default function Google({ setErrorMessage }: any) {
         "width=900,height=600"
       );
 
-      const receiveMessage = (event: MessageEvent) => {
+      const receiveMessage = async (event: MessageEvent) => {
         if (event.origin !== "http://localhost:8080") return;
 
         if (event.data.reset_token && event.data.access_token) {
@@ -27,6 +32,8 @@ export default function Google({ setErrorMessage }: any) {
           );
         }
         // toast.success("Registered successfully");
+        const user = await authService.getProfile();
+        dispatch(updateUser(user));
         router.push("/panel");
       };
 
