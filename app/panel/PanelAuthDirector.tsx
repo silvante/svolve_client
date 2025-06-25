@@ -19,9 +19,14 @@ export default function PanelAuthDirector() {
     } else {
       if (!user.currentUser) {
         async function DispatchUser() {
-          const user_profile = await authService.getProfile();
-          //   in this plase we can set logic for reset token
-          dispatch(updateUser(user_profile));
+          try {
+            const user_profile = await authService.getProfile();
+            //   in this plase we can set logic for reset token
+            dispatch(updateUser(user_profile));
+          } catch (error) {
+            console.log(error);
+            router.push("/signup");
+          }
         }
         DispatchUser();
       }
