@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import "../globals.css";
 import Aside from "./(panel_components)/Aside";
 import PanelHeader from "./(panel_components)/PanelHeader";
+import PanelAuthDirector from "./PanelAuthDirector";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className={`${roboto.className} antialiased flex min-h-screen`}>
+      <PanelAuthDirector />
       <Aside />
       <main className="flex-1">
         <PanelHeader />
