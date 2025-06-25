@@ -12,7 +12,7 @@ export default function Svolve({ link }: SvolveProps) {
         src={"/icons/logo.svg"}
         alt="Logotype svolve"
         width={140}
-        height={0}
+        height={38.5}
       />
     </Link>
   );
