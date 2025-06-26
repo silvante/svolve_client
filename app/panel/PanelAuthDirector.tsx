@@ -22,9 +22,7 @@ export default function PanelAuthDirector() {
           try {
             const user_profile = await authService.getProfile();
             dispatch(updateUser(user_profile));
-            console.log("using access_token");
           } catch (error) {
-            console.log(error);
             try {
               const reset_token = localStorage.getItem("reset_token");
               if (!reset_token) {
@@ -39,9 +37,7 @@ export default function PanelAuthDirector() {
               localStorage.setItem("access_token", access_token);
               const user_profile = await authService.getProfile();
               dispatch(updateUser(user_profile));
-              console.log("using reset_token and then access_token");
             } catch (error) {
-              console.log(error);
               router.push("/signup");
             }
           }
