@@ -36,6 +36,14 @@ const authService = {
       throw error;
     }
   },
+
+  resetToken: async (reset_token: string) => {
+    try {
+      return await api.get(apiEndpoints.resetToken(reset_token));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default authService;
