@@ -20,13 +20,13 @@ export default function RegisterButton() {
     return (
       <div className="space-x-3">
         <Link
-          href={"/signin"}
+          href={"/"}
           className="inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
         > 
           Loading 
         </Link> 
         <Link 
-          href={"/signin"} 
+          href={"/"} 
           className="inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
         >
           Loading
@@ -45,10 +45,10 @@ export default function RegisterButton() {
       </Link>
       {!isRegistered ? (
         <Link
-          href={"/signin"}
-          className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl"
+          href={"/signup"}
+          className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          Sign in
+          Sign up
         </Link>
       ) : (
         <Link

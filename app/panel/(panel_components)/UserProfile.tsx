@@ -2,12 +2,12 @@
 import { useSelector } from "react-redux";
 
 export default function UserProfile() {
-  const user = useSelector((state: any) => state.user);
-  console.log(user);
-
+  const { currentUser } = useSelector((state: any) => state.user);
+  
   return (
     <div>
-      <p>User profile here</p>
+      <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+      <p></p>
     </div>
   );
 }
