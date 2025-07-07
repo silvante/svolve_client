@@ -30,7 +30,7 @@ export default function RootLayout({
       <Aside />
       <main className="flex-1">
         <PanelHeader />
-        <div className="p-5">{children}</div>
+        <div className="p-5 w-full xl:w-4/5 mx-auto">{children}</div>
       </main>
     </div>
   );
