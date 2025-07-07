@@ -12,6 +12,9 @@ const apiEndpoints = {
   github: "/auth/github",
 
   // organisations
+  getUsersOrganisations: "/organisations",
+  getOrganisationById: (id: number) => `/organisation/${id}`,
+  createOrganisation: "/organisation/new",
 };
 
 export default apiEndpoints;
