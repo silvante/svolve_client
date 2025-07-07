@@ -10,7 +10,7 @@ export default function UserProfile() {
   } else {
     return (
       <div className="flex gap-3 items-center">
-        <div className="w-10 h-10 bg-gray-300 rounded-full"></div>
+        <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
         <p>{currentUser.name}</p>
       </div>
     );

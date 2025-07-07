@@ -5,7 +5,7 @@ import { createData } from "./utils/organisationTypes";
 const organisationService = {
   getAll: async () => {
     try {
-      await api.post(apiEndpoints.getUsersOrganisations);
+      return await api.get(apiEndpoints.getUsersOrganisations);
     } catch (error) {
       throw error;
     }
@@ -13,7 +13,7 @@ const organisationService = {
 
   getById: async (id: number) => {
     try {
-      await api.get(apiEndpoints.getOrganisationById(id));
+      return await api.get(apiEndpoints.getOrganisationById(id));
     } catch (error) {
       throw error;
     }
@@ -21,9 +21,11 @@ const organisationService = {
 
   create: async (data: createData) => {
     try {
-      await api.post(apiEndpoints.createOrganisation, data);
+      return await api.post(apiEndpoints.createOrganisation, data);
     } catch (error) {
       throw error;
     }
   },
 };
+
+export default organisationService;

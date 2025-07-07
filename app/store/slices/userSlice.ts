@@ -1,4 +1,4 @@
-import User from "@/app/types/User";
+import { User } from "@/app/types/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
@@ -30,5 +30,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { updateUser, clearUser } = userSlice.actions;
+export const { updateUser, clearUser, setLoading } = userSlice.actions;
 export default userSlice.reducer;

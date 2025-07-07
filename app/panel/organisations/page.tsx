@@ -1,9 +1,11 @@
 import Heading from "@/app/(global_components)/Heading";
+import OrganisationList from "./OrganisationList";
 
 export default function Organisations() {
   return (
-    <div>
+    <div className="space-y-5">
       <Heading text="Organisations" />
+      <OrganisationList />
     </div>
   );
 }
