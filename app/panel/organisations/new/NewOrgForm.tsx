@@ -7,6 +7,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
+import { FileImage } from "lucide-react";
 
 export default function NewOrganisationForm() {
   return (
@@ -24,6 +25,51 @@ export default function NewOrganisationForm() {
           placeholder="Enter organisation name"
           required
         />
+      </div>
+
+      {/* desctiprion */}
+      <div className="space-y-1">
+        <label htmlFor="description" className="block">
+          Organisation Description*
+        </label>
+        <textarea
+          rows={3}
+          maxLength={500}
+          id="description"
+          name="description"
+          className="global_input w-full resize-none"
+          placeholder="Enter organisation description"
+          required
+        />
+        <p className="text-sm text-gray-500">Max 500 characters</p>
+      </div>
+
+      {/* Banner */}
+      <div className="space-y-1">
+        <label
+          htmlFor="banner"
+          className="flex items-center justify-center p-10 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors"
+        >
+          <div className="flex flex-col items-center gap-2 text-gray-700">
+            <FileImage />
+            Upload Banner Image (optional)
+          </div>
+        </label>
+        <input type="file" name="banner" id="banner" className="hidden" />
+      </div>
+
+      {/* logo */}
+      <div className="space-y-1">
+        <label
+          htmlFor="logo"
+          className="flex items-center justify-center p-5 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-64"
+        >
+          <div className="flex flex-col items-center gap-2 text-gray-700">
+            <FileImage />
+            Upload Logo Image (optional)
+          </div>
+        </label>
+        <input type="file" name="logo" id="logo" className="hidden" />
       </div>
 
       {/* pincode */}
