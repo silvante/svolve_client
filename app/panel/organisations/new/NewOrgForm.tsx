@@ -32,7 +32,7 @@ export default function NewOrganisationForm() {
       const formData = {
         name,
         description,
-        pincode: Number(pincode),
+        pincode: pincode,
       };
       const res: any = await organisationService.create(formData);
       const organisation: Organisation = res;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@/app/globals.css";
+import OrgValidator from "./OrgValidation";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -16,13 +17,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: { unique_name: string };
 }>) {
+  const { unique_name } = await params;
   return (
     <div className={`${roboto.className} antialiased`}>
+      <OrgValidator unique_name={unique_name} />
       <main>{children}</main>
     </div>
   );
