@@ -13,8 +13,8 @@ const apiEndpoints = {
 
   // organisations
   getUsersOrganisations: "/organisations",
-  getOrganisationById: (id: number) => `/organisation/${id}`,
-  createOrganisation: "/organisation/new",
+  getOrganisationById: (id: number) => `/organisations/${id}`,
+  createOrganisation: "/organisations/new",
 };
 
 export default apiEndpoints;

@@ -8,10 +8,37 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { FileImage } from "lucide-react";
+import { useState } from "react";
+import organisationService from "@/app/api/services/organisationService";
 
 export default function NewOrganisationForm() {
+  const [error, setError] = useState("");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [pincode, setPincode] = useState("");
+
+  async function HandleCreateOrg(e: any) {
+    e.preventDefault();
+    try {
+      const formData = {
+        name,
+        description,
+        pincode: Number(pincode),
+      };
+      const res = await organisationService.create(formData);
+      console.log(res);
+    } catch (error) {
+      setError("An error occurred while creating the organisation.");
+    }
+  }
+
   return (
-    <form className="space-y-5">
+    <form className="space-y-5" onSubmit={HandleCreateOrg}>
+      {error !== "" && (
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+          {error}
+        </p>
+      )}
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
@@ -23,6 +50,9 @@ export default function NewOrganisationForm() {
           name="name"
           className="global_input w-full"
           placeholder="Enter organisation name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          maxLength={100}
           required
         />
       </div>
@@ -37,6 +67,8 @@ export default function NewOrganisationForm() {
           maxLength={500}
           id="description"
           name="description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
           placeholder="Enter organisation description"
           required
@@ -81,6 +113,8 @@ export default function NewOrganisationForm() {
           maxLength={6}
           id="pincode"
           pattern={REGEXP_ONLY_DIGITS}
+          value={pincode}
+          onChange={(value) => setPincode(value)}
           required
         >
           <InputOTPGroup>
