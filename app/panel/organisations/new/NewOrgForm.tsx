@@ -48,6 +48,8 @@ export default function NewOrganisationForm() {
         </InputOTP>
         <p className="text-sm text-gray-500">Number only</p>
       </div>
+
+      {/* submit */}
       <div>
         <button
           type="submit"
