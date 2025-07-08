@@ -11,6 +11,7 @@ export interface User {
 export interface Organisation {
   id: number;
   name: string;
+  description: string;
   unique_name: string;
   banner: string;
   logo: string;

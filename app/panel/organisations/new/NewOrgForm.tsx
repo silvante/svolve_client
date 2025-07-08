@@ -10,12 +10,21 @@ import {
 import { FileImage } from "lucide-react";
 import { useState } from "react";
 import organisationService from "@/app/api/services/organisationService";
+import { useDispatch } from "react-redux";
+import {
+  pushOrganisation,
+  setLoading,
+} from "@/app/store/slices/organisationSlice";
+import { Organisation } from "@/app/types/User";
+import { useRouter } from "next/navigation";
 
 export default function NewOrganisationForm() {
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [pincode, setPincode] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   async function HandleCreateOrg(e: any) {
     e.preventDefault();
@@ -25,8 +34,12 @@ export default function NewOrganisationForm() {
         description,
         pincode: Number(pincode),
       };
-      const res = await organisationService.create(formData);
-      console.log(res);
+      const res: any = await organisationService.create(formData);
+      const organisation: Organisation = res;
+      console.log("Organisation created:", organisation);
+      dispatch(setLoading());
+      dispatch(pushOrganisation(organisation));
+      router.push("/panel/organisations");
     } catch (error) {
       setError("An error occurred while creating the organisation.");
     }

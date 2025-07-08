@@ -24,11 +24,20 @@ const OrganisationSlice = createSlice({
       state.loading = false;
     },
 
+    pushOrganisation: (state, action: PayloadAction<Organisation>) => {
+      if (state.organisations) {
+        state.organisations.push(action.payload);
+      } else {
+        state.organisations = [action.payload];
+      }
+      state.loading = false;
+    },
+
     clearUser: (state) => {
       state.organisations = null;
     },
   },
 });
 
-export const { updateOrganisations, clearUser, setLoading } = OrganisationSlice.actions;
+export const { updateOrganisations, clearUser, setLoading, pushOrganisation } = OrganisationSlice.actions;
 export default OrganisationSlice.reducer;
