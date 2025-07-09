@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@/app/globals.css";
 import OrgValidator from "./OrgValidation";
+import PanelAuthDirector from "@/app/panel/PanelAuthDirector";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default async function RootLayout({
   const { unique_name } = await params;
   return (
     <div className={`${roboto.className} antialiased`}>
+      <PanelAuthDirector />
       <OrgValidator unique_name={unique_name} />
       <main>{children}</main>
     </div>

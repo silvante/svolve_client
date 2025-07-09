@@ -43,7 +43,7 @@ export default function OrganisationList() {
         {organisations && organisations.length > 0 ? (
           organisations.map((organisation: Organisation) => (
             <Link
-              href={`/org/${organisation.unique_name}`}
+              href={`/org/${organisation.unique_name}/validation`}
               key={organisation.id}
               className="bg-white shadow-md rounded-md transition-colors border border-gray-200 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600"
             >

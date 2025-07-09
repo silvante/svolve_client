@@ -6,10 +6,11 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import organisationService from "@/app/api/services/organisationService";
 import { useDispatch } from "react-redux";
 import {
+  clearValidation,
   updateUniqueName,
   updateValidation,
 } from "@/app/store/slices/validatorSlice";
@@ -20,6 +21,10 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
   const [pincode, setPincode] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(() => {
+    dispatch(clearValidation());
+  }, []);
 
   const handlePincodeSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

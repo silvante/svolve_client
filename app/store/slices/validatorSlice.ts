@@ -30,9 +30,19 @@ const ValidatorSlice = createSlice({
       state.unique_name = action.payload;
       state.loading = false;
     },
+
+    clearValidation: (state) => {
+      state.validation = false;
+      state.unique_name = null;
+      state.loading = true;
+    },
   },
 });
 
-export const { updateValidation, setLoading, updateUniqueName } =
-  ValidatorSlice.actions;
+export const {
+  updateValidation,
+  setLoading,
+  updateUniqueName,
+  clearValidation,
+} = ValidatorSlice.actions;
 export default ValidatorSlice.reducer;
