@@ -15,9 +15,11 @@ import {
   updateValidation,
 } from "@/app/store/slices/validatorSlice";
 import { useRouter } from "next/navigation";
+import Spinner from "@/app/(global_components)/Spinner";
 
 export default function PincodeForm({ unique_name }: { unique_name: string }) {
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const [pincode, setPincode] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
@@ -29,6 +31,8 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
   const handlePincodeSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setErrorMessage("");
+      setLoading(true);
       if (pincode.length !== 6) {
         setErrorMessage("Pincode must be 6 digits long.");
         return;
@@ -46,9 +50,15 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       dispatch(updateValidation(res.validation));
       dispatch(updateUniqueName(unique_name));
       router.push(`/org/${unique_name}`);
-    } catch (error) {
-      console.log(error);
-      setErrorMessage("An error occurred while validating the pincode.");
+      setLoading(false);
+    } catch (error: any) {
+      if (error.response && error.response.data) {
+        setErrorMessage(
+          error.response.data.message ||
+            "An error occurred while validating the pincode."
+        );
+      }
+      setLoading(false);
     }
   };
 
@@ -79,6 +89,11 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
           <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2 text-center">
             {errorMessage}
           </p>
+        )}
+        {loading && (
+          <div className="w-full flex justify-center items-center">
+            <Spinner />
+          </div>
         )}
       </div>
     </div>

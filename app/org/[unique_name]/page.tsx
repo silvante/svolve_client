@@ -1,12 +1,12 @@
-export default function UniqueNamePage({
-  params,
-}: Readonly<{
-  params: { unique_name: string };
-}>) {
+"use client";
+import { useSelector } from "react-redux";
+
+export default function UniqueNamePage() {
+  const { unique_name } = useSelector((state: any) => state.validator);
   return (
     <div>
       <h1>Unique Name Page</h1>
-      <p>Unique Name: {params.unique_name}</p>
+      <p>Unique Name: {unique_name}</p>
     </div>
   );
 }
