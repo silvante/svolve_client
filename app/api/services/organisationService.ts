@@ -27,9 +27,9 @@ const organisationService = {
     }
   },
 
-  validate: async (id: number, data: validateData) => {
+  validate: async (unique_name: string, data: validateData) => {
     try {
-      return await api.post(apiEndpoints.validateOrganisation(id), data);
+      return await api.post(apiEndpoints.validateOrganisation(unique_name), data);
     } catch (error) {
       throw error;
     }
