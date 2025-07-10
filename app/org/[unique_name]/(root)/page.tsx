@@ -6,7 +6,7 @@ export default function UniqueNamePage() {
   const { unique_name } = useSelector((state: any) => state.validator);
   return (
     <div>
-      <Heading text="Home page"/>
+      <Heading text={`Home page - ${unique_name}`} />
     </div>
   );
 }
