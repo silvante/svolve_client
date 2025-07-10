@@ -35,6 +35,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       setLoading(true);
       if (pincode.length !== 6) {
         setErrorMessage("Pincode must be 6 digits long.");
+        setLoading(false);
         return;
       }
 
@@ -44,6 +45,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
 
       if (!res.validation) {
         setErrorMessage("Invalid pincode. Please try again.");
+        setLoading(false);
         return;
       }
       setErrorMessage("");
