@@ -1,4 +1,4 @@
-import User from "@/app/types/User";
+import { User } from "@/app/types/User";
 import api from "../api.config";
 import apiEndpoints from "../api.endpoint";
 import { LoginData, RegisterData } from "./utils/authTypes";

@@ -17,6 +17,10 @@ const apiEndpoints = {
   createOrganisation: "/organisations/new",
   validateOrganisation: (unique_name: string) =>
     `/organisations/${unique_name}/validate`,
+
+  // types
+  getOrgTypes: (org_id: number) => `/organisations/${org_id}/types`,
+  createOrgType: (org_id: number) => `/organisations/${org_id}/types/new`,
 };
 
 export default apiEndpoints;
