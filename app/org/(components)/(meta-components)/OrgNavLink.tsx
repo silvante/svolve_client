@@ -11,12 +11,10 @@ type Props = {
 
 export default function OrgAsideLink({ href, children }: Props) {
   const pathname = usePathname();
-  const { unique_name } = useSelector((state: any) => state.validator);
-  console.log(unique_name);
-  console.log(pathname);
+  const { organisation } = useSelector((state: any) => state.validator);
   
 
-  const isActive = pathname === `/org/${unique_name}${href}`;
+  const isActive = pathname === `/org/${organisation.unique_name}${href}`;
 
   return (
     <Link
@@ -24,7 +22,7 @@ export default function OrgAsideLink({ href, children }: Props) {
         "p-2 flex gap-3 items-center border-l-2 border-transparent transition-all",
         isActive && "text-violet-600 border-violet-600"
       )}
-      href={`/org/${unique_name}/${href}`}
+      href={`/org/${organisation.unique_name}/${href}`}
     >
       {children}
     </Link>

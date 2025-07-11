@@ -11,8 +11,8 @@ import organisationService from "@/app/api/services/organisationService";
 import { useDispatch } from "react-redux";
 import {
   clearValidation,
-  updateUniqueName,
   updateValidation,
+  updateValidationOrg,
 } from "@/app/store/slices/validatorSlice";
 import { useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
@@ -50,7 +50,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       }
       setErrorMessage("");
       dispatch(updateValidation(res.validation));
-      dispatch(updateUniqueName(unique_name));
+      dispatch(updateValidationOrg(res.organisation));
       router.push(`/org/${unique_name}`);
       setLoading(false);
     } catch (error: any) {

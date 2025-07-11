@@ -3,18 +3,18 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface organisationsState {
   validation: Boolean;
-  unique_name: string | null;
+  organisation: Organisation | null;
   loading: Boolean;
 }
 
 const initialState: organisationsState = {
   validation: false,
-  unique_name: null,
+  organisation: null,
   loading: true,
 };
 
 const ValidatorSlice = createSlice({
-  name: "organisations",
+  name: "validator",
   initialState,
   reducers: {
     setLoading: (state) => {
@@ -26,14 +26,14 @@ const ValidatorSlice = createSlice({
       state.loading = false;
     },
 
-    updateUniqueName: (state, action: PayloadAction<string | null>) => {
-      state.unique_name = action.payload;
+    updateValidationOrg: (state, action: PayloadAction<Organisation>) => {
+      state.organisation = action.payload;
       state.loading = false;
     },
 
     clearValidation: (state) => {
       state.validation = false;
-      state.unique_name = null;
+      state.organisation = null;
       state.loading = true;
     },
   },
@@ -42,7 +42,7 @@ const ValidatorSlice = createSlice({
 export const {
   updateValidation,
   setLoading,
-  updateUniqueName,
+  updateValidationOrg,
   clearValidation,
 } = ValidatorSlice.actions;
 export default ValidatorSlice.reducer;
