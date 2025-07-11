@@ -5,6 +5,7 @@ import OrgValidator from "./OrgValidation";
 import PanelAuthDirector from "@/app/panel/PanelAuthDirector";
 import OrgHeader from "../../(components)/OrgHeader";
 import OrgBreadcrumbs from "../../(components)/OrgBreadcrumbs";
+import OrgAside from "../../(components)/OrgAside";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -29,16 +30,21 @@ export default async function RootLayout({
 }>) {
   const { unique_name } = await params;
   return (
-    <div className={`${roboto.className} antialiased`}>
+    <>
       <PanelAuthDirector />
       <OrgValidator unique_name={unique_name} />
-      <OrgHeader />
-      <main className="container mx-auto py-5 space-y-5">
-        <div className="w-full flex items-center justify-start">
-          <OrgBreadcrumbs />
-        </div>
-        {children}
-      </main>
-    </div>
+      <div className={`${roboto.className} antialiased w-full h-screen`}>
+        <OrgHeader />
+        <main className="w-full h-screen flex">
+          <OrgAside />
+          <div className="flex-1 pt-20 px-5 container mx-auto">
+            <div className="w-full flex items-center justify-start">
+              <OrgBreadcrumbs />
+            </div>
+            {children}
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
