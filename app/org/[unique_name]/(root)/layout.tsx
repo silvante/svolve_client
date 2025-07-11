@@ -37,7 +37,7 @@ export default async function RootLayout({
         <OrgHeader />
         <main className="w-full h-screen flex">
           <OrgAside />
-          <div className="flex-1 pt-20 px-5 container mx-auto">
+          <div className="flex-1 pt-20 px-5 container mx-auto space-y-5">
             <div className="w-full flex items-center justify-start">
               <OrgBreadcrumbs />
             </div>
