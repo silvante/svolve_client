@@ -12,7 +12,7 @@ export default function CreateTypeForm() {
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice]: any = useState(undefined);
   const { organisation } = useSelector((state: any) => state.validator);
   const router = useRouter();
 
@@ -20,6 +20,9 @@ export default function CreateTypeForm() {
     e.preventDefault();
     setLoading(true);
     try {
+      if (price === undefined) {
+        setError("Price is required");
+      }
       const formData = {
         name: name,
         description: description,
@@ -90,7 +93,7 @@ export default function CreateTypeForm() {
           className="global_input w-full"
           placeholder="Enter organisation name"
           value={price}
-          onChange={(e) => setPrice(+e.target.value)}
+          onChange={(e) => setPrice(e.target.value)}
           required
         />
       </div>
