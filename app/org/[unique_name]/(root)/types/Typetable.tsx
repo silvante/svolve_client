@@ -36,15 +36,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-const data: Types[] = [
-  {
-    id: 1,
-    name: "Qorin Boshligi",
-    description: "all organs",
-    price: 60000,
-  },
-];
-
 export type Types = {
   id: number;
   name: string;
@@ -78,14 +69,14 @@ export const columns: ColumnDef<Types>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("name")}</div>
-    ),
+    cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "description",
     header: "Description",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("description")}</div>,
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("description")}</div>
+    ),
   },
   {
     accessorKey: "price",
@@ -129,6 +120,16 @@ export const columns: ColumnDef<Types>[] = [
 ];
 
 export function TypeTable() {
+  // Api dan olib kelish
+  const data: Types[] = [
+    {
+      id: 1,
+      name: "Qorin Boshligi",
+      description: "all organs",
+      price: 60000,
+    },
+  ];
+
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
