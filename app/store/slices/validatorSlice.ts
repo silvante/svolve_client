@@ -23,7 +23,7 @@ const ValidatorSlice = createSlice({
 
     updateValidation: (state, action: PayloadAction<Boolean>) => {
       state.validation = action.payload;
-      state.loading = false;
+      // state.loading = false;
     },
 
     updateValidationOrg: (state, action: PayloadAction<Organisation>) => {

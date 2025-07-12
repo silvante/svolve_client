@@ -1,3 +1,4 @@
+"use client";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@/app/globals.css";
@@ -6,6 +7,8 @@ import PanelAuthDirector from "@/app/panel/PanelAuthDirector";
 import OrgHeader from "../../(components)/OrgHeader";
 import OrgBreadcrumbs from "../../(components)/OrgBreadcrumbs";
 import OrgAside from "../../(components)/OrgAside";
+import { useSelector } from "react-redux";
+import { useParams } from "next/navigation";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -13,38 +16,34 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-export const metadata: Metadata = {
-  title: "Svolve | Organisation Management",
-  description: "Easy to use organisation management for medicine",
-  icons: {
-    icon: "/icons/icon.svg",
-  },
-};
-
-export default async function RootLayout({
+export default function OrgLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { unique_name: string };
 }>) {
-  const { unique_name } = await params;
+  const { loading } = useSelector((state: any) => state.validator);
+  const { unique_name }: { unique_name: string } = useParams();
   return (
     <>
-      <PanelAuthDirector />
-      <OrgValidator unique_name={unique_name} />
-      <div className={`${roboto.className} antialiased w-full h-screen`}>
-        <OrgHeader />
-        <main className="w-full h-screen flex">
-          <OrgAside />
-          <div className="flex-1 pt-20 px-5 container mx-auto space-y-5">
-            <div className="w-full flex items-center justify-start">
-              <OrgBreadcrumbs />
+      {loading ? (
+        <>
+          <PanelAuthDirector />
+          <OrgValidator unique_name={unique_name} />
+        </>
+      ) : (
+        <div className={`${roboto.className} antialiased w-full h-screen`}>
+          <OrgHeader />
+          <main className="w-full h-screen flex">
+            <OrgAside />
+            <div className="flex-1 pt-20 px-5 container mx-auto space-y-5">
+              <div className="w-full flex items-center justify-start">
+                <OrgBreadcrumbs />
+              </div>
+              {children}
             </div>
-            {children}
-          </div>
-        </main>
-      </div>
+          </main>
+        </div>
+      )}
     </>
   );
 }
