@@ -24,7 +24,9 @@ export default function OrgBreadcrumbs() {
 
     for (let i = 0; i < pathSegments.length; i++) {
       const segment = pathSegments[i];
-      const href = "/panel/" + pathSegments.slice(0, i + 1).join("/");
+      const href =
+        `/org/${organisation.unique_name}/` +
+        pathSegments.slice(0, i + 1).join("/");
 
       links.push(
         <React.Fragment key={i}>
@@ -46,7 +48,10 @@ export default function OrgBreadcrumbs() {
   return (
     <div className="flex items-center justify-center">
       <div className="flex flex-wrap items-center">
-        <Link href={`/org/${organisation.unique_name}`} className="text-violet-600 capitalize">
+        <Link
+          href={`/org/${organisation.unique_name}`}
+          className="text-violet-600 capitalize"
+        >
           {organisation.unique_name}
         </Link>
         {generateBreadcrumbLinks()}
