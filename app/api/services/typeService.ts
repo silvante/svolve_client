@@ -5,7 +5,7 @@ import { CreateTypeData } from "./utils/typeTypes";
 const typeService = {
   getTypes: async (org_id: number) => {
     try {
-      await api.get(apiEndpoints.getOrgTypes(org_id));
+      return await api.get(apiEndpoints.getOrgTypes(org_id));
     } catch (error) {
       throw error;
     }
@@ -13,11 +13,11 @@ const typeService = {
 
   createType: async (org_id: number, data: CreateTypeData) => {
     try {
-        await api.post(apiEndpoints.createOrgType(org_id), data)
+      return await api.post(apiEndpoints.createOrgType(org_id), data);
     } catch (error) {
-        throw error
+      throw error;
     }
-  }
+  },
 };
 
 export default typeService;

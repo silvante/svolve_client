@@ -17,3 +17,11 @@ export interface Organisation {
   logo: string;
   created_at: Date;
 }
+
+export interface Type {
+  id: number;
+  name: string;
+  description: string;
+  price: number;
+  created_at: Date;
+}
