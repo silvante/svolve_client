@@ -33,11 +33,11 @@ const OrganisationSlice = createSlice({
       state.loading = false;
     },
 
-    clearUser: (state) => {
+    clearOrganisations: (state) => {
       state.organisations = null;
     },
   },
 });
 
-export const { updateOrganisations, clearUser, setLoading, pushOrganisation } = OrganisationSlice.actions;
+export const { updateOrganisations, clearOrganisations, setLoading, pushOrganisation } = OrganisationSlice.actions;
 export default OrganisationSlice.reducer;
