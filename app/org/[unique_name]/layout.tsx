@@ -17,16 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default function OrgMainLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
-        <StoreProvider>{children}</StoreProvider>
-      </body>
-    </html>
+    <div className={`${roboto.className} antialiased`}>
+      <StoreProvider>{children}</StoreProvider>
+    </div>
   );
 }

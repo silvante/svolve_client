@@ -3,6 +3,7 @@ import userSlice from "./slices/userSlice";
 import OrganisationSlice from "./slices/organisationSlice";
 import ValidatorSlice from "./slices/validatorSlice";
 import AsideSlice from "./slices/asideSlice";
+import TypesSlice from "./slices/typesSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     organisations: OrganisationSlice,
     validator: ValidatorSlice,
     aside: AsideSlice,
+    types: TypesSlice,
   },
 });
 
