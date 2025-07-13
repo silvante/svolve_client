@@ -36,7 +36,6 @@ export default function NewOrganisationForm() {
       };
       const res: any = await organisationService.create(formData);
       const organisation: Organisation = res;
-      console.log("Organisation created:", organisation);
       dispatch(setLoading());
       dispatch(pushOrganisation(organisation));
       router.push("/panel/organisations");

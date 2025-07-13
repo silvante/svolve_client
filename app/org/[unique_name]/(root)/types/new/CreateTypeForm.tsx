@@ -6,34 +6,37 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import typeService from "@/app/api/services/typeService";
+import { Type } from "@/app/types/User";
+import { pushType, setLoading } from "@/app/store/slices/typesSlice";
 
 export default function CreateTypeForm() {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice]: any = useState(undefined);
+  const [price, setPrice] = useState<string>("");
   const { organisation } = useSelector((state: any) => state.validator);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   async function HandleCreateOrg(e: any) {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
     try {
-      if (price === undefined) {
-        setError("Price is required");
-      }
       const formData = {
         name: name,
         description: description,
         price: Number(price),
       };
-      const res = await typeService.createType(organisation.id, formData);
-      console.log(res);
-      setLoading(false);
+      const res: any = await typeService.createType(organisation.id, formData);
+      const new_type: Type = res;
+      dispatch(setLoading());
+      dispatch(pushType(new_type));
+      router.push(`/org/${organisation.unique_name}/types`);
+      setIsLoading(false);
     } catch (error) {
       setError("An error occurred while creating the organisation.");
-      setLoading(false);
+      setIsLoading(false);
     }
   }
 
@@ -104,7 +107,7 @@ export default function CreateTypeForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {!loading ? "Create Organisation" : "Creating..."}
+          {!isLoading ? "Create Organisation" : "Creating..."}
         </button>
       </div>
     </form>
