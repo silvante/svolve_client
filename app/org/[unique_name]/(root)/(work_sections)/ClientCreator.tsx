@@ -18,33 +18,31 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
-];
+import { useSelector } from "react-redux";
+import Spinner from "@/app/(global_components)/Spinner";
+import { Type } from "@/app/types/User";
 
 export default function ClientCreator() {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+
+  // for formData
+  const [name, setname] = React.useState("");
+  const [surname, setsurname] = React.useState("");
+  const [born_in, setborn_in] = React.useState("");
+  const [origin, setorigin] = React.useState("");
+  const [type_id, settype_id] = React.useState("");
+  const [price, setprice] = React.useState("");
+
+  // types
+  const { types, loading } = useSelector((state: any) => state.types);
+  const valid_types: Type[] = types;
+  if (loading) {
+    return (
+      <div className="w-full py-10 flex items-center justify-between">
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
@@ -58,6 +56,8 @@ export default function ClientCreator() {
               id="name"
               placeholder="Clients name"
               className="global_input"
+              value={name}
+              onChange={(e) => setname(e.target.value)}
               required
               autoFocus
             />
@@ -70,6 +70,8 @@ export default function ClientCreator() {
               id="surname"
               placeholder="Clients surname"
               className="global_input"
+              value={surname}
+              onChange={(e) => setsurname(e.target.value)}
               required
             />
           </div>
@@ -81,6 +83,8 @@ export default function ClientCreator() {
               id="born_in"
               placeholder="Clients birth year"
               className="global_input"
+              value={born_in}
+              onChange={(e) => setborn_in(e.target.value)}
               required
             />
           </div>
@@ -92,6 +96,8 @@ export default function ClientCreator() {
               id="origin"
               placeholder="Client's hometown"
               className="global_input"
+              value={origin}
+              onChange={(e) => setorigin(e.target.value)}
               required
             />
           </div>
@@ -107,10 +113,9 @@ export default function ClientCreator() {
                   className="justify-between global_input w-full"
                 >
                   <p>
-                    {value
-                      ? frameworks.find(
-                          (framework) => framework.value === value
-                        )?.label
+                    {type_id
+                      ? valid_types.find((vt) => String(vt.id) === type_id)
+                          ?.name
                       : "Select type..."}
                   </p>
                   <ChevronsUpDown className="opacity-50" />
@@ -118,29 +123,33 @@ export default function ClientCreator() {
               </PopoverTrigger>
               <PopoverContent className="p-0">
                 <Command>
-                  <CommandInput
-                    placeholder="Search type..."
-                    className="h-9"
-                  />
+                  <CommandInput placeholder="Search type..." className="h-9" />
                   <CommandList>
                     <CommandEmpty>No framework found.</CommandEmpty>
                     <CommandGroup>
-                      {frameworks.map((framework) => (
+                      {valid_types.map((vt) => (
                         <CommandItem
-                          key={framework.value}
-                          value={framework.value}
+                          key={vt.id}
+                          value={String(vt.id)}
                           onSelect={(currentValue) => {
-                            setValue(
-                              currentValue === value ? "" : currentValue
+                            settype_id(
+                              currentValue === type_id ? "" : currentValue
+                            );
+                            setprice(
+                              String(
+                                valid_types.find(
+                                  (type) => String(type.id) === currentValue
+                                )?.price
+                              )
                             );
                             setOpen(false);
                           }}
                         >
-                          {framework.label}
+                          {vt.name}
                           <Check
                             className={cn(
                               "ml-auto",
-                              value === framework.value
+                              type_id === String(vt.id)
                                 ? "opacity-100"
                                 : "opacity-0"
                             )}
@@ -161,6 +170,8 @@ export default function ClientCreator() {
               id="price"
               placeholder="How much paid"
               className="global_input"
+              value={price}
+              onChange={(e) => setprice(e.target.value)}
               required
             />
           </div>
