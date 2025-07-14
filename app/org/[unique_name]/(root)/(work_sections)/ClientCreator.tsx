@@ -130,15 +130,14 @@ export default function ClientCreator() {
                       {valid_types.map((vt) => (
                         <CommandItem
                           key={vt.id}
-                          value={String(vt.id)}
+                          value={String(`${vt.id}#${vt.name}`)}
                           onSelect={(currentValue) => {
-                            settype_id(
-                              currentValue === type_id ? "" : currentValue
-                            );
+                            const id = currentValue.split("#")[0];
+                            settype_id(id === type_id ? "" : id);
                             setprice(
                               String(
                                 valid_types.find(
-                                  (type) => String(type.id) === currentValue
+                                  (type) => String(type.id) === id
                                 )?.price
                               )
                             );
