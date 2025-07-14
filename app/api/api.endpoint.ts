@@ -21,6 +21,11 @@ const apiEndpoints = {
   // types
   getOrgTypes: (org_id: number) => `/organisations/${org_id}/types`,
   createOrgType: (org_id: number) => `/organisations/${org_id}/types/new`,
+
+  // clients
+  getTodaysClients: (org_id: number) =>
+    `/organisations/${org_id}/clients/today`,
+  createClient: (org_id: number) => `/organisations/${org_id}/clients/new`,
 };
 
 export default apiEndpoints;
