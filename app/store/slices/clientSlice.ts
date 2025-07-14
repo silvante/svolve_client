@@ -3,12 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ClientSlice {
   clients: Client[] | null;
-  loading: Boolean;
+  is_loading: Boolean;
 }
 
 const initialState: ClientSlice = {
   clients: null,
-  loading: true,
+  is_loading: true,
 };
 
 const ClientSlice = createSlice({
@@ -16,12 +16,12 @@ const ClientSlice = createSlice({
   initialState,
   reducers: {
     setLoading: (state) => {
-      state.loading = true;
+      state.is_loading = true;
     },
 
     updateClients: (state, action: PayloadAction<Client[]>) => {
       state.clients = action.payload;
-      state.loading = false;
+      state.is_loading = false;
     },
 
     pushClient: (state, action: PayloadAction<Client>) => {
@@ -30,7 +30,7 @@ const ClientSlice = createSlice({
       } else {
         state.clients = [action.payload];
       }
-      state.loading = false;
+      state.is_loading = false;
     },
 
     clearClients: (state) => {

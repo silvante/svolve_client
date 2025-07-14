@@ -34,7 +34,6 @@ export default function UniqueNamePage() {
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <ClientTable />
-            <ClientTable />
           </AccordionContent>
         </AccordionItem>
       </Accordion>
