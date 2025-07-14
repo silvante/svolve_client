@@ -1,13 +1,13 @@
 import { Organisation } from "@/app/types/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface organisationsState {
+interface ValidatorSlice {
   validation: Boolean;
   organisation: Organisation | null;
   loading: Boolean;
 }
 
-const initialState: organisationsState = {
+const initialState: ValidatorSlice = {
   validation: false,
   organisation: null,
   loading: true,

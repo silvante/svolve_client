@@ -25,3 +25,14 @@ export interface Type {
   price: number;
   created_at: Date;
 }
+
+export interface Client {
+  id: number;
+  name: string;
+  born_in: number;
+  surname: string;
+  origin: string;
+  type: Type;
+  price: number;
+  created_at: Date;
+}

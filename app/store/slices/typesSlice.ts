@@ -1,12 +1,12 @@
 import { Organisation, Type } from "@/app/types/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface organisationsState {
+interface TypesSlice {
   types: Type[] | null;
   loading: Boolean;
 }
 
-const initialState: organisationsState = {
+const initialState: TypesSlice = {
   types: null,
   loading: true,
 };
