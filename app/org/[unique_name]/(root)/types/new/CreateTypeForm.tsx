@@ -34,8 +34,13 @@ export default function CreateTypeForm() {
       dispatch(pushType(new_type));
       router.push(`/org/${organisation.unique_name}/types`);
       setIsLoading(false);
-    } catch (error) {
-      setError("An error occurred while creating the organisation.");
+      setError("");
+    } catch (error: any) {
+      if (!error.response) {
+        setError("Make sure that you filled all fields correct!");
+      } else {
+        setError(error.response.data.message);
+      }
       setIsLoading(false);
     }
   }

@@ -45,15 +45,19 @@ export default function ClientCreator() {
 
   // for clear form
 
+  function ClearFields() {
+    setname("");
+    setsurname("");
+    setborn_in("");
+    setorigin("");
+    settype_id("");
+    setprice("");
+  }
+
   useEffect(() => {
     const handleLockEvent = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.key == "Delete") {
-        setname("");
-        setsurname("");
-        setborn_in("");
-        setorigin("");
-        settype_id("");
-        setprice("");
+        ClearFields();
       }
     };
 
@@ -81,9 +85,15 @@ export default function ClientCreator() {
       );
       const new_client: Client = res;
       dispatch(pushClient(new_client));
+      ClearFields();
       setIsLoading(false);
-    } catch (error) {
-      setError("An error occurred while creating the organisation.");
+      setError("");
+    } catch (error: any) {
+      if (!error.response) {
+        setError("Make sure that you filled all fields correct");
+      } else {
+        setError(error.response.data.message);
+      }
       setIsLoading(false);
     }
   }
@@ -107,12 +117,12 @@ export default function ClientCreator() {
           <span className="text-xs">Ctrl + Delete</span>
         </kbd>
       </div>
+      {error !== "" && (
+        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+          {error}
+        </p>
+      )}
       <form className="w-full" onSubmit={HandleCreateClient}>
-        {error !== "" && (
-          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-            {error}
-          </p>
-        )}
         <div className="grid grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
             <label htmlFor="name">Name</label>
