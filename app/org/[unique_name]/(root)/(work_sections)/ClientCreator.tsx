@@ -17,13 +17,23 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Spinner from "@/app/(global_components)/Spinner";
-import { Type } from "@/app/types/User";
+import { Client, Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
+import { pushClient, setLoading } from "@/app/store/slices/clientSlice";
+import clientService from "@/app/api/services/clientService";
 
 export default function ClientCreator() {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  // dispatcher
+  const dispatch = useDispatch();
+
+  // selectors
+  const { organisation } = useSelector((state: any) => state.validator);
 
   // for formData
   const [name, setname] = useState("");
@@ -37,7 +47,7 @@ export default function ClientCreator() {
 
   useEffect(() => {
     const handleLockEvent = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.key.toLocaleLowerCase() === "c") {
+      if (e.ctrlKey && e.key == "Delete") {
         setname("");
         setsurname("");
         setborn_in("");
@@ -50,6 +60,33 @@ export default function ClientCreator() {
     window.addEventListener("keydown", handleLockEvent);
     return () => window.removeEventListener("keydown", handleLockEvent);
   }, []);
+
+  // submit form
+
+  async function HandleCreateClient(e: any) {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const formData = {
+        name,
+        surname,
+        born_in: Number(born_in),
+        origin,
+        type_id: Number(type_id),
+        price: Number(price),
+      };
+      const res: any = await clientService.createClient(
+        organisation.id,
+        formData
+      );
+      const new_client: Client = res;
+      dispatch(pushClient(new_client));
+      setIsLoading(false);
+    } catch (error) {
+      setError("An error occurred while creating the organisation.");
+      setIsLoading(false);
+    }
+  }
 
   // types
   const { types, loading } = useSelector((state: any) => state.types);
@@ -65,12 +102,17 @@ export default function ClientCreator() {
   return (
     <div className="w-full space-y-4">
       <div className="text-muted-foreground text-sm flex gap-2">
-        <p>Focus</p>
+        <p>Clear form with</p>
         <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-          <span className="text-xs">Ctrl + C</span>
+          <span className="text-xs">Ctrl + Delete</span>
         </kbd>
       </div>
-      <form className="w-full">
+      <form className="w-full" onSubmit={HandleCreateClient}>
+        {error !== "" && (
+          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+            {error}
+          </p>
+        )}
         <div className="grid grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
             <label htmlFor="name">Name</label>
@@ -199,8 +241,11 @@ export default function ClientCreator() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <button className="w-full h-full bg-violet-600 text-white p-2 rounded-xl">
-              Submit Client
+            <button
+              type="submit"
+              className="w-full h-full bg-violet-600 text-white p-2 rounded-xl cursor-pointer"
+            >
+              {isLoading ? "creating..." : "Submit Client"}
             </button>
           </div>
         </div>
