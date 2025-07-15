@@ -14,7 +14,7 @@ export default function UniqueNamePage() {
   const { organisation } = useSelector((state: any) => state.validator);
   return (
     <div className="space-y-5">
-      <Heading text={`Home page - ${organisation.unique_name}`} />
+      <Heading text={`Home page - ${organisation.name}`} />
       <Accordion
         type="multiple"
         className="w-full"

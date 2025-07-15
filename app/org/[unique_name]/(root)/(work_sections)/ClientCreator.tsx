@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -21,17 +20,36 @@ import {
 import { useSelector } from "react-redux";
 import Spinner from "@/app/(global_components)/Spinner";
 import { Type } from "@/app/types/User";
+import { useEffect, useState } from "react";
 
 export default function ClientCreator() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   // for formData
-  const [name, setname] = React.useState("");
-  const [surname, setsurname] = React.useState("");
-  const [born_in, setborn_in] = React.useState("");
-  const [origin, setorigin] = React.useState("");
-  const [type_id, settype_id] = React.useState("");
-  const [price, setprice] = React.useState("");
+  const [name, setname] = useState("");
+  const [surname, setsurname] = useState("");
+  const [born_in, setborn_in] = useState("");
+  const [origin, setorigin] = useState("");
+  const [type_id, settype_id] = useState("");
+  const [price, setprice] = useState("");
+
+  // for clear form
+
+  useEffect(() => {
+    const handleLockEvent = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.key.toLocaleLowerCase() === "c") {
+        setname("");
+        setsurname("");
+        setborn_in("");
+        setorigin("");
+        settype_id("");
+        setprice("");
+      }
+    };
+
+    window.addEventListener("keydown", handleLockEvent);
+    return () => window.removeEventListener("keydown", handleLockEvent);
+  }, []);
 
   // types
   const { types, loading } = useSelector((state: any) => state.types);
@@ -45,7 +63,13 @@ export default function ClientCreator() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full space-y-4">
+      <div className="text-muted-foreground text-sm flex gap-2">
+        <p>Focus</p>
+        <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+          <span className="text-xs">Ctrl + C</span>
+        </kbd>
+      </div>
       <form className="w-full">
         <div className="grid grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
