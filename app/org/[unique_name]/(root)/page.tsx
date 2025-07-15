@@ -9,12 +9,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Spinner from "@/app/(global_components)/Spinner";
+import { Client } from "@/app/types/User";
 
 export default function UniqueNamePage() {
   const { organisation } = useSelector((state: any) => state.validator);
+  const { clients, is_loading } = useSelector((state: any) => state.client);
+
+  let total_revenue = "0";
+  if (!is_loading) {
+    const totalPrice = clients.reduce(
+      (sum: any, client: Client) => sum + client.price,
+      0
+    );
+    const formatted = totalPrice.toLocaleString();
+    total_revenue = formatted;
+  }
+
   return (
     <div className="space-y-5">
-      <Heading text={`Home page - ${organisation.name}`} />
+      <div className="w-full flex items-center justify-between">
+        <Heading text={`Work Panel - ${organisation.name}`} />
+        {is_loading ? (
+          <Spinner />
+        ) : (
+          <Heading text={`Today: ${total_revenue} uzs`} />
+        )}
+      </div>
       <Accordion
         type="multiple"
         className="w-full"

@@ -12,7 +12,7 @@ export default function CollapseBtn() {
 
   useEffect(() => {
     const handleKeys = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key.toLocaleLowerCase() === "x") {
+      if (e.ctrlKey && e.key.toLocaleLowerCase() === "f") {
         handleCollapse();
       }
     };
