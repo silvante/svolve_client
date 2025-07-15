@@ -1,4 +1,5 @@
 "use client";
+import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import typeService from "@/app/api/services/typeService";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
@@ -37,53 +38,58 @@ export default function TypeTable() {
     );
   } else {
     return (
-      <div className="space-y-5">
-        <table className="w-full rounded-lg overflow-hidden">
-          <thead className="bg-gray-200">
-            <tr className="">
-              <th className="text-start p-3">No</th>
-              <th className="text-start p-3">Name</th>
-              <th className="text-start p-3">Description</th>
-              <th className="text-start p-3">Price</th>
-              <th className="text-start p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {types && types.length > 0 ? (
-              types.map((type: Type, index: number) => (
-                <tr
-                  key={type.id}
-                  className={`border-b border-x border-gray-200`}
-                >
-                  <td className="p-3 w-20 truncate">{index + 1}</td>
-                  <td className="p-3 truncate">{type.name}</td>
-                  <td className="p-3 truncate">{type.description}</td>
-                  <td className="p-3 truncate">{type.price}</td>
-                  <td className="p-3 truncate">
-                    <OrgLink
-                      href="/"
-                      className="bg-violet-600 text-white px-4 py-2 rounded-lg"
-                    >
-                      Edit
-                    </OrgLink>
-                  </td>
+      <>
+        {types && types.length > 0 ? (
+          <div className="space-y-5">
+            <table className="w-full rounded-lg overflow-hidden">
+              <thead className="bg-gray-200">
+                <tr className="">
+                  <th className="text-start p-3">No</th>
+                  <th className="text-start p-3">Name</th>
+                  <th className="text-start p-3">Description</th>
+                  <th className="text-start p-3">Price</th>
+                  <th className="text-start p-3">Actions</th>
                 </tr>
-              ))
-            ) : (
-              <p>No types found.</p>
-            )}
-          </tbody>
-          <tfoot className="bg-gray-200">
-            <tr>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-              <th className="p-3">The End</th>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {types.map((type: Type, index: number) => (
+                  <tr
+                    key={type.id}
+                    className={`border-b border-x border-gray-200`}
+                  >
+                    <td className="p-3 w-20 truncate">{index + 1}</td>
+                    <td className="p-3 truncate">{type.name}</td>
+                    <td className="p-3 truncate">{type.description}</td>
+                    <td className="p-3 truncate">{type.price}</td>
+                    <td className="p-3 truncate">
+                      <OrgLink
+                        href="/"
+                        className="bg-violet-600 text-white px-4 py-2 rounded-lg"
+                      >
+                        Edit
+                      </OrgLink>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot className="bg-gray-200">
+                <tr>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                  <th className="p-3">The End</th>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        ) : (
+          <ErrorMessage
+            text="There is no Types now"
+            desc="You can create one now"
+          />
+        )}
+      </>
     );
   }
 }

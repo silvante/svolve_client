@@ -98,7 +98,10 @@ export default function ClientTable() {
             </table>
           </div>
         ) : (
-          <ErrorMessage text="Error message is working" desc="How good it is" />
+          <ErrorMessage
+            text="There is no clients today"
+            desc="It will be a good beginning"
+          />
         )}
       </>
     );
