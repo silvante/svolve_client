@@ -1,4 +1,5 @@
 "use client";
+import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import clientService from "@/app/api/services/clientService";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
@@ -43,61 +44,63 @@ export default function ClientTable() {
     );
   } else {
     return (
-      <div className="space-y-5">
-        <table className="w-full rounded-lg overflow-hidden">
-          <thead className="bg-gray-200">
-            <tr className="">
-              <th className="text-start p-3 w-20">No</th>
-              <th className="text-start p-3">Name</th>
-              <th className="text-start p-3">Year</th>
-              <th className="text-start p-3">Origin</th>
-              <th className="text-start p-3">Type</th>
-              <th className="text-start p-3">Price</th>
-              <th className="text-start p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {clients && clients.length > 0 ? (
-              clients.map((client: Client, index: number) => (
-                <tr
-                  key={client.id}
-                  className={`border-b border-x border-gray-200`}
-                >
-                  <td className="p-3 w-20 truncate">{index + 1}</td>
-                  <td className="p-3 truncate">
-                    {client.name} {client.surname}
-                  </td>
-                  <td className="p-3 truncate">{client.born_in}</td>
-                  <td className="p-3 truncate">{client.origin}</td>
-                  <td className="p-3 truncate">{client.type.name}</td>
-                  <td className="p-3 truncate">{client.price}</td>
-                  <td className="p-3 truncate">
-                    <OrgLink
-                      href="/"
-                      className="bg-violet-600 text-white px-4 py-2 rounded-lg"
-                    >
-                      Edit
-                    </OrgLink>
-                  </td>
+      <>
+        {clients && clients.length !== 0 ? (
+          <div className="space-y-5">
+            <table className="w-full rounded-lg overflow-hidden">
+              <thead className="bg-gray-200">
+                <tr className="">
+                  <th className="text-start p-3 w-20">No</th>
+                  <th className="text-start p-3">Name</th>
+                  <th className="text-start p-3">Year</th>
+                  <th className="text-start p-3">Origin</th>
+                  <th className="text-start p-3">Type</th>
+                  <th className="text-start p-3">Price</th>
+                  <th className="text-start p-3">Actions</th>
                 </tr>
-              ))
-            ) : (
-              <p>No clients found.</p>
-            )}
-          </tbody>
-          <tfoot className="bg-gray-200">
-            <tr>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-              <th className="p-3">The End</th>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-              <th className="p-3"></th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
+              </thead>
+              <tbody>
+                {clients.map((client: Client, index: number) => (
+                  <tr
+                    key={client.id}
+                    className={`border-b border-x border-gray-200`}
+                  >
+                    <td className="p-3 w-20 truncate">{index + 1}</td>
+                    <td className="p-3 truncate">
+                      {client.name} {client.surname}
+                    </td>
+                    <td className="p-3 truncate">{client.born_in}</td>
+                    <td className="p-3 truncate">{client.origin}</td>
+                    <td className="p-3 truncate">{client.type.name}</td>
+                    <td className="p-3 truncate">{client.price}</td>
+                    <td className="p-3 truncate">
+                      <OrgLink
+                        href="/"
+                        className="bg-violet-600 text-white px-4 py-2 rounded-lg"
+                      >
+                        Edit
+                      </OrgLink>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot className="bg-gray-200">
+                <tr>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                  <th className="p-3">The End</th>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        ) : (
+          <ErrorMessage text="Error message is working" desc="How good it is" />
+        )}
+      </>
     );
   }
 }
