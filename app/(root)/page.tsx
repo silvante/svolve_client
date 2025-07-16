@@ -11,7 +11,7 @@ export default function Home() {
     <div className="w-full py-10">
       <Hero />
       <div className="py-10 flex justify-center items-center">
-        <p className={`${boren.className} text-xl`}>Supported payment providers</p>
+        <p className={`${boren.className} text-xl`}>Trusted by companies</p>
       </div>
     </div>
   );
