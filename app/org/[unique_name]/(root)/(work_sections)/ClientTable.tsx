@@ -2,12 +2,12 @@
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import clientService from "@/app/api/services/clientService";
-import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 import { updateClients } from "@/app/store/slices/clientSlice";
 import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
 export default function ClientTable() {
   const { types, loading } = useSelector((state: any) => state.types);
@@ -74,12 +74,16 @@ export default function ClientTable() {
                     <td className="p-3 truncate">{client.type.name}</td>
                     <td className="p-3 truncate">{client.price}</td>
                     <td className="p-3 truncate">
-                      <OrgLink
-                        href="/"
-                        className="bg-violet-600 text-white px-4 py-2 rounded-lg"
-                      >
-                        Edit
-                      </OrgLink>
+                      {!client.is_checked ? (
+                        <CheckClientBtn
+                          org_id={organisation.id}
+                          client_id={client.id}
+                        />
+                      ) : (
+                        <p className="my-2 bg-green-600 text-white px-2 text-center">
+                          checked
+                        </p>
+                      )}
                     </td>
                   </tr>
                 ))}
@@ -88,7 +92,7 @@ export default function ClientTable() {
                 <tr>
                   <th className="p-3"></th>
                   <th className="p-3"></th>
-                  <th className="p-3">The End</th>
+                  <th className="p-3"></th>
                   <th className="p-3"></th>
                   <th className="p-3"></th>
                   <th className="p-3"></th>

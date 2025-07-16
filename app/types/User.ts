@@ -33,6 +33,7 @@ export interface Client {
   surname: string;
   origin: string;
   type: Type;
+  is_checked: boolean;
   price: number;
   created_at: Date;
 }

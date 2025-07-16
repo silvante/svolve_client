@@ -33,12 +33,28 @@ const ClientSlice = createSlice({
       state.is_loading = false;
     },
 
+    replaceClient: (state, action: PayloadAction<Client>) => {
+      if (state.clients) {
+        const index = state.clients.findIndex(
+          (c) => c.id === action.payload.id
+        );
+        if (index !== -1 && index !== undefined) {
+          state.clients[index] = action.payload;
+        }
+      }
+    },
+
     clearClients: (state) => {
       state.clients = null;
     },
   },
 });
 
-export const { updateClients, clearClients, setLoading, pushClient } =
-  ClientSlice.actions;
+export const {
+  updateClients,
+  clearClients,
+  setLoading,
+  pushClient,
+  replaceClient,
+} = ClientSlice.actions;
 export default ClientSlice.reducer;

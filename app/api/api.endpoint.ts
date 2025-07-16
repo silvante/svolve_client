@@ -27,7 +27,7 @@ const apiEndpoints = {
     `/organisations/${org_id}/clients/today`,
   createClient: (org_id: number) => `/organisations/${org_id}/clients/new`,
   checkClient: (org_id: number, client_id: number) =>
-    `organisations/${org_id}/clients/check/${{ client_id }}`,
+    `/organisations/${org_id}/clients/check/${client_id}`,
 };
 
 export default apiEndpoints;
