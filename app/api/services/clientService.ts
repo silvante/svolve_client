@@ -18,6 +18,14 @@ const clientService = {
       throw error;
     }
   },
+
+  checkClient: async (org_id: number, client_id: number) => {
+    try {
+      return await api.put(apiEndpoints.checkClient(org_id, client_id));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default clientService;
