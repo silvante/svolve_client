@@ -60,12 +60,12 @@ export default function ClientTable() {
                 </tr>
               </thead>
               <tbody>
-                {clients.map((client: Client, index: number) => (
+                {[...clients].reverse().map((client: Client, index: number) => (
                   <tr
                     key={client.id}
                     className={`border-b border-x border-gray-200`}
                   >
-                    <td className="p-3 w-20 truncate">{index + 1}</td>
+                    <td className="p-3 w-20 truncate">{clients.length - index}</td>
                     <td className="p-3 truncate">
                       {client.name} {client.surname}
                     </td>
