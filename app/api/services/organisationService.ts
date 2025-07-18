@@ -1,6 +1,11 @@
 import api from "../api.config";
 import apiEndpoints from "../api.endpoint";
-import { createData, validateData } from "./utils/organisationTypes";
+import {
+  createData,
+  updateData,
+  updatePincodeData,
+  validateData,
+} from "./utils/organisationTypes";
 
 const organisationService = {
   getAll: async () => {
@@ -29,7 +34,29 @@ const organisationService = {
 
   validate: async (unique_name: string, data: validateData) => {
     try {
-      return await api.post(apiEndpoints.validateOrganisation(unique_name), data);
+      return await api.post(
+        apiEndpoints.validateOrganisation(unique_name),
+        data
+      );
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  update: async (unique_name: string, data: updateData) => {
+    try {
+      return await api.put(apiEndpoints.updateOrganisation(unique_name), data);
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  updatePincode: async (unique_name: string, data: updatePincodeData) => {
+    try {
+      return await api.put(
+        apiEndpoints.updateOrganisationPincode(unique_name),
+        data
+      );
     } catch (error) {
       throw error;
     }
