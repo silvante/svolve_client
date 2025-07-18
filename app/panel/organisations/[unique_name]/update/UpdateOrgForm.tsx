@@ -1,46 +1,49 @@
 "use client";
-
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
 import { FileImage } from "lucide-react";
 import { useState } from "react";
 import organisationService from "@/app/api/services/organisationService";
-import { useDispatch } from "react-redux";
-import {
-  pushOrganisation,
-  setLoading,
-} from "@/app/store/slices/organisationSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { replaceOrganisation } from "@/app/store/slices/organisationSlice";
 import { Organisation } from "@/app/types/User";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import Spinner from "@/app/(global_components)/Spinner";
 
-export default function NewOrganisationForm() {
+export default function UpdateOrganisationForm() {
   const [isLoading, setIsLoading] = useState(false);
+  const { unique_name } = useParams();
+  const { organisations, loading } = useSelector(
+    (state: any) => state.organisations
+  );
+
+  if (loading) {
+    return (
+      <div className="w-full py-10 flex items-center justify-center">
+        <Spinner />
+      </div>
+    );
+  }
+
+  const org = organisations.find(
+    (org: Organisation) => org.unique_name === String(unique_name)
+  );
 
   const [error, setError] = useState("");
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [pincode, setPincode] = useState("");
+  const [name, setName] = useState(org.name);
+  const [description, setDescription] = useState(org.description);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  async function HandleCreateOrg(e: any) {
+  async function HandleUpdateOrg(e: any) {
     e.preventDefault();
     setIsLoading(true);
     try {
       const formData = {
         name,
         description,
-        pincode: pincode,
       };
-      const res: any = await organisationService.create(formData);
+      const res: any = await organisationService.update(org.unique_name, formData);
       const organisation: Organisation = res;
-      dispatch(setLoading());
-      dispatch(pushOrganisation(organisation));
+      dispatch(replaceOrganisation(organisation));
       router.push("/panel/organisations");
       setIsLoading(false);
     } catch (error: any) {
@@ -54,7 +57,7 @@ export default function NewOrganisationForm() {
   }
 
   return (
-    <form className="space-y-5" onSubmit={HandleCreateOrg}>
+    <form className="space-y-5" onSubmit={HandleUpdateOrg}>
       {error !== "" && (
         <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
           {error}
@@ -123,31 +126,6 @@ export default function NewOrganisationForm() {
           </div>
         </label>
         <input type="file" name="logo" id="logo" className="hidden" />
-      </div>
-
-      {/* pincode */}
-      <div className="space-y-1">
-        <label htmlFor="pincode" className="block">
-          Pincode*
-        </label>
-        <InputOTP
-          maxLength={6}
-          id="pincode"
-          pattern={REGEXP_ONLY_DIGITS}
-          value={pincode}
-          onChange={(value) => setPincode(value)}
-          required
-        >
-          <InputOTPGroup>
-            <InputOTPSlot index={0} className="border-gray-400" />
-            <InputOTPSlot index={1} className="border-gray-400" />
-            <InputOTPSlot index={2} className="border-gray-400" />
-            <InputOTPSlot index={3} className="border-gray-400" />
-            <InputOTPSlot index={4} className="border-gray-400" />
-            <InputOTPSlot index={5} className="border-gray-400" />
-          </InputOTPGroup>
-        </InputOTP>
-        <p className="text-sm text-gray-500">Number only</p>
       </div>
 
       {/* submit */}

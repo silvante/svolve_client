@@ -36,8 +36,25 @@ const OrganisationSlice = createSlice({
     clearOrganisations: (state) => {
       state.organisations = null;
     },
+
+    replaceOrganisation: (state, action: PayloadAction<Organisation>) => {
+      if (state.organisations) {
+        const index = state.organisations.findIndex(
+          (c) => c.id === action.payload.id
+        );
+        if (index !== -1 && index !== undefined) {
+          state.organisations[index] = action.payload;
+        }
+      }
+    },
   },
 });
 
-export const { updateOrganisations, clearOrganisations, setLoading, pushOrganisation } = OrganisationSlice.actions;
+export const {
+  updateOrganisations,
+  clearOrganisations,
+  setLoading,
+  pushOrganisation,
+  replaceOrganisation,
+} = OrganisationSlice.actions;
 export default OrganisationSlice.reducer;
