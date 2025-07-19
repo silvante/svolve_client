@@ -35,7 +35,6 @@ export default function Verification() {
       router.push("/panel");
       setLoading2(false);
     } catch (error) {
-      console.log(error);
       toast.error("Sothing went wrong");
       router.push("/signup");
     }

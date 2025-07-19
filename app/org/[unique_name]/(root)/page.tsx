@@ -26,8 +26,6 @@ export default function UniqueNamePage() {
     total_revenue = formatted;
   }
 
-  console.log(organisation);
-
   return (
     <div className="space-y-5">
       <div className="w-full flex items-center justify-between">
