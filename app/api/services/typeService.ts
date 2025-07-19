@@ -18,6 +18,14 @@ const typeService = {
       throw error;
     }
   },
+
+  updateType: async (org_id: number, type_id: number, data: CreateTypeData) => {
+    try {
+      return await api.put(apiEndpoints.updateOrgType(org_id, type_id), data);
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default typeService;
