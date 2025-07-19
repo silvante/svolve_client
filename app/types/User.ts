@@ -23,6 +23,7 @@ export interface Type {
   name: string;
   description: string;
   price: number;
+  client_count: number;
   created_at: Date;
 }
 

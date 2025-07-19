@@ -30,6 +30,8 @@ export default function TypeTable() {
     getTypes();
   }, []);
 
+  console.log(types);
+
   if (loading) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
@@ -48,6 +50,7 @@ export default function TypeTable() {
                   <th className="text-start p-3">Name</th>
                   <th className="text-start p-3">Description</th>
                   <th className="text-start p-3">Price</th>
+                  <th className="text-start p-3">Total</th>
                   <th className="text-start p-3">Actions</th>
                 </tr>
               </thead>
@@ -62,11 +65,14 @@ export default function TypeTable() {
                     <td className="p-3 truncate">{type.description}</td>
                     <td className="p-3 truncate">{type.price}</td>
                     <td className="p-3 truncate">
+                      {type.client_count} clients
+                    </td>
+                    <td className="p-3 truncate">
                       <OrgLink
-                        href="/"
+                        href={`/types/${type.id}/update`}
                         className="bg-violet-600 text-white px-4 py-2 rounded-lg"
                       >
-                        Edit
+                        Update
                       </OrgLink>
                     </td>
                   </tr>
@@ -76,7 +82,8 @@ export default function TypeTable() {
                 <tr>
                   <th className="p-3"></th>
                   <th className="p-3"></th>
-                  <th className="p-3">The End</th>
+                  <th className="p-3"></th>
+                  <th className="p-3"></th>
                   <th className="p-3"></th>
                   <th className="p-3"></th>
                 </tr>
