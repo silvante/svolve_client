@@ -30,8 +30,6 @@ export default function TypeTable() {
     getTypes();
   }, []);
 
-  console.log(types);
-
   if (loading) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
@@ -65,7 +63,7 @@ export default function TypeTable() {
                     <td className="p-3 truncate">{type.description}</td>
                     <td className="p-3 truncate">{type.price}</td>
                     <td className="p-3 truncate">
-                      {type.client_count} clients
+                      {type._count.clients} clients
                     </td>
                     <td className="p-3 truncate">
                       <OrgLink

@@ -24,6 +24,9 @@ export interface Type {
   description: string;
   price: number;
   client_count: number;
+  _count: {
+    clients: number;
+  };
   created_at: Date;
 }
 
