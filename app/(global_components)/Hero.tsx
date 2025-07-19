@@ -11,7 +11,7 @@ export default function Hero() {
       </div>
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
-          <h1 className="text-5xl font-semibold">
+          <h1 className="text-5xl font-semibold text-shadow-2xs">
             Powerful and Easy to use{" "}
             <span className="text-violet-600">organisation</span> management
             platform for <span className="text-violet-600">Uzbekistan</span>
