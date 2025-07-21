@@ -22,6 +22,7 @@ const apiEndpoints = {
   getOrgTypes: (org_id: number) => `/organisations/${org_id}/types`,
   createOrgType: (org_id: number) => `/organisations/${org_id}/types/new`,
   updateOrgType: (org_id: number, type_id: number) => `organisations/${org_id}/types/${type_id}/update`,
+  deleteOrgType: (org_id: number, type_id: number) => `organisations/${org_id}/types/${type_id}/delete`,
 
   // clients
   getTodaysClients: (org_id: number) => `/organisations/${org_id}/clients/today`,

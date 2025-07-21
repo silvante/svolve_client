@@ -26,6 +26,14 @@ const typeService = {
       throw error;
     }
   },
+
+  delete: async (org_id: number, type_id: number) => {
+    try {
+      return await api.delete(apiEndpoints.deleteOrgType(org_id, type_id));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default typeService;
