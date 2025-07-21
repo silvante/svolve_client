@@ -2,14 +2,24 @@
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import clientService from "@/app/api/services/clientService";
-import { updateClients } from "@/app/store/slices/clientSlice";
+import { deleteClient, updateClients } from "@/app/store/slices/clientSlice";
 import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, PenBox, Trash } from "lucide-react";
+import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
+
 export default function ClientTable() {
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const { types, loading } = useSelector((state: any) => state.types);
   const { clients, is_loading } = useSelector((state: any) => state.client);
@@ -37,6 +47,29 @@ export default function ClientTable() {
     GetClients();
   }, []);
 
+  async function HandleDelete(id: number) {
+    setIsLoading(true);
+    try {
+      const client: Client = clients.find((client: Client) => client.id === id);
+      const res: any = await clientService.deleteClient(
+        organisation.id,
+        client.id
+      );
+      console.log(res);
+      if (res.deleted === true) {
+        dispatch(deleteClient(client));
+      }
+      setIsLoading(false);
+    } catch (error: any) {
+      if (!error.response) {
+        setError("Internal server error pleace try again later");
+      } else {
+        setError(error.response.data.message);
+      }
+      setIsLoading(false);
+    }
+  }
+
   if (loading || is_loading) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
@@ -48,6 +81,17 @@ export default function ClientTable() {
       <>
         {clients && clients.length !== 0 ? (
           <div className="space-y-5">
+            {error !== "" && (
+              <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+                {error}
+              </p>
+            )}
+            {isLoading && (
+              <div className="flex gap-2 items-center">
+                <p>Deleting</p>
+                <Spinner />
+              </div>
+            )}
             <table className="w-full rounded-lg overflow-hidden">
               <thead className="bg-gray-200">
                 <tr className="">
@@ -78,10 +122,36 @@ export default function ClientTable() {
                     <td className="p-3 truncate">{client.price}</td>
                     <td className="p-3 truncate">
                       {!client.is_checked ? (
-                        <CheckClientBtn
-                          org_id={organisation.id}
-                          client_id={client.id}
-                        />
+                        <div className="flex gap-3 items-center">
+                          <CheckClientBtn
+                            org_id={organisation.id}
+                            client_id={client.id}
+                          />
+                          <DropdownMenu>
+                            <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
+                              <Menu />
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end" className="w-56">
+                              <OrgLink
+                                href={`/clients/${client.id}/update`}
+                                className="rounded-lg flex"
+                              >
+                                <DropdownMenuItem className="cursor-pointer w-full">
+                                  <PenBox /> Update
+                                </DropdownMenuItem>
+                              </OrgLink>
+                              <button
+                                className="rounded-lg cursor-pointer w-full"
+                                onClick={() => HandleDelete(client.id)}
+                              >
+                                <DropdownMenuItem className="cursor-pointer">
+                                  <Trash color="#e7000b" />{" "}
+                                  <p className="text-red-600">Delete</p>
+                                </DropdownMenuItem>
+                              </button>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        </div>
                       ) : (
                         <p className="my-2 bg-green-600 text-white px-2 text-center">
                           checked

@@ -29,6 +29,7 @@ const apiEndpoints = {
   createClient: (org_id: number) => `/organisations/${org_id}/clients/new`,
   checkClient: (org_id: number, client_id: number) => `/organisations/${org_id}/clients/${client_id}/check`,
   updateClient: (org_id: number, client_id: number) => `/organisations/${org_id}/clients/${client_id}/update`,
+  deleteClient: (org_id: number, client_id: number) => `/organisations/${org_id}/clients/${client_id}/delete`
 };
 
 export default apiEndpoints;

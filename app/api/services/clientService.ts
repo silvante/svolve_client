@@ -38,6 +38,14 @@ const clientService = {
       throw error;
     }
   },
+
+  deleteClient: async (org_id: number, client_id: number) => {
+    try {
+      return await api.delete(apiEndpoints.deleteClient(org_id, client_id));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default clientService;

@@ -44,6 +44,17 @@ const ClientSlice = createSlice({
       }
     },
 
+    deleteClient: (state, action: PayloadAction<Client>) => {
+      if (state.clients) {
+        const index = state.clients.findIndex(
+          (c) => c.id === action.payload.id
+        );
+        if (index !== -1 && index !== undefined) {
+          state.clients.splice(index, 1);
+        }
+      }
+    },
+
     clearClients: (state) => {
       state.clients = null;
     },
@@ -56,5 +67,6 @@ export const {
   setLoading,
   pushClient,
   replaceClient,
+  deleteClient,
 } = ClientSlice.actions;
 export default ClientSlice.reducer;
