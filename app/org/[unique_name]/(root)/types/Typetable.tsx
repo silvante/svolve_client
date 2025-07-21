@@ -7,11 +7,17 @@ import { deleteType, updateTypes } from "@/app/store/slices/typesSlice";
 import { Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, PenBox, Trash } from "lucide-react";
 
 export default function TypeTable() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [deletingIndex, setDeletingIndex] = useState(0);
 
   const { types, loading } = useSelector((state: any) => state.types);
   const { organisation } = useSelector((state: any) => state.validator);
@@ -35,25 +41,22 @@ export default function TypeTable() {
   }, []);
 
   async function HandleDelete(id: number) {
+    setIsLoading(true);
     try {
       const type: Type = types.find((type: Type) => type.id === id);
-      setIsLoading(true);
-      setDeletingIndex(type.id);
       const res: any = await typeService.deleteType(organisation.id, type.id);
       console.log(res);
       if (res.deleted === true) {
         dispatch(deleteType(type));
       }
       setIsLoading(false);
-      setDeletingIndex(0);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct");
+        setError("Internal server error pleace try again later");
       } else {
         setError(error.response.data.message);
       }
       setIsLoading(false);
-      setDeletingIndex(0);
     }
   }
 
@@ -72,6 +75,12 @@ export default function TypeTable() {
               <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
                 {error}
               </p>
+            )}
+            {isLoading && (
+              <div className="flex gap-2 items-center">
+                <p>Deleting</p>
+                <Spinner />
+              </div>
             )}
             <table className="w-full rounded-lg overflow-hidden">
               <thead className="bg-gray-200">
@@ -98,20 +107,30 @@ export default function TypeTable() {
                       {type._count.clients} clients
                     </td>
                     <td className="p-3 truncate flex gap-4">
-                      <OrgLink
-                        href={`/types/${type.id}/update`}
-                        className="bg-violet-600 text-white px-4 py-2 rounded-lg flex"
-                      >
-                        Update
-                      </OrgLink>
-                      <button
-                        className="bg-red-600 text-white px-4 py-2 rounded-lg cursor-pointer"
-                        onClick={() => HandleDelete(type.id)}
-                      >
-                        {isLoading && deletingIndex === type.id
-                          ? "deleting..."
-                          : "Delete"}
-                      </button>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-1 py-1 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">
+                          <Menu />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-56">
+                          <OrgLink
+                            href={`/types/${type.id}/update`}
+                            className="rounded-lg flex"
+                          >
+                            <DropdownMenuItem className="cursor-pointer w-full">
+                              <PenBox /> Update
+                            </DropdownMenuItem>
+                          </OrgLink>
+                          <button
+                            className="rounded-lg cursor-pointer w-full"
+                            onClick={() => HandleDelete(type.id)}
+                          >
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Trash color="#e7000b" />{" "}
+                              <p className="text-red-600">Delete</p>
+                            </DropdownMenuItem>
+                          </button>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </td>
                   </tr>
                 ))}
