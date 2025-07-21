@@ -42,12 +42,27 @@ const TypesSlice = createSlice({
       }
     },
 
+    deleteType: (state, action: PayloadAction<Type>) => {
+      if (state.types) {
+        const index = state.types.findIndex((c) => c.id === action.payload.id);
+        if (index !== -1 && index !== undefined) {
+          state.types.splice(index, 1);
+        }
+      }
+    },
+
     clearTypes: (state) => {
       state.types = null;
     },
   },
 });
 
-export const { updateTypes, clearTypes, setLoading, pushType, replaceType } =
-  TypesSlice.actions;
+export const {
+  updateTypes,
+  clearTypes,
+  setLoading,
+  pushType,
+  replaceType,
+  deleteType,
+} = TypesSlice.actions;
 export default TypesSlice.reducer;

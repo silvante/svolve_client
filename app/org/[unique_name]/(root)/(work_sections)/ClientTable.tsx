@@ -5,11 +5,12 @@ import clientService from "@/app/api/services/clientService";
 import { updateClients } from "@/app/store/slices/clientSlice";
 import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
 export default function ClientTable() {
+  const [error, setError] = useState("");
   const { types, loading } = useSelector((state: any) => state.types);
   const { clients, is_loading } = useSelector((state: any) => state.client);
   const { organisation } = useSelector((state: any) => state.validator);
