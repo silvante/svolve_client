@@ -1,12 +1,16 @@
 "use client";
 import { useParams } from "next/navigation";
 import Heading from "@/app/(global_components)/Heading";
+import BackBtn from "@/app/(global_components)/BackBtn";
 
 export default function Organisation() {
   const { unique_name } = useParams();
   return (
     <div className="space-y-5">
-      <Heading text={`organisation - ${unique_name}`} />
+      <div className="flex justify-between items-center">
+        <Heading text={`Update - ${unique_name}`} />
+        <BackBtn href={`/panel/organisations`} />
+      </div>
     </div>
   );
 }
