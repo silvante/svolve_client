@@ -11,7 +11,7 @@ export default function Aside() {
           <House /> Dashboard
         </AsideLink>
         <AsideLink href="/panel/organisations">
-          <GitFork /> Organisations
+          <GitFork /> Organizations
         </AsideLink>
       </div>
     </aside>

@@ -66,14 +66,14 @@ export default function UpdateOrganisationForm() {
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Organisation Name*
+          Organization Name*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organisation name"
+          placeholder="Enter organization name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -84,7 +84,7 @@ export default function UpdateOrganisationForm() {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="description" className="block">
-          Organisation Description*
+          Organization Description*
         </label>
         <textarea
           rows={3}
@@ -94,7 +94,7 @@ export default function UpdateOrganisationForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter organisation description"
+          placeholder="Enter organization description"
           required
         />
         <p className="text-sm text-gray-500">Max 500 characters</p>
@@ -134,7 +134,7 @@ export default function UpdateOrganisationForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organisation"}
+          {isLoading ? "creating..." : "Create Organization"}
         </button>
       </div>
     </form>

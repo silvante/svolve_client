@@ -18,7 +18,7 @@ export default function CreateButton() {
       <DropdownMenuContent align="end" className="w-56">
         <Link href="/panel/organisations/new">
           <DropdownMenuItem>
-            <GitFork /> An Organisation
+            <GitFork /> An Organization
           </DropdownMenuItem>
         </Link>
       </DropdownMenuContent>

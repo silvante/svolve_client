@@ -11,8 +11,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Med Organisation Management",
-  description: "Easy to use organisation management for medicine",
+  title: "Svolve | Med Organization Management",
+  description: "Easy to use organization management for medicine",
   icons: {
     icon: "/icons/icon.svg",
   },

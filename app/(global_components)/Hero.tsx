@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
           <h1 className="text-5xl font-semibold text-shadow-2xs">
             Powerful and Easy to use{" "}
-            <span className="text-violet-600">organisation</span> management
+            <span className="text-violet-600">organization</span> management
             platform for <span className="text-violet-600">Uzbekistan</span>
           </h1>
           <p>Pay to service only when you get paid by it</p>

@@ -10,8 +10,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Organisation management",
-  description: "Manage your organisation easily",
+  title: "Svolve | Organization management",
+  description: "Manage your organization easily",
   icons: {
     icon: "/icons/icon.svg",
   },
