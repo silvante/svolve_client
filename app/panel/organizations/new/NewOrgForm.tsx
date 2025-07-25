@@ -9,16 +9,16 @@ import {
 } from "@/components/ui/input-otp";
 import { FileImage } from "lucide-react";
 import { useState } from "react";
-import organisationService from "@/app/api/services/organisationService";
+import organizationService from "@/app/api/services/organizationService";
 import { useDispatch } from "react-redux";
 import {
-  pushOrganisation,
+  pushOrganization,
   setLoading,
-} from "@/app/store/slices/organisationSlice";
-import { Organisation } from "@/app/types/User";
+} from "@/app/store/slices/organizationSlice";
+import { Organization } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 
-export default function NewOrganisationForm() {
+export default function NewOrganizationForm() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [error, setError] = useState("");
@@ -37,11 +37,11 @@ export default function NewOrganisationForm() {
         description,
         pincode: pincode,
       };
-      const res: any = await organisationService.create(formData);
-      const organisation: Organisation = res;
+      const res: any = await organizationService.create(formData);
+      const organization: Organization = res;
       dispatch(setLoading());
-      dispatch(pushOrganisation(organisation));
-      router.push("/panel/organisations");
+      dispatch(pushOrganization(organization));
+      router.push("/panel/organizations");
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
@@ -63,14 +63,14 @@ export default function NewOrganisationForm() {
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Organisation Name*
+          Organization Name*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organisation name"
+          placeholder="Enter organization name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -81,7 +81,7 @@ export default function NewOrganisationForm() {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="description" className="block">
-          Organisation Description*
+          Organization Description*
         </label>
         <textarea
           rows={3}
@@ -91,7 +91,7 @@ export default function NewOrganisationForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter organisation description"
+          placeholder="Enter organization description"
           required
         />
         <p className="text-sm text-gray-500">Max 500 characters</p>
@@ -156,7 +156,7 @@ export default function NewOrganisationForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organisation"}
+          {isLoading ? "creating..." : "Create Organization"}
         </button>
       </div>
     </form>

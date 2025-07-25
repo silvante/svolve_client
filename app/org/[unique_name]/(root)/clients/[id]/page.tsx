@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 
 export default function ClientById() {
   const router = useRouter();
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   useEffect(() => {
-    router.push(`/org/${organisation.unique_name}`);
+    router.push(`/org/${organization.unique_name}`);
     return;
   }, []);
 }

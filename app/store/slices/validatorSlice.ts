@@ -1,15 +1,15 @@
-import { Organisation } from "@/app/types/User";
+import { Organization } from "@/app/types/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface ValidatorSlice {
   validation: Boolean;
-  organisation: Organisation | null;
+  organization: Organization | null;
   loading: Boolean;
 }
 
 const initialState: ValidatorSlice = {
   validation: false,
-  organisation: null,
+  organization: null,
   loading: true,
 };
 
@@ -26,14 +26,14 @@ const ValidatorSlice = createSlice({
       // state.loading = false;
     },
 
-    updateValidationOrg: (state, action: PayloadAction<Organisation>) => {
-      state.organisation = action.payload;
+    updateValidationOrg: (state, action: PayloadAction<Organization>) => {
+      state.organization = action.payload;
       state.loading = false;
     },
 
     clearValidation: (state) => {
       state.validation = false;
-      state.organisation = null;
+      state.organization = null;
       state.loading = true;
     },
   },

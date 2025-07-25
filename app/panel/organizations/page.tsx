@@ -1,11 +1,11 @@
 import Heading from "@/app/(global_components)/Heading";
-import OrganisationList from "./OrganisationList";
+import OrganizationList from "./OrganizationList";
 
-export default function Organisations() {
+export default function Organizations() {
   return (
     <div className="space-y-5">
       <Heading text="Organizations" />
-      <OrganisationList />
+      <OrganizationList />
     </div>
   );
 }

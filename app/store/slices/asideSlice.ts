@@ -1,11 +1,10 @@
-import { Organisation } from "@/app/types/User";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-interface organisationsState {
+interface organizationsState {
   is_active: Boolean;
 }
 
-const initialState: organisationsState = {
+const initialState: organizationsState = {
   is_active: true,
 };
 

@@ -1,8 +1,8 @@
 "use client";
 import Spinner from "@/app/(global_components)/Spinner";
-import organisationService from "@/app/api/services/organisationService";
-import { updateOrganisations } from "@/app/store/slices/organisationSlice";
-import { Organisation } from "@/app/types/User";
+import organizationService from "@/app/api/services/organizationService";
+import { updateOrganizations } from "@/app/store/slices/organizationSlice";
+import { Organization } from "@/app/types/User";
 import { Eye, LockKeyhole, Menu, PenBox } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -13,28 +13,29 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 
-export default function OrganisationList() {
-  const { organisations, loading } = useSelector(
-    (state: any) => state.organisations
+export default function OrganizationList() {
+  const { organizations, loading } = useSelector(
+    (state: any) => state.organizations
   );
   const dispatch = useDispatch();
-  async function getOrganisations() {
+  async function getOrganizations() {
     try {
-      if (organisations) {
+      if (organizations) {
         return;
       } else {
-        const response: any = await organisationService.getAll();
-        const organisationsData: Organisation[] = response;
-        dispatch(updateOrganisations(organisationsData));
+        const response: any = await organizationService.getAll();
+        const organizationsData: Organization[] = response;
+        dispatch(updateOrganizations(organizationsData));
       }
     } catch (error) {
-      console.error("Error fetching organisations:", error);
+      console.error("Error fetching organizations:", error);
     }
   }
 
   useEffect(() => {
-    getOrganisations();
+    getOrganizations();
   }, []);
 
   if (loading) {
@@ -46,26 +47,26 @@ export default function OrganisationList() {
   } else {
     return (
       <div className="space-y-5">
-        {organisations && organisations.length > 0 ? (
-          organisations.map((organisation: Organisation) => (
+        {organizations && organizations.length > 0 ? (
+          organizations.map((organization: Organization) => (
             <div
-              key={organisation.id}
+              key={organization.id}
               className="bg-white shadow-md rounded-md transition-colors border border-gray-200 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600"
             >
               <Link
                 className="p-4 flex flex-col gap-1"
-                href={`/org/${organisation.unique_name}/validation`}
+                href={`/org/${organization.unique_name}/validation`}
               >
-                <h3 className="text-xl font-semibold">{organisation.name}</h3>
+                <h3 className="text-xl font-semibold">{organization.name}</h3>
                 <p className="text-sm text-gray-600">
                   <span className="text-black">Uniquename: </span>
-                  {organisation.unique_name}
+                  {organization.unique_name}
                 </p>
               </Link>
               <div className="border-t border-gray-200 p-4 flex justify-between items-center">
                 <p className="text-sm text-gray-500">
                   <span className="text-black">created at:</span>{" "}
-                  {new Date(organisation.created_at).toLocaleDateString(
+                  {new Date(organization.created_at).toLocaleDateString(
                     "en-US",
                     {
                       year: "numeric",
@@ -86,21 +87,21 @@ export default function OrganisationList() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
                     <Link
-                      href={`/panel/organisations/${organisation.unique_name}`}
+                      href={`/panel/organizations/${organization.unique_name}`}
                     >
                       <DropdownMenuItem>
                         <Eye /> Review
                       </DropdownMenuItem>
                     </Link>
                     <Link
-                      href={`/panel/organisations/${organisation.unique_name}/update`}
+                      href={`/panel/organizations/${organization.unique_name}/update`}
                     >
                       <DropdownMenuItem>
                         <PenBox /> Update
                       </DropdownMenuItem>
                     </Link>
                     <Link
-                      href={`/panel/organisations/${organisation.unique_name}/pincode`}
+                      href={`/panel/organizations/${organization.unique_name}/pincode`}
                     >
                       <DropdownMenuItem>
                         <LockKeyhole /> Update Pincode
@@ -112,7 +113,10 @@ export default function OrganisationList() {
             </div>
           ))
         ) : (
-          <p>No organisations found.</p>
+          <ErrorMessage
+            text="You have no organizations"
+            desc="you can create one now"
+          />
         )}
       </div>
     );

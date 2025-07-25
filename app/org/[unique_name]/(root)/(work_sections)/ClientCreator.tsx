@@ -33,7 +33,7 @@ export default function ClientCreator() {
   const dispatch = useDispatch();
 
   // selectors
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
 
   // for formData
   const [name, setname] = useState("");
@@ -80,7 +80,7 @@ export default function ClientCreator() {
         price: Number(price),
       };
       const res: any = await clientService.createClient(
-        organisation.id,
+        organization.id,
         formData
       );
       const new_client: Client = res;

@@ -12,7 +12,7 @@ const initialState: ClientSlice = {
 };
 
 const ClientSlice = createSlice({
-  name: "organisations",
+  name: "organizations",
   initialState,
   reducers: {
     setLoading: (state) => {

@@ -15,7 +15,7 @@ export default function CreateTypeForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState<string>("");
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -28,11 +28,11 @@ export default function CreateTypeForm() {
         description: description,
         price: Number(price),
       };
-      const res: any = await typeService.createType(organisation.id, formData);
+      const res: any = await typeService.createType(organization.id, formData);
       const new_type: Type = res;
       dispatch(setLoading());
       dispatch(pushType(new_type));
-      router.push(`/org/${organisation.unique_name}/types`);
+      router.push(`/org/${organization.unique_name}/types`);
       setIsLoading(false);
       setError("");
     } catch (error: any) {
@@ -99,7 +99,7 @@ export default function CreateTypeForm() {
           id="price"
           name="price"
           className="global_input w-full"
-          placeholder="Enter organisation name"
+          placeholder="Enter organization name"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
@@ -112,7 +112,7 @@ export default function CreateTypeForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {!isLoading ? "Create Organisation" : "Creating..."}
+          {!isLoading ? "Create Organization" : "Creating..."}
         </button>
       </div>
     </form>

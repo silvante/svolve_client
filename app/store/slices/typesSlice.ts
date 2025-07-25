@@ -1,4 +1,4 @@
-import { Organisation, Type } from "@/app/types/User";
+import { Organization, Type } from "@/app/types/User";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface TypesSlice {

@@ -8,7 +8,7 @@ export interface User {
   created_at: Date;
 }
 
-export interface Organisation {
+export interface Organization {
   id: number;
   name: string;
   description: string;

@@ -12,14 +12,14 @@ type Props = {
 
 export default function OrgLink({ href, className, children }: Props) {
   const pathname = usePathname();
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
 
-  const isActive = pathname === `/org/${organisation.unique_name}${href}`;
+  const isActive = pathname === `/org/${organization.unique_name}${href}`;
 
   return (
     <Link
       className={className}
-      href={`/org/${organisation.unique_name}/${href}`}
+      href={`/org/${organization.unique_name}/${href}`}
     >
       {children}
     </Link>

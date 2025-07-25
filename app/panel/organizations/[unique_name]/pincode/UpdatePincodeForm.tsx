@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import organisationService from "@/app/api/services/organisationService";
+import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
-import { replaceOrganisation } from "@/app/store/slices/organisationSlice";
-import { Organisation } from "@/app/types/User";
+import { replaceOrganization } from "@/app/store/slices/organizationSlice";
+import { Organization } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 import {
@@ -16,8 +16,8 @@ import { REGEXP_ONLY_DIGITS } from "input-otp";
 export default function UpdatePincodeForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { unique_name } = useParams();
-  const { organisations, loading } = useSelector(
-    (state: any) => state.organisations
+  const { organizations, loading } = useSelector(
+    (state: any) => state.organizations
   );
 
   if (loading) {
@@ -28,8 +28,8 @@ export default function UpdatePincodeForm() {
     );
   }
 
-  const org = organisations.find(
-    (org: Organisation) => org.unique_name === String(unique_name)
+  const org = organizations.find(
+    (org: Organization) => org.unique_name === String(unique_name)
   );
 
   const [error, setError] = useState("");
@@ -48,13 +48,13 @@ export default function UpdatePincodeForm() {
         new_pincode: newPincode,
         pincode_confirmation: pincodeConfirmation,
       };
-      const res: any = await organisationService.updatePincode(
+      const res: any = await organizationService.updatePincode(
         org.unique_name,
         formData
       );
-      const organisation: Organisation = res;
-      dispatch(replaceOrganisation(organisation));
-      router.push("/panel/organisations");
+      const organization: Organization = res;
+      dispatch(replaceOrganization(organization));
+      router.push("/panel/organizations");
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
@@ -156,7 +156,7 @@ export default function UpdatePincodeForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "updating..." : "Update Organisation"}
+          {isLoading ? "updating..." : "Update Organization"}
         </button>
       </div>
     </form>

@@ -23,7 +23,7 @@ export default function ClientTable() {
   const [error, setError] = useState("");
   const { types, loading } = useSelector((state: any) => state.types);
   const { clients, is_loading } = useSelector((state: any) => state.client);
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   const dispatch = useDispatch();
   async function GetClients() {
     try {
@@ -31,7 +31,7 @@ export default function ClientTable() {
         return;
       } else {
         const response: any = await clientService.getTodaysClients(
-          organisation.id
+          organization.id
         );
         const clients: Client[] = response.clients;
         const types: Type[] = response.types;
@@ -39,7 +39,7 @@ export default function ClientTable() {
         dispatch(updateTypes(types));
       }
     } catch (error) {
-      console.error("Error fetching organisations:", error);
+      console.error("Error fetching organizations:", error);
     }
   }
 
@@ -52,7 +52,7 @@ export default function ClientTable() {
     try {
       const client: Client = clients.find((client: Client) => client.id === id);
       const res: any = await clientService.deleteClient(
-        organisation.id,
+        organization.id,
         client.id
       );
       console.log(res);
@@ -124,7 +124,7 @@ export default function ClientTable() {
                       {!client.is_checked ? (
                         <div className="flex gap-3 items-center">
                           <CheckClientBtn
-                            org_id={organisation.id}
+                            org_id={organization.id}
                             client_id={client.id}
                           />
                           <DropdownMenu>

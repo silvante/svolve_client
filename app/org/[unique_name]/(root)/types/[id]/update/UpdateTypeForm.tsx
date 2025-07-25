@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { replaceOrganisation } from "@/app/store/slices/organisationSlice";
 import { Type } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
@@ -12,7 +11,7 @@ export default function UpdateTypeForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const { types, loading } = useSelector((state: any) => state.types);
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
 
   if (loading) {
     return (
@@ -41,13 +40,13 @@ export default function UpdateTypeForm() {
         price: Number(price),
       };
       const res: any = await typeService.updateType(
-        organisation.id,
+        organization.id,
         type.id,
         formData
       );
       const updatedType: Type = res;
       dispatch(replaceType(updatedType));
-      router.push(`/org/${organisation.unique_name}/types`);
+      router.push(`/org/${organization.unique_name}/types`);
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
@@ -76,7 +75,7 @@ export default function UpdateTypeForm() {
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organisation name"
+          placeholder="Enter type name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -97,7 +96,7 @@ export default function UpdateTypeForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter organisation description"
+          placeholder="Enter type description"
           required
         />
         <p className="text-sm text-gray-500">Max 500 characters</p>
@@ -113,7 +112,7 @@ export default function UpdateTypeForm() {
           id="price"
           name="price"
           className="global_input w-full"
-          placeholder="Enter organisation name"
+          placeholder="Enter type name"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
@@ -126,7 +125,7 @@ export default function UpdateTypeForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organisation"}
+          {isLoading ? "updating..." : "update type"}
         </button>
       </div>
     </form>

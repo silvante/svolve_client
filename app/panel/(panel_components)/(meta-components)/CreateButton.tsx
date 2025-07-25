@@ -16,7 +16,7 @@ export default function CreateButton() {
         Create <Plus />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <Link href="/panel/organisations/new">
+        <Link href="/panel/organizations/new">
           <DropdownMenuItem>
             <GitFork /> An Organization
           </DropdownMenuItem>

@@ -1,18 +1,18 @@
 "use client";
 import { FileImage } from "lucide-react";
 import { useState } from "react";
-import organisationService from "@/app/api/services/organisationService";
+import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
-import { replaceOrganisation } from "@/app/store/slices/organisationSlice";
-import { Organisation } from "@/app/types/User";
+import { replaceOrganization } from "@/app/store/slices/organizationSlice";
+import { Organization } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 
-export default function UpdateOrganisationForm() {
+export default function UpdatezrganisationForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { unique_name } = useParams();
-  const { organisations, loading } = useSelector(
-    (state: any) => state.organisations
+  const { organizations, loading } = useSelector(
+    (state: any) => state.organizations
   );
 
   if (loading) {
@@ -23,8 +23,8 @@ export default function UpdateOrganisationForm() {
     );
   }
 
-  const org = organisations.find(
-    (org: Organisation) => org.unique_name === String(unique_name)
+  const org = organizations.find(
+    (org: Organization) => org.unique_name === String(unique_name)
   );
 
   const [error, setError] = useState("");
@@ -41,10 +41,13 @@ export default function UpdateOrganisationForm() {
         name,
         description,
       };
-      const res: any = await organisationService.update(org.unique_name, formData);
-      const organisation: Organisation = res;
-      dispatch(replaceOrganisation(organisation));
-      router.push("/panel/organisations");
+      const res: any = await organizationService.update(
+        org.unique_name,
+        formData
+      );
+      const organization: Organization = res;
+      dispatch(replaceOrganization(organization));
+      router.push("/panel/organizations");
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {

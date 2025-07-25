@@ -1,7 +1,7 @@
 import Pincode from "@/app/lottie/Pincode";
 import PincodeForm from "./PincodeForm";
 
-export default async function ValidateOrganisationPage({
+export default async function ValidateOrganizationPage({
   params,
 }: Readonly<{
   params: { unique_name: string };

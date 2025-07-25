@@ -5,12 +5,12 @@ import {
   updateData,
   updatePincodeData,
   validateData,
-} from "./utils/organisationTypes";
+} from "./utils/organizationTypes";
 
-const organisationService = {
+const organizationService = {
   getAll: async () => {
     try {
-      return await api.get(apiEndpoints.getUsersOrganisations);
+      return await api.get(apiEndpoints.getUsersOrganizations);
     } catch (error) {
       throw error;
     }
@@ -18,7 +18,7 @@ const organisationService = {
 
   getById: async (id: number) => {
     try {
-      return await api.get(apiEndpoints.getOrganisationById(id));
+      return await api.get(apiEndpoints.getOrganizationById(id));
     } catch (error) {
       throw error;
     }
@@ -26,7 +26,7 @@ const organisationService = {
 
   create: async (data: createData) => {
     try {
-      return await api.post(apiEndpoints.createOrganisation, data);
+      return await api.post(apiEndpoints.createOrganization, data);
     } catch (error) {
       throw error;
     }
@@ -35,7 +35,7 @@ const organisationService = {
   validate: async (unique_name: string, data: validateData) => {
     try {
       return await api.post(
-        apiEndpoints.validateOrganisation(unique_name),
+        apiEndpoints.validateOrganization(unique_name),
         data
       );
     } catch (error) {
@@ -45,7 +45,7 @@ const organisationService = {
 
   update: async (unique_name: string, data: updateData) => {
     try {
-      return await api.put(apiEndpoints.updateOrganisation(unique_name), data);
+      return await api.put(apiEndpoints.updateOrganization(unique_name), data);
     } catch (error) {
       throw error;
     }
@@ -54,7 +54,7 @@ const organisationService = {
   updatePincode: async (unique_name: string, data: updatePincodeData) => {
     try {
       return await api.put(
-        apiEndpoints.updateOrganisationPincode(unique_name),
+        apiEndpoints.updateOrganizationPincode(unique_name),
         data
       );
     } catch (error) {
@@ -63,4 +63,4 @@ const organisationService = {
   },
 };
 
-export default organisationService;
+export default organizationService;

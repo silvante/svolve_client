@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export default function OrgBreadcrumbs() {
   const pathname = usePathname();
   const cleanedPath = decodeURIComponent(pathname);
-  let { organisation } = useSelector((state: any) => state.validator);
+  let { organization } = useSelector((state: any) => state.validator);
   const pathSegments = cleanedPath
     .split("/")
     .filter(
@@ -16,7 +16,7 @@ export default function OrgBreadcrumbs() {
         segment !== "" &&
         segment !== "panel" &&
         segment !== "org" &&
-        segment !== organisation.unique_name
+        segment !== organization.unique_name
     );
 
   const generateBreadcrumbLinks = () => {
@@ -25,7 +25,7 @@ export default function OrgBreadcrumbs() {
     for (let i = 0; i < pathSegments.length; i++) {
       const segment = pathSegments[i];
       const href =
-        `/org/${organisation.unique_name}/` +
+        `/org/${organization.unique_name}/` +
         pathSegments.slice(0, i + 1).join("/");
 
       links.push(
@@ -49,10 +49,10 @@ export default function OrgBreadcrumbs() {
     <div className="flex items-center justify-center">
       <div className="flex flex-wrap items-center">
         <Link
-          href={`/org/${organisation.unique_name}`}
+          href={`/org/${organization.unique_name}`}
           className="text-violet-600 capitalize"
         >
-          {organisation.unique_name}
+          {organization.unique_name}
         </Link>
         {generateBreadcrumbLinks()}
       </div>

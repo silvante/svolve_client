@@ -13,7 +13,7 @@ import Spinner from "@/app/(global_components)/Spinner";
 import { Client } from "@/app/types/User";
 
 export default function UniqueNamePage() {
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   const { clients, is_loading } = useSelector((state: any) => state.client);
 
   let total_revenue = "0";
@@ -29,7 +29,7 @@ export default function UniqueNamePage() {
   return (
     <div className="space-y-5">
       <div className="w-full flex items-center justify-between">
-        <Heading text={`Work Panel - ${organisation.name}`} />
+        <Heading text={`Work Panel - ${organization.name}`} />
         {is_loading ? (
           <Spinner />
         ) : (

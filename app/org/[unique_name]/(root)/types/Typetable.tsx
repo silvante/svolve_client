@@ -20,19 +20,19 @@ export default function TypeTable() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { types, loading } = useSelector((state: any) => state.types);
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   const dispatch = useDispatch();
   async function getTypes() {
     try {
       if (types) {
         return;
       } else {
-        const response: any = await typeService.getTypes(organisation.id);
+        const response: any = await typeService.getTypes(organization.id);
         const types: Type[] = response;
         dispatch(updateTypes(types));
       }
     } catch (error) {
-      console.error("Error fetching organisations:", error);
+      console.error("Error fetching organizations:", error);
     }
   }
 
@@ -44,7 +44,7 @@ export default function TypeTable() {
     setIsLoading(true);
     try {
       const type: Type = types.find((type: Type) => type.id === id);
-      const res: any = await typeService.deleteType(organisation.id, type.id);
+      const res: any = await typeService.deleteType(organization.id, type.id);
       console.log(res);
       if (res.deleted === true) {
         dispatch(deleteType(type));

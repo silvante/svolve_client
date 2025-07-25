@@ -7,7 +7,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useEffect, useState } from "react";
-import organisationService from "@/app/api/services/organisationService";
+import organizationService from "@/app/api/services/organizationService";
 import { useDispatch } from "react-redux";
 import {
   clearValidation,
@@ -39,7 +39,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
         return;
       }
 
-      const res: any = await organisationService.validate(unique_name, {
+      const res: any = await organizationService.validate(unique_name, {
         pincode,
       });
 
@@ -50,7 +50,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       }
       setErrorMessage("");
       dispatch(updateValidation(res.validation));
-      dispatch(updateValidationOrg(res.organisation));
+      dispatch(updateValidationOrg(res.organization));
       router.push(`/org/${unique_name}`);
       setLoading(false);
     } catch (error: any) {

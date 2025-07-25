@@ -1,11 +1,11 @@
 import Heading from "@/app/(global_components)/Heading";
-import NewOrganisationForm from "./NewOrgForm";
+import NewOrganizationForm from "./NewOrgForm";
 
-export default function NewOrganisationPage() {
+export default function NewOrganizationPage() {
   return (
     <div className="space-y-5">
       <Heading text="New organization" />
-      <NewOrganisationForm />
+      <NewOrganizationForm />
     </div>
   );
 }

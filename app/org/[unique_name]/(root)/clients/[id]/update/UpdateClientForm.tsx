@@ -40,7 +40,7 @@ export default function UpdateClientForm() {
   const dispatch = useDispatch();
 
   // selectors
-  const { organisation } = useSelector((state: any) => state.validator);
+  const { organization } = useSelector((state: any) => state.validator);
   const { types, loading } = useSelector((state: any) => state.types);
   const { clients, is_loading } = useSelector((state: any) => state.client);
 
@@ -78,13 +78,13 @@ export default function UpdateClientForm() {
         price: Number(price),
       };
       const res: any = await clientService.updateClient(
-        organisation.id,
+        organization.id,
         client.id,
         formData
       );
       const updated_client: Client = res;
       dispatch(replaceClient(updated_client));
-      router.push(`/org/${organisation.unique_name}`);
+      router.push(`/org/${organization.unique_name}`);
       setIsLoading(false);
       setError("");
     } catch (error: any) {

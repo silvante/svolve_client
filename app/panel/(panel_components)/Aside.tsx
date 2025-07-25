@@ -10,7 +10,7 @@ export default function Aside() {
         <AsideLink href="/panel">
           <House /> Dashboard
         </AsideLink>
-        <AsideLink href="/panel/organisations">
+        <AsideLink href="/panel/organizations">
           <GitFork /> Organizations
         </AsideLink>
       </div>
