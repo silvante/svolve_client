@@ -79,6 +79,9 @@ export default function ClientCreator() {
         type_id: Number(type_id),
         price: Number(price),
       };
+      if (formData.type_id === 0) {
+        return setError("You have to select Type, create one if you dont have");
+      }
       const res: any = await clientService.createClient(
         organization.id,
         formData
@@ -201,7 +204,7 @@ export default function ClientCreator() {
                 <Command>
                   <CommandInput placeholder="Search type..." className="h-9" />
                   <CommandList>
-                    <CommandEmpty>No framework found.</CommandEmpty>
+                    <CommandEmpty>No types found.</CommandEmpty>
                     <CommandGroup>
                       {valid_types.map((vt) => (
                         <CommandItem
