@@ -16,6 +16,8 @@ export default function UniqueNamePage() {
   const { organization } = useSelector((state: any) => state.validator);
   const { clients, is_loading } = useSelector((state: any) => state.client);
 
+  console.log(organization);
+
   let total_revenue = "0";
   if (!is_loading) {
     const totalPrice = clients.reduce(

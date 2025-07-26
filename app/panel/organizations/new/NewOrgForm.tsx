@@ -134,12 +134,14 @@ export default function NewOrganizationForm() {
   }
 
   // clear banner data
-  function ClearBannerData() {
+  function ClearBannerData(e: any) {
+    e.preventDefault();
     setBannerBase64(null);
     setbanner(null);
   }
 
-  function ClearLogoData() {
+  function ClearLogoData(e: any) {
+    e.preventDefault();
     setLogoBase64(null);
     setlogo(null);
   }
@@ -202,6 +204,7 @@ export default function NewOrganizationForm() {
           ) : (
             <div className="w-full h-full relative">
               <button
+                type="button"
                 className="bg-white p-2 rounded-full text-black hover:text-violet-600 transition-all absolute top-5 right-5"
                 onClick={ClearBannerData}
               >
