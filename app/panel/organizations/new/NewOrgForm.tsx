@@ -51,7 +51,6 @@ export default function NewOrganizationForm() {
 
   async function HandleChangeBanner(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
-    console.log(file);
     if (file) {
       setbanner(file);
       const base64 = await ConvertImageToBase64(file);
@@ -114,7 +113,11 @@ export default function NewOrganizationForm() {
         ...(logoData && { logo: logoData }),
       };
 
+      console.log(createData);
+
       const res: any = await organizationService.create(createData);
+      console.log(res);
+
       const organization: Organization = res;
       dispatch(setLoading());
       dispatch(pushOrganization(organization));
