@@ -7,7 +7,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { FileImage } from "lucide-react";
+import { FileImage, Trash2 } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
 import { useDispatch } from "react-redux";
@@ -133,6 +133,17 @@ export default function NewOrganizationForm() {
     }
   }
 
+  // clear banner data
+  function ClearBannerData() {
+    setBannerBase64(null);
+    setbanner(null);
+  }
+
+  function ClearLogoData() {
+    setLogoBase64(null);
+    setlogo(null);
+  }
+
   return (
     <form className="space-y-5" onSubmit={HandleCreateOrg}>
       {error !== "" && (
@@ -189,11 +200,19 @@ export default function NewOrganizationForm() {
               Upload Banner Image (optional)
             </div>
           ) : (
-            <img
-              src={bannerBase64}
-              alt="You banner"
-              className="object-cover w-full h-full"
-            />
+            <div className="w-full h-full relative">
+              <button
+                className="bg-white p-2 rounded-full text-black hover:text-violet-600 transition-all absolute top-5 right-5"
+                onClick={ClearBannerData}
+              >
+                <Trash2 />
+              </button>
+              <img
+                src={bannerBase64}
+                alt="You banner"
+                className="object-cover w-full h-full"
+              />
+            </div>
           )}
         </label>
         <input
@@ -224,6 +243,14 @@ export default function NewOrganizationForm() {
             />
           )}
         </label>
+        {logoBase64 && (
+          <button
+            className="mt-3 py-2 px-4 rounded-full hover:text-violet-600 border border-gray-400 bg-white flex gap-1 items-center transition-all cursor-pointer"
+            onClick={ClearLogoData}
+          >
+            <Trash2 /> Delete Logo
+          </button>
+        )}
         <input
           type="file"
           name="logo"
