@@ -15,29 +15,106 @@ import {
   pushOrganization,
   setLoading,
 } from "@/app/store/slices/organizationSlice";
-import { Organization } from "@/app/types/User";
+import { BannerData, Organization } from "@/app/types/User";
 import { useRouter } from "next/navigation";
+import uploadService from "@/app/api/services/uploadsService";
 
 export default function NewOrganizationForm() {
   const [isLoading, setIsLoading] = useState(false);
-
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  // form data
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [pincode, setPincode] = useState("");
-  const dispatch = useDispatch();
-  const router = useRouter();
+
+  // upload data
+  const [logoBase64, setLogoBase64] = useState<string | null>(null);
+  const [bannerBase64, setBannerBase64] = useState<string | null>(null);
+
+  const [logo, setlogo] = useState<File | null>(null);
+  const [banner, setbanner] = useState<File | null>(null);
+
+  // converter
+  function ConvertImageToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function HandleChangeBanner(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    console.log(file);
+    if (file) {
+      setbanner(file);
+      const base64 = await ConvertImageToBase64(file);
+      setBannerBase64(base64);
+    }
+  }
+
+  async function HandleChangeLogo(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setlogo(file);
+      const base64 = await ConvertImageToBase64(file);
+      setLogoBase64(base64);
+    }
+  }
 
   async function HandleCreateOrg(e: any) {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const formData = {
+      // Prepare data for organization creation
+      let bannerData: BannerData | undefined = undefined;
+      let logoData: string | undefined = undefined;
+
+      // upload banner if we have it
+      if (banner) {
+        const BannerformData = new FormData();
+        BannerformData.append("file", banner);
+        try {
+          const res: any = await uploadService.uploadBanner(BannerformData);
+          const new_banner: BannerData = res.data;
+          bannerData = new_banner;
+        } catch (error) {
+          setError("error while uploading banner");
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // upload logo if it is present
+      if (logo) {
+        const LogoformData = new FormData();
+        LogoformData.append("file", logo);
+        try {
+          const res: any = await uploadService.uploadLogo(LogoformData);
+          logoData = String(res);
+        } catch (error) {
+          setError("error while uploading logo");
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Build the createData object
+      const createData: any = {
         name,
         description,
-        pincode: pincode,
+        pincode,
+        ...(bannerData && { banner: bannerData }),
+        ...(logoData && { logo: logoData }),
       };
-      const res: any = await organizationService.create(formData);
+
+      const res: any = await organizationService.create(createData);
       const organization: Organization = res;
       dispatch(setLoading());
       dispatch(pushOrganization(organization));
@@ -101,28 +178,56 @@ export default function NewOrganizationForm() {
       <div className="space-y-1">
         <label
           htmlFor="banner"
-          className="flex items-center justify-center p-10 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors"
+          className="flex items-center justify-center overflow-hidden bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-full h-64"
         >
-          <div className="flex flex-col items-center gap-2 text-gray-700">
-            <FileImage />
-            Upload Banner Image (optional)
-          </div>
+          {!bannerBase64 ? (
+            <div className="flex flex-col items-center gap-2 text-gray-700">
+              <FileImage />
+              Upload Banner Image (optional)
+            </div>
+          ) : (
+            <img
+              src={bannerBase64}
+              alt="You banner"
+              className="object-cover w-full h-full"
+            />
+          )}
         </label>
-        <input type="file" name="banner" id="banner" className="hidden" />
+        <input
+          type="file"
+          name="banner"
+          id="banner"
+          className="hidden"
+          onChange={HandleChangeBanner}
+        />
       </div>
 
       {/* logo */}
       <div className="space-y-1">
         <label
           htmlFor="logo"
-          className="flex items-center justify-center p-5 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-64"
+          className="flex items-center justify-center bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-80 h-40"
         >
-          <div className="flex flex-col items-center gap-2 text-gray-700">
-            <FileImage />
-            Upload Logo Image (optional)
-          </div>
+          {!logoBase64 ? (
+            <div className="flex flex-col items-center gap-2 text-gray-700">
+              <FileImage />
+              Upload Logo Image (optional)
+            </div>
+          ) : (
+            <img
+              src={logoBase64}
+              alt="your logo"
+              className="w-full max-h-full object-cover"
+            />
+          )}
         </label>
-        <input type="file" name="logo" id="logo" className="hidden" />
+        <input
+          type="file"
+          name="logo"
+          id="logo"
+          className="hidden"
+          onChange={HandleChangeLogo}
+        />
       </div>
 
       {/* pincode */}

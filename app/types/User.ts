@@ -13,7 +13,7 @@ export interface Organization {
   name: string;
   description: string;
   unique_name: string;
-  banner: string;
+  banner: BannerData;
   logo: string;
   created_at: Date;
 }
@@ -40,3 +40,8 @@ export interface Client {
   price: number;
   created_at: Date;
 }
+
+export type BannerData = {
+  original: string;
+  thumbnail: string;
+};

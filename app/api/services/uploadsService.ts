@@ -2,7 +2,7 @@ import api from "../api.config";
 import apiEndpoints from "../api.endpoint";
 
 const uploadService = {
-  uploadLogo: async (formData: any) => {
+  uploadLogo: async (formData: FormData) => {
     try {
       return await api.post(apiEndpoints.uploadLogo, formData);
     } catch (error) {
@@ -10,7 +10,7 @@ const uploadService = {
     }
   },
 
-  uploadAvatar: async (formData: any) => {
+  uploadAvatar: async (formData: FormData) => {
     try {
       return await api.post(apiEndpoints.uploadAvatar, formData);
     } catch (error) {
@@ -18,7 +18,7 @@ const uploadService = {
     }
   },
 
-  uploadBanner: async (formData: any) => {
+  uploadBanner: async (formData: FormData) => {
     try {
       return await api.post(apiEndpoints.uploadBanner, formData);
     } catch (error) {
@@ -26,3 +26,5 @@ const uploadService = {
     }
   },
 };
+
+export default uploadService;
