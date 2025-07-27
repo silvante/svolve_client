@@ -1,5 +1,5 @@
 "use client";
-import { FileImage } from "lucide-react";
+import { FileImage, Trash2 } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,15 +23,59 @@ export default function UpdatezrganisationForm() {
     );
   }
 
-  const org = organizations.find(
+  const org: Organization = organizations.find(
     (org: Organization) => org.unique_name === String(unique_name)
   );
 
+  console.log(organizations);
+  console.log(org);
+
   const [error, setError] = useState("");
-  const [name, setName] = useState(org.name);
-  const [description, setDescription] = useState(org.description);
   const dispatch = useDispatch();
   const router = useRouter();
+
+  // form data
+  const [description, setDescription] = useState(org.description);
+  const [name, setName] = useState(org.name);
+
+  // upload data
+  const [logoBase64, setLogoBase64] = useState<string | null>(org.logo);
+  const [bannerBase64, setBannerBase64] = useState<string | null>(
+    org.banner.original
+  );
+
+  const [logo, setlogo] = useState<File | null>(null);
+  const [banner, setbanner] = useState<File | null>(null);
+
+  // converter
+  function ConvertImageToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function HandleChangeBanner(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setbanner(file);
+      const base64 = await ConvertImageToBase64(file);
+      setBannerBase64(base64);
+    }
+  }
+
+  async function HandleChangeLogo(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (file) {
+      setlogo(file);
+      const base64 = await ConvertImageToBase64(file);
+      setLogoBase64(base64);
+    }
+  }
 
   async function HandleUpdateOrg(e: any) {
     e.preventDefault();
@@ -58,6 +102,20 @@ export default function UpdatezrganisationForm() {
       setIsLoading(false);
     }
   }
+
+  // // clear banner data
+  // function ClearBannerData(e: any) {
+  //   e.preventDefault();
+  //   setBannerBase64(null);
+  //   setbanner(null);
+  // }
+
+  // // clear logo data
+  // function ClearLogoData(e: any) {
+  //   e.preventDefault();
+  //   setLogoBase64(null);
+  //   setlogo(null);
+  // }
 
   return (
     <form className="space-y-5" onSubmit={HandleUpdateOrg}>
@@ -107,28 +165,74 @@ export default function UpdatezrganisationForm() {
       <div className="space-y-1">
         <label
           htmlFor="banner"
-          className="flex items-center justify-center p-10 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors"
+          className="flex items-center justify-center overflow-hidden bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-full h-64"
         >
-          <div className="flex flex-col items-center gap-2 text-gray-700">
-            <FileImage />
-            Upload Banner Image (optional)
-          </div>
+          {!bannerBase64 ? (
+            <div className="flex flex-col items-center gap-2 text-gray-700">
+              <FileImage />
+              Upload Banner Image (optional)
+            </div>
+          ) : (
+            <div className="w-full h-full relative">
+              {/* <button
+                type="button"
+                className="bg-white p-2 rounded-full text-black hover:text-violet-600 transition-all absolute top-5 right-5"
+                onClick={ClearBannerData}
+              >
+                <Trash2 />
+              </button> */}
+              <img
+                src={bannerBase64}
+                alt="You banner"
+                className="object-cover w-full h-full"
+              />
+            </div>
+          )}
         </label>
-        <input type="file" name="banner" id="banner" className="hidden" />
+        <input
+          type="file"
+          name="banner"
+          id="banner"
+          className="hidden"
+          onChange={HandleChangeBanner}
+        />
       </div>
 
       {/* logo */}
       <div className="space-y-1">
         <label
           htmlFor="logo"
-          className="flex items-center justify-center p-5 bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-64"
+          className="flex items-center justify-center bg-gray-100 border border-gray-500 border-dashed rounded-md cursor-pointer hover:bg-gray-200 transition-colors w-80 h-40"
         >
-          <div className="flex flex-col items-center gap-2 text-gray-700">
-            <FileImage />
-            Upload Logo Image (optional)
-          </div>
+          {!logoBase64 ? (
+            <div className="flex flex-col items-center gap-2 text-gray-700">
+              <FileImage />
+              Upload Logo Image (optional)
+            </div>
+          ) : (
+            <img
+              src={logoBase64}
+              alt="your logo"
+              className="w-full max-h-full object-cover"
+            />
+          )}
         </label>
-        <input type="file" name="logo" id="logo" className="hidden" />
+        {/* {logoBase64 && (
+          <button
+            type="button"
+            className="mt-3 py-2 px-4 rounded-full hover:text-violet-600 border border-gray-400 bg-white flex gap-1 items-center transition-all cursor-pointer"
+            onClick={ClearLogoData}
+          >
+            <Trash2 /> Delete Logo
+          </button>
+        )} */}
+        <input
+          type="file"
+          name="logo"
+          id="logo"
+          className="hidden"
+          onChange={HandleChangeLogo}
+        />
       </div>
 
       {/* submit */}
