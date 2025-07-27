@@ -81,7 +81,7 @@ export default function NewOrganizationForm() {
         BannerformData.append("file", banner);
         try {
           const res: any = await uploadService.uploadBanner(BannerformData);
-          const new_banner: BannerData = res.data;
+          const new_banner: BannerData = res;
           bannerData = new_banner;
         } catch (error) {
           setError("error while uploading banner");
@@ -248,6 +248,7 @@ export default function NewOrganizationForm() {
         </label>
         {logoBase64 && (
           <button
+            type="button"
             className="mt-3 py-2 px-4 rounded-full hover:text-violet-600 border border-gray-400 bg-white flex gap-1 items-center transition-all cursor-pointer"
             onClick={ClearLogoData}
           >
