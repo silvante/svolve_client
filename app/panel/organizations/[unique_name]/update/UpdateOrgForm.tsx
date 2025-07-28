@@ -4,9 +4,10 @@ import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
 import { replaceOrganization } from "@/app/store/slices/organizationSlice";
-import { Organization } from "@/app/types/User";
+import { BannerData, Organization } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
+import uploadService from "@/app/api/services/uploadsService";
 
 export default function UpdatezrganisationForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -81,13 +82,50 @@ export default function UpdatezrganisationForm() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const formData = {
+      // Prepare data for organization creation
+      let bannerData: BannerData | undefined = undefined;
+      let logoData: string | undefined = undefined;
+
+      // upload banner if we have it
+      if (banner) {
+        const BannerformData = new FormData();
+        BannerformData.append("file", banner);
+        try {
+          const res: any = await uploadService.uploadBanner(BannerformData);
+          const new_banner: BannerData = res;
+          bannerData = new_banner;
+        } catch (error) {
+          setError("error while uploading banner");
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // upload logo if it is present
+      if (logo) {
+        const LogoformData = new FormData();
+        LogoformData.append("file", logo);
+        try {
+          const res: any = await uploadService.uploadLogo(LogoformData);
+          logoData = String(res);
+        } catch (error) {
+          setError("error while uploading logo");
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Build the createData object
+      const createData: any = {
         name,
         description,
+        ...(bannerData && { banner: bannerData }),
+        ...(logoData && { logo: logoData }),
       };
+
       const res: any = await organizationService.update(
         org.unique_name,
-        formData
+        createData
       );
       const organization: Organization = res;
       dispatch(replaceOrganization(organization));
