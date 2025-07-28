@@ -1,6 +1,6 @@
 import Svolve from "@/app/(global_components)/Svolve";
 import AsideLink from "./(meta-components)/AsideLink";
-import { GitFork, House } from "lucide-react";
+import { CircleUser, GitFork, House } from "lucide-react";
 
 export default function Aside() {
   return (
@@ -12,6 +12,9 @@ export default function Aside() {
         </AsideLink>
         <AsideLink href="/panel/organizations">
           <GitFork /> Organizations
+        </AsideLink>
+        <AsideLink href="/panel/profile">
+          <CircleUser /> Profile
         </AsideLink>
       </div>
     </aside>
