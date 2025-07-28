@@ -1,6 +1,6 @@
 "use client";
 import Spinner from "@/app/(global_components)/Spinner";
-import { Eye, Menu } from "lucide-react";
+import { Eye, LogOut, Menu } from "lucide-react";
 import { useSelector } from "react-redux";
 import {
   DropdownMenu,
@@ -9,9 +9,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function UserProfile() {
   const { currentUser, loading } = useSelector((state: any) => state.user);
+  const router = useRouter();
+
+  function HandleLogOut() {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("reset_token");
+    window.location.reload();
+    router.push("/");
+  }
 
   if (loading) {
     return <Spinner />;
@@ -28,6 +37,15 @@ export default function UserProfile() {
               <Eye /> view profile
             </DropdownMenuItem>
           </Link>
+          <button
+            className="rounded-lg cursor-pointer w-full"
+            onClick={HandleLogOut}
+          >
+            <DropdownMenuItem className="cursor-pointer">
+              <LogOut color="#e7000b" />{" "}
+              <p className="text-red-600"> Log-out</p>
+            </DropdownMenuItem>
+          </button>
         </DropdownMenuContent>
       </DropdownMenu>
     );
