@@ -1,6 +1,6 @@
 "use client";
 import Spinner from "@/app/(global_components)/Spinner";
-import { Eye, LogOut, Menu } from "lucide-react";
+import { Eye, LogOut, Menu, UserCircle } from "lucide-react";
 import { useSelector } from "react-redux";
 import {
   DropdownMenu,
@@ -28,7 +28,17 @@ export default function UserProfile() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger className="flex gap-2 rounded-full border border-gray-400 justify-center items-center p-1 pr-3 cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-gray-300"></div>
+          <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden">
+            {currentUser.avatar ? (
+              <img
+                src={currentUser.avatar}
+                alt="Your avatar"
+                className="w-full h-full aspect-square object-cover"
+              />
+            ) : (
+              <UserCircle />
+            )}
+          </div>
           <Menu />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
