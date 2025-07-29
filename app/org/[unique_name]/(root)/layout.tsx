@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "@/app/globals.css";
 import OrgValidator from "./OrgValidation";
-import PanelAuthDirector from "@/app/panel/PanelAuthDirector";
+import PanelAuthDirector from "@/app/panel/(root)/PanelAuthDirector";
 import OrgHeader from "../../(components)/OrgHeader";
 import OrgBreadcrumbs from "../../(components)/OrgBreadcrumbs";
 import OrgAside from "../../(components)/OrgAside";

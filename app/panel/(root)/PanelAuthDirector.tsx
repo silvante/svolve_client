@@ -3,8 +3,8 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
-import authService from "../api/services/authService";
-import { updateUser } from "../store/slices/userSlice";
+import authService from "../../api/services/authService";
+import { updateUser } from "../../store/slices/userSlice";
 
 export default function PanelAuthDirector() {
   const [loading, setloading] = useState(true);

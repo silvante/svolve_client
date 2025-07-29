@@ -1,4 +1,4 @@
-import Heading from "../(global_components)/Heading";
+import Heading from "../../(global_components)/Heading";
 import UserProfile from "./(panel_components)/UserProfile";
 
 export default function Panel() {
