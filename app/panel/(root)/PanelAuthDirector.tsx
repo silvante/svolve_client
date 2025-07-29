@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HashLoader } from "react-spinners";
 import authService from "../../api/services/authService";
 import { updateUser } from "../../store/slices/userSlice";
+import { User } from "@/app/types/User";
 
 export default function PanelAuthDirector() {
   const [loading, setloading] = useState(true);
@@ -21,7 +22,8 @@ export default function PanelAuthDirector() {
         async function DispatchUser() {
           try {
             const user_profile = await authService.getProfile();
-            dispatch(updateUser(user_profile));
+            const corrent_user: User = user_profile;
+            dispatch(updateUser(corrent_user));
           } catch (error) {
             try {
               const reset_token = localStorage.getItem("reset_token");
@@ -36,7 +38,8 @@ export default function PanelAuthDirector() {
               }
               localStorage.setItem("access_token", access_token);
               const user_profile = await authService.getProfile();
-              dispatch(updateUser(user_profile));
+              const corrent_user: User = user_profile;
+              dispatch(updateUser(corrent_user));
             } catch (error) {
               router.push("/signup");
             }

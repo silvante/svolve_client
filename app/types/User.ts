@@ -6,6 +6,9 @@ export interface User {
   provider: string;
   provider_id: string;
   created_at: Date;
+  _count: {
+    organizations: number;
+  };
 }
 
 export interface Organization {

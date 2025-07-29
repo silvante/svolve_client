@@ -22,15 +22,19 @@ export default function ProfilePage() {
             </div>
           )}
         </div>
-        <div>
+        <div className="text-center">
           <h2 className="text-3xl font-semibold text-gray-900">
             {currentUser.name}
           </h2>
+          <p className="ext-gray-950">{currentUser.email}</p>
         </div>
         <div className="p-10 flex-1 rounded-tr-2xl rounded-tl-2xl special_shadowing w-full space-y-5">
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
             <p className="text-lg text-gray-950 font-semibold">username:</p>
-            <p className="text-gray-950"><span className="text-gray-700">svolve.uz/u/</span>  @{currentUser.username}</p>
+            <p className="text-gray-950">
+              <span className="text-gray-700">svolve.uz/u/</span> @
+              {currentUser.username}
+            </p>
           </div>
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
             <p className="text-lg text-gray-700 font-semibold">bio:</p>
