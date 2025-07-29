@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
+import Image from "next/image";
 
 export default function OrganizationList() {
   const { organizations, loading } = useSelector(
@@ -54,14 +55,27 @@ export default function OrganizationList() {
               className="bg-white shadow-md rounded-md transition-colors border border-gray-200 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600"
             >
               <Link
-                className="p-4 flex flex-col gap-1"
+                className=""
                 href={`/org/${organization.unique_name}/validation`}
               >
-                <h3 className="text-xl font-semibold">{organization.name}</h3>
-                <p className="text-sm text-gray-600">
-                  <span className="text-black">Uniquename: </span>
-                  {organization.unique_name}
-                </p>
+                {organization.logo && (
+                  <div className="border-b border-gray-200 p-4 flex flex-col gap-3 items-start">
+                    <Image
+                      src={organization.logo}
+                      alt={organization.description}
+                      width={0}
+                      height={0}
+                      className="w-auto h-10"
+                    />
+                  </div>
+                )}
+                <div className="p-4 flex flex-col gap-1 items-start">
+                  <h3 className="text-xl font-semibold">{organization.name}</h3>
+                  <p className="text-sm text-gray-600">
+                    <span className="text-black">Uniquename: </span>
+                    {organization.unique_name}
+                  </p>
+                </div>
               </Link>
               <div className="border-t border-gray-200 p-4 flex justify-between items-center">
                 <p className="text-sm text-gray-500">
