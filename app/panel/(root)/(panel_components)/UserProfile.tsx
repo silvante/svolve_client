@@ -1,6 +1,6 @@
 "use client";
 import Spinner from "@/app/(global_components)/Spinner";
-import { Eye, LogOut, Menu, UserCircle } from "lucide-react";
+import { Eye, LogOut, Menu, Settings, UserCircle, UserPen } from "lucide-react";
 import { useSelector } from "react-redux";
 import {
   DropdownMenu,
@@ -45,6 +45,16 @@ export default function UserProfile() {
           <Link href="/panel/profile">
             <DropdownMenuItem>
               <Eye /> view profile
+            </DropdownMenuItem>
+          </Link>
+          <Link href="/panel/profile/settings">
+            <DropdownMenuItem>
+              <Settings /> Settings
+            </DropdownMenuItem>
+          </Link>
+          <Link href="/signin">
+            <DropdownMenuItem>
+              <UserPen /> Change account
             </DropdownMenuItem>
           </Link>
           <button

@@ -10,7 +10,7 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <Heading text="You profile" />
+      <Heading text="Your profile" />
       <div className="w-full py-10 flex items-center justify-center flex-col gap-5">
         <Link
           href={"/panel/profile/settings"}
