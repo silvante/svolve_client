@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 
 export default function ProfilePage() {
   const { currentUser } = useSelector((state: any) => state.user);
+  console.log(currentUser);
+  
   return (
     <div>
       <Heading text="You profile" />
-      <div className="w-full py-10 flex items-center justify-center flex-col gap-5 min-h-screen h-full">
+      <div className="w-full py-10 flex items-center justify-center flex-col gap-5">
         <div className="bg-gray-300 max-w-44 w-full aspect-square rounded-full overflow-hidden">
           {currentUser.avatar ? (
             <img
@@ -28,7 +30,7 @@ export default function ProfilePage() {
           </h2>
           <p className="ext-gray-950">{currentUser.email}</p>
         </div>
-        <div className="p-10 flex-1 rounded-tr-2xl rounded-tl-2xl special_shadowing w-full space-y-5">
+        <div className="p-10 flex-1 rounded-2xl special_shadowing w-full space-y-5">
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
             <p className="text-lg text-gray-950 font-semibold">username:</p>
             <p className="text-gray-950">
@@ -37,7 +39,7 @@ export default function ProfilePage() {
             </p>
           </div>
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
-            <p className="text-lg text-gray-700 font-semibold">bio:</p>
+            <p className="text-lg text-gray-950 font-semibold">bio:</p>
             {currentUser.bio ? (
               <p className="text-gray-900">{currentUser.bio}</p>
             ) : (
@@ -51,6 +53,12 @@ export default function ProfilePage() {
             ) : (
               <p className="text-gray-900">You can add now</p>
             )}
+          </div>
+          <div className="space-y-2 border-b border-b-gray-300 pb-3">
+            <p className="text-lg text-gray-950 font-semibold">In Total:</p>
+            <p className="text-gray-900">
+              {currentUser._count.organizations} organizations
+            </p>
           </div>
         </div>
       </div>
