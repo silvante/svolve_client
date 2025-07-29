@@ -42,7 +42,7 @@ export default function UpdatezrganisationForm() {
   // upload data
   const [logoBase64, setLogoBase64] = useState<string | null>(org.logo);
   const [bannerBase64, setBannerBase64] = useState<string | null>(
-    org.banner.original
+    org.banner ? org.banner.original : null
   );
 
   const [logo, setlogo] = useState<File | null>(null);
@@ -279,7 +279,7 @@ export default function UpdatezrganisationForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organization"}
+          {isLoading ? "updating..." : "Update Organization"}
         </button>
       </div>
     </form>
