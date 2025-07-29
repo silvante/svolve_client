@@ -1,17 +1,21 @@
 "use client";
 import Heading from "@/app/(global_components)/Heading";
-import { Camera } from "lucide-react";
+import { Camera, Pen } from "lucide-react";
+import Link from "next/link";
 import { useSelector } from "react-redux";
 
 export default function ProfilePage() {
   const { currentUser } = useSelector((state: any) => state.user);
   console.log(currentUser);
-  
+
   return (
     <div>
       <Heading text="You profile" />
       <div className="w-full py-10 flex items-center justify-center flex-col gap-5">
-        <div className="bg-gray-300 max-w-44 w-full aspect-square rounded-full overflow-hidden">
+        <Link
+          href={"/panel/profile/settings"}
+          className="bg-gray-300 max-w-44 w-full aspect-square rounded-full overflow-hidden"
+        >
           {currentUser.avatar ? (
             <img
               src={currentUser.avatar}
@@ -23,7 +27,7 @@ export default function ProfilePage() {
               <Camera size={40} />
             </div>
           )}
-        </div>
+        </Link>
         <div className="text-center">
           <h2 className="text-3xl font-semibold text-gray-900">
             {currentUser.name}
@@ -43,7 +47,12 @@ export default function ProfilePage() {
             {currentUser.bio ? (
               <p className="text-gray-900">{currentUser.bio}</p>
             ) : (
-              <p className="text-gray-900">You can add now</p>
+              <Link
+                href={"/panel/profile/settings"}
+                className="text-violet-600 flex gap-2 items-center"
+              >
+                You can add now <Pen size={15} />
+              </Link>
             )}
           </div>
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
@@ -51,7 +60,12 @@ export default function ProfilePage() {
             {currentUser.contact ? (
               <p className="text-gray-900">{currentUser.contact}</p>
             ) : (
-              <p className="text-gray-900">You can add now</p>
+              <Link
+                href={"/panel/profile/settings"}
+                className="text-violet-600 flex gap-2 items-center"
+              >
+                You can add now <Pen size={15} />
+              </Link>
             )}
           </div>
           <div className="space-y-2 border-b border-b-gray-300 pb-3">
