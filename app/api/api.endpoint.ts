@@ -34,7 +34,11 @@ const apiEndpoints = {
   // uploads
   uploadAvatar: "/uploads/avatar",
   uploadBanner: "/uploads/banner",
-  uploadLogo: "/uploads/logo"
+  uploadLogo: "/uploads/logo",
+
+  // users
+  updateUser: "/user/update",
+  getUserById: (id: number) => `/user/${id}`
 };
 
 export default apiEndpoints;
