@@ -14,7 +14,7 @@ export default function ProfilePage() {
       <div className="w-full py-10 flex items-center justify-center flex-col gap-5">
         <Link
           href={"/panel/profile/settings"}
-          className="bg-gray-300 max-w-44 w-full aspect-square rounded-full overflow-hidden"
+          className="bg-gray-300 max-w-44 w-full aspect-square rounded-full overflow-hidden border border-gray-400"
         >
           {currentUser.avatar ? (
             <img

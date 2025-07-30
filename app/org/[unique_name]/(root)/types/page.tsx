@@ -1,6 +1,5 @@
 import Heading from "@/app/(global_components)/Heading";
 import TypeTable from "./Typetable";
-import Link from "next/link";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 
 export default function OrgTypes() {
