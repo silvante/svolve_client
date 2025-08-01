@@ -61,6 +61,14 @@ const organizationService = {
       throw error;
     }
   },
+
+  setAsDefault: async (unique_name: string) => {
+    try {
+      return await api.post(apiEndpoints.setOrganizationAsDefault(unique_name));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default organizationService;

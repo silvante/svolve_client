@@ -17,6 +17,7 @@ const apiEndpoints = {
   validateOrganization: (unique_name: string) => `/organizations/${unique_name}/validate`,
   updateOrganization: (unique_name: string) => `/organizations/${unique_name}/update`,
   updateOrganizationPincode: (unique_name: string) => `/organizations/${unique_name}/update/pincode`,
+  setOrganizationAsDefault: (unique_name: string) => `/organizations/${unique_name}/setAsDefault`,
 
   // types
   getOrgTypes: (org_id: number) => `/organizations/${org_id}/types`,
