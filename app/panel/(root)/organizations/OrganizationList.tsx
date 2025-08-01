@@ -3,9 +3,9 @@ import Spinner from "@/app/(global_components)/Spinner";
 import organizationService from "@/app/api/services/organizationService";
 import { updateOrganizations } from "@/app/store/slices/organizationSlice";
 import { Organization } from "@/app/types/User";
-import { Eye, LockKeyhole, Menu, PenBox } from "lucide-react";
+import { Eye, LockKeyhole, Menu, PenBox, Pin } from "lucide-react";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DropdownMenu,
@@ -17,6 +17,8 @@ import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Image from "next/image";
 
 export default function OrganizationList() {
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { organizations, loading } = useSelector(
     (state: any) => state.organizations
   );
@@ -39,6 +41,21 @@ export default function OrganizationList() {
     getOrganizations();
   }, []);
 
+  async function MakeItDefault(unique_name: string) {
+    setIsLoading(true);
+    try {
+      const res = await organizationService.setAsDefault(unique_name);
+      console.log(res);
+    } catch (error: any) {
+      if (!error.response) {
+        setError("Make sure that you filled all fields correct!");
+      } else {
+        setError(error.response.data.message);
+      }
+      setIsLoading(false);
+    }
+  }
+
   if (loading) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
@@ -48,6 +65,17 @@ export default function OrganizationList() {
   } else {
     return (
       <div className="space-y-5">
+        {error !== "" && (
+          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
+            {error}
+          </p>
+        )}
+        {isLoading && (
+          <div className="flex gap-2 items-center">
+            <p>Deleting</p>
+            <Spinner />
+          </div>
+        )}
         {organizations && organizations.length > 0 ? (
           organizations.map((organization: Organization) => (
             <div
@@ -121,6 +149,13 @@ export default function OrganizationList() {
                         <LockKeyhole /> Update Pincode
                       </DropdownMenuItem>
                     </Link>
+                    <button
+                      onClick={() => MakeItDefault(organization.unique_name)}
+                    >
+                      <DropdownMenuItem>
+                        <Pin /> Set as default
+                      </DropdownMenuItem>
+                    </button>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
