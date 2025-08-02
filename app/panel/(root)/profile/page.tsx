@@ -1,6 +1,6 @@
 "use client";
 import Heading from "@/app/(global_components)/Heading";
-import { Camera, KeyRound, Pen } from "lucide-react";
+import { Camera, KeyRound, Lock, Pen } from "lucide-react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import ProfileActions from "./(profilesections)/ProfileActions";
@@ -54,12 +54,11 @@ export default function ProfilePage() {
             <div className="text-start">
               <h2 className="text-3xl font-semibold text-gray-900">Password</h2>
               <p className="ext-gray-950">You password is secure!</p>
-              <Link
-                href={"/panel/profile/settings"}
+              <p
                 className="text-violet-600 flex gap-2 items-center mt-5"
               >
-                Update Password <Pen size={15} />
-              </Link>
+                App is Passwordless <Lock size={15} />
+              </p>
             </div>
           </div>
         </div>
