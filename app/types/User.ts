@@ -5,6 +5,7 @@ export interface User {
   email: string;
   provider: string;
   provider_id: string;
+  default_organization: DefaultOrganization;
   created_at: Date;
   _count: {
     organizations: number;
@@ -19,6 +20,11 @@ export interface Organization {
   banner: BannerData;
   logo: string;
   created_at: Date;
+}
+
+export interface DefaultOrganization {
+  id: number;
+  organization: Organization;
 }
 
 export interface Type {

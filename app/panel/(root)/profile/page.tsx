@@ -31,11 +31,11 @@ export default function ProfilePage() {
                 </div>
               )}
             </Link>
-            <div className="text-start">
-              <h2 className="text-3xl font-semibold text-gray-900">
+            <div className="text-start w-full">
+              <h2 className="text-3xl font-semibold text-gray-900 truncate w-full">
                 {currentUser.name}
               </h2>
-              <p className="ext-gray-950">{currentUser.email}</p>
+              <p className="ext-gray-950 truncate w-full">{currentUser.email}</p>
               <Link
                 href={"/panel/profile/settings"}
                 className="text-violet-600 flex gap-2 items-center mt-5"
@@ -51,7 +51,7 @@ export default function ProfilePage() {
             >
               <KeyRound size={50} />
             </Link>
-            <div className="text-start">
+            <div className="text-start w-full">
               <h2 className="text-3xl font-semibold text-gray-900">Password</h2>
               <p className="ext-gray-950">You password is secure!</p>
               <p
