@@ -112,7 +112,7 @@ export default function OrganizationList() {
                   <h3 className="text-xl font-semibold">{organization.name}</h3>
                   <p className="text-sm text-gray-600">
                     <span className="text-black">Uniquename: </span>
-                    {organization.unique_name}
+                    @{organization.unique_name}
                   </p>
                 </div>
               </Link>

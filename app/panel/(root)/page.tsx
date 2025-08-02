@@ -1,10 +1,11 @@
 import Heading from "../../(global_components)/Heading";
-import UserProfile from "./(panel_components)/UserProfile";
+import DefaultOrg from "./(panel_components)/DefaultOrg";
 
 export default function Panel() {
   return (
-    <div>
+    <div className="space-y-5">
       <Heading text="Panel" />
+      <DefaultOrg />
     </div>
   );
 }
