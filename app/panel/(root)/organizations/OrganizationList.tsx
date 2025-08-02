@@ -18,6 +18,7 @@ import Image from "next/image";
 
 export default function OrganizationList() {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { organizations, loading } = useSelector(
     (state: any) => state.organizations
@@ -44,8 +45,13 @@ export default function OrganizationList() {
   async function MakeItDefault(unique_name: string) {
     setIsLoading(true);
     try {
-      const res = await organizationService.setAsDefault(unique_name);
+      const res: any = await organizationService.setAsDefault(unique_name);
       console.log(res);
+      if (res && res.success == true) {
+        setError("");
+        setSuccess("The organization has set as default!");
+      }
+      setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
         setError("Make sure that you filled all fields correct!");
@@ -70,9 +76,14 @@ export default function OrganizationList() {
             {error}
           </p>
         )}
+        {success !== "" && (
+          <p className="text-green-600 bg-green-600/10 rounded-xl px-4 py-2">
+            {success}
+          </p>
+        )}
         {isLoading && (
           <div className="flex gap-2 items-center">
-            <p>Deleting</p>
+            <p>Setting as default</p>
             <Spinner />
           </div>
         )}
