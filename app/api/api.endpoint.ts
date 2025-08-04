@@ -39,7 +39,11 @@ const apiEndpoints = {
 
   // users
   updateUser: "/user/update",
-  getUserById: (id: number) => `/user/${id}`
+  getUserById: (id: number) => `/user/${id}`,
+
+  // vacancies
+  getVacancyById: (id: number) => `/vacancy/${id}`,
+  createVacancy: "/vacancy/create"
 };
 
 export default apiEndpoints;

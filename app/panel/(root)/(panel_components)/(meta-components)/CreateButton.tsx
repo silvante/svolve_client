@@ -4,7 +4,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { GitFork, Plus } from "lucide-react";
+import { FileUser, GitFork, Plus } from "lucide-react";
 import Link from "next/link";
 
 export default function CreateButton() {
@@ -17,6 +17,11 @@ export default function CreateButton() {
         <Link href="/panel/organizations/new">
           <DropdownMenuItem>
             <GitFork /> An Organization
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/panel/vacancies/new">
+          <DropdownMenuItem>
+            <FileUser /> A vacancy
           </DropdownMenuItem>
         </Link>
       </DropdownMenuContent>

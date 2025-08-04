@@ -54,3 +54,13 @@ export type BannerData = {
   original: string;
   thumbnail: string;
 };
+
+export interface Vacancy {
+  id: number;
+  name: string;
+  age: number;
+  about: string;
+  origin: string;
+  user: User;
+  created_at: Date;
+}
