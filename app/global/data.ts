@@ -1,50 +1,54 @@
 const origins = [
   {
     id: 1,
-    name: "tashkent",
+    name: "andijon",
   },
   {
     id: 2,
-    name: "andijan",
+    name: "buxoro",
   },
   {
     id: 3,
-    name: "namangan",
+    name: "farg'ona",
   },
   {
     id: 4,
-    name: "fegana",
+    name: "jizzax",
   },
   {
     id: 5,
-    name: "bukhara",
+    name: "xorazm",
   },
   {
     id: 6,
-    name: "jizzah",
+    name: "namangan",
   },
   {
-    id: 1,
-    name: "termez",
+    id: 7,
+    name: "navoiy",
   },
   {
-    id: 1,
-    name: "tashkent",
+    id: 8,
+    name: "qashqadaryo",
   },
   {
-    id: 1,
-    name: "tashkent",
+    id: 9,
+    name: "nukus",
   },
   {
-    id: 1,
-    name: "tashkent",
+    id: 10,
+    name: "samarqand",
   },
   {
-    id: 1,
-    name: "tashkent",
+    id: 11,
+    name: "sirdaryo",
   },
   {
-    id: 1,
-    name: "tashkent",
+    id: 12,
+    name: "surxondaryo",
+  },
+  {
+    id: 13,
+    name: "toshkent",
   },
 ];
