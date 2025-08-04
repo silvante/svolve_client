@@ -1,4 +1,4 @@
-const origins = [
+export const origins = [
   {
     id: 1,
     name: "andijon",

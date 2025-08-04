@@ -18,6 +18,7 @@ import {
 import { BannerData, Organization } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import uploadService from "@/app/api/services/uploadsService";
+import { origins } from "@/app/global/data";
 
 export default function NewOrganizationForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +30,7 @@ export default function NewOrganizationForm() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [pincode, setPincode] = useState("");
+  const [origin, setOrigin] = useState(origins[0].name);
 
   // upload data
   const [logoBase64, setLogoBase64] = useState<string | null>(null);
@@ -109,6 +111,7 @@ export default function NewOrganizationForm() {
         name,
         description,
         pincode,
+        origin,
         ...(bannerData && { banner: bannerData }),
         ...(logoData && { logo: logoData }),
       };
@@ -264,6 +267,29 @@ export default function NewOrganizationForm() {
         />
       </div>
 
+      {/* origin */}
+      <div className="space-y-1">
+        <label htmlFor="origin" className="block">
+          Where is your organization?*
+        </label>
+        <select
+          id="origin"
+          name="origin"
+          className="global_input w-full none"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+          required
+        >
+          {origins.map((origin) => {
+            return (
+              <option key={origin.id} value={origin.name}>
+                {origin.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
       {/* pincode */}
       <div className="space-y-1">
         <label htmlFor="pincode" className="block">
@@ -288,6 +314,9 @@ export default function NewOrganizationForm() {
         </InputOTP>
         <p className="text-sm text-gray-500">Number only</p>
       </div>
+
+      {/* warning */}
+      <p className="text_color">One created, organizations can not be deleted, you can just freez them or pay for them for monthly bill!</p>
 
       {/* submit */}
       <div>

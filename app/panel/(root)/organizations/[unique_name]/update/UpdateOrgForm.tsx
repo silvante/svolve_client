@@ -8,6 +8,7 @@ import { BannerData, Organization } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 import uploadService from "@/app/api/services/uploadsService";
+import { origins } from "@/app/global/data";
 
 export default function UpdatezrganisationForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +39,7 @@ export default function UpdatezrganisationForm() {
   // form data
   const [description, setDescription] = useState(org.description);
   const [name, setName] = useState(org.name);
+  const [origin, setOrigin] = useState(org.origin);
 
   // upload data
   const [logoBase64, setLogoBase64] = useState<string | null>(org.logo);
@@ -119,6 +121,7 @@ export default function UpdatezrganisationForm() {
       const createData: any = {
         name,
         description,
+        origin,
         ...(bannerData && { banner: bannerData }),
         ...(logoData && { logo: logoData }),
       };
@@ -271,6 +274,29 @@ export default function UpdatezrganisationForm() {
           className="hidden"
           onChange={HandleChangeLogo}
         />
+      </div>
+
+      {/* origin */}
+      <div className="space-y-1">
+        <label htmlFor="origin" className="block">
+          Where is your organization?*
+        </label>
+        <select
+          id="origin"
+          name="origin"
+          className="global_input w-full none"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+          required
+        >
+          {origins.map((origin) => {
+            return (
+              <option key={origin.id} value={origin.name}>
+                {origin.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
 
       {/* submit */}

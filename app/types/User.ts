@@ -17,6 +17,7 @@ export interface Organization {
   name: string;
   description: string;
   unique_name: string;
+  origin: string;
   banner: BannerData;
   logo: string;
   created_at: Date;
