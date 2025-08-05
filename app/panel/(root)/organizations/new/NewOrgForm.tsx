@@ -7,10 +7,10 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { FileImage, Trash2 } from "lucide-react";
+import { FileImage, Trash2, UserCircle } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   pushOrganization,
   setLoading,
@@ -21,6 +21,7 @@ import uploadService from "@/app/api/services/uploadsService";
 import { origins } from "@/app/global/data";
 
 export default function NewOrganizationForm() {
+  const { currentUser } = useSelector((state: any) => state.user);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
@@ -156,6 +157,30 @@ export default function NewOrganizationForm() {
           {error}
         </p>
       )}
+
+      {/* account */}
+      <div className="space-y-1 flex items-start flex-col">
+        <p className="block">Owner*</p>
+        <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer">
+          <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
+            {currentUser.avatar ? (
+              <img
+                src={currentUser.avatar}
+                alt="Your avatar"
+                className="w-full h-full aspect-square object-cover"
+              />
+            ) : (
+              <UserCircle />
+            )}
+          </div>
+          <p>{currentUser.name}</p>
+        </div>
+        <p className="text-sm text-gray-500">
+          This accaunt will become owner of this organization, if you want to
+          change it, switch account or customize it.{" "}
+        </p>
+      </div>
+
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
@@ -316,7 +341,10 @@ export default function NewOrganizationForm() {
       </div>
 
       {/* warning */}
-      <p className="text_color">One created, organizations can not be deleted, you can just freez them or pay for them for monthly bill!</p>
+      <p className="text_color">
+        One created, organizations can not be deleted, you can just freez them
+        or pay for them for monthly bill!
+      </p>
 
       {/* submit */}
       <div>

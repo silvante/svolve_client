@@ -7,18 +7,13 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { FileImage, Trash2 } from "lucide-react";
 import { useState } from "react";
-import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  pushOrganization,
-  setLoading,
-} from "@/app/store/slices/organizationSlice";
-import { BannerData, Organization, Vacancy } from "@/app/types/User";
+import { Vacancy } from "@/app/types/User";
 import { useRouter } from "next/navigation";
-import uploadService from "@/app/api/services/uploadsService";
 import vacancyService from "@/app/api/services/vacancyService";
+import { origins } from "@/app/global/data";
+import { UserCircle } from "lucide-react";
 
 export default function NewVacancyForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,6 +27,7 @@ export default function NewVacancyForm() {
   const [age, setAge] = useState("");
   const [origin, setOrigin] = useState("");
   const [about, setAbout] = useState("");
+  const [contact, setContact] = useState("");
 
   async function HandleCreateOrg(e: any) {
     e.preventDefault();
@@ -39,17 +35,19 @@ export default function NewVacancyForm() {
     try {
       const createData: any = {
         name,
-        age,
+        age: +age,
         about,
         origin,
+        contact,
       };
 
       const res: any = await vacancyService.create(createData);
       const vacancy: Vacancy = res;
       //   dispatch(setLoading());
       //   dispatch(pushOrganization(organization));
-      //   router.push("/panel/organizations");
-      //   setIsLoading(false);
+        router.push("/panel/vacanciesI");
+      setIsLoading(false);
+      setError("");
     } catch (error: any) {
       if (!error.response) {
         setError("Make sure that you filled all fields correct!");
@@ -67,6 +65,30 @@ export default function NewVacancyForm() {
           {error}
         </p>
       )}
+
+      {/* account */}
+      <div className="space-y-1 flex items-start flex-col">
+        <p className="block">Account*</p>
+        <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer">
+          <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
+            {currentUser.avatar ? (
+              <img
+                src={currentUser.avatar}
+                alt="Your avatar"
+                className="w-full h-full aspect-square object-cover"
+              />
+            ) : (
+              <UserCircle />
+            )}
+          </div>
+          <p>{currentUser.name}</p>
+        </div>
+        <p className="text-sm text-gray-500">
+          This accaunt will be attached to your vacancy, if you want to change
+          it, switch account or customize it.{" "}
+        </p>
+      </div>
+
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
@@ -105,14 +127,55 @@ export default function NewVacancyForm() {
         <p className="text-sm text-gray-500">Max 500 characters</p>
       </div>
 
+      {/* contact */}
+      <div className="space-y-1">
+        <label htmlFor="contact" className="block">
+          Your contact*
+        </label>
+        <input
+          type="text"
+          id="contact"
+          name="contact"
+          className="global_input w-full"
+          placeholder="Enter your contacts"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          maxLength={100}
+          required
+        />
+      </div>
+
+      {/* origin */}
+      <div className="space-y-1">
+        <label htmlFor="origin" className="block">
+          Where are you from?*
+        </label>
+        <select
+          id="origin"
+          name="origin"
+          className="global_input w-full none"
+          value={origin}
+          onChange={(e) => setOrigin(e.target.value)}
+          required
+        >
+          {origins.map((origin) => {
+            return (
+              <option key={origin.id} value={origin.name}>
+                {origin.name}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
       {/* pincode */}
       <div className="space-y-1">
-        <label htmlFor="pincode" className="block">
-          Pincode*
+        <label htmlFor="age" className="block">
+          Your age*
         </label>
         <InputOTP
           maxLength={6}
-          id="pincode"
+          id="age"
           pattern={REGEXP_ONLY_DIGITS}
           value={age}
           onChange={(value) => setAge(value)}
