@@ -5,6 +5,7 @@ import ValidatorSlice from "./slices/validatorSlice";
 import AsideSlice from "./slices/asideSlice";
 import TypesSlice from "./slices/typesSlice";
 import ClientSlice from "./slices/clientSlice";
+import vacancySlice from "./slices/vacancySlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     aside: AsideSlice,
     types: TypesSlice,
     client: ClientSlice,
+    vacancy: vacancySlice,
   },
 });
 

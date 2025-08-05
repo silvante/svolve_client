@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import vacancyService from "@/app/api/services/vacancyService";
 import { origins } from "@/app/global/data";
 import { UserCircle } from "lucide-react";
+import { pushVacancy, setLoading } from "@/app/store/slices/vacancySlice";
 
 export default function NewVacancyForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,9 +44,9 @@ export default function NewVacancyForm() {
 
       const res: any = await vacancyService.create(createData);
       const vacancy: Vacancy = res;
-      //   dispatch(setLoading());
-      //   dispatch(pushOrganization(organization));
-        router.push("/panel/vacanciesI");
+      dispatch(setLoading());
+      dispatch(pushVacancy(vacancy));
+      router.push("/panel/vacancies");
       setIsLoading(false);
       setError("");
     } catch (error: any) {
