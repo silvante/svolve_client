@@ -27,6 +27,7 @@ export default function NewVacancyForm() {
   const [name, setName] = useState(currentUser.name);
   const [age, setAge] = useState("");
   const [origin, setOrigin] = useState("");
+  const [job, setJob] = useState("");
   const [about, setAbout] = useState("");
   const [contact, setContact] = useState("");
 
@@ -39,6 +40,7 @@ export default function NewVacancyForm() {
         age: +age,
         about,
         origin,
+        job,
         contact,
       };
 
@@ -109,6 +111,24 @@ export default function NewVacancyForm() {
         />
       </div>
 
+      {/* name */}
+      <div className="space-y-1">
+        <label htmlFor="job" className="block">
+          What is your profession*
+        </label>
+        <input
+          type="text"
+          id="job"
+          name="job"
+          className="global_input w-full"
+          placeholder="Your profession"
+          value={job}
+          onChange={(e) => setJob(e.target.value)}
+          maxLength={100}
+          required
+        />
+      </div>
+
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="about" className="block">
@@ -117,6 +137,7 @@ export default function NewVacancyForm() {
         <textarea
           rows={3}
           maxLength={500}
+          minLength={300}
           id="about"
           name="about"
           value={about}
@@ -125,7 +146,21 @@ export default function NewVacancyForm() {
           placeholder="Simple description"
           required
         />
-        <p className="text-sm text-gray-500">Max 500 characters</p>
+        {about.length > 0 && (
+          <p>
+            Description contains:{" "}
+            <span
+              className={`transition-all ${
+                about.length > 300 ? "text-green-600" : "text-red-600"
+              }`}
+            >
+              {about.length} characters
+            </span>
+          </p>
+        )}
+        <p className="text-sm text-gray-500">
+          Min 300 characters, Max 500 characters
+        </p>
       </div>
 
       {/* contact */}
@@ -196,7 +231,7 @@ export default function NewVacancyForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organization"}
+          {isLoading ? "creating..." : "Create Vacancy"}
         </button>
       </div>
     </form>

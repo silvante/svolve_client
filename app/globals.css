@@ -134,3 +134,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+.text_clamp_3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -5,6 +5,7 @@ export interface User {
   email: string;
   provider: string;
   provider_id: string;
+  avatar: string;
   default_organization: DefaultOrganization;
   created_at: Date;
   _count: {
@@ -62,6 +63,8 @@ export interface Vacancy {
   age: number;
   about: string;
   origin: string;
+  job: string;
+  contact: string;
   user: User;
   created_at: Date;
 }

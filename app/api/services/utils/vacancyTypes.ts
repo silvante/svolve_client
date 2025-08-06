@@ -4,4 +4,5 @@ export type createVacancyData = {
   origin: string;
   about: string;
   age: number;
+  job: string;
 };
