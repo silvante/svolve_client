@@ -1,14 +1,11 @@
-"use client";
 import Heading from "@/app/(global_components)/Heading";
-import { useSelector } from "react-redux";
+import VacancyList from "./VacancyList";
 
 export default function MyVocancies() {
-  const { vacancies } = useSelector((state: any) => state.vacancy);
-  console.log(vacancies);
-
   return (
-    <div>
+    <div className="space-y-5">
       <Heading text="My Vacancies" />
+      <VacancyList />
     </div>
   );
 }
