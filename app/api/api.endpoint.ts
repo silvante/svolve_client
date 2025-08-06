@@ -43,7 +43,8 @@ const apiEndpoints = {
 
   // vacancies
   getVacancyById: (id: number) => `/vacancy/${id}`,
-  createVacancy: "/vacancy/create"
+  createVacancy: "/vacancy/create",
+  getAllMyVacancies: "/vacancy/mine"
 };
 
 export default apiEndpoints;

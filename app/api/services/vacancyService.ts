@@ -18,6 +18,14 @@ const vacancyService = {
       throw error;
     }
   },
+
+  getAll: async () => {
+    try {
+      return await api.get(apiEndpoints.getAllMyVacancies);
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default vacancyService;

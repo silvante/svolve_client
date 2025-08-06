@@ -20,9 +20,11 @@ export default function OrganizationList() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const { organizations, loading } = useSelector(
     (state: any) => state.organizations
   );
+  
   const dispatch = useDispatch();
   async function getOrganizations() {
     try {
