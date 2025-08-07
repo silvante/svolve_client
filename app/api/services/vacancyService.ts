@@ -1,6 +1,6 @@
 import api from "../api.config";
 import apiEndpoints from "../api.endpoint";
-import { createVacancyData } from "./utils/vacancyTypes";
+import { createVacancyData, updateVacancyData } from "./utils/vacancyTypes";
 
 const vacancyService = {
   create: async (data: createVacancyData) => {
@@ -22,6 +22,22 @@ const vacancyService = {
   getAll: async () => {
     try {
       return await api.get(apiEndpoints.getAllMyVacancies);
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  update: async (id: number, data: updateVacancyData) => {
+    try {
+      return await api.put(apiEndpoints.updateVacancy(id), data);
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  delete: async (id: number) => {
+    try {
+      return await api.delete(apiEndpoints.deleteVacancy(id));
     } catch (error) {
       throw error;
     }

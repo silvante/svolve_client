@@ -6,3 +6,11 @@ export type createVacancyData = {
   age: number;
   job: string;
 };
+
+export type updateVacancyData = {
+  contact: string;
+  origin: string;
+  about: string;
+  age: number;
+  job: string;
+};

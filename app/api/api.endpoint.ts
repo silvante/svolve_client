@@ -44,7 +44,9 @@ const apiEndpoints = {
   // vacancies
   getVacancyById: (id: number) => `/vacancy/${id}`,
   createVacancy: "/vacancy/create",
-  getAllMyVacancies: "/vacancy/mine"
+  getAllMyVacancies: "/vacancy/mine",
+  updateVacancy: (id: number) => `/vacancy/${id}/update`,
+  deleteVacancy: (id: number) => `/vacancy/${id}/delete`
 };
 
 export default apiEndpoints;
