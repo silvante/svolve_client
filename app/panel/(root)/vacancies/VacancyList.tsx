@@ -66,7 +66,7 @@ export default function VacancyList() {
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-gray-500">
-                        <Camera size={40} />
+                        <Camera size={18} />
                       </div>
                     )}
                   </div>
