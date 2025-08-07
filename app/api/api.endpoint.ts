@@ -12,7 +12,7 @@ const apiEndpoints = {
 
   // organizations
   getUsersOrganizations: "/organizations",
-  getOrganizationById: (id: number) => `/organizations/${id}`,
+  getOrganizationByUniqueName: (unique_name: string) => `/organizations/${unique_name}`,
   createOrganization: "/organizations/new",
   validateOrganization: (unique_name: string) => `/organizations/${unique_name}/validate`,
   updateOrganization: (unique_name: string) => `/organizations/${unique_name}/update`,

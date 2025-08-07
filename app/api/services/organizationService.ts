@@ -16,9 +16,9 @@ const organizationService = {
     }
   },
 
-  getById: async (id: number) => {
+  getByUniqueName: async (unique_name: string) => {
     try {
-      return await api.get(apiEndpoints.getOrganizationById(id));
+      return await api.get(apiEndpoints.getOrganizationByUniqueName(unique_name));
     } catch (error) {
       throw error;
     }
