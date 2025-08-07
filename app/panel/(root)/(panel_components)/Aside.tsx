@@ -13,11 +13,11 @@ export default function Aside() {
         <AsideLink href="/panel/organizations">
           <GitFork /> Organizations
         </AsideLink>
-        <AsideLink href="/panel/profile">
-          <CircleUser /> Profile
-        </AsideLink>
         <AsideLink href="/panel/vacancies">
           <FileUser /> Vacancies
+        </AsideLink>
+        <AsideLink href="/panel/profile">
+          <CircleUser /> Profile
         </AsideLink>
         <AsideLink href="/panel/profile/settings">
           <Settings /> Settings

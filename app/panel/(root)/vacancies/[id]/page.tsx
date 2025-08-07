@@ -8,6 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import VacancyActions from "./VacancyActions";
+import BackBtn from "@/app/(global_components)/BackBtn";
 
 export default function VacancyDetailsPage() {
   const { vacancies } = useSelector((state: any) => state.vacancy);
@@ -52,7 +53,10 @@ export default function VacancyDetailsPage() {
   } else {
     return (
       <div className="space-y-5">
-        <Heading text="Your vacancy" />
+        <div className="w-full flex justify-between items-center">
+          <Heading text="Your vacancy" />
+          <BackBtn href={`/panel/vacancies`} />
+        </div>
         <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
           <Heading text="Account" />
           <div className="space-y-2">
