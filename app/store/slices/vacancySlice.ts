@@ -47,6 +47,17 @@ const vacancySlice = createSlice({
         }
       }
     },
+
+    deleteVacancy: (state, action: PayloadAction<Vacancy>) => {
+      if (state.vacancies) {
+        const index = state.vacancies.findIndex(
+          (c) => c.id === action.payload.id
+        );
+        if (index !== -1 && index !== undefined) {
+          state.vacancies.splice(index, 1);
+        }
+      }
+    },
   },
 });
 
@@ -56,5 +67,6 @@ export const {
   setLoading,
   pushVacancy,
   replaceVacancy,
+  deleteVacancy
 } = vacancySlice.actions;
 export default vacancySlice.reducer;
