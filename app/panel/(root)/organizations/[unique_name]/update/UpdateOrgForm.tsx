@@ -10,41 +10,27 @@ import Spinner from "@/app/(global_components)/Spinner";
 import uploadService from "@/app/api/services/uploadsService";
 import { origins } from "@/app/global/data";
 
-export default function UpdatezrganisationForm() {
+export default function UpdatezrganisationForm({
+  organization,
+}: {
+  organization: Organization;
+}) {
   const [isLoading, setIsLoading] = useState(false);
-  const { unique_name } = useParams();
-  const { organizations, loading } = useSelector(
-    (state: any) => state.organizations
-  );
-
-  if (loading) {
-    return (
-      <div className="w-full py-10 flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }
-
-  const org: Organization = organizations.find(
-    (org: Organization) => org.unique_name === String(unique_name)
-  );
-
-  console.log(organizations);
-  console.log(org);
-
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const router = useRouter();
 
   // form data
-  const [description, setDescription] = useState(org.description);
-  const [name, setName] = useState(org.name);
-  const [origin, setOrigin] = useState(org.origin);
+  const [description, setDescription] = useState(organization.description);
+  const [name, setName] = useState(organization.name);
+  const [origin, setOrigin] = useState(organization.origin);
 
   // upload data
-  const [logoBase64, setLogoBase64] = useState<string | null>(org.logo);
+  const [logoBase64, setLogoBase64] = useState<string | null>(
+    organization.logo
+  );
   const [bannerBase64, setBannerBase64] = useState<string | null>(
-    org.banner ? org.banner.original : null
+    organization.banner ? organization.banner.original : null
   );
 
   const [logo, setlogo] = useState<File | null>(null);
@@ -127,11 +113,11 @@ export default function UpdatezrganisationForm() {
       };
 
       const res: any = await organizationService.update(
-        org.unique_name,
+        organization.unique_name,
         createData
       );
-      const organization: Organization = res;
-      dispatch(replaceOrganization(organization));
+      const res_organization: Organization = res;
+      dispatch(replaceOrganization(res_organization));
       router.push("/panel/organizations");
       setIsLoading(false);
     } catch (error: any) {
