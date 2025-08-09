@@ -11,10 +11,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Camera, Eye, Menu, PenBox } from "lucide-react";
+import { Camera, Eye, Menu, PenBox, Trash } from "lucide-react";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import DeleteVacancyModule from "./(components)/DeleteVacancyModule";
 
 export default function VacancyList() {
   const { vacancies, loading } = useSelector((state: any) => state.vacancy);
@@ -100,7 +101,10 @@ export default function VacancyList() {
                   </p>
                 </div>
                 <div className="p-5 space-y-1 border-b border-gray-200 w-full flex justify-between items-center">
-                  <Link href={`/panel/vacancies/${vacancy.id}`} className="flex gap-2 items-center bg-violet-600 text-white py-1 px-2 rounded-lg">
+                  <Link
+                    href={`/panel/vacancies/${vacancy.id}`}
+                    className="flex gap-2 items-center bg-violet-600 text-white py-1 px-2 rounded-lg"
+                  >
                     <Eye /> Details
                   </Link>
                   <DropdownMenu>
@@ -113,6 +117,19 @@ export default function VacancyList() {
                           <PenBox /> Update
                         </DropdownMenuItem>
                       </Link>
+                      <DropdownMenuItem
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                        }}
+                      >
+                        <DeleteVacancyModule vacancy={vacancy}>
+                          <div className="cursor-pointer rounded-lg w-full flex gap-2">
+                            <Trash color="#e7000b" />{" "}
+                            <p className="text-red-600">Delete</p>
+                          </div>
+                        </DeleteVacancyModule>
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
