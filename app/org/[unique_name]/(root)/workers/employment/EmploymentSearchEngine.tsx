@@ -1,8 +1,6 @@
 "use client";
-import Heading from "@/app/(global_components)/Heading";
 import vacancyService from "@/app/api/services/vacancyService";
 import { origins } from "@/app/global/data";
-import { setLoading } from "@/app/store/slices/userSlice";
 import { Organization } from "@/app/types/User";
 import { useEffect, useState } from "react";
 
@@ -25,10 +23,12 @@ export default function EmpSearchEngine({
     }
     setIsLoading(true);
     try {
+      setPage(1);
       const res: any = await vacancyService.search(origin, query, page, 9);
       const { data, meta } = res;
       setVacancies(data);
       setMeta(meta);
+      setError("");
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
