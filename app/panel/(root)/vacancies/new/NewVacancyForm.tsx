@@ -23,6 +23,21 @@ export default function NewVacancyForm() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  // phone number formatter
+  const formatPhone = (value: string) => {
+    let digits = value.replace(/\D/g, ""); // faqat raqamlar
+    if (!digits.startsWith("998")) {
+      digits = "998" + digits; // avtomatik 998 boshida bo'lishi
+    }
+    digits = digits.slice(0, 12); // 998 + 9 raqam
+    let formatted = "+998 ";
+    if (digits.length > 3) formatted += digits.slice(3, 5);
+    if (digits.length >= 5) formatted += " " + digits.slice(5, 8);
+    if (digits.length >= 8) formatted += " " + digits.slice(8, 10);
+    if (digits.length >= 10) formatted += " " + digits.slice(10, 12);
+    return formatted;
+  };
+
   // form data
   const [name, setName] = useState(currentUser.name);
   const [age, setAge] = useState("");
@@ -41,7 +56,7 @@ export default function NewVacancyForm() {
         about,
         origin,
         job,
-        contact: `+998${contact}`,
+        contact: `${contact}`,
       };
 
       const res: any = await vacancyService.create(createData);
@@ -164,36 +179,16 @@ export default function NewVacancyForm() {
       </div>
 
       {/* contact */}
-      <div className="space-y-1">
-        <label htmlFor="contact" className="block">
-          Your contact*
-        </label>
-        <InputOTP
-          maxLength={9}
-          id="contact"
-          pattern={REGEXP_ONLY_DIGITS}
+      <label className="block mb-3">
+        <span className="text-sm text-gray-700">Telefon raqam</span>
+        <input
+          type="tel"
           value={contact}
-          onChange={(value) => setContact(value)}
-          required
-        >
-          <InputOTPGroup>
-            +998 (
-            <InputOTPSlot index={0} className="border-gray-400" />
-            <InputOTPSlot index={1} className="border-gray-400" />
-            )
-            <InputOTPSlot index={2} className="border-gray-400" />
-            <InputOTPSlot index={3} className="border-gray-400" />
-            <InputOTPSlot index={4} className="border-gray-400" />
-            -
-            <InputOTPSlot index={5} className="border-gray-400" />
-            <InputOTPSlot index={6} className="border-gray-400" />
-            -
-            <InputOTPSlot index={7} className="border-gray-400" />
-            <InputOTPSlot index={8} className="border-gray-400" />
-          </InputOTPGroup>
-        </InputOTP>
-        <p className="text-sm text-gray-500">Numbers only</p>
-      </div>
+          onChange={(e) => setContact(formatPhone(e.target.value))}
+          placeholder="+998 00-000-00-00"
+          className={"global_input w-full"}
+        />
+      </label>
 
       {/* origin */}
       <div className="space-y-1">

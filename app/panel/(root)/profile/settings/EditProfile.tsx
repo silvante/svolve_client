@@ -8,12 +8,6 @@ import { FileImage } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
 
 export default function EditProfile() {
   const { currentUser } = useSelector((state: any) => state.user);
@@ -21,6 +15,21 @@ export default function EditProfile() {
   const router = useRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // phone number formatter
+  const formatPhone = (value: string) => {
+    let digits = value.replace(/\D/g, ""); // faqat raqamlar
+    if (!digits.startsWith("998")) {
+      digits = "998" + digits; // avtomatik 998 boshida bo'lishi
+    }
+    digits = digits.slice(0, 12); // 998 + 9 raqam
+    let formatted = "+998 ";
+    if (digits.length > 3) formatted += digits.slice(3, 5);
+    if (digits.length >= 5) formatted += " " + digits.slice(5, 8);
+    if (digits.length >= 8) formatted += " " + digits.slice(8, 10);
+    if (digits.length >= 10) formatted += " " + digits.slice(10, 12);
+    return formatted;
+  };
 
   const [avatar, setAvatar] = useState<File | null>(null);
   const [avatarBase64, setAvatarBase64] = useState<string | null>(
@@ -30,7 +39,7 @@ export default function EditProfile() {
   const [name, setName] = useState(currentUser.name);
   const [bio, setBio] = useState(currentUser.bio);
   const [contact, setContact] = useState(
-    currentUser.contact ? currentUser.contact.slice(4) : ""
+    currentUser.contact ? formatPhone(currentUser.contact) : ""
   );
 
   function ConvertImageToBase64(file: File): Promise<string> {
@@ -78,7 +87,7 @@ export default function EditProfile() {
       const update: any = {
         name,
         bio,
-        contact: `+998${contact}`,
+        contact: `${contact}`,
         ...(AvatarData && { avatar: AvatarData }),
       };
 
@@ -180,36 +189,16 @@ export default function EditProfile() {
         </div>
 
         {/* contact */}
-        <div className="space-y-1">
-          <label htmlFor="contact" className="block">
-            Enter contact (optional but recommended)*
-          </label>
-          <InputOTP
-            maxLength={9}
-            id="contact"
-            pattern={REGEXP_ONLY_DIGITS}
+        <label className="block mb-3">
+          <span className="text-sm text-gray-700">Telefon raqam</span>
+          <input
+            type="tel"
             value={contact}
-            onChange={(value) => setContact(value)}
-          >
-            <InputOTPGroup>
-              +998 (
-              <InputOTPSlot index={0} className="border-gray-400" />
-              <InputOTPSlot index={1} className="border-gray-400" />
-              )
-              <InputOTPSlot index={2} className="border-gray-400" />
-              <InputOTPSlot index={3} className="border-gray-400" />
-              <InputOTPSlot index={4} className="border-gray-400" />
-              -
-              <InputOTPSlot index={5} className="border-gray-400" />
-              <InputOTPSlot index={6} className="border-gray-400" />
-              -
-              <InputOTPSlot index={7} className="border-gray-400" />
-              <InputOTPSlot index={8} className="border-gray-400" />
-            </InputOTPGroup>
-          </InputOTP>
-          <p className="text-sm text-gray-500">Numbers only</p>
-        </div>
-
+            onChange={(e) => setContact(formatPhone(e.target.value))}
+            placeholder="+998 00-000-00-00"
+            className={"global_input w-full"}
+          />
+        </label>
         {/* submit */}
         <div>
           <button
