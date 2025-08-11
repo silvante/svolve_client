@@ -46,7 +46,8 @@ const apiEndpoints = {
   createVacancy: "/vacancy/create",
   getAllMyVacancies: "/vacancy/mine",
   updateVacancy: (id: number) => `/vacancy/${id}/update`,
-  deleteVacancy: (id: number) => `/vacancy/${id}/delete`
+  deleteVacancy: (id: number) => `/vacancy/${id}/delete`,
+  searchVacancy: (origin: string, q: string, page: number, limit: number) => `/vacancy/search?origin=${origin}&q=${q}&page=${page}&limit=${limit}`
 };
 
 export default apiEndpoints;

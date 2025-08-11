@@ -42,6 +42,14 @@ const vacancyService = {
       throw error;
     }
   },
+
+  search: async (origin: string, q: string, page: number, limit: number) => {
+    try {
+      return await api.get(apiEndpoints.searchVacancy(origin, q, page, limit));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default vacancyService;
