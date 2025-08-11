@@ -41,7 +41,7 @@ export default function NewVacancyForm() {
   // form data
   const [name, setName] = useState(currentUser.name);
   const [age, setAge] = useState("");
-  const [origin, setOrigin] = useState("");
+  const [origin, setOrigin] = useState(origins[0].name);
   const [job, setJob] = useState("");
   const [about, setAbout] = useState("");
   const [contact, setContact] = useState("");
