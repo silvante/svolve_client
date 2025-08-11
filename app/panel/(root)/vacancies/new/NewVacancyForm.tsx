@@ -41,7 +41,7 @@ export default function NewVacancyForm() {
         about,
         origin,
         job,
-        contact,
+        contact: `+998${contact}`,
       };
 
       const res: any = await vacancyService.create(createData);
@@ -168,17 +168,31 @@ export default function NewVacancyForm() {
         <label htmlFor="contact" className="block">
           Your contact*
         </label>
-        <input
-          type="text"
+        <InputOTP
+          maxLength={9}
           id="contact"
-          name="contact"
-          className="global_input w-full"
-          placeholder="Enter your contacts"
+          pattern={REGEXP_ONLY_DIGITS}
           value={contact}
-          onChange={(e) => setContact(e.target.value)}
-          maxLength={100}
+          onChange={(value) => setContact(value)}
           required
-        />
+        >
+          <InputOTPGroup>
+            +998 (
+            <InputOTPSlot index={0} className="border-gray-400" />
+            <InputOTPSlot index={1} className="border-gray-400" />
+            )
+            <InputOTPSlot index={2} className="border-gray-400" />
+            <InputOTPSlot index={3} className="border-gray-400" />
+            <InputOTPSlot index={4} className="border-gray-400" />
+            -
+            <InputOTPSlot index={5} className="border-gray-400" />
+            <InputOTPSlot index={6} className="border-gray-400" />
+            -
+            <InputOTPSlot index={7} className="border-gray-400" />
+            <InputOTPSlot index={8} className="border-gray-400" />
+          </InputOTPGroup>
+        </InputOTP>
+        <p className="text-sm text-gray-500">Numbers only</p>
       </div>
 
       {/* origin */}

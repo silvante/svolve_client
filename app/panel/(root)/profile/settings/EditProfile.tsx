@@ -8,6 +8,12 @@ import { FileImage } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 export default function EditProfile() {
   const { currentUser } = useSelector((state: any) => state.user);
@@ -23,7 +29,9 @@ export default function EditProfile() {
 
   const [name, setName] = useState(currentUser.name);
   const [bio, setBio] = useState(currentUser.bio);
-  const [contact, setContact] = useState(currentUser.contact);
+  const [contact, setContact] = useState(
+    currentUser.contact ? currentUser.contact.slice(4) : ""
+  );
 
   function ConvertImageToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
@@ -70,7 +78,7 @@ export default function EditProfile() {
       const update: any = {
         name,
         bio,
-        contact,
+        contact: `+998${contact}`,
         ...(AvatarData && { avatar: AvatarData }),
       };
 
@@ -176,16 +184,30 @@ export default function EditProfile() {
           <label htmlFor="contact" className="block">
             Enter contact (optional but recommended)*
           </label>
-          <input
-            type="text"
+          <InputOTP
+            maxLength={9}
             id="contact"
-            name="contact"
-            className="global_input w-full"
-            placeholder="Your Contacts"
-            value={contact ? contact : ""}
-            onChange={(e) => setContact(e.target.value)}
-            maxLength={100}
-          />
+            pattern={REGEXP_ONLY_DIGITS}
+            value={contact}
+            onChange={(value) => setContact(value)}
+          >
+            <InputOTPGroup>
+              +998 (
+              <InputOTPSlot index={0} className="border-gray-400" />
+              <InputOTPSlot index={1} className="border-gray-400" />
+              )
+              <InputOTPSlot index={2} className="border-gray-400" />
+              <InputOTPSlot index={3} className="border-gray-400" />
+              <InputOTPSlot index={4} className="border-gray-400" />
+              -
+              <InputOTPSlot index={5} className="border-gray-400" />
+              <InputOTPSlot index={6} className="border-gray-400" />
+              -
+              <InputOTPSlot index={7} className="border-gray-400" />
+              <InputOTPSlot index={8} className="border-gray-400" />
+            </InputOTPGroup>
+          </InputOTP>
+          <p className="text-sm text-gray-500">Numbers only</p>
         </div>
 
         {/* submit */}

@@ -1,7 +1,7 @@
 "use client";
 import { useSelector } from "react-redux";
 import OrgAsideLink from "./(meta-components)/OrgNavLink";
-import { ArrowBigLeftDash, BriefcaseBusiness, Pilcrow } from "lucide-react";
+import { ArrowBigLeftDash, BriefcaseBusiness, Pilcrow, Users } from "lucide-react";
 import AsideLink from "@/app/panel/(root)/(panel_components)/(meta-components)/AsideLink";
 import Link from "next/link";
 
@@ -25,6 +25,9 @@ export default function OrgAside() {
         </OrgAsideLink>
         <OrgAsideLink href="/types">
           <Pilcrow /> Types
+        </OrgAsideLink>
+        <OrgAsideLink href="/workers">
+          <Users /> Workers
         </OrgAsideLink>
       </div>
       <Link
