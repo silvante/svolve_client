@@ -22,6 +22,11 @@ export interface Organization {
   banner: BannerData;
   logo: string;
   created_at: Date;
+  _count: {
+    workers: number;
+    types: number;
+    clients: number;
+  };
 }
 
 export interface DefaultOrganization {

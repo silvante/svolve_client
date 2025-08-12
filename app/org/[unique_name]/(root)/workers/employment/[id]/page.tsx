@@ -39,7 +39,7 @@ export default function VacancyDetailsPage() {
     return (
       <div className="space-y-5">
         <div className="w-full flex justify-between items-center">
-          <Heading text="Your vacancy" />
+          <Heading text={`Vacancy - ${vacancy.id}`} />
           <BackBtn href={`/org/${unique_name}/workers/employment`} />
         </div>
         <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
