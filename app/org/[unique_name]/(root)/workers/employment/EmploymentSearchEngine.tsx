@@ -5,6 +5,7 @@ import { Organization, Vacancy } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import VacancyCard from "./VacancyCard";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
+import { HashLoader } from "react-spinners";
 
 export default function EmpSearchEngine({
   organization,
@@ -19,13 +20,9 @@ export default function EmpSearchEngine({
   const [meta, setMeta] = useState({ total: 0, page: 1, last_page: 1 });
   const [vacancies, setVacancies] = useState([]);
 
-  async function GetVacancies(e: any = null) {
-    if (e) {
-      e.preventDefault();
-    }
+  async function GetVacancies() {
     setIsLoading(true);
     try {
-      setPage(1);
       const res: any = await vacancyService.search(origin, query, page, 9);
       const { data, meta } = res;
       setVacancies(data);
@@ -40,6 +37,12 @@ export default function EmpSearchEngine({
       }
       setIsLoading(false);
     }
+  }
+
+  function HandleSearch(e: any) {
+    e.preventDefault();
+    setPage(1);
+    GetVacancies();
   }
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export default function EmpSearchEngine({
             {error}
           </p>
         )}
-        <form className="flex w-full gap-5" onSubmit={GetVacancies}>
+        <form className="flex w-full gap-5" onSubmit={HandleSearch}>
           <select
             className="global_input w-40"
             value={origin}
@@ -88,17 +91,25 @@ export default function EmpSearchEngine({
           </button>
         </form>
       </div>
-      {vacancies && vacancies.length > 0 ? (
-        <div className="w-full grid grid-cols-3 gap-5">
-          {vacancies.map((vacancy: Vacancy) => (
-            <VacancyCard key={vacancy.id} vacancy={vacancy} />
-          ))}
+      {isLoading ? (
+        <div className="flex justify-center items-center py-20">
+          <HashLoader color="#7c3aed" size={58} />
         </div>
       ) : (
-        <ErrorMessage
-          text="There is no vacancies found!"
-          desc="try something else"
-        />
+        <div className="w-full">
+          {vacancies && vacancies.length > 0 ? (
+            <div className="w-full grid grid-cols-3 gap-5">
+              {vacancies.map((vacancy: Vacancy) => (
+                <VacancyCard key={vacancy.id} vacancy={vacancy} organization={organization} />
+              ))}
+            </div>
+          ) : (
+            <ErrorMessage
+              text="There is no vacancies found!"
+              desc="try something else"
+            />
+          )}
+        </div>
       )}
       <div className="w-full flex justify-center items-center">
         <div className="flex gap-5 justify-center items-center">
@@ -119,7 +130,7 @@ export default function EmpSearchEngine({
               page >= meta.last_page && "opacity-50"
             } border-gray-300 border text-gray-800 py-2 px-4 rounded-full cursor-pointer hover:text-white hover:bg-violet-600 hover:border-violet-600 transition-all`}
             disabled={page >= meta.last_page}
-            onClick={() => setPage(page - 1)}
+            onClick={() => setPage(page + 1)}
           >
             Next
           </button>

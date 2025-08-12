@@ -1,8 +1,14 @@
-import { Vacancy } from "@/app/types/User";
+import { Organization, Vacancy } from "@/app/types/User";
 import { Camera, Eye } from "lucide-react";
 import Link from "next/link";
 
-export default function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
+export default function VacancyCard({
+  vacancy,
+  organization,
+}: {
+  vacancy: Vacancy;
+  organization: Organization;
+}) {
   return (
     <div
       className="rounded-xl border border-gray-200 shadow-md flex flex-col"
@@ -49,7 +55,7 @@ export default function VacancyCard({ vacancy }: { vacancy: Vacancy }) {
       </div>
       <div className="p-5 space-y-1 border-b border-gray-200 w-full flex items-center">
         <Link
-          href={`/panel/vacancies/${vacancy.id}`}
+          href={`/org/${organization.unique_name}/workers/employment/${vacancy.id}`}
           className="flex gap-2 items-center bg-violet-600 text-white py-2 px-4 rounded-lg w-full justify-center"
         >
           <Eye /> See details
