@@ -52,3 +52,16 @@ export const origins = [
     name: "toshkent",
   },
 ];
+
+export const workerRoles = [
+  {
+    id: 1,
+    name: "receptionist",
+    include_types: false,
+  },
+  {
+    id: 2,
+    name: "doctor",
+    include_types: true,
+  },
+];

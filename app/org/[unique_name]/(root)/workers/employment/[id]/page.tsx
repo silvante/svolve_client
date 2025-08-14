@@ -7,6 +7,7 @@ import { Camera } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import BackBtn from "@/app/(global_components)/BackBtn";
+import HireingForm from "./HireingForm";
 
 export default function VacancyDetailsPage() {
   const router = useRouter();
@@ -89,6 +90,10 @@ export default function VacancyDetailsPage() {
             </p>
           </div>
         </div>
+        <div className="w-full flex justify-center items-center">
+          <Heading text="Want to hire?" />
+        </div>
+        <HireingForm vacancy={vacancy} />
       </div>
     );
   }
