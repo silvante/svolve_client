@@ -58,10 +58,13 @@ export const workerRoles = [
     id: 1,
     name: "receptionist",
     include_types: false,
+    terms:
+      "Receptionist will have access to your WorkPanel but can not commit clients, they will only register and records clients, they can not watch statitics and monthly fee",
   },
   {
     id: 2,
     name: "doctor",
     include_types: true,
+    terms: "Doctor can commit clients with types that you attached to them, also they will only recieve clients with types that attached to them, Just like receptionists they will only have access to WorkPanel nothing more.I"
   },
 ];
