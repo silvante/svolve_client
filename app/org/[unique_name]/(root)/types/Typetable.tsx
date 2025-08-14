@@ -32,7 +32,7 @@ export default function TypeTable() {
         dispatch(updateTypes(types));
       }
     } catch (error) {
-      console.error("Error fetching organizations:", error);
+      console.error("Error fetching types:", error);
     }
   }
 
