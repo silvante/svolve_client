@@ -73,3 +73,18 @@ export interface Vacancy {
   user: User;
   created_at: Date;
 }
+
+export interface Worker {
+  id: number;
+  worker_id: number;
+  worker: User;
+  role: string;
+  attached_types: WorkerAttachedTypes[];
+  created_at: Date;
+}
+
+export interface WorkerAttachedTypes {
+  id: number;
+  type: Type;
+  type_id: number;
+}

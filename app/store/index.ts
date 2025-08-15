@@ -6,6 +6,7 @@ import AsideSlice from "./slices/asideSlice";
 import TypesSlice from "./slices/typesSlice";
 import ClientSlice from "./slices/clientSlice";
 import vacancySlice from "./slices/vacancySlice";
+import WorkerSlice from "./slices/workerSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     types: TypesSlice,
     client: ClientSlice,
     vacancy: vacancySlice,
+    worker: WorkerSlice,
   },
 });
 
