@@ -10,6 +10,30 @@ const workerService = {
       throw error;
     }
   },
+
+  getById: async (org_id: number, id: number) => {
+    try {
+      return await api.get(apiEndpoints.getWorkerById(org_id, id));
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  getAll: async (org_id: number) => {
+    try {
+      return await api.get(apiEndpoints.getAllWorkers(org_id));
+    } catch (error) {
+      throw error;
+    }
+  },
+
+  delete: async (org_id: number, id: number) => {
+    try {
+      return await api.delete(apiEndpoints.deleteWorker(org_id, id));
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default workerService;

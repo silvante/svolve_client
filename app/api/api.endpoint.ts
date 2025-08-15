@@ -51,6 +51,9 @@ const apiEndpoints = {
 
   // workers
   hireWorker: (org_id: number, vacancy_id: number) => `/organizations/${org_id}/workers/${vacancy_id}/hire`,
+  getAllWorkers: (org_id: number) => `/organizations/${org_id}/workers`,
+  getWorkerById: (org_id: number, id: number) => `/organizations/${org_id}/workers/${id}`,
+  deleteWorker: (org_id: number, id: number) => `/organizations/${org_id}/workers/${id}/delete`,
 };
 
 export default apiEndpoints;
