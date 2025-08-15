@@ -13,7 +13,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, PenBox, Trash } from "lucide-react";
+import { Menu, PenBox, ShieldAlert, Trash } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function TypeTable() {
   const [error, setError] = useState("");
@@ -72,9 +77,11 @@ export default function TypeTable() {
         {types && types.length > 0 ? (
           <div className="space-y-5">
             {error !== "" && (
-              <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-                {error}
-              </p>
+              <Alert variant="destructive">
+                <ShieldAlert />
+                <AlertTitle>Warning</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
             )}
             {isLoading && (
               <div className="flex gap-2 items-center">

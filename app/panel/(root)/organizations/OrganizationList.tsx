@@ -14,7 +14,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 import Image from "next/image";
+import { ShieldAlert } from "lucide-react";
 
 export default function OrganizationList() {
   const [error, setError] = useState("");
@@ -24,7 +30,7 @@ export default function OrganizationList() {
   const { organizations, loading } = useSelector(
     (state: any) => state.organizations
   );
-  
+
   const dispatch = useDispatch();
   async function getOrganizations() {
     try {
@@ -74,9 +80,11 @@ export default function OrganizationList() {
     return (
       <div className="space-y-5">
         {error !== "" && (
-          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-            {error}
-          </p>
+          <Alert variant="destructive">
+            <ShieldAlert />
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         )}
         {success !== "" && (
           <p className="text-green-600 bg-green-600/10 rounded-xl px-4 py-2">

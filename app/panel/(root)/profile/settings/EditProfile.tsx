@@ -4,10 +4,15 @@ import uploadService from "@/app/api/services/uploadsService";
 import userService from "@/app/api/services/userService";
 import { updateUser } from "@/app/store/slices/userSlice";
 import { User } from "@/app/types/User";
-import { FileImage } from "lucide-react";
+import { FileImage, ShieldAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function EditProfile() {
   const { currentUser } = useSelector((state: any) => state.user);
@@ -111,9 +116,11 @@ export default function EditProfile() {
       <Heading text="Update you profile" />
       <form className="space-y-5" onSubmit={HandleUpdateProfile}>
         {error !== "" && (
-          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-            {error}
-          </p>
+          <Alert variant="destructive">
+            <ShieldAlert />
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         )}
 
         {/* logo */}

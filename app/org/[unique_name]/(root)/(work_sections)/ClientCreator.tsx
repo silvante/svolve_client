@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "lucide-react";
+import { Check, ChevronsUpDown, ShieldAlert } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,11 @@ import { Client, Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { pushClient, setLoading } from "@/app/store/slices/clientSlice";
 import clientService from "@/app/api/services/clientService";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function ClientCreator() {
   const [open, setOpen] = useState(false);
@@ -121,9 +126,11 @@ export default function ClientCreator() {
         </kbd>
       </div>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
       <form className="w-full" onSubmit={HandleCreateClient}>
         <div className="grid grid-cols-3 gap-5">

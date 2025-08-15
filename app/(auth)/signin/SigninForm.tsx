@@ -5,6 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { BeatLoader } from "react-spinners";
+import { ShieldAlert } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function SigninForm() {
   const router = useRouter();
@@ -43,9 +49,11 @@ export default function SigninForm() {
   return (
     <form className="text_color space-y-3" onSubmit={handleLogin}>
       {errorMessage !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {errorMessage}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{errorMessage}</AlertDescription>
+        </Alert>
       )}
       <div className="flex flex-col space-x-0.5">
         <label htmlFor="email">Email</label>

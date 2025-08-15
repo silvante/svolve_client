@@ -13,8 +13,13 @@ import { Vacancy } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import vacancyService from "@/app/api/services/vacancyService";
 import { origins } from "@/app/global/data";
-import { UserCircle } from "lucide-react";
+import { ShieldAlert, UserCircle } from "lucide-react";
 import { pushVacancy, setLoading } from "@/app/store/slices/vacancySlice";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function NewVacancyForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -79,9 +84,11 @@ export default function NewVacancyForm() {
   return (
     <form className="space-y-5" onSubmit={HandleCreateOrg}>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
 
       {/* account */}

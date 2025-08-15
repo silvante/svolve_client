@@ -4,7 +4,7 @@ import { workerRoles } from "@/app/global/data";
 import { Type, Vacancy } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { MailWarning, Terminal, X } from "lucide-react";
+import { MailWarning, ShieldAlert, Terminal, X } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import typeService from "@/app/api/services/typeService";
@@ -132,9 +132,11 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
           <AlertDescription>{currentRole.terms}</AlertDescription>
         </Alert>
         {error !== "" && (
-          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-            {error}
-          </p>
+          <Alert variant="destructive">
+            <ShieldAlert />
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         )}
         <div className="space-y-2 flex flex-col">
           <label htmlFor="role">Worker role*</label>

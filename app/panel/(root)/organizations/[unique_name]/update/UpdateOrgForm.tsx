@@ -1,5 +1,5 @@
 "use client";
-import { FileImage, Trash2 } from "lucide-react";
+import { FileImage, ShieldAlert, Trash2 } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,11 @@ import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 import uploadService from "@/app/api/services/uploadsService";
 import { origins } from "@/app/global/data";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function UpdatezrganisationForm({
   organization,
@@ -147,9 +152,11 @@ export default function UpdatezrganisationForm({
   return (
     <form className="space-y-5" onSubmit={HandleUpdateOrg}>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
       {/* name */}
       <div className="space-y-1">

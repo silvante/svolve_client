@@ -7,7 +7,7 @@ import {
   InputOTPGroup,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
-import { FileImage, Trash2, UserCircle } from "lucide-react";
+import { FileImage, ShieldAlert, Trash2, UserCircle } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,6 +19,11 @@ import { BannerData, Organization } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import uploadService from "@/app/api/services/uploadsService";
 import { origins } from "@/app/global/data";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function NewOrganizationForm() {
   const { currentUser } = useSelector((state: any) => state.user);
@@ -153,9 +158,11 @@ export default function NewOrganizationForm() {
   return (
     <form className="space-y-5" onSubmit={HandleCreateOrg}>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
 
       {/* account */}

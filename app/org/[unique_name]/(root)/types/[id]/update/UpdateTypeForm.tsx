@@ -6,6 +6,12 @@ import { useParams, useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 import typeService from "@/app/api/services/typeService";
 import { replaceType } from "@/app/store/slices/typesSlice";
+import { ShieldAlert } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function UpdateTypeForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -61,9 +67,11 @@ export default function UpdateTypeForm() {
   return (
     <form className="space-y-5" onSubmit={HandleUpdateType}>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
       {/* name */}
       <div className="space-y-1">

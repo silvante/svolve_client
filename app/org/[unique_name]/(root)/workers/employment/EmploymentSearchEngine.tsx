@@ -6,6 +6,12 @@ import { useEffect, useState } from "react";
 import VacancyCard from "./VacancyCard";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { HashLoader } from "react-spinners";
+import { ShieldAlert } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function EmpSearchEngine({
   organization,
@@ -56,9 +62,11 @@ export default function EmpSearchEngine({
     <div className="space-y-8">
       <div className="p-5 bg-white special_shadowing rounded-2xl space-y-5">
         {error !== "" && (
-          <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-            {error}
-          </p>
+          <Alert variant="destructive">
+            <ShieldAlert />
+            <AlertTitle>Warning</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
         )}
         <form className="flex w-full gap-5" onSubmit={HandleSearch}>
           <select

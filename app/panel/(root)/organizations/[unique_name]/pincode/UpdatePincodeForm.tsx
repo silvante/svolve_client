@@ -12,6 +12,12 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { ShieldAlert } from "lucide-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert";
 
 export default function UpdatePincodeForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -69,9 +75,11 @@ export default function UpdatePincodeForm() {
   return (
     <form className="space-y-5" onSubmit={HandleUpdateOrg}>
       {error !== "" && (
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2">
-          {error}
-        </p>
+        <Alert variant="destructive">
+          <ShieldAlert />
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
       )}
       {/* old pincode */}
       <div className="space-y-1">
