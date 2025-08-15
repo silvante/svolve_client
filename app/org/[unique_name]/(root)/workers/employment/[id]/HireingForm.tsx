@@ -8,7 +8,9 @@ import { MailWarning, ShieldAlert, Terminal, X } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import typeService from "@/app/api/services/typeService";
-import { deleteType, updateTypes } from "@/app/store/slices/typesSlice";
+import { updateTypes } from "@/app/store/slices/typesSlice";
+import { Worker } from "@/app/types/User";
+
 import {
   Command,
   CommandEmpty,
@@ -27,6 +29,8 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import workerService from "@/app/api/services/workerService";
+import { useRouter } from "next/navigation";
+import { pushWorker, setLoading } from "@/app/store/slices/workerSlice";
 
 export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   const [error, setError] = useState("");
@@ -34,6 +38,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   const [currentRole, setCurrentRole] = useState(workerRoles[0]);
   const [open, setOpen] = useState(false);
   const [acception, setAcception] = useState(false);
+  const router = useRouter();
 
   // from redux
   const { organization } = useSelector((state: any) => state.validator);
@@ -111,7 +116,10 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
         vacancy.id,
         data
       );
-      console.log(res);
+      const res_worker: Worker = res;
+      dispatch(setLoading());
+      dispatch(pushWorker(res_worker));
+      router.push(`/org/${organization.unique_name}/workers`);
     } catch (error: any) {
       if (!error.response) {
         setError("Make sure that you filled all fields correct!");
