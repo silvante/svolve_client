@@ -1,4 +1,4 @@
 export type HireWorkerData = {
   role: string;
-  attached_types: [number];
+  attached_types: number[];
 };

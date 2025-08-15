@@ -26,6 +26,7 @@ import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import workerService from "@/app/api/services/workerService";
 
 export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   const [error, setError] = useState("");
@@ -95,10 +96,36 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
     }, []);
   }
 
+  async function HandleHiring(e: any) {
+    e.preventDefault();
+    try {
+      const data = {
+        role,
+        attached_types,
+      };
+      if (!acception) {
+        return setError("Please read terms and accept them to continue!");
+      }
+      const res: any = await workerService.hire(
+        organization.id,
+        vacancy.id,
+        data
+      );
+      console.log(res);
+    } catch (error: any) {
+      if (!error.response) {
+        setError("Make sure that you filled all fields correct!");
+      } else {
+        setError(error.response.data.message);
+      }
+      setIsLoading(false);
+    }
+  }
+
   return (
     <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
       <Heading text="Fill the form!" />
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={HandleHiring}>
         <Alert variant="default">
           <MailWarning />
           <AlertTitle>Terms of "{currentRole.name}" role!</AlertTitle>

@@ -50,7 +50,7 @@ const apiEndpoints = {
   searchVacancy: (origin: string, q: string, page: number, limit: number) => `/vacancy/search?origin=${origin}&q=${q}&page=${page}&limit=${limit}`,
 
   // workers
-  hireWorker: (org_id: number, vacancy_id: number) => `/organizations/${org_id}/vacancy/${vacancy_id}/hire`,
+  hireWorker: (org_id: number, vacancy_id: number) => `/organizations/${org_id}/workers/${vacancy_id}/hire`,
 };
 
 export default apiEndpoints;
