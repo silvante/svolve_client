@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Eye, Menu, PenBox } from "lucide-react";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
+import OverallWorkers from "./OverallWorkers";
+import Heading from "@/app/(global_components)/Heading";
 
 export default function WorkersList() {
   const [error, setError] = useState("");
@@ -54,6 +56,8 @@ export default function WorkersList() {
       <>
         {workers && workers.length > 0 ? (
           <div className="space-y-5">
+            <OverallWorkers workers={workers} />
+            <h3 className="text-xl font-semibold text_color">List of workers</h3>
             {error !== "" && (
               <Alert variant="destructive">
                 <ShieldAlert />
