@@ -8,6 +8,15 @@ import Spinner from "@/app/(global_components)/Spinner";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShieldAlert } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Eye, Menu, PenBox } from "lucide-react";
+import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 
 export default function WorkersList() {
   const [error, setError] = useState("");
@@ -22,7 +31,6 @@ export default function WorkersList() {
         return;
       } else {
         const response: any = await workerService.getAll(organization.id);
-        console.log(response);
         const res_workers: Worker[] = response;
         dispatch(updateWorkers(res_workers));
       }
@@ -59,9 +67,54 @@ export default function WorkersList() {
                 <Spinner />
               </div>
             )}
-            <div>
+            <div className="grid w-full gap-5 grid-cols-4">
               {workers.map((worker: Worker) => {
-                return <div key={worker.id}></div>;
+                return (
+                  <div
+                    key={worker.id}
+                    className="flex flex-col border border-gray-300 rounded-xl bg-white overflow-hidden shadow-md"
+                  >
+                    <div className="p-5 border-b border-gray-300 flex flex-col justify-center items-center gap-4">
+                      <Avatar className="w-20 h-20">
+                        <AvatarImage src={worker.worker.avatar} />
+                        <AvatarFallback>
+                          {worker.worker.name.split("")[0].toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="text-center w-full">
+                        <h3 className="w-full truncate text-center text-lg text_color font-semibold">
+                          {worker.worker.name}
+                        </h3>
+                        <p className="w-full truncate text-center text-sm text-gray-700">
+                          @{worker.worker.username}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-3 flex justify-between items-center">
+                      <p className="text_color font-semibold">{worker.role}</p>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text_color font-semibold rounded-md hover:bg-violet-700/20 cursor-pointer transition-colors">
+                          <Menu />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-56">
+                          <OrgLink href={`/workers/${worker.id}/`} className="">
+                            <DropdownMenuItem className="cursor-pointer">
+                              <Eye /> View Details
+                            </DropdownMenuItem>
+                          </OrgLink>
+                          <OrgLink
+                            href={`/workers/${worker.id}/update`}
+                            className=""
+                          >
+                            <DropdownMenuItem className="cursor-pointer">
+                              <PenBox /> Update
+                            </DropdownMenuItem>
+                          </OrgLink>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </div>
+                  </div>
+                );
               })}
             </div>
           </div>
