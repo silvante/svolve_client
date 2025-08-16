@@ -14,11 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Menu, PenBox, ShieldAlert, Trash } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function TypeTable() {
   const [error, setError] = useState("");
@@ -36,8 +32,8 @@ export default function TypeTable() {
         const types: Type[] = response;
         dispatch(updateTypes(types));
       }
-    } catch (error) {
-      console.error("Error fetching types:", error);
+    } catch (error: any) {
+      setError("Error fetching types:" + error.message);
     }
   }
 
