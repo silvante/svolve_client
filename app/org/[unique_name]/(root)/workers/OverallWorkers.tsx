@@ -38,7 +38,7 @@ export default function OverallWorkers({ workers }: { workers: Worker[] }) {
                 <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
                   {g.workers.map((worker: any) => {
                     return (
-                      <Avatar>
+                      <Avatar key={worker.id}>
                         <AvatarImage src={worker.avatar} alt={worker.name} />
                         <AvatarFallback>
                           {worker.name.split("")[0].toUpperCase()}
