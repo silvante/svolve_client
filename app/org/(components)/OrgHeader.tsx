@@ -8,7 +8,7 @@ import OrgLogo from "./OrgLogo";
 export default function OrgHeader() {
   const { organization } = useSelector((state: any) => state.validator);
   return (
-    <header className="w-full bg-white p-3 border-b border-gray-200 flex justify-between items-center fixed top-0 left-0 z-50">
+    <header className="w-full bg-white p-3 border-b border-gray-300 flex justify-between items-center fixed top-0 left-0 z-50">
       <nav className="flex items-center justify-between w-full">
         <div className="flex items-center gap-4">
           <CollapseBtn />
