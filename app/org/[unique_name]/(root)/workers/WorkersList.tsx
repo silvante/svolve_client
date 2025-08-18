@@ -117,7 +117,7 @@ export default function WorkersList() {
                             </ViewWorkerDetails>
                           </DropdownMenuItem>
                           <OrgLink
-                            href={`/workers/${worker.id}/settings`}
+                            href={`/workers/${worker.id}`}
                             className=""
                           >
                             <DropdownMenuItem className="cursor-pointer">
