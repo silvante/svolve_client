@@ -1,5 +1,5 @@
 "use client";
-import { Worker } from "@/app/types/User";
+import { Type, Worker } from "@/app/types/User";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -12,6 +12,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import EmptyList from "@/app/lottie/EmptyList";
+import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
+import { Settings } from "lucide-react";
 
 type Props = {
   worker: Worker;
@@ -44,7 +47,9 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
           </div>
         </div>
         <div className="w-full px-5 flex flex-col space-y-2">
-          <SheetDescription>Other information</SheetDescription>
+          <SheetDescription className="font-semibold text-black text-md">
+            Other information
+          </SheetDescription>
           <div className="space-y-1 w-full">
             <p className="text_color font-semibold w-full truncate">
               <span className="font-medium">phone number:</span>{" "}
@@ -54,25 +59,67 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
               <span className="font-medium">username:</span> @
               {worker.worker.username}
             </p>
+            {worker.role === "doctor" && (
+              <p className="text_color font-semibold w-full truncate">
+                <span className="font-medium">in total: </span>
+                {worker.attached_types.length} types
+              </p>
+            )}
           </div>
         </div>
         <div className="w-full px-5">
-          <SheetDescription>Attached types</SheetDescription>
+          <SheetDescription className="font-semibold text-black text-md">
+            Attached types
+          </SheetDescription>
         </div>
         <div className="w-full px-5 flex-1 overflow-scroll border-b border-gray-300">
-            {worker.role === "doctor" ? (
-                <div className="">apk</div>
-            ): (
-                <div>
-                    
-                </div>
-            )}
+          {worker.role === "doctor" ? (
+            <div className="w-full space-y-2">
+              {worker.attached_types.map((at: any) => {
+                return (
+                  <div
+                    key={at.id}
+                    className="w-full p-4 rounded-xl border border-gray-300"
+                  >
+                    {" "}
+                    <p className="font-semibold text_color text-lg">
+                      {at.type.name}
+                    </p>
+                    <p className="text_color font-semibold">
+                      <span className="font-medium">desc: </span>
+                      {at.type.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="w-full h-full flex justify-center items-center flex-col">
+              <EmptyList width={32} />
+              <div className="w-full text-center">
+                <p className="text_color text-lg font-semibold w-full truncate">
+                  Receptionists have no types attached
+                </p>
+                <p className="text_color w-full truncate">Only doctors have</p>
+              </div>
+            </div>
+          )}
         </div>
         <SheetFooter>
-          <Button type="submit">Save changes</Button>
-          <SheetClose asChild>
-            <Button variant="outline">Close</Button>
-          </SheetClose>
+          <div className="flex justify-between gap-3">
+            <OrgLink
+              href={`/workers/${worker.id}/settings`}
+              className="flex gap-2 items-center justify-center flex-1 border border-gray-300 rounded-lg hover:text-white hover:bg-violet-600 hover:border-violet-600"
+            >
+              <Settings /> <p>Settings</p>
+            </OrgLink>
+            <SheetClose
+              asChild
+              className="flex-1 bg-gray-900 text-white border-none hover:bg-gray-950 hover:text-white cursor-pointer"
+            >
+              <Button variant="outline">Close</Button>
+            </SheetClose>
+          </div>
         </SheetFooter>
       </SheetContent>
     </Sheet>

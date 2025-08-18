@@ -7,7 +7,7 @@ import { Worker } from "@/app/types/User";
 import Spinner from "@/app/(global_components)/Spinner";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ShieldAlert } from "lucide-react";
+import { Settings, ShieldAlert } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -117,11 +117,11 @@ export default function WorkersList() {
                             </ViewWorkerDetails>
                           </DropdownMenuItem>
                           <OrgLink
-                            href={`/workers/${worker.id}/update`}
+                            href={`/workers/${worker.id}/settings`}
                             className=""
                           >
                             <DropdownMenuItem className="cursor-pointer">
-                              <PenBox /> Update
+                              <Settings /> Settings
                             </DropdownMenuItem>
                           </OrgLink>
                         </DropdownMenuContent>
