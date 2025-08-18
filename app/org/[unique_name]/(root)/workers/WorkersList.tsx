@@ -19,6 +19,7 @@ import { Eye, Menu, PenBox } from "lucide-react";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 import OverallWorkers from "./OverallWorkers";
 import Heading from "@/app/(global_components)/Heading";
+import ViewWorkerDetails from "./(components)/ViewWrokerDetails";
 
 export default function WorkersList() {
   const [error, setError] = useState("");
@@ -57,7 +58,9 @@ export default function WorkersList() {
         {workers && workers.length > 0 ? (
           <div className="space-y-5">
             <OverallWorkers workers={workers} />
-            <h3 className="text-xl font-semibold text_color">List of workers</h3>
+            <h3 className="text-xl font-semibold text_color">
+              List of workers
+            </h3>
             {error !== "" && (
               <Alert variant="destructive">
                 <ShieldAlert />
@@ -101,11 +104,18 @@ export default function WorkersList() {
                           <Menu />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end" className="w-56">
-                          <OrgLink href={`/workers/${worker.id}/`} className="">
-                            <DropdownMenuItem className="cursor-pointer">
-                              <Eye /> View Details
-                            </DropdownMenuItem>
-                          </OrgLink>
+                          <DropdownMenuItem
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                            }}
+                          >
+                            <ViewWorkerDetails worker={worker}>
+                              <div className="cursor-pointer rounded-lg w-full flex gap-2">
+                                <Eye /> <p>View details</p>
+                              </div>
+                            </ViewWorkerDetails>
+                          </DropdownMenuItem>
                           <OrgLink
                             href={`/workers/${worker.id}/update`}
                             className=""
