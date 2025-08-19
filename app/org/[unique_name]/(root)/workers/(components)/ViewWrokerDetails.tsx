@@ -107,12 +107,14 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
         </div>
         <SheetFooter>
           <div className="flex justify-between gap-3">
-            <OrgLink
-              href={`/workers/${worker.id}`}
+            <SheetClose
+              asChild
               className="flex gap-2 items-center justify-center flex-1 border border-gray-300 rounded-lg hover:text-white hover:bg-violet-600 hover:border-violet-600"
             >
-              <Settings /> <p>Settings</p>
-            </OrgLink>
+              <OrgLink href={`/workers/${worker.id}`} className="">
+                <Settings /> <p>Settings</p>
+              </OrgLink>
+            </SheetClose>
             <SheetClose
               asChild
               className="flex-1 bg-gray-900 text-white border-none hover:bg-gray-950 hover:text-white cursor-pointer"

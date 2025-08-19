@@ -254,7 +254,7 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
             type="submit"
             className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
           >
-            {!isLoading ? `Hire as ${currentRole.name}` : "hiring..."}
+            {!isLoading ? `Update as ${currentRole.name}` : "updating..."}
           </button>
         </div>
       </form>
