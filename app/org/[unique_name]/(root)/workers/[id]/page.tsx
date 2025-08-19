@@ -1,16 +1,56 @@
 "use client";
 import BackBtn from "@/app/(global_components)/BackBtn";
 import Heading from "@/app/(global_components)/Heading";
+import Spinner from "@/app/(global_components)/Spinner";
+import workerService from "@/app/api/services/workerService";
+import { Worker } from "@/app/types/User";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function WorkerSettings() {
+  const { workers } = useSelector((state: any) => state.worker);
   const { organization } = useSelector((state: any) => state.validator);
-  return (
-    <div>
-      <div className="flex justify-between items-center">
-        <Heading text="Worker settings" />
-        <BackBtn href={`/org/${organization.unique_name}/workers`} />
+  const router = useRouter();
+  const params = useParams();
+  const { id } = params;
+  const [worker, setWorker] = useState<Worker | null>(null);
+
+  async function GetWorker(id: number) {
+    try {
+      const res: any = await workerService.getById(organization.id, id);
+      const res_worker: Worker = res;
+      setWorker(res_worker);
+    } catch (error) {
+      console.log(error);
+      router.push(`/org/${organization.unique_name}/workers`);
+    }
+  }
+
+  if (workers) {
+    useEffect(() => {
+      setWorker(workers.find((worker: Worker) => worker.id == Number(id)));
+    }, []);
+  } else {
+    useEffect(() => {
+      GetWorker(Number(id));
+    }, []);
+  }
+
+  if (!organization) {
+    return (
+      <div className="w-full h-80 flex justify-center items-center">
+        <Spinner />
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div className="flex justify-between items-center">
+          <Heading text="Worker settings" />
+          <BackBtn href={`/org/${organization.unique_name}/workers`} />
+        </div>
+      </div>
+    );
+  }
 }

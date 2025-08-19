@@ -29,7 +29,7 @@ export default function UpdateOrganizationPincode() {
     }
   }
 
-  if (organizations !== null) {
+  if (organizations) {
     useEffect(() => {
       setOrganization(
         organizations.find((org: Organization) => org.id == Number(id))
