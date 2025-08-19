@@ -8,6 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import WorkerAccount from "./WorkerAccount";
+import UpdateWorkerForm from "./UpdateWorkerSection";
 
 export default function WorkerSettings() {
   const { workers } = useSelector((state: any) => state.worker);
@@ -53,6 +54,8 @@ export default function WorkerSettings() {
         </div>
         <h2 className="text_color font-semibold text-xl">Account</h2>
         <WorkerAccount worker={worker} />
+        <h2 className="text_color font-semibold text-xl">Update worker</h2>
+        <UpdateWorkerForm worker={worker} />
       </div>
     );
   }
