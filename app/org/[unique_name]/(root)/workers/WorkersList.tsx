@@ -15,10 +15,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Eye, Menu, PenBox } from "lucide-react";
+import { Eye, Menu } from "lucide-react";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 import OverallWorkers from "./OverallWorkers";
-import Heading from "@/app/(global_components)/Heading";
 import ViewWorkerDetails from "./(components)/ViewWrokerDetails";
 
 export default function WorkersList() {
@@ -116,10 +115,7 @@ export default function WorkersList() {
                               </div>
                             </ViewWorkerDetails>
                           </DropdownMenuItem>
-                          <OrgLink
-                            href={`/workers/${worker.id}`}
-                            className=""
-                          >
+                          <OrgLink href={`/workers/${worker.id}`} className="">
                             <DropdownMenuItem className="cursor-pointer">
                               <Settings /> Settings
                             </DropdownMenuItem>

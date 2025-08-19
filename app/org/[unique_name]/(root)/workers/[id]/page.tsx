@@ -7,6 +7,7 @@ import { Worker } from "@/app/types/User";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import WorkerAccount from "./WorkerAccount";
 
 export default function WorkerSettings() {
   const { workers } = useSelector((state: any) => state.worker);
@@ -37,7 +38,7 @@ export default function WorkerSettings() {
     }, []);
   }
 
-  if (!organization) {
+  if (!worker) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
         <Spinner />
@@ -45,11 +46,13 @@ export default function WorkerSettings() {
     );
   } else {
     return (
-      <div>
+      <div className="space-y-5">
         <div className="flex justify-between items-center">
           <Heading text="Worker settings" />
           <BackBtn href={`/org/${organization.unique_name}/workers`} />
         </div>
+        <h2 className="text_color font-semibold text-xl">Account</h2>
+        <WorkerAccount worker={worker} />
       </div>
     );
   }
