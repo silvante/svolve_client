@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { replaceOrganization } from "@/app/store/slices/organizationSlice";
 import { Organization } from "@/app/types/User";
-import { useParams, useRouter } from "next/navigation";
-import Spinner from "@/app/(global_components)/Spinner";
+import { useRouter } from "next/navigation";
 import {
   InputOTP,
   InputOTPGroup,
@@ -13,30 +12,14 @@ import {
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { ShieldAlert } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-export default function UpdatePincodeForm() {
+export default function UpdatePincodeForm({
+  organization,
+}: {
+  organization: Organization;
+}) {
   const [isLoading, setIsLoading] = useState(false);
-  const { unique_name } = useParams();
-  const { organizations, loading } = useSelector(
-    (state: any) => state.organizations
-  );
-
-  if (loading) {
-    return (
-      <div className="w-full py-10 flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }
-
-  const org = organizations.find(
-    (org: Organization) => org.unique_name === String(unique_name)
-  );
 
   const [error, setError] = useState("");
   const [oldPincode, setOldPincode] = useState("");
@@ -55,11 +38,11 @@ export default function UpdatePincodeForm() {
         pincode_confirmation: pincodeConfirmation,
       };
       const res: any = await organizationService.updatePincode(
-        org.unique_name,
+        organization.unique_name,
         formData
       );
-      const organization: Organization = res;
-      dispatch(replaceOrganization(organization));
+      const res_organization: Organization = res;
+      dispatch(replaceOrganization(res_organization));
       router.push("/panel/organizations");
       setIsLoading(false);
     } catch (error: any) {

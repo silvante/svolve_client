@@ -130,8 +130,8 @@ export default function WorkersList() {
           </div>
         ) : (
           <ErrorMessage
-            text="There is no Types now"
-            desc="You can create one now"
+            text="There is no workers now"
+            desc="You can hire one now"
           />
         )}
       </>

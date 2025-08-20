@@ -14,8 +14,6 @@ export default function UpdateOrganizationPincode() {
 
   const { organizations } = useSelector((state: any) => state.organizations);
   const router = useRouter();
-  const params = useParams();
-  const { id } = params;
   const [organization, setOrganization] = useState<Organization | null>(null);
 
   async function GetOrganization(unique_name: string) {
@@ -29,15 +27,19 @@ export default function UpdateOrganizationPincode() {
     }
   }
 
-  if (organizations) {
-    useEffect(() => {
-      setOrganization(
-        organizations.find((org: Organization) => org.id == Number(id))
-      );
-    }, []);
-  } else {
+  console.log("orgs:");
+  console.log(organizations);
+
+  if (!organizations) {
     useEffect(() => {
       GetOrganization(String(unique_name));
+    }, []);
+  } else {
+    const org = organizations.find(
+      (org: Organization) => org.unique_name == String(unique_name)
+    );
+    useEffect(() => {
+      setOrganization(org);
     }, []);
   }
 
