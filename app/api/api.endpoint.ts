@@ -54,6 +54,7 @@ const apiEndpoints = {
   getAllWorkers: (org_id: number) => `/organizations/${org_id}/workers`,
   getWorkerById: (org_id: number, id: number) => `/organizations/${org_id}/workers/${id}`,
   deleteWorker: (org_id: number, id: number) => `/organizations/${org_id}/workers/${id}/delete`,
+  updateWorker: (org_id: number, id: number) => `/organizations/${org_id}/workers/${id}/update`,
 };
 
 export default apiEndpoints;

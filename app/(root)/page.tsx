@@ -1,5 +1,4 @@
 import { Borel, Roboto } from "next/font/google";
-import Heading from "../(global_components)/Heading";
 import Hero from "../(global_components)/Hero";
 
 const boren = Borel({

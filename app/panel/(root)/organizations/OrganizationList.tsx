@@ -14,11 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Image from "next/image";
 import { ShieldAlert } from "lucide-react";
 
@@ -87,9 +83,13 @@ export default function OrganizationList() {
           </Alert>
         )}
         {success !== "" && (
-          <p className="text-green-600 bg-green-600/10 rounded-xl px-4 py-2">
-            {success}
-          </p>
+          <Alert variant="default" className="text-green-600">
+            <ShieldAlert />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription className="text-green-600/70">
+              {success}
+            </AlertDescription>
+          </Alert>
         )}
         {isLoading && (
           <div className="flex gap-2 items-center">
@@ -121,8 +121,8 @@ export default function OrganizationList() {
                 <div className="p-4 flex flex-col gap-1 items-start">
                   <h3 className="text-xl font-semibold">{organization.name}</h3>
                   <p className="text-sm text-gray-600">
-                    <span className="text-black">Uniquename: </span>
-                    @{organization.unique_name}
+                    <span className="text-black">Uniquename: </span>@
+                    {organization.unique_name}
                   </p>
                 </div>
               </Link>

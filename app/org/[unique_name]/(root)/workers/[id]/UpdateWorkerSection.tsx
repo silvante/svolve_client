@@ -28,9 +28,12 @@ import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import workerService from "@/app/api/services/workerService";
+import { replaceWorker } from "@/app/store/slices/workerSlice";
 
 export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const currentWorkerRole = workerRoles.find(
     (role) => role.name === worker.role
@@ -110,7 +113,22 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
   async function HandleUpdate(e: any) {
     e.preventDefault();
     try {
-      //   update Logic here
+      const form_data = {
+        role,
+        attached_types,
+      };
+      if (!acception) {
+        return setError("Please read terms and accept them to continue!");
+      }
+      const res: any = await workerService.update(
+        organization.id,
+        worker.id,
+        form_data
+      );
+      const res_worker: Worker = res;
+      dispatch(replaceWorker(res_worker));
+      setError("");
+      setSuccess(`Worker successfully update as ${res_worker.role}!`);
     } catch (error: any) {
       if (!error.response) {
         setError("Make sure that you filled all fields correct!");
@@ -125,11 +143,6 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
     <div className="w-full rounded-2xl p-8 space-y-5 bg-white shadow-md border border-gray-300">
       <Heading text="Fill the form!" />
       <form className="space-y-5" onSubmit={HandleUpdate}>
-        <Alert variant="default">
-          <MailWarning />
-          <AlertTitle>Terms of "{currentRole.name}" role!</AlertTitle>
-          <AlertDescription>{currentRole.terms}</AlertDescription>
-        </Alert>
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
@@ -137,6 +150,20 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
+        {success !== "" && (
+          <Alert variant="default" className="text-green-600">
+            <ShieldAlert />
+            <AlertTitle>Success</AlertTitle>
+            <AlertDescription className="text-green-600/70">
+              {success}
+            </AlertDescription>
+          </Alert>
+        )}
+        <Alert variant="default">
+          <MailWarning />
+          <AlertTitle>Terms of "{currentRole.name}" role!</AlertTitle>
+          <AlertDescription>{currentRole.terms}</AlertDescription>
+        </Alert>
         <div className="space-y-2 flex flex-col">
           <label htmlFor="role">Worker role*</label>
           <select
