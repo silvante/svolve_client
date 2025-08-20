@@ -152,7 +152,7 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
         )}
         {success !== "" && (
           <Alert variant="default" className="text-green-600">
-            <ShieldAlert />
+            <Check />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription className="text-green-600/70">
               {success}

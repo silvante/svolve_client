@@ -3,7 +3,7 @@ import Spinner from "@/app/(global_components)/Spinner";
 import organizationService from "@/app/api/services/organizationService";
 import { updateOrganizations } from "@/app/store/slices/organizationSlice";
 import { Organization } from "@/app/types/User";
-import { Eye, LockKeyhole, Menu, PenBox, Pin } from "lucide-react";
+import { Check, Eye, LockKeyhole, Menu, PenBox, Pin } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -84,7 +84,7 @@ export default function OrganizationList() {
         )}
         {success !== "" && (
           <Alert variant="default" className="text-green-600">
-            <ShieldAlert />
+            <Check />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription className="text-green-600/70">
               {success}
