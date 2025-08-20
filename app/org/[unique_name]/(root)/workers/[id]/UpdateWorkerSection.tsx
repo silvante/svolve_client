@@ -122,7 +122,7 @@ export default function UpdateWorkerForm({ worker }: { worker: Worker }) {
   }
 
   return (
-    <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
+    <div className="w-full rounded-2xl p-8 space-y-5 bg-white shadow-md border border-gray-300">
       <Heading text="Fill the form!" />
       <form className="space-y-5" onSubmit={HandleUpdate}>
         <Alert variant="default">

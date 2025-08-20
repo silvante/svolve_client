@@ -7,11 +7,7 @@ import VacancyCard from "./VacancyCard";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { HashLoader } from "react-spinners";
 import { ShieldAlert } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function EmpSearchEngine({
   organization,
@@ -60,7 +56,7 @@ export default function EmpSearchEngine({
 
   return (
     <div className="space-y-8">
-      <div className="p-5 bg-white special_shadowing rounded-2xl space-y-5">
+      <div className="p-5 bg-white border border-gray-300 shadow-md rounded-2xl space-y-5">
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
@@ -108,7 +104,11 @@ export default function EmpSearchEngine({
           {vacancies && vacancies.length > 0 ? (
             <div className="w-full grid grid-cols-3 gap-5">
               {vacancies.map((vacancy: Vacancy) => (
-                <VacancyCard key={vacancy.id} vacancy={vacancy} organization={organization} />
+                <VacancyCard
+                  key={vacancy.id}
+                  vacancy={vacancy}
+                  organization={organization}
+                />
               ))}
             </div>
           ) : (
