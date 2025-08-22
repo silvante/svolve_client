@@ -43,7 +43,7 @@ export default function VacancyDetailsPage() {
           <Heading text={`Vacancy - ${vacancy.id}`} />
           <BackBtn href={`/org/${unique_name}/workers/employment`} />
         </div>
-        <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
+        <div className="w-full border border-gray-300 shadow-md rounded-2xl p-8 space-y-5 bg-white">
           <Heading text="Account" />
           <div className="space-y-2">
             <div className="bg-gray-300 max-w-24 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
@@ -67,7 +67,7 @@ export default function VacancyDetailsPage() {
             </div>
           </div>
         </div>
-        <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
+        <div className="w-full border border-gray-300 shadow-md rounded-2xl p-8 space-y-5 bg-white">
           <Heading text="Info" />
           <div className="space-y-3 w-full">
             <p className="text_color font-semibold w-full truncate">
@@ -81,7 +81,7 @@ export default function VacancyDetailsPage() {
             </p>
           </div>
         </div>
-        <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
+        <div className="w-full border border-gray-300 shadow-md rounded-2xl p-8 space-y-5 bg-white">
           <Heading text="Contact" />
           <div className="space-y-3 w-full">
             <p className="text_color font-semibold w-full truncate">

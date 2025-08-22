@@ -101,14 +101,14 @@ export default function OrganizationList() {
           organizations.map((organization: Organization) => (
             <div
               key={organization.id}
-              className="bg-white shadow-xl rounded-md transition-colors border border-gray-200 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600"
+              className="bg-white shadow-md rounded-md transition-colors border border-gray-300 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600"
             >
               <Link
                 className=""
                 href={`/org/${organization.unique_name}/validation`}
               >
                 {organization.logo && (
-                  <div className="border-b border-gray-200 p-4 flex flex-col gap-3 items-start">
+                  <div className="border-b border-gray-300 p-4 flex flex-col gap-3 items-start">
                     <Image
                       src={organization.logo}
                       alt={organization.description}
@@ -126,7 +126,7 @@ export default function OrganizationList() {
                   </p>
                 </div>
               </Link>
-              <div className="border-t border-gray-200 p-4 flex justify-between items-center">
+              <div className="border-t border-gray-300 p-4 flex justify-between items-center">
                 <p className="text-sm text-gray-500">
                   <span className="text-black">created at:</span>{" "}
                   {new Date(organization.created_at).toLocaleDateString(

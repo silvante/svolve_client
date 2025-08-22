@@ -10,99 +10,122 @@ export default function ProfilePage() {
   console.log(currentUser);
 
   return (
-    <div>
+    <div className="w-full">
       <Heading text="Your profile" />
-      <div className="w-full py-10 flex items-center justify-center flex-col gap-10">
-        <div className="w-full grid grid-cols-2 gap-10">
-          <div className="rounded-xl special_shadowing flex gap-5 p-5 items-center justify-start">
+      <div className="w-full py-10 flex flex-col items-center justify-center gap-10">
+        <div className="w-full flex flex-col md:flex-row gap-8">
+          {/* Profile Card */}
+          <div className="flex flex-1 items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
             <Link
-              href={"/panel/profile/settings"}
-              className="bg-gray-300 max-w-28 w-full aspect-square rounded-full overflow-hidden border border-gray-400"
+              href="/panel/profile/settings"
+              className="bg-gray-300 w-28 h-28 rounded-full overflow-hidden border border-gray-400 flex items-center justify-center"
             >
               {currentUser.avatar ? (
                 <img
                   src={currentUser.avatar}
                   alt="Your avatar"
-                  className="w-full h-full aspect-square object-cover"
+                  className="w-full h-full object-cover"
                 />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  <Camera size={40} />
-                </div>
+                <Camera size={40} className="text-gray-500" />
               )}
             </Link>
-            <div className="text-start w-full">
-              <h2 className="text-3xl font-semibold text-gray-900 truncate w-full">
+
+            <div className="flex-1 text-start">
+              <h2
+                className="font-semibold text-gray-900 
+             text-2xl sm:text-3xl 
+             w-[250px] sm:w-auto 
+             overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
+              >
                 {currentUser.name}
               </h2>
-              <p className="ext-gray-950 truncate w-full">{currentUser.email}</p>
+
+              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-[250px]">
+                {currentUser.email}{" "}
+                sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+              </p>
+
               <Link
-                href={"/panel/profile/settings"}
-                className="text-violet-600 flex gap-2 items-center mt-5"
+                href="/panel/profile/settings"
+                className="mt-5 flex items-center gap-2 text-violet-600"
               >
                 Update Profile <Pen size={15} />
               </Link>
             </div>
           </div>
-          <div className="rounded-xl special_shadowing flex gap-5 p-5 items-center justify-start">
+
+          {/* Password Card */}
+          <div className="flex flex-1 items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
             <Link
-              href={"/panel/profile/settings"}
-              className="bg-gradient-to-tr from-violet-600 via-purple-500 to-pink-600 max-w-28 w-full aspect-square rounded-full overflow-hidden border border-gray-400 flex justify-center items-center text-white"
+              href="/panel/profile/settings"
+              className="flex items-center justify-center w-28 h-28 rounded-full border border-gray-400 bg-gradient-to-tr from-violet-600 via-purple-500 to-pink-600 text-white"
             >
               <KeyRound size={50} />
             </Link>
-            <div className="text-start w-full">
-              <h2 className="text-3xl font-semibold text-gray-900">Password</h2>
-              <p className="ext-gray-950">You password is secure!</p>
-              <p
-                className="text-violet-600 flex gap-2 items-center mt-5"
+            <div className="flex-1 text-start">
+              <h2
+                className="font-semibold text-gray-900 
+             text-2xl sm:text-3xl 
+             w-[250px] sm:w-auto 
+             overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
               >
+                Password
+              </h2>
+              <p className="text-gray-950">Your password is secure!</p>
+              <p className="mt-5 flex items-center gap-2 text-violet-600">
                 App is Passwordless <Lock size={15} />
               </p>
             </div>
           </div>
         </div>
-        <div className="p-8 flex-1 rounded-2xl special_shadowing w-full space-y-5">
-          <div className="space-y-2 border-b border-b-gray-300 pb-3">
-            <p className="text-lg text-gray-950 font-semibold">username:</p>
+
+        {/* Details Section */}
+        <div className="w-full rounded-2xl border border-gray-300 shadow-md p-8 space-y-6">
+          <div className="space-y-2 border-b border-gray-300 pb-3">
+            <p className="text-lg font-semibold text-gray-950">Username:</p>
             <p className="text-gray-950">
-              <span className="text-gray-700">svolve.uz/u/</span> @
+              <span className="text-gray-700">svolve.uz/u/</span>@
               {currentUser.username}
             </p>
           </div>
-          <div className="space-y-2 border-b border-b-gray-300 pb-3">
-            <p className="text-lg text-gray-950 font-semibold">bio:</p>
+
+          <div className="space-y-2 border-b border-gray-300 pb-3">
+            <p className="text-lg font-semibold text-gray-950">Bio:</p>
             {currentUser.bio ? (
               <p className="text-gray-900">{currentUser.bio}</p>
             ) : (
               <Link
-                href={"/panel/profile/settings"}
-                className="text-violet-600 flex gap-2 items-center"
+                href="/panel/profile/settings"
+                className="flex items-center gap-2 text-violet-600"
               >
                 You can add now <Pen size={15} />
               </Link>
             )}
           </div>
-          <div className="space-y-2 border-b border-b-gray-300 pb-3">
-            <p className="text-lg text-gray-950 font-semibold">contact:</p>
+
+          <div className="space-y-2 border-b border-gray-300 pb-3">
+            <p className="text-lg font-semibold text-gray-950">Contact:</p>
             {currentUser.contact ? (
               <p className="text-gray-900">{currentUser.contact}</p>
             ) : (
               <Link
-                href={"/panel/profile/settings"}
-                className="text-violet-600 flex gap-2 items-center"
+                href="/panel/profile/settings"
+                className="flex items-center gap-2 text-violet-600"
               >
                 You can add now <Pen size={15} />
               </Link>
             )}
           </div>
-          <div className="space-y-2 border-b border-b-gray-300 pb-3">
-            <p className="text-lg text-gray-950 font-semibold">In Total:</p>
+
+          <div className="space-y-2">
+            <p className="text-lg font-semibold text-gray-950">In Total:</p>
             <p className="text-gray-900">
               {currentUser._count.organizations} organizations
             </p>
           </div>
         </div>
+
         <ProfileActions />
       </div>
     </div>

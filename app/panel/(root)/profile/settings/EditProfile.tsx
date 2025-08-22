@@ -112,7 +112,7 @@ export default function EditProfile() {
   }
 
   return (
-    <div className="w-full rounded-2xl p-10 special_shadowing space-y-5">
+    <div className="w-full rounded-2xl p-10 border border-gray-300 shadow-md space-y-5">
       <Heading text="Update you profile" />
       <form className="space-y-5" onSubmit={HandleUpdateProfile}>
         {error !== "" && (

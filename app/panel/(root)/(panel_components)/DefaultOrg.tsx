@@ -29,7 +29,7 @@ export default function DefaultOrg() {
     return (
       <>
         {org ? (
-          <div className="special_shadowing rounded-2xl w-full overflow-hidden">
+          <div className="border border-gray-300 shadow-md rounded-2xl w-full overflow-hidden">
             {org.banner && (
               <div className="w-full h-36 relative p-5 flex items-center justify-start">
                 <img

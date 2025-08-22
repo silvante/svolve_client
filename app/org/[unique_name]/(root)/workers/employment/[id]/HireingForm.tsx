@@ -131,7 +131,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   }
 
   return (
-    <div className="w-full special_shadowing rounded-2xl p-8 space-y-5 bg-white">
+    <div className="w-full border border-gray-300 shadow-md rounded-2xl p-8 space-y-5 bg-white">
       <Heading text="Fill the form!" />
       <form className="space-y-5" onSubmit={HandleHiring}>
         <Alert variant="default">
