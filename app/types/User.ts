@@ -81,6 +81,8 @@ export interface Worker {
   worker_id: number;
   worker: User;
   role: string;
+  organization_id: number;
+  organization: Organization;
   attached_types: WorkerAttachedTypes[];
   created_at: Date;
 }

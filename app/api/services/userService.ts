@@ -18,6 +18,14 @@ const userService = {
       throw error;
     }
   },
+
+  getMyJobs: async () => {
+    try {
+      return await api.get(apiEndpoints.getMyWorks);
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default userService;
