@@ -43,7 +43,6 @@ export default function ProfilePage() {
 
               <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-[250px]">
                 {currentUser.email}{" "}
-                sssssssssssssssssssssssssssssssssssssssssssssssssssssssss
               </p>
 
               <Link
