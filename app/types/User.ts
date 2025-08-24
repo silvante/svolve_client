@@ -20,6 +20,8 @@ export interface Organization {
   name: string;
   description: string;
   unique_name: string;
+  owner: User;
+  owner_id: number;
   origin: string;
   banner: BannerData;
   logo: string;

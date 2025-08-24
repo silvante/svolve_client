@@ -1,7 +1,7 @@
 "use client";
 import Spinner from "@/app/(global_components)/Spinner";
-import { Organization, Worker } from "@/app/types/User";
-import { Check, Eye, LockKeyhole, Menu, PenBox, Pin } from "lucide-react";
+import { Worker } from "@/app/types/User";
+import { Check, Menu, Pin, UserCircle2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -103,10 +103,24 @@ export default function JobsList() {
         )}
         {currentJob ? (
           <div className="bg-white shadow-md rounded-md transition-colors border border-gray-300 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600">
-            <Link
-              className=""
-              href={`/org/${currentJob.organization.unique_name}/validation`}
-            >
+            <div className="border-b border-gray-300 p-4 flex gap-3 items-center">
+              {currentJob.worker.avatar ? (
+                <img
+                  src={currentJob.worker.avatar}
+                  alt={currentJob.worker.name}
+                  className="w-10 h-10 rounded-lg"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-lg bg-gray-300 text-gray-500 flex items-center justify-center">
+                  <UserCircle2 />
+                </div>
+              )}
+              <p className="text-xl font-semibold text_color">
+                Working as{" "}
+                <span className="text-violet-600">{currentJob.role.toUpperCase()}</span>
+              </p>
+            </div>
+            <Link href={`/job/${currentJob.organization.unique_name}`}>
               {currentJob.organization.logo && (
                 <div className="border-b border-gray-300 p-4 flex flex-col gap-3 items-start">
                   <Image
@@ -154,6 +168,7 @@ export default function JobsList() {
                     onClick={() =>
                       MakeItDefault(currentJob.organization.unique_name)
                     }
+                    className="w-full"
                   >
                     <DropdownMenuItem>
                       <Pin /> Set as default

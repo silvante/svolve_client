@@ -30,6 +30,14 @@ export default function DefaultOrg() {
       <>
         {org ? (
           <div className="border border-gray-300 shadow-md rounded-2xl w-full overflow-hidden">
+            <div className="w-full p-5 border-b border-gray-200 flex flex-col gap-1 items-start">
+              <h3 className="text-xl font-semibold">
+                Role:{" "}
+                <span className="text-violet-600">
+                  {org.owner_id === user.id ? "Owner" : "Worker"}
+                </span>
+              </h3>
+            </div>
             {org.banner && (
               <div className="w-full h-36 relative p-5 flex items-center justify-start">
                 <img
@@ -58,7 +66,11 @@ export default function DefaultOrg() {
 
             <div className="w-full p-5 border-b border-gray-200">
               <Link
-                href={`/org/${org.unique_name}/validation`}
+                href={
+                  org.owner_id === user.id
+                    ? `/org/${org.unique_name}/validation`
+                    : `/job/${org.unique_name}`
+                }
                 className="bg-violet-600 w-full py-2 flex gap-3 text-white rounded-lg items-center justify-center"
               >
                 <PlayCircle /> Run Organization
