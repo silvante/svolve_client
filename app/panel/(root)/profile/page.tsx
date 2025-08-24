@@ -41,7 +41,7 @@ export default function ProfilePage() {
                 {currentUser.name}
               </h2>
 
-              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-[250px]">
+              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-[300px]">
                 {currentUser.email}{" "}
               </p>
 

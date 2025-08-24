@@ -1,6 +1,13 @@
 import Svolve from "@/app/(global_components)/Svolve";
 import AsideLink from "./(meta-components)/AsideLink";
-import { CircleUser, FileUser, GitFork, House, Settings } from "lucide-react";
+import {
+  CircleUser,
+  FileUser,
+  GitFork,
+  House,
+  Settings,
+  WorkflowIcon,
+} from "lucide-react";
 
 export default function Aside() {
   return (
@@ -15,6 +22,9 @@ export default function Aside() {
         </AsideLink>
         <AsideLink href="/panel/vacancies">
           <FileUser /> Vacancies
+        </AsideLink>
+        <AsideLink href="/panel/jobs">
+          <WorkflowIcon /> Jobs
         </AsideLink>
         <AsideLink href="/panel/profile">
           <CircleUser /> Profile
