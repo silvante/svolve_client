@@ -49,7 +49,7 @@ export default function JobBreadcrumbs() {
     <div className="flex items-center justify-center">
       <div className="flex flex-wrap items-center">
         <Link
-          href={`/org/${organization.unique_name}`}
+          href={`/job/${organization.unique_name}`}
           className="text-violet-600 capitalize"
         >
           {organization.unique_name}

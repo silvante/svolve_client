@@ -71,7 +71,9 @@ export default function JobMainLayout({
       <div className={`${roboto.className} antialiased`}>
         <JobsHeader />
         <div className="pt-20 px-5 container mx-auto space-y-5 pb-5">
-          <JobBreadcrumbs />
+          <div className="w-full flex justify-start">
+            <JobBreadcrumbs />
+          </div>
           <div className="w-full">{children}</div>
         </div>
       </div>
