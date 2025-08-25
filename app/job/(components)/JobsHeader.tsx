@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import GoBackToPanel from "./GoBackToPanel";
 import JobLogo from "./JobLogo";
+import JobAside from "./JobAside";
 
 export default function JobsHeader() {
   const { currentJob } = useSelector((state: any) => state.job);
@@ -19,12 +20,18 @@ export default function JobsHeader() {
         )}
       </div>
       <div className="flex items-center gap-4">
-        <Avatar className="w-10 h-10">
-          <AvatarImage src={currentJob.worker.avatar} />
-          <AvatarFallback>
-            {currentJob.worker.name.split("")[0].toUpperCase()}
-          </AvatarFallback>
-        </Avatar>
+        <p className="text-lg font-semibold text_color">Your role:</p>
+        <JobAside worker={currentJob}>
+          <div className="p-1 pr-3 border border-gray-300 rounded-full cursor-pointer flex items-center gap-2 hover:text-violet-600 transition-all text-gray-700">
+            <Avatar className="w-8 h-8  ">
+              <AvatarImage src={currentJob.worker.avatar} />
+              <AvatarFallback>
+                {currentJob.worker.name.split("")[0].toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
+            <p className="font-semibold">{currentJob.role}</p>
+          </div>
+        </JobAside>
       </div>
     </header>
   );
