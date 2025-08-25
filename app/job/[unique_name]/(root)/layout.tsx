@@ -63,7 +63,7 @@ export default function JobMainLayout({
   if (isLoading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <HashLoader />
+        <HashLoader color="#7c3aed" size={58} />
       </div>
     );
   } else {

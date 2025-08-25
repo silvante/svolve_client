@@ -1,8 +1,9 @@
 "use client";
 import Svolve from "@/app/(global_components)/Svolve";
-import OrgLogo from "@/app/org/(components)/OrgLogo";
 import { useSelector } from "react-redux";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import GoBackToPanel from "./GoBackToPanel";
+import JobLogo from "./JobLogo";
 
 export default function JobsHeader() {
   const { currentJob } = useSelector((state: any) => state.job);
@@ -10,10 +11,11 @@ export default function JobsHeader() {
   return (
     <header className="w-full bg-white p-3 border-b border-gray-300 flex justify-between items-center fixed top-0 left-0 z-50">
       <div className="flex items-center gap-4">
+        <GoBackToPanel />
         {!organization.logo ? (
-          <Svolve link={`/org/${organization.unique_name}`} />
+          <Svolve link={`/job/${organization.unique_name}`} />
         ) : (
-          <OrgLogo />
+          <JobLogo />
         )}
       </div>
       <div className="flex items-center gap-4">
