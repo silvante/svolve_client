@@ -72,8 +72,6 @@ export default function ClientTable() {
     }
   }
 
-  console.log(currentJob);
-
   if (loading || is_loading) {
     return (
       <div className="w-full h-80 flex justify-center items-center">
@@ -131,9 +129,9 @@ export default function ClientTable() {
                         <div className="flex gap-3 items-center">
                           <div
                             className={`${
-                              currentJob && currentJob.role === "doctor"
-                                ? "block"
-                                : "hidden"
+                              currentJob && currentJob.role !== "doctor"
+                                ? "hidden"
+                                : "block"
                             }`}
                           >
                             <CheckClientBtn
@@ -143,9 +141,9 @@ export default function ClientTable() {
                           </div>
                           <div
                             className={`${
-                              currentJob && currentJob.role === "receptionist"
+                              currentJob && currentJob.role !== "receptionist"
                                 ? "block"
-                                : "hidden"
+                                : "block"
                             }`}
                           >
                             <DropdownMenu>
