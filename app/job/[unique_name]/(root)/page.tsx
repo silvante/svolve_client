@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import ClientCreator from "@/app/org/[unique_name]/(root)/(work_sections)/ClientCreator";
 import ClientTable from "@/app/org/[unique_name]/(root)/(work_sections)/ClientTable";
+import DoctorsTypeList from "../../(components)/DoctorsTypeList";
 
 export default function JobHome() {
   const { organization } = useSelector((state: any) => state.validator);
@@ -26,7 +27,11 @@ export default function JobHome() {
             <p className="text-xl font-semibold text_color">Create clients</p>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
-            <ClientCreator />
+            {currentJob.role === "doctor" ? (
+              <DoctorsTypeList currentJob={currentJob} />
+            ) : (
+              <ClientCreator />
+            )}
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">

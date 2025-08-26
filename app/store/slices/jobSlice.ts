@@ -19,7 +19,7 @@ const jobSlice = createSlice({
       state.loading = true;
     },
 
-    updateJob: (state, action: PayloadAction<Worker>) => {
+    updateJob: (state, action: PayloadAction<Worker | null>) => {
       state.currentJob = action.payload;
       state.loading = false;
     },

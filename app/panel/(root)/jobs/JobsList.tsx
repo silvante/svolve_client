@@ -20,29 +20,21 @@ import { updateJob } from "@/app/store/slices/jobSlice";
 import organizationService from "@/app/api/services/organizationService";
 
 export default function JobsList() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const [success, setSuccess] = useState("");
   const { currentJob, loading } = useSelector((state: any) => state.job);
 
   async function GetJob() {
-    setIsLoading(true);
     try {
       const res: any = await userService.getMyJobs();
       const theJob: Worker = res;
 
       dispatch(updateJob(theJob));
-      setIsLoading(false);
-      console.log("worked");
     } catch (error: any) {
-      if (!error.response) {
-        setError("Internal server error pleace try again later");
-      } else {
-        setError(error.response.data.message);
-      }
-      setIsLoading(false);
-      console.log("not worked");
+      console.log(error);
+      dispatch(updateJob(null));
     }
   }
 
@@ -117,7 +109,9 @@ export default function JobsList() {
               )}
               <p className="text-xl font-semibold text_color">
                 Working as{" "}
-                <span className="text-violet-600">{currentJob.role.toUpperCase()}</span>
+                <span className="text-violet-600">
+                  {currentJob.role.toUpperCase()}
+                </span>
               </p>
             </div>
             <Link href={`/job/${currentJob.organization.unique_name}`}>
