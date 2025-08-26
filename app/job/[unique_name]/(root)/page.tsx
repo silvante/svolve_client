@@ -15,6 +15,7 @@ import DateShower from "@/app/(global_components)/DateShower";
 export default function JobHome() {
   const { organization } = useSelector((state: any) => state.validator);
   const { currentJob } = useSelector((state: any) => state.job);
+  
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -28,7 +29,11 @@ export default function JobHome() {
       >
         <AccordionItem value="item-1">
           <AccordionTrigger className="no-underline hover:no-underline">
-            <p className="text-xl font-semibold text_color">Create clients</p>
+            <p className="text-xl font-semibold text_color">
+              {currentJob.role === "doctor"
+                ? "Check clients"
+                : "Create clients"}
+            </p>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             {currentJob.role === "doctor" ? (
