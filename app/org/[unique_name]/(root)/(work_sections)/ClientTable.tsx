@@ -18,6 +18,7 @@ import {
 import { Menu, PenBox, ShieldAlert, Trash } from "lucide-react";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import Link from "next/link";
 
 export default function ClientTable() {
   const [isLoading, setIsLoading] = useState(false);
@@ -142,7 +143,7 @@ export default function ClientTable() {
                           <div
                             className={`${
                               currentJob && currentJob.role !== "receptionist"
-                                ? "block"
+                                ? "hidden"
                                 : "block"
                             }`}
                           >
@@ -151,14 +152,19 @@ export default function ClientTable() {
                                 <Menu />
                               </DropdownMenuTrigger>
                               <DropdownMenuContent align="end" className="w-56">
-                                <OrgLink
-                                  href={`/clients/${client.id}/update`}
+                                <Link
+                                  href={
+                                    currentJob &&
+                                    currentJob.role === "receptionist"
+                                      ? `/job/${organization.unique_name}/clients/${client.id}`
+                                      : `/org/${organization.unique_name}/clients/${client.id}/update`
+                                  }
                                   className="rounded-lg flex"
                                 >
                                   <DropdownMenuItem className="cursor-pointer w-full">
                                     <PenBox /> Update
                                   </DropdownMenuItem>
-                                </OrgLink>
+                                </Link>
                                 <button
                                   className="rounded-lg cursor-pointer w-full"
                                   onClick={() => HandleDelete(client.id)}

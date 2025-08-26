@@ -20,19 +20,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "@/app/(global_components)/Spinner";
 import { Client, Type } from "@/app/types/User";
-import { useEffect, useState } from "react";
-import {
-  pushClient,
-  replaceClient,
-  setLoading,
-} from "@/app/store/slices/clientSlice";
+import { useState } from "react";
+import { replaceClient } from "@/app/store/slices/clientSlice";
 import clientService from "@/app/api/services/clientService";
 import { useParams, useRouter } from "next/navigation";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function UpdateClientForm() {
   const [open, setOpen] = useState(false);

@@ -10,13 +10,17 @@ import {
 import ClientCreator from "@/app/org/[unique_name]/(root)/(work_sections)/ClientCreator";
 import ClientTable from "@/app/org/[unique_name]/(root)/(work_sections)/ClientTable";
 import DoctorsTypeList from "../../(components)/DoctorsTypeList";
+import DateShower from "@/app/(global_components)/DateShower";
 
 export default function JobHome() {
   const { organization } = useSelector((state: any) => state.validator);
   const { currentJob } = useSelector((state: any) => state.job);
   return (
     <div className="space-y-5">
-      <Heading text={`Panel of ${organization.name}`} />
+      <div className="flex items-center justify-between">
+        <Heading text={`Panel of ${organization.name}`} />
+        <DateShower />
+      </div>
       <Accordion
         type="multiple"
         className="w-full"
