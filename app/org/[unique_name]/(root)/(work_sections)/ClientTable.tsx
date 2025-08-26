@@ -17,17 +17,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, PenBox, ShieldAlert, Trash } from "lucide-react";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function ClientTable() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const { types, loading } = useSelector((state: any) => state.types);
   const { clients, is_loading } = useSelector((state: any) => state.client);
+  const { currentJob } = useSelector((state: any) => state.job);
   const { organization } = useSelector((state: any) => state.validator);
   const dispatch = useDispatch();
   async function GetClients() {
@@ -74,6 +71,8 @@ export default function ClientTable() {
       setIsLoading(false);
     }
   }
+
+  console.log(currentJob);
 
   if (loading || is_loading) {
     return (
@@ -130,34 +129,50 @@ export default function ClientTable() {
                     <td className="p-3 truncate">
                       {!client.is_checked ? (
                         <div className="flex gap-3 items-center">
-                          <CheckClientBtn
-                            org_id={organization.id}
-                            client_id={client.id}
-                          />
-                          <DropdownMenu>
-                            <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
-                              <Menu />
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end" className="w-56">
-                              <OrgLink
-                                href={`/clients/${client.id}/update`}
-                                className="rounded-lg flex"
-                              >
-                                <DropdownMenuItem className="cursor-pointer w-full">
-                                  <PenBox /> Update
-                                </DropdownMenuItem>
-                              </OrgLink>
-                              <button
-                                className="rounded-lg cursor-pointer w-full"
-                                onClick={() => HandleDelete(client.id)}
-                              >
-                                <DropdownMenuItem className="cursor-pointer">
-                                  <Trash color="#e7000b" />{" "}
-                                  <p className="text-red-600">Delete</p>
-                                </DropdownMenuItem>
-                              </button>
-                            </DropdownMenuContent>
-                          </DropdownMenu>
+                          <div
+                            className={`${
+                              currentJob && currentJob.role === "doctor"
+                                ? "block"
+                                : "hidden"
+                            }`}
+                          >
+                            <CheckClientBtn
+                              org_id={organization.id}
+                              client_id={client.id}
+                            />
+                          </div>
+                          <div
+                            className={`${
+                              currentJob && currentJob.role === "receptionist"
+                                ? "block"
+                                : "hidden"
+                            }`}
+                          >
+                            <DropdownMenu>
+                              <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
+                                <Menu />
+                              </DropdownMenuTrigger>
+                              <DropdownMenuContent align="end" className="w-56">
+                                <OrgLink
+                                  href={`/clients/${client.id}/update`}
+                                  className="rounded-lg flex"
+                                >
+                                  <DropdownMenuItem className="cursor-pointer w-full">
+                                    <PenBox /> Update
+                                  </DropdownMenuItem>
+                                </OrgLink>
+                                <button
+                                  className="rounded-lg cursor-pointer w-full"
+                                  onClick={() => HandleDelete(client.id)}
+                                >
+                                  <DropdownMenuItem className="cursor-pointer">
+                                    <Trash color="#e7000b" />{" "}
+                                    <p className="text-red-600">Delete</p>
+                                  </DropdownMenuItem>
+                                </button>
+                              </DropdownMenuContent>
+                            </DropdownMenu>
+                          </div>
                         </div>
                       ) : (
                         <p className="my-2 bg-green-600 text-white px-2 text-center">
