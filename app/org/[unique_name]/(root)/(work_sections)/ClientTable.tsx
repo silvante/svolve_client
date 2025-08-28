@@ -91,7 +91,7 @@ export default function ClientTable() {
         <div className="w-full flex justify-start">
           <button
             onClick={() => setRef(true)}
-            className="text-white py-2 px-4 bg-violet-600 rounded-lg flex gap-2 items-center cursor-pointer"
+            className="text-white py-2 px-4 bg-violet-600 rounded-xl flex gap-2 items-center cursor-pointer"
           >
             <RefreshCcw /> Refresh
           </button>
