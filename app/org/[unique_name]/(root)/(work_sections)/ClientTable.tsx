@@ -2,7 +2,11 @@
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import clientService from "@/app/api/services/clientService";
-import { deleteClient, updateClients } from "@/app/store/slices/clientSlice";
+import {
+  deleteClient,
+  setLoading,
+  updateClients,
+} from "@/app/store/slices/clientSlice";
 import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
@@ -15,12 +19,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, PenBox, ShieldAlert, Trash } from "lucide-react";
-import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
+import { Menu, PenBox, RefreshCcw, ShieldAlert, Trash } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 
 export default function ClientTable() {
+  const [ref, setRef] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const { types, loading } = useSelector((state: any) => state.types);
@@ -30,9 +34,10 @@ export default function ClientTable() {
   const dispatch = useDispatch();
   async function GetClients() {
     try {
-      if (types && clients) {
+      if (types && clients.length > 0) {
         return;
       } else {
+        dispatch(setLoading());
         const response: any = await clientService.getTodaysClients(
           organization.id
         );
@@ -48,7 +53,8 @@ export default function ClientTable() {
 
   useEffect(() => {
     GetClients();
-  }, []);
+    setRef(false);
+  }, [ref]);
 
   async function HandleDelete(id: number) {
     setIsLoading(true);
@@ -82,6 +88,14 @@ export default function ClientTable() {
   } else {
     return (
       <>
+        <div className="w-full flex justify-start">
+          <button
+            onClick={() => setRef(true)}
+            className="text-white py-2 px-4 bg-violet-600 rounded-lg flex gap-2 items-center cursor-pointer"
+          >
+            <RefreshCcw /> Refresh
+          </button>
+        </div>
         {clients && clients.length !== 0 ? (
           <div className="space-y-5">
             {error !== "" && (

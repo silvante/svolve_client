@@ -16,8 +16,6 @@ export default function UniqueNamePage() {
   const { organization } = useSelector((state: any) => state.validator);
   const { clients, is_loading } = useSelector((state: any) => state.client);
 
-  console.log(organization);
-
   let total_revenue = "0";
   if (!is_loading) {
     const totalPrice = clients.reduce(
@@ -27,7 +25,6 @@ export default function UniqueNamePage() {
     const formatted = totalPrice.toLocaleString();
     total_revenue = formatted;
   }
-
   return (
     <div className="space-y-5">
       <div className="w-full flex items-center justify-between">
