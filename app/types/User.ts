@@ -45,6 +45,7 @@ export interface Type {
   price: number;
   _count: {
     clients: number;
+    attached_workers: number;
   };
   created_at: Date;
 }

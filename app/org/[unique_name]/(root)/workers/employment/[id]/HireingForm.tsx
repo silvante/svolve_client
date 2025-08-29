@@ -43,7 +43,9 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   // from redux
   const { organization } = useSelector((state: any) => state.validator);
   const { types } = useSelector((state: any) => state.types);
-  const valid_types: Type[] = types;
+  const valid_types: Type[] = types.filter(
+    (t: Type) => t._count.attached_workers < 1
+  );
   const [type_id, settype_id] = useState("");
   const dispatch = useDispatch();
 
@@ -104,6 +106,9 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   async function HandleHiring(e: any) {
     e.preventDefault();
     try {
+      if (role === "doctor" && attached_types.length < 1) {
+        return setError("Doctor should at least one type attached to him/her!");
+      }
       const data = {
         role,
         attached_types,
@@ -190,7 +195,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
                 <Command>
                   <CommandInput placeholder="Search type..." className="h-9" />
                   <CommandList>
-                    <CommandEmpty>No types found.</CommandEmpty>
+                    <CommandEmpty>There is no types.</CommandEmpty>
                     <CommandGroup>
                       {valid_types.map((vt) => (
                         <CommandItem
