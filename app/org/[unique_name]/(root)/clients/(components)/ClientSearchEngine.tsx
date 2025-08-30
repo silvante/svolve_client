@@ -8,6 +8,7 @@ import { ShieldAlert } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ClientCard from "./(meta)/Client";
 import clientService from "@/app/api/services/clientService";
+import TypeInput from "./(meta)/TypeInput";
 
 export default function ClientSearchEngine({
   organization,
@@ -27,7 +28,7 @@ export default function ClientSearchEngine({
   const [born_in, setBornIn] = useState("");
   const [type_id, setTypeId] = useState("");
 
-  async function GetVacancies() {
+  async function GetClients() {
     setIsLoading(true);
     try {
       const born_in_valid = born_in !== "" ? +born_in : undefined;
@@ -59,11 +60,11 @@ export default function ClientSearchEngine({
   function HandleSearch(e: any) {
     e.preventDefault();
     setPage(1);
-    GetVacancies();
+    GetClients();
   }
 
   useEffect(() => {
-    GetVacancies();
+    GetClients();
   }, [origin, page]);
 
   console.log(clients);
@@ -79,49 +80,54 @@ export default function ClientSearchEngine({
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        <form className="w-full grid grid-cols-2" onSubmit={HandleSearch}>
-          <select
-            className="global_input w-40"
-            value={origin}
-            onChange={(e) => setOrigin(e.target.value)}
-          >
-            {origins.map((origin) => {
-              return (
-                <option key={origin.id} value={origin.name}>
-                  {origin.name}
-                </option>
-              );
-            })}
-          </select>
-          <input
-            type="number"
-            name="born_in"
-            id="born_in"
-            value={born_in}
-            onChange={(e) => setBornIn(e.target.value)}
-            className="global_input"
-            placeholder="Search by birth year..."
-          />
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="global_input"
-            placeholder="Search by name..."
-          />
-          <input
-            type="text"
-            name="surname"
-            id="surname"
-            value={surname}
-            onChange={(e) => setSurname(e.target.value)}
-            className="global_input"
-            placeholder="Search by surname..."
-          />
+        <form className="w-full grid grid-cols-2 gap-5" onSubmit={HandleSearch}>
+          <div className="w-full flex flex-col space-y-1 justify-between">
+            <label htmlFor="type_id">type</label>
+            <TypeInput
+              setTypeId={setTypeId}
+              organization={organization}
+              setError={setError}
+            />
+          </div>
+          <div className="w-full flex flex-col space-y-1">
+            <label htmlFor="born_in">birth year</label>
+            <input
+              type="number"
+              name="born_in"
+              id="born_in"
+              value={born_in}
+              onChange={(e) => setBornIn(e.target.value)}
+              className="global_input"
+              placeholder="Search by birth year..."
+            />
+          </div>
+          <div className="w-full flex flex-col space-y-1">
+            <label htmlFor="name">name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="global_input"
+              autoFocus
+              placeholder="Search by name..."
+            />
+          </div>
+          <div className="w-full flex flex-col space-y-1">
+            <label htmlFor="surname">surname</label>
+            <input
+              type="text"
+              name="surname"
+              id="surname"
+              value={surname}
+              onChange={(e) => setSurname(e.target.value)}
+              className="global_input"
+              placeholder="Search by surname..."
+            />
+          </div>
           <button
-            className="py-2 w-40 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
+            className="py-2 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
             type="submit"
           >
             {isLoading ? "searching..." : "Search"}
