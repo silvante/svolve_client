@@ -141,7 +141,7 @@ export default function ClientSearchEngine({
       ) : (
         <div className="w-full">
           {clients && clients.length > 0 ? (
-            <div className="w-full grid grid-cols-3 gap-5">
+            <div className="w-full space-y-5">
               {clients.map((client: Client) => (
                 <ClientCard client={client} />
               ))}
