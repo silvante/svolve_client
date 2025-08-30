@@ -46,6 +46,32 @@ const clientService = {
       throw error;
     }
   },
+
+  search: async (
+    org_id: number,
+    page: number,
+    limit: number,
+    name: string = "",
+    surname: string = "",
+    born_in?: number,
+    type_id?: number
+  ) => {
+    try {
+      return await api.get(
+        apiEndpoints.searchClients(
+          org_id,
+          page,
+          limit,
+          name,
+          surname,
+          born_in,
+          type_id
+        )
+      );
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default clientService;
