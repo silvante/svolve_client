@@ -12,7 +12,7 @@ export default function ClientPage() {
         <Heading text="Search clients" />
       </div>
       <ClientSearchEngine organization={organization} />
-      <SearchCalendar />
+      <SearchCalendar organization={organization} />
     </div>
   );
 }

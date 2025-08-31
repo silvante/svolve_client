@@ -34,7 +34,7 @@ export default function OrgAside() {
           <ChartArea /> Statistics
         </OrgAsideLink>
         <OrgAsideLink href="/clients">
-          <BookUser /> Clients
+          <BookUser /> Clients & timeline
         </OrgAsideLink>
         <OrgAsideLink href="/types">
           <Pilcrow /> Types

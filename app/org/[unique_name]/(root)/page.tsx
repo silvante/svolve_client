@@ -14,6 +14,8 @@ import { Client } from "@/app/types/User";
 
 export default function UniqueNamePage() {
   const { organization } = useSelector((state: any) => state.validator);
+  console.log(organization);
+
   const { clients, is_loading } = useSelector((state: any) => state.client);
 
   let total_revenue = "0";
