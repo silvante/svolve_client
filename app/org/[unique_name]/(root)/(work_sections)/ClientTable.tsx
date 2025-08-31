@@ -34,7 +34,7 @@ export default function ClientTable() {
   const dispatch = useDispatch();
   async function GetClients() {
     try {
-      if (types && clients.length > 0) {
+      if (!ref && types && clients.length > 0) {
         return;
       } else {
         dispatch(setLoading());
