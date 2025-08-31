@@ -73,7 +73,7 @@ const clientService = {
     }
   },
 
-  gteByDate: async (
+  getByDate: async (
     org_id: number,
     date: string,
     page: number = 1,

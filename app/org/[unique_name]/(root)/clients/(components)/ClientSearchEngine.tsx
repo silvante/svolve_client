@@ -9,6 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ClientCard from "./(meta)/Client";
 import clientService from "@/app/api/services/clientService";
 import TypeInput from "./(meta)/TypeInput";
+import Heading from "@/app/(global_components)/Heading";
 
 export default function ClientSearchEngine({
   organization,
@@ -66,9 +67,6 @@ export default function ClientSearchEngine({
   useEffect(() => {
     GetClients();
   }, [origin, page]);
-
-  console.log(clients);
-  console.log(meta);
 
   return (
     <div className="space-y-8">
@@ -139,7 +137,7 @@ export default function ClientSearchEngine({
           <HashLoader color="#7c3aed" size={58} />
         </div>
       ) : (
-        <div className="w-full">
+        <div className="w-full p-5 rounded-xl border border-gray-300">
           {clients && clients.length > 0 ? (
             <div className="w-full space-y-5">
               {clients.map((client: Client) => (
