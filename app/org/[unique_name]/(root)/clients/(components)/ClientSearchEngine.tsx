@@ -143,7 +143,7 @@ export default function ClientSearchEngine({
           {clients && clients.length > 0 ? (
             <div className="w-full space-y-5">
               {clients.map((client: Client) => (
-                <ClientCard client={client} />
+                <ClientCard key={client.id} client={client} />
               ))}
             </div>
           ) : (
