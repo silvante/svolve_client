@@ -3,6 +3,8 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import Heading from "@/app/(global_components)/Heading";
+import Link from "next/link";
+import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 
 interface Organization {
   id: number;
@@ -119,12 +121,13 @@ export default function SearchCalendar({
       {selectedMonth !== null && (
         <div className="flex flex-wrap gap-2 mb-4 border-t border-gray-300 pt-5">
           {days.map((d) => (
-            <span
+            <OrgLink
+              href={`/clients/date/${selectedYear}-${selectedMonth + 1}-${d}`}
               key={d}
               className="px-4 py-2 rounded-md border-2 font-semibold border-violet-600 text-violet-600 text-sm cursor-pointer"
             >
               {dayjs().month(selectedMonth).format("MMM")} {d}
-            </span>
+            </OrgLink>
           ))}
         </div>
       )}
