@@ -32,6 +32,7 @@ const apiEndpoints = {
   updateClient: (org_id: number, client_id: number) => `/organizations/${org_id}/clients/${client_id}/update`,
   deleteClient: (org_id: number, client_id: number) => `/organizations/${org_id}/clients/${client_id}/delete`,
   searchClients: (org_id: number, page: number, limit: number, name: string = "", surname: string = "", born_in?: number, type_id?: number) => `/organizations/${org_id}/clients/search/?page=${page}&limit=${limit}&name=${name}&surname=${surname}${born_in ? `&born_in=${born_in}` : ""}${type_id ? `&type_id=${type_id}` : ""}`,
+  getClientsByDate: (org_id: number, date: string, page: number, limit: number) => `/organizations/${org_id}/clients/date/${date}/?page=${page}&limit=${limit}`,
 
   // uploads
   uploadAvatar: "/uploads/avatar",

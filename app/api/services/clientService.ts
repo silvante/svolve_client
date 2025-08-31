@@ -72,6 +72,21 @@ const clientService = {
       throw error;
     }
   },
+
+  gteByDate: async (
+    org_id: number,
+    date: string,
+    page: number = 1,
+    limit: number = 10
+  ) => {
+    try {
+      return await api.get(
+        apiEndpoints.getClientsByDate(org_id, date, page, limit)
+      );
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default clientService;
