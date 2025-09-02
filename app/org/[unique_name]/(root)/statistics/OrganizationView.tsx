@@ -33,19 +33,6 @@ export default function OrganizationView({
           {organization.unique_name}
         </p>
       </div>
-      <div className="border-b border-gray-200 p-5 flex justify-between items-center">
-        <p className="text-sm text-gray-500">
-          <span className="text-black">Clients:</span>{" "}
-          {organization._count.clients}
-        </p>
-        <p className="text-sm text-gray-500">
-          <span className="text-black">Types:</span> {organization._count.types}
-        </p>
-        <p className="text-sm text-gray-500">
-          <span className="text-black">Workers:</span>{" "}
-          {organization._count.workers}
-        </p>
-      </div>
     </div>
   );
 }
