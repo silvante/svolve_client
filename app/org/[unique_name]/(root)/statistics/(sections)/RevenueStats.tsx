@@ -7,6 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShieldAlert } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRevenueStats } from "@/app/store/slices/statsSlice";
+import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 
 export default function RevenueStatistics({
   organization,
@@ -43,7 +44,7 @@ export default function RevenueStatistics({
   }, []);
 
   return (
-    <div>
+    <div className="space-y-5">
       <Heading text="Revenue" />
       {error !== "" && (
         <Alert variant="destructive">
@@ -57,7 +58,18 @@ export default function RevenueStatistics({
           <Spinner />
         </div>
       ) : (
-        <div>Stats</div>
+        <div>
+          {revenue ? (
+            <div>stats</div>
+          ) : (
+            <div className="flex justify-center items-center py-10">
+              <ErrorMessage
+                text="We are having problems"
+                desc="There are some problems with loading Stats"
+              />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );

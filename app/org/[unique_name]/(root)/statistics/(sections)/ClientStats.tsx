@@ -7,6 +7,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShieldAlert } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateClientStats } from "@/app/store/slices/statsSlice";
+import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 
 export default function ClientStatistics({
   organization,
@@ -43,7 +44,7 @@ export default function ClientStatistics({
   }, []);
 
   return (
-    <div>
+    <div className="space-y-5">
       <Heading text="Clients" />
       {error !== "" && (
         <Alert variant="destructive">
@@ -57,7 +58,18 @@ export default function ClientStatistics({
           <Spinner />
         </div>
       ) : (
-        <div>Stats</div>
+        <div>
+          {clients ? (
+            <div>stats</div>
+          ) : (
+            <div className="flex justify-center items-center py-10">
+              <ErrorMessage
+                text="We are having problems"
+                desc="There are some problems with loading Stats"
+              />
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
