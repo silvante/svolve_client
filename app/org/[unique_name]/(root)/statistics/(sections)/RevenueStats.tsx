@@ -60,7 +60,9 @@ export default function RevenueStatistics({
       ) : (
         <div>
           {revenue ? (
-            <div>stats</div>
+            <div>
+              <div className="p-8 rounded-2xl border border-gray-300 shadow-md"></div>
+            </div>
           ) : (
             <div className="flex justify-center items-center py-10">
               <ErrorMessage
