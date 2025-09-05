@@ -5,6 +5,8 @@ import { Organization, RevenueStats } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShieldAlert } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateRevenueStats } from "@/app/store/slices/statsSlice";
 
 export default function RevenueStatistics({
   organization,
@@ -13,13 +15,18 @@ export default function RevenueStatistics({
 }) {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { revenue } = useSelector((state: any) => state.stats);
+  const dispatch = useDispatch();
 
   async function getRevenueStats() {
+    if (revenue) {
+      return;
+    }
     setIsLoading(true);
     try {
       const res: any = await statsService.revenue(organization.id);
       const revenueStats: RevenueStats = res;
-      console.log(revenueStats);
+      dispatch(updateRevenueStats(revenueStats));
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
