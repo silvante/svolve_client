@@ -3,6 +3,8 @@ import Heading from "@/app/(global_components)/Heading";
 import { useSelector } from "react-redux";
 import OrganizationView from "./OrganizationView";
 import Totals from "./(sections)/Totals";
+import RevenueStatistics from "./(sections)/RevenueStats";
+import ClientStatistics from "./(sections)/ClientStats";
 
 export default function StatisticsPage() {
   const { organization } = useSelector((state: any) => state.validator);
@@ -12,6 +14,8 @@ export default function StatisticsPage() {
       <Heading text="Statistics" />
       <OrganizationView organization={organization} />
       <Totals organization={organization} />
+      <RevenueStatistics organization={organization} />
+      <ClientStatistics organization={organization} />
     </div>
   );
 }
