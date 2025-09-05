@@ -95,3 +95,48 @@ export interface WorkerAttachedTypes {
   type: Type;
   type_id: number;
 }
+
+export interface ClientsByDay {
+  day: string;
+  count: number;
+}
+
+export interface ClientsByMonth {
+  month: string;
+  count: number;
+}
+
+export interface ClientsByType {
+  type_id: number;
+  _count: {
+    id: number;
+  };
+}
+
+export interface ClientStats {
+  clientsByMonth: ClientsByMonth[];
+  clientsByDay: ClientsByDay[];
+  clientsByType: ClientsByType[];
+}
+
+export interface RevenueByDay {
+  day: string;
+  revenue: number;
+}
+
+export interface RevenueByMonth {
+  month: string;
+  revenue: number;
+}
+
+export interface RevenueByType {
+  type_id: number;
+  type_name: string;
+  revenue: number;
+}
+
+export interface RevenueStats {
+  revenueByDay: RevenueByDay[];
+  revenueByMonth: RevenueByMonth[];
+  revenueByType: RevenueByType[];
+}

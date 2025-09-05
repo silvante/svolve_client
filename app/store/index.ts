@@ -8,6 +8,7 @@ import ClientSlice from "./slices/clientSlice";
 import vacancySlice from "./slices/vacancySlice";
 import WorkerSlice from "./slices/workerSlice";
 import jobSlice from "./slices/jobSlice";
+import StatsSlice from "./slices/statsSlice";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     vacancy: vacancySlice,
     worker: WorkerSlice,
     job: jobSlice,
+    stats: StatsSlice,
   },
 });
 
