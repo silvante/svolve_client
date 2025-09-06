@@ -121,7 +121,7 @@ export interface ClientStats {
 
 export interface RevenueByDay {
   day: string;
-  revenue: number;
+  total: number;
 }
 
 export interface RevenueByMonth {
