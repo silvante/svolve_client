@@ -1,13 +1,20 @@
 import Heading from "@/app/(global_components)/Heading";
 import Spinner from "@/app/(global_components)/Spinner";
 import statsService from "@/app/api/services/statsService";
-import { Organization, RevenueStats } from "@/app/types/User";
+import {
+  Organization,
+  RevenueByDay,
+  RevenueByMonth,
+  RevenueByType,
+  RevenueStats,
+} from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ShieldAlert } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateRevenueStats } from "@/app/store/slices/statsSlice";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
+import RvDayChart from "./(revenue-chars)/RvDayChart";
 
 export default function RevenueStatistics({
   organization,
@@ -61,7 +68,7 @@ export default function RevenueStatistics({
         <div>
           {revenue ? (
             <div>
-              <div className="p-8 rounded-2xl border border-gray-300 shadow-md"></div>
+              <RvDayChart data={revenue.revenueByDay} />
             </div>
           ) : (
             <div className="flex justify-center items-center py-10">
