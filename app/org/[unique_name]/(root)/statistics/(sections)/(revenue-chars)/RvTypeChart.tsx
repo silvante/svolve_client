@@ -33,8 +33,8 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
   const [chartType, setChartType] = useState("bar");
   console.log(data);
 
-  const labels = data.map((rbd) => rbd.type_id);
-  const revenues = data.map((rbd) => rbd.revenue);
+  const labels = data.map((rbd) => rbd.type_name);
+  const revenues = data.map((rbd) => rbd.total);
 
   const chartData = {
     labels: labels,

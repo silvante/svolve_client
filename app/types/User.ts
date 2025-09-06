@@ -132,7 +132,7 @@ export interface RevenueByMonth {
 export interface RevenueByType {
   type_id: number;
   type_name: string;
-  revenue: number;
+  total: number;
 }
 
 export interface RevenueStats {
