@@ -1,5 +1,4 @@
 "use client";
-import dayjs from "dayjs";
 import { Line } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
 import {
@@ -25,22 +24,23 @@ ChartJS.register(
   Legend
 );
 
-import { RevenueByMonth } from "@/app/types/User";
+import { RevenueByType } from "@/app/types/User";
 import { useState } from "react";
 import { BarChart3, LineChart } from "lucide-react";
 import Heading from "@/app/(global_components)/Heading";
 
-export default function RvMonthChart({ data }: { data: RevenueByMonth[] }) {
+export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
   const [chartType, setChartType] = useState("bar");
+  console.log(data);
 
-  const labels = data.map((rbd) => dayjs(rbd.month).format("YYYY-MMM"));
-  const revenues = data.map((rbd) => rbd.total);
+  const labels = data.map((rbd) => rbd.type_id);
+  const revenues = data.map((rbd) => rbd.revenue);
 
   const chartData = {
     labels: labels,
     datasets: [
       {
-        label: "Monthly revenue",
+        label: "Revenue by type",
         data: revenues,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",
@@ -58,7 +58,7 @@ export default function RvMonthChart({ data }: { data: RevenueByMonth[] }) {
 
   return (
     <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 flex-1">
-      <Heading text="Last 12 months" />
+      <Heading text="Types" />
       <div className="flex gap-4">
         <button
           onClick={() => setChartType("line")}

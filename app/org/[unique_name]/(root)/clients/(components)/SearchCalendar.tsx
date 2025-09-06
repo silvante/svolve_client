@@ -3,7 +3,6 @@
 import { useState } from "react";
 import dayjs from "dayjs";
 import Heading from "@/app/(global_components)/Heading";
-import Link from "next/link";
 import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 
 interface Organization {

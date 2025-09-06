@@ -16,6 +16,7 @@ import { updateRevenueStats } from "@/app/store/slices/statsSlice";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import RvDayChart from "./(revenue-chars)/RvDayChart";
 import RvMonthChart from "./(revenue-chars)/RvMonthChart";
+import RvTypeChart from "./(revenue-chars)/RvTypeChart";
 
 export default function RevenueStatistics({
   organization,
@@ -52,7 +53,7 @@ export default function RevenueStatistics({
   }, []);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 w-full">
       <Heading text="Revenue" />
       {error !== "" && (
         <Alert variant="destructive">
@@ -68,10 +69,11 @@ export default function RevenueStatistics({
       ) : (
         <div>
           {revenue ? (
-            <div className="space-y-5">
+            <div className="space-y-5 w-full">
               <RvDayChart data={revenue.revenueByDay} />
-              <div className="flex gap-5 justify-between items-center">
+              <div className="flex gap-5 justify-between items-center w-full">
                 <RvMonthChart data={revenue.revenueByMonth} />
+                <RvTypeChart data={revenue.revenueByType} />
               </div>
             </div>
           ) : (
