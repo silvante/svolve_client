@@ -25,22 +25,22 @@ ChartJS.register(
   Legend
 );
 
-import { RevenueByDay } from "@/app/types/User";
+import { RevenueByMonth } from "@/app/types/User";
 import { useState } from "react";
 import { BarChart3, LineChart } from "lucide-react";
 import Heading from "@/app/(global_components)/Heading";
 
-export default function RvDayChart({ data }: { data: RevenueByDay[] }) {
-  const [chartType, setChartType] = useState("line");
+export default function RvMonthChart({ data }: { data: RevenueByMonth[] }) {
+  const [chartType, setChartType] = useState("bar");
 
-  const labels = data.map((rbd) => rbd.day);
+  const labels = data.map((rbd) => rbd.month);
   const revenues = data.map((rbd) => rbd.total);
 
   const chartData = {
     labels: labels,
     datasets: [
       {
-        label: "Daily revenue",
+        label: "Monthly revenue",
         data: revenues,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",
@@ -57,8 +57,8 @@ export default function RvDayChart({ data }: { data: RevenueByDay[] }) {
   };
 
   return (
-    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md w-full border-b-3 border-b-violet-600">
-      <Heading text="Last 30 days" />
+    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md w-full border-b-3 border-b-violet-600 flex-1">
+      <Heading text="Last 12 months" />
       <div className="flex gap-4">
         <button
           onClick={() => setChartType("line")}
@@ -73,7 +73,7 @@ export default function RvDayChart({ data }: { data: RevenueByDay[] }) {
           <BarChart3 /> Bar
         </button>
       </div>
-      <div className="w-full h-[400px]">
+      <div className="w-full h-[300px]">
         {chartType === "line" && (
           <Line options={options} data={chartData} className="w-full h-full" />
         )}

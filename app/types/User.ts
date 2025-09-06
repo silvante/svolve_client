@@ -126,7 +126,7 @@ export interface RevenueByDay {
 
 export interface RevenueByMonth {
   month: string;
-  revenue: number;
+  total: number;
 }
 
 export interface RevenueByType {

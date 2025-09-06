@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRevenueStats } from "@/app/store/slices/statsSlice";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import RvDayChart from "./(revenue-chars)/RvDayChart";
+import RvMonthChart from "./(revenue-chars)/RvMonthChart";
 
 export default function RevenueStatistics({
   organization,
@@ -67,8 +68,11 @@ export default function RevenueStatistics({
       ) : (
         <div>
           {revenue ? (
-            <div>
+            <div className="space-y-5">
               <RvDayChart data={revenue.revenueByDay} />
+              <div className="flex gap-5 justify-between items-center">
+                <RvMonthChart data={revenue.revenueByMonth} />
+              </div>
             </div>
           ) : (
             <div className="flex justify-center items-center py-10">
