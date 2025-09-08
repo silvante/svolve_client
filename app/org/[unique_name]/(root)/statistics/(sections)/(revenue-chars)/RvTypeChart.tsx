@@ -1,5 +1,6 @@
 "use client";
 import { Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,11 +28,11 @@ ChartJS.register(
 
 import { RevenueByType } from "@/app/types/User";
 import { useState } from "react";
-import { BarChart3, LineChart } from "lucide-react";
+import { BarChart3, PieChart } from "lucide-react";
 import Heading from "@/app/(global_components)/Heading";
 
 export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
-  // const [chartType, setChartType] = useState("bar");
+  const [chartType, setChartType] = useState("pie");
   console.log(data);
 
   const labels = data.map((rbd) => rbd.type_name);
@@ -66,14 +67,14 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
   };
 
   return (
-    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 aspect-square">
+    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 flex-1">
       <Heading text="Types" />
-      {/* <div className="flex gap-4">
+      <div className="flex gap-4">
         <button
-          onClick={() => setChartType("line")}
+          onClick={() => setChartType("pie")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
         >
-          <LineChart /> Line
+          <PieChart /> Pie
         </button>
         <button
           onClick={() => setChartType("bar")}
@@ -81,9 +82,14 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
         >
           <BarChart3 /> Bar
         </button>
-      </div> */}
-      <div className="w-full h-full">
-        <Pie options={options} data={chartData} className="w-full h-full" />
+      </div>
+      <div className="w-full h-[300px]">
+        {chartType === "pie" && (
+          <Pie options={options} data={chartData} className="w-full h-full" />
+        )}
+        {chartType === "bar" && (
+          <Bar options={options} data={chartData} className="w-full h-full" />
+        )}
       </div>
     </div>
   );
