@@ -4,7 +4,7 @@ import { ClientsByDay } from "@/app/types/User";
 export default function ClDayChart({ data }: { data: ClientsByDay }) {
   return (
     <div>
-      <Heading text="DayChart" />
+      <p>Day chart</p>
     </div>
   );
 }
