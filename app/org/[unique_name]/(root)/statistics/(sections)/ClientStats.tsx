@@ -8,6 +8,7 @@ import { ShieldAlert } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateClientStats } from "@/app/store/slices/statsSlice";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
+import ClDayChart from "./(client-charts)/ClDayChart";
 
 export default function ClientStatistics({
   organization,
@@ -60,8 +61,12 @@ export default function ClientStatistics({
       ) : (
         <div>
           {clients ? (
-            <div>
-              <div className="p-8 rounded-2xl border border-gray-300 shadow-md"></div>
+            <div className="space-y-5 w-full">
+              <ClDayChart data={clients.clientsByDay} />
+              <div className="flex gap-5 justify-between items-center w-full">
+                {/* <RvMonthChart data={revenue.revenueByMonth} /> */}
+                {/* <RvTypeChart data={revenue.revenueByType} /> */}
+              </div>
             </div>
           ) : (
             <div className="flex justify-center items-center py-10">
