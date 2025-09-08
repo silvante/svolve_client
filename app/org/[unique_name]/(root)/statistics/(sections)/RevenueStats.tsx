@@ -75,6 +75,13 @@ export default function RevenueStatistics({
                 <RvMonthChart data={revenue.revenueByMonth} />
                 <RvTypeChart data={revenue.revenueByType} />
               </div>
+              <div>
+                <p>
+                  All charts display values in <b>UZS</b>. For clearer and more
+                  accurate statistics, please make sure to always record client
+                  prices in <b>UZS</b>.
+                </p>
+              </div>
             </div>
           ) : (
             <div className="flex justify-center items-center py-10">
