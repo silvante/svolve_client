@@ -17,6 +17,7 @@ import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import RvDayChart from "./(revenue-chars)/RvDayChart";
 import RvMonthChart from "./(revenue-chars)/RvMonthChart";
 import RvTypeChart from "./(revenue-chars)/RvTypeChart";
+import RvTotal from "./(revenue-chars)/RvTotal";
 
 export default function RevenueStatistics({
   organization,
@@ -82,6 +83,7 @@ export default function RevenueStatistics({
                   prices in <b>UZS</b>.
                 </p>
               </div>
+              <RvTotal data={revenue} />
             </div>
           ) : (
             <div className="flex justify-center items-center py-10">
