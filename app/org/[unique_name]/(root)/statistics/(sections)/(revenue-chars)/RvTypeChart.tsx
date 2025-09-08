@@ -1,6 +1,5 @@
 "use client";
-import { Line } from "react-chartjs-2";
-import { Bar } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +8,7 @@ import {
   LineElement,
   BarElement,
   Title,
+  ArcElement,
   Tooltip,
   Legend,
 } from "chart.js";
@@ -20,6 +20,7 @@ ChartJS.register(
   LineElement,
   BarElement,
   Title,
+  ArcElement,
   Tooltip,
   Legend
 );
@@ -30,11 +31,20 @@ import { BarChart3, LineChart } from "lucide-react";
 import Heading from "@/app/(global_components)/Heading";
 
 export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
-  const [chartType, setChartType] = useState("bar");
+  // const [chartType, setChartType] = useState("bar");
   console.log(data);
 
   const labels = data.map((rbd) => rbd.type_name);
   const revenues = data.map((rbd) => rbd.total);
+
+  function stringToColor(str: string) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const c = (hash & 0x00ffffff).toString(16).toUpperCase();
+    return "#" + "00000".substring(0, 6 - c.length) + c;
+  }
 
   const chartData = {
     labels: labels,
@@ -42,8 +52,7 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
       {
         label: "Revenue by type",
         data: revenues,
-        borderColor: "#7f22fe",
-        backgroundColor: "#7f22fe",
+        backgroundColor: labels.map((lb) => stringToColor(lb)),
         fill: true,
       },
     ],
@@ -57,9 +66,9 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
   };
 
   return (
-    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 flex-1">
+    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 aspect-square">
       <Heading text="Types" />
-      <div className="flex gap-4">
+      {/* <div className="flex gap-4">
         <button
           onClick={() => setChartType("line")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
@@ -72,14 +81,9 @@ export default function RvTypeChart({ data }: { data: RevenueByType[] }) {
         >
           <BarChart3 /> Bar
         </button>
-      </div>
-      <div className="w-full h-[300px]">
-        {chartType === "line" && (
-          <Line options={options} data={chartData} className="w-full h-full" />
-        )}
-        {chartType === "bar" && (
-          <Bar options={options} data={chartData} className="w-full h-full" />
-        )}
+      </div> */}
+      <div className="w-full h-full">
+        <Pie options={options} data={chartData} className="w-full h-full" />
       </div>
     </div>
   );

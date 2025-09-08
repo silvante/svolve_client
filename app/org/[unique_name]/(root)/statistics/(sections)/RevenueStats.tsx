@@ -63,7 +63,7 @@ export default function RevenueStatistics({
         </Alert>
       )}
       {isLoading ? (
-        <div className="py-20 flex justify-center items-center">
+        <div className="py-20 flex justify-center">
           <Spinner />
         </div>
       ) : (
