@@ -3,6 +3,7 @@ import Heading from "@/app/(global_components)/Heading";
 import ClientSearchEngine from "./(components)/ClientSearchEngine";
 import SearchCalendar from "./(components)/SearchCalendar";
 import { useSelector } from "react-redux";
+import ClientStatistics from "../statistics/(sections)/ClientStats";
 
 export default function ClientPage() {
   const { organization } = useSelector((state: any) => state.validator);
@@ -13,6 +14,7 @@ export default function ClientPage() {
       </div>
       <ClientSearchEngine organization={organization} />
       <SearchCalendar organization={organization} />
+      <ClientStatistics organization={organization} />
     </div>
   );
 }

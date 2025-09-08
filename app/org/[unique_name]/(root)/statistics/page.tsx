@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import OrganizationView from "./OrganizationView";
 import Totals from "./(sections)/Totals";
 import RevenueStatistics from "./(sections)/RevenueStats";
-import ClientStatistics from "./(sections)/ClientStats";
+// import ClientStatistics from "./(sections)/ClientStats";
 
 export default function StatisticsPage() {
   const { organization } = useSelector((state: any) => state.validator);
@@ -15,7 +15,7 @@ export default function StatisticsPage() {
       <OrganizationView organization={organization} />
       <Totals organization={organization} />
       <RevenueStatistics organization={organization} />
-      <ClientStatistics organization={organization} />
+      {/* <ClientStatistics organization={organization} /> */}
     </div>
   );
 }

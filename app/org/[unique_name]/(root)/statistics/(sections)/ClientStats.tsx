@@ -46,7 +46,7 @@ export default function ClientStatistics({
 
   return (
     <div className="space-y-5">
-      <Heading text="Clients" />
+      <Heading text="Statistics" />
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
