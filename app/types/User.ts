@@ -108,9 +108,8 @@ export interface ClientsByMonth {
 
 export interface ClientsByType {
   type_id: number;
-  _count: {
-    id: number;
-  };
+  type_name: string;
+  total: number;
 }
 
 export interface ClientStats {
