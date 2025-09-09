@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateClientStats } from "@/app/store/slices/statsSlice";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import ClDayChart from "./(client-charts)/ClDayChart";
+import ClMonthChart from "./(client-charts)/ClMonthChart";
+import ClTypeChart from "./(client-charts)/ClTypeChart";
 
 export default function ClientStatistics({
   organization,
@@ -64,8 +66,8 @@ export default function ClientStatistics({
             <div className="space-y-5 w-full">
               <ClDayChart data={clients.clientsByDay} />
               <div className="flex gap-5 justify-between items-center w-full">
-                {/* <RvMonthChart data={revenue.revenueByMonth} /> */}
-                {/* <RvTypeChart data={revenue.revenueByType} /> */}
+                <ClMonthChart data={clients.clientsByMonth} />
+                <ClTypeChart data={clients.clientsByType} />
               </div>
             </div>
           ) : (

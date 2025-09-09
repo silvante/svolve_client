@@ -31,7 +31,7 @@ import { useState } from "react";
 import { BarChart3, PieChart } from "lucide-react";
 import Heading from "@/app/(global_components)/Heading";
 
-export default function RvTypeChart({ data }: { data: ClientsByType[] }) {
+export default function ClTypeChart({ data }: { data: ClientsByType[] }) {
   const [chartType, setChartType] = useState("pie");
   console.log(data);
 
