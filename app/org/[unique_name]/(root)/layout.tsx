@@ -9,6 +9,7 @@ import OrgBreadcrumbs from "../../(components)/OrgBreadcrumbs";
 import OrgAside from "../../(components)/OrgAside";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
+import OrgFooter from "../../(components)/OrgFooter";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -35,11 +36,12 @@ export default function OrgLayout({
           <OrgHeader />
           <main className="w-full flex">
             <OrgAside />
-            <div className="flex-1 pt-20 px-5 container mx-auto space-y-5 pb-5">
+            <div className="flex-1 pt-20 px-5 container mx-auto space-y-5 pb-5 flex flex-col">
               <div className="w-full flex items-center justify-start">
                 <OrgBreadcrumbs />
               </div>
-              {children}
+              <div className="flex-1">{children}</div>
+              <OrgFooter />
             </div>
           </main>
         </div>
