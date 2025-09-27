@@ -53,7 +53,7 @@ export default function Github({ setErrorMessage }: any) {
         src={"/social_icons/GitHub.svg"}
         alt="github icon"
         width={22}
-        height={0}
+        height={22}
       />{" "}
       Continue with Github
     </button>

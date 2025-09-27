@@ -51,7 +51,7 @@ export default function Google({ setErrorMessage }: any) {
         src={"/social_icons/Google.svg"}
         alt="google icon"
         width={22}
-        height={0}
+        height={22}
       />{" "}
       Continue with Google
     </button>
