@@ -11,19 +11,27 @@ export default function OrgFooter() {
         </div>
 
         <div className="flex items-center gap-4">
-          <a href="/panel/docs" target="_blanck" className="hover:underline">
-            Docs
+          <a
+            href="https://www.youtube.com/@svolveuz"
+            target="_blanck"
+            className="hover:underline"
+          >
+            YouTube
           </a>
-          <a href="/panel/support" target="_blanck" className="hover:underline">
-            Support
+          <a
+            href="https://t.me/svolve"
+            target="_blanck"
+            className="hover:underline"
+          >
+            Telegram
           </a>
           <span className="text-gray-400">|</span>
           <a
-            href="/panel/settings"
+            href="https://t.me/vanilla_valentine"
             target="_blanck"
             className="text-xs px-2 py-1 rounded-full bg-white/50 border border-gray-200"
           >
-            Organization
+            Creator & Support
           </a>
         </div>
       </div>
