@@ -6,10 +6,10 @@ import {
   BookUser,
   BriefcaseBusiness,
   ChartArea,
+  HandHeart,
   Pilcrow,
   Users,
 } from "lucide-react";
-import AsideLink from "@/app/panel/(root)/(panel_components)/(meta-components)/AsideLink";
 import Link from "next/link";
 
 export default function OrgAside() {
@@ -41,6 +41,9 @@ export default function OrgAside() {
         </OrgAsideLink>
         <OrgAsideLink href="/workers">
           <Users /> Workers
+        </OrgAsideLink>
+        <OrgAsideLink href="/community">
+          <HandHeart /> Community & Support
         </OrgAsideLink>
       </div>
       <Link
