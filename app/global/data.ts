@@ -1,3 +1,8 @@
+import youtubeIcon from "@/public/social_icons/youtube.svg";
+import telegramIcon from "@/public/social_icons/telegram.svg";
+import xamidovIcon from "@/public/social_icons/xamidov.svg";
+import chatIcon from "@/public/social_icons/chat.svg";
+
 export const origins = [
   {
     id: 1,
@@ -65,6 +70,34 @@ export const workerRoles = [
     id: 2,
     name: "doctor",
     include_types: true,
-    terms: "Doctor can commit clients with types that you attached to them, also they will only recieve clients with types that attached to them, Just like receptionists they will only have access to WorkPanel nothing more.I"
+    terms:
+      "Doctor can commit clients with types that you attached to them, also they will only recieve clients with types that attached to them, Just like receptionists they will only have access to WorkPanel nothing more.I",
+  },
+];
+
+export const Socials = [
+  {
+    id: 1,
+    name: "YouTube Official Channel",
+    url: "https://www.youtube.com/@svolveuz",
+    icon: youtubeIcon,
+  },
+  {
+    id: 2,
+    name: "Telegram Official Channel",
+    url: "https://t.me/svolve",
+    icon: telegramIcon,
+  },
+  {
+    id: 3,
+    name: "Telegram Chat",
+    url: "https://t.me/svolvechat",
+    icon: telegramIcon,
+  },
+  {
+    id: 4,
+    name: "Reach creator's contacts",
+    url: "https://xamidov.uz",
+    icon: xamidovIcon,
   },
 ];
