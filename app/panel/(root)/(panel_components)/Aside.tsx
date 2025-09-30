@@ -4,6 +4,7 @@ import {
   CircleUser,
   FileUser,
   GitFork,
+  HandHeart,
   House,
   Settings,
   WorkflowIcon,
@@ -28,6 +29,9 @@ export default function Aside() {
         </AsideLink>
         <AsideLink href="/panel/profile">
           <CircleUser /> Profile
+        </AsideLink>
+        <AsideLink href="/panel/community">
+          <HandHeart /> Community & support
         </AsideLink>
         <AsideLink href="/panel/profile/settings">
           <Settings /> Settings
