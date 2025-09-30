@@ -1,3 +1,4 @@
+"use client";
 import Heading from "@/app/(global_components)/Heading";
 import { Socials } from "@/app/global/data";
 import profile from "@/public/icons/profile.svg";
@@ -9,24 +10,34 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Community() {
+  const path = usePathname();
+  console.log(path);
+
   return (
     <div className="space-y-8">
-      <div className="flex items-center justify-center py-5">
-        <Image
-          src={profile}
-          alt="Svolve Community icons"
-          width={200}
-          height={200}
-          className="rounded-full"
-        />
-      </div>
+      {path !== "/" && (
+        <div className="flex items-center justify-center py-5">
+          <Image
+            src={profile}
+            alt="Svolve Community icons"
+            width={200}
+            height={200}
+            className="rounded-full"
+          />
+        </div>
+      )}
       <div className="flex items-center justify-center">
         <Heading text="Welcome to Svolve Community" />
       </div>
       <div className="w-full grid grid-cols-2 gap-5">
-        <div className="rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 border-b-2 border-b-violet-600">
+        <div
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
+            path !== "/" && "border-b-2 border-b-violet-600"
+          }`}
+        >
           <div className="flex-1 space-y-2">
             <Heading text="Support & Care" />
             <p className="text-gray-600">Support from Creators</p>
@@ -35,7 +46,11 @@ export default function Community() {
             <HandHeart size={50} />
           </div>
         </div>
-        <div className="rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 border-b-2 border-b-violet-600">
+        <div
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
+            path !== "/" && "border-b-2 border-b-violet-600"
+          }`}
+        >
           <div className="flex-1 space-y-2">
             <Heading text="Q&A Streams" />
             <p className="text-gray-600">Streams whenever you want</p>
@@ -44,7 +59,11 @@ export default function Community() {
             <Podcast size={50} />
           </div>
         </div>
-        <div className="rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 border-b-2 border-b-violet-600">
+        <div
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
+            path !== "/" && "border-b-2 border-b-violet-600"
+          }`}
+        >
           <div className="flex-1 space-y-2">
             <Heading text="Tutorials" />
             <p className="text-gray-600">Tutorials on YouTube</p>
@@ -53,7 +72,11 @@ export default function Community() {
             <BookMarked size={50} />
           </div>
         </div>
-        <div className="rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 border-b-2 border-b-violet-600">
+        <div
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
+            path !== "/" && "border-b-2 border-b-violet-600"
+          }`}
+        >
           <div className="flex-1 space-y-2">
             <Heading text="Live Chats" />
             <p className="text-gray-600">You can chat with other users</p>
