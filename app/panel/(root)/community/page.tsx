@@ -7,11 +7,23 @@ export default function CommunityPanelPage() {
   const { currentUser } = useSelector((state: any) => state.user);
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-8">
       <div className="w-full overflow-hidden">
         <Heading text={`👋 Hey ${currentUser.name}`} />
       </div>
       <Community />
+      <div className="space-y-2">
+        <Heading text="# From Creator" />
+        <p className="text_color">
+          Following our social media channels at the top is highly recommended,
+          as they are managed directly by the creator and remain highly active.
+          You can easily access support, tutorials, and updates in real time. In
+          addition, you may reach out directly to the CEO of Svolve for
+          insights, feedback, and important announcements. Staying connected
+          through these channels ensures you are always up to date with the
+          latest features, improvements, and opportunities within our community.
+        </p>
+      </div>
     </div>
   );
 }
