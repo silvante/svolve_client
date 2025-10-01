@@ -1,4 +1,5 @@
 "use client";
+import { CircleUserRound, DoorOpen, LogIn } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -22,11 +23,11 @@ export default function RegisterButton() {
         <Link
           href={"/"}
           className="inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
-        > 
-          Loading 
-        </Link> 
-        <Link 
-          href={"/"} 
+        >
+          Loading
+        </Link>
+        <Link
+          href={"/"}
           className="inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
         >
           Loading
@@ -36,26 +37,26 @@ export default function RegisterButton() {
   }
 
   return (
-    <div className="space-x-3">
+    <div className="space-x-3 flex gap-2 items-center justify-center text-lg">
       <Link
         href={"/signin"}
-        className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl"
+        className="px-4 py-2 rounded-xl flex gap-2 hover:text-violet-600"
       >
-        Sign in
+        Sign in <LogIn />
       </Link>
       {!isRegistered ? (
         <Link
           href={"/signup"}
-          className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl bg-violet-600 text-white"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          Sign up
+          Sign up <CircleUserRound />
         </Link>
       ) : (
         <Link
           href={"/panel"}
-          className="inline-block border-2 border-violet-600 px-4 py-2 rounded-xl bg-violet-600 text-white"
+          className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          Dashboard
+          Dashboard <DoorOpen />
         </Link>
       )}
     </div>
