@@ -8,11 +8,7 @@ import { FileImage, ShieldAlert } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function EditProfile() {
   const { currentUser } = useSelector((state: any) => state.user);
