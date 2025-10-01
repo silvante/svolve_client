@@ -25,7 +25,6 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <BG />
       <div className={`${roboto.className} antialiased`}>
         <Header />
         <main className="main_body">{children}</main>
