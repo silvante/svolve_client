@@ -61,7 +61,10 @@ const apiEndpoints = {
 
   // stats
   getClientStats: (org_id: number) => `/organizations/${org_id}/stats/clients`,
-  getRevenueStats: (org_id: number) => `/organizations/${org_id}/stats/revenue`
+  getRevenueStats: (org_id: number) => `/organizations/${org_id}/stats/revenue`,
+
+  // subscriptions
+  generateCheckOut: (unique_name: string) => `/subscription/${unique_name}/checkout`
 };
 
 export default apiEndpoints;
