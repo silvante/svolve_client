@@ -8,7 +8,7 @@ import OrgHeader from "../../(components)/OrgHeader";
 import OrgBreadcrumbs from "../../(components)/OrgBreadcrumbs";
 import OrgAside from "../../(components)/OrgAside";
 import { useSelector } from "react-redux";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import OrgFooter from "../../(components)/OrgFooter";
 
 const roboto = Roboto({
@@ -22,8 +22,16 @@ export default function OrgLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { loading } = useSelector((state: any) => state.validator);
+  const { loading, organization, validation } = useSelector(
+    (state: any) => state.validator
+  );
   const { unique_name }: { unique_name: string } = useParams();
+  const router = useRouter();
+
+  if (!loading && validation && organization.unique_name !== unique_name) {
+    router.push(`/org/${unique_name}/validation`);
+  }
+
   return (
     <>
       {loading ? (
