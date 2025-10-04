@@ -14,7 +14,7 @@ export default function OrgLogo({ link }: { link?: string }) {
     >
       <Image
         src={organization.logo}
-        alt="Logotype svolve"
+        alt={organization.name}
         width={0}
         height={0}
         className="w-auto h-10"
