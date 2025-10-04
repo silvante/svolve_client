@@ -26,12 +26,22 @@ export default function JobMainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
   const { unique_name } = useParams();
+  const { organization, validation } = useSelector(
+    (state: any) => state.validator
+  );
 
   async function GetJob() {
+    if (
+      organization &&
+      validation &&
+      organization.unique_name === unique_name
+    ) {
+      return;
+    }
     setIsLoading(true);
     try {
       const res: any = await userService.getMyJobs();

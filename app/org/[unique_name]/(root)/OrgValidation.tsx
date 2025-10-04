@@ -7,7 +7,7 @@ import { HashLoader } from "react-spinners";
 export default function OrgValidator({ unique_name }: { unique_name: string }) {
   const router = useRouter();
   const pathname = usePathname();
-  const { validation } = useSelector((state: any) => state.validator);
+  const { validation, loading } = useSelector((state: any) => state.validator);
 
   React.useEffect(() => {
     if (pathname !== `/org/${unique_name}/validation` && !validation) {
@@ -17,11 +17,11 @@ export default function OrgValidator({ unique_name }: { unique_name: string }) {
 
   return (
     <>
-      {/* {loading && (
+      {loading && (
         <div className="fixed w-full h-screen top-0 left-0 right-0 bottom-0 bg-white z-50 flex justify-center items-center">
           <HashLoader color="#7c3aed" size={58} />
         </div>
-      )} */}
+      )}
     </>
   );
 }
