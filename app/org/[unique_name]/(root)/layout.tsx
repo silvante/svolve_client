@@ -40,11 +40,11 @@ export default function OrgLayout({
           <OrgValidator unique_name={unique_name} />
         </>
       ) : (
-        <div className={`${roboto.className} antialiased w-full`}>
+        <div className={`${roboto.className} antialiased w-full h-screen`}>
           <OrgHeader />
-          <main className="w-full flex">
+          <main className="w-full flex min-h-screen">
             <OrgAside />
-            <div className="flex-1 pt-20 px-5 container mx-auto space-y-5 pb-5 flex flex-col">
+            <div className="flex-1 pt-20 px-5 max-w-[1480px] mx-auto space-y-5 pb-5 flex flex-col">
               <div className="w-full flex items-center justify-start">
                 <OrgBreadcrumbs />
               </div>
