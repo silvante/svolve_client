@@ -31,6 +31,11 @@ export interface Organization {
     types: number;
     clients: number;
   };
+  subscription_status: string;
+  subscription_id: string;
+  subscribed_at: Date;
+  renews_at: Date;
+  is_vip: string;
 }
 
 export interface DefaultOrganization {

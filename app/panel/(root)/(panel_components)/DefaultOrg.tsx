@@ -2,7 +2,15 @@
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import Spinner from "@/app/(global_components)/Spinner";
 import { Organization, User } from "@/app/types/User";
-import { Eye, LockKeyhole, Menu, PenBox, Pin, PlayCircle } from "lucide-react";
+import {
+  Crown,
+  Eye,
+  LockKeyhole,
+  Menu,
+  PenBox,
+  Pin,
+  PlayCircle,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -85,9 +93,22 @@ export default function DefaultOrg() {
                   day: "numeric",
                 })}
               </p>
-              <p className="text-sm text-green-600">
-                <span className="text-black">status:</span> active
-              </p>
+              {org.is_vip ? (
+                <p className="text-yellow-600 flex items-center gap-2">
+                  Organization is VIP <Crown />
+                </p>
+              ) : (
+                <p
+                  className={`text-sm ${
+                    org.subscription_status == "active"
+                      ? "text-green-600"
+                      : "text-red-600"
+                  }`}
+                >
+                  <span className="text-black">status:</span>{" "}
+                  {org.subscription_status}
+                </p>
+              )}
               <p className="text-sm text-gray-500">
                 <span className="text-black">pincode:</span> present
               </p>

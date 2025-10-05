@@ -3,7 +3,15 @@ import Spinner from "@/app/(global_components)/Spinner";
 import organizationService from "@/app/api/services/organizationService";
 import { updateOrganizations } from "@/app/store/slices/organizationSlice";
 import { Organization } from "@/app/types/User";
-import { Check, Eye, LockKeyhole, Menu, PenBox, Pin } from "lucide-react";
+import {
+  Check,
+  Crown,
+  Eye,
+  LockKeyhole,
+  Menu,
+  PenBox,
+  Pin,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -138,9 +146,22 @@ export default function OrganizationList() {
                     }
                   )}
                 </p>
-                <p className="text-sm text-green-600">
-                  <span className="text-black">status:</span> active
-                </p>
+                {organization.is_vip ? (
+                  <p className="text-yellow-600 flex items-center gap-2">
+                    Organization is VIP <Crown />
+                  </p>
+                ) : (
+                  <p
+                    className={`text-sm ${
+                      organization.subscription_status == "active"
+                        ? "text-green-600"
+                        : "text-red-600"
+                    }`}
+                  >
+                    <span className="text-black">status:</span>{" "}
+                    {organization.subscription_status}
+                  </p>
+                )}
                 <p className="text-sm text-gray-500">
                   <span className="text-black">pincode:</span> present
                 </p>
