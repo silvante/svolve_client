@@ -7,6 +7,9 @@ import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import BackBtn from "@/app/(global_components)/BackBtn";
 import Image from "next/image";
+import PaymentSuccess from "@/app/lottie/PaymentSuccess";
+import Heading from "@/app/(global_components)/Heading";
+import OrgFooter from "../../(components)/OrgFooter";
 
 export default function ValidateOrganizationPage() {
   const { unique_name } = useParams();
@@ -18,17 +21,21 @@ export default function ValidateOrganizationPage() {
   // data
   const [org, setOrg] = useState<null | Organization>(null);
   const [url, setUrl] = useState<string | null>(null);
+  const [subscription, setSubscription] = useState<boolean>(true);
 
   async function getCheckout() {
     try {
       const res: any = await subscriptionService.generateCheckout(
         String(unique_name)
       );
-      const response: { url: string; organization: Organization } = res;
-      console.log(res);
-      console.log(response);
+      const response: {
+        url: string;
+        organization: Organization;
+        subscription: boolean;
+      } = res;
       setOrg(response.organization);
       setUrl(response.url);
+      setSubscription(response.subscription);
       setError(null);
     } catch (error: any) {
       if (error.response && error.response.data) {
@@ -64,8 +71,7 @@ export default function ValidateOrganizationPage() {
     );
   }
 
-  console.log(url);
-  if (!org || !url) {
+  if (!org) {
     return;
   }
 
@@ -97,11 +103,27 @@ export default function ValidateOrganizationPage() {
             />
           </div>
         </header>
-        <iframe
-          src={url}
-          className="w-full flex-1 outline-none"
-          allow="payment"
-        />
+        {subscription && !url ? (
+          <div className="w-full flex-1 outline-none flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
+              <PaymentSuccess />
+              <Heading text="Organization is subscribed" />
+            </div>
+          </div>
+        ) : (
+          <>
+            {url && (
+              <iframe
+                src={url}
+                className="w-full flex-1 outline-none"
+                allow="payment"
+              />
+            )}
+          </>
+        )}
+        <div className="w-full flex items-center justify-between p-5">
+          <OrgFooter />
+        </div>
       </div>
     </div>
   );
