@@ -12,7 +12,7 @@ import Heading from "@/app/(global_components)/Heading";
 import OrgFooter from "../../(components)/OrgFooter";
 import VIP from "@/app/lottie/VIP";
 
-export default function ValidateOrganizationPage() {
+export default function SubScriptionPage() {
   const { unique_name } = useParams();
   const sParams = useSearchParams();
   const page = sParams.get("page");
