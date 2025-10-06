@@ -16,7 +16,7 @@ export default function JobsHeader() {
         {!organization.logo ? (
           <Svolve link={`/job/${organization.unique_name}`} />
         ) : (
-          <JobLogo />
+          <JobLogo org={organization} />
         )}
       </div>
       <div className="flex items-center gap-4">

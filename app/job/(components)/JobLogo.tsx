@@ -1,16 +1,12 @@
+import { Organization } from "@/app/types/User";
 import Image from "next/image";
 import Link from "next/link";
-import { useSelector } from "react-redux";
 
-export default function JobLogo() {
-  const { organization } = useSelector((state: any) => state.validator);
-  if (!organization.logo) {
-    return;
-  }
+export default function JobLogo({ org }: { org: Organization }) {
   return (
-    <Link href={`/job/${organization.unique_name}`} className="inline-block">
+    <Link href={`/job/${org.unique_name}`} className="inline-block">
       <Image
-        src={organization.logo}
+        src={org.logo}
         alt="Logotype svolve"
         width={0}
         height={0}

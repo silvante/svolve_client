@@ -14,6 +14,7 @@ import {
 import { HashLoader } from "react-spinners";
 import JobsHeader from "../../(components)/JobsHeader";
 import JobBreadcrumbs from "../../(components)/JobBreadcrumbs";
+import OrgFooter from "@/app/org/(components)/OrgFooter";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function JobMainLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
   const { unique_name } = useParams();
@@ -57,11 +58,18 @@ export default function JobMainLayout({
       dispatch(updateJob(theJob));
       dispatch(updateValidation(true));
       dispatch(updateValidationOrg(theOrg));
+    } catch (error: any) {
+      const res = error?.response?.data || error?.response;
 
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      router.push("/panel");
+      if (
+        res?.statusCode === 407 &&
+        res?.message === "organization_is_not_subscribed"
+      ) {
+        router.push(`/job/${unique_name}/subscription`);
+      } else {
+        router.push("/panel");
+      }
+    } finally {
       setIsLoading(false);
     }
   }
@@ -76,7 +84,7 @@ export default function JobMainLayout({
         <HashLoader color="#7c3aed" size={58} />
       </div>
     );
-  } else {
+  } else if (organization && validation) {
     return (
       <div className={`${roboto.className} antialiased`}>
         <JobsHeader />
@@ -85,6 +93,9 @@ export default function JobMainLayout({
             <JobBreadcrumbs />
           </div>
           <div className="w-full">{children}</div>
+        </div>
+        <div className="p-3 w-full flex items-center justify-center">
+          <OrgFooter />
         </div>
       </div>
     );
