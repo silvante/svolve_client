@@ -9,6 +9,7 @@ import {
   HandHeart,
   Pilcrow,
   Users,
+  WalletCards,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -44,6 +45,9 @@ export default function OrgAside() {
         </OrgAsideLink>
         <OrgAsideLink href="/community">
           <HandHeart /> Community & Support
+        </OrgAsideLink>
+        <OrgAsideLink href="/subscription/?page=org">
+          <WalletCards /> Subscription
         </OrgAsideLink>
       </div>
       <Link

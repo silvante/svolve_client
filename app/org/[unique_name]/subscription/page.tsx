@@ -92,7 +92,9 @@ export default function ValidateOrganizationPage() {
             )}
           </div>
           <div>
-            <BackBtn href={page ? page : "/panel"} />
+            <BackBtn
+              href={page && page == "org" ? `/org/${unique_name}` : "/panel"}
+            />
           </div>
         </header>
         <iframe
