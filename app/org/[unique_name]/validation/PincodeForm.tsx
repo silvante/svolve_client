@@ -52,7 +52,6 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       dispatch(updateValidation(res.validation));
       dispatch(updateValidationOrg(res.organization));
       router.push(`/org/${unique_name}`);
-      setLoading(false);
     } catch (error: any) {
       if (error.response && error.response.data) {
         setErrorMessage(
@@ -60,6 +59,15 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
             "An error occurred while validating the pincode."
         );
       }
+      const res = error?.response?.data || error?.response;
+
+      if (
+        res?.statusCode === 407 &&
+        res?.message === "organization_is_not_subscribed"
+      ) {
+        router.push(`/org/${unique_name}/subscription`);
+      }
+    } finally {
       setLoading(false);
     }
   };
