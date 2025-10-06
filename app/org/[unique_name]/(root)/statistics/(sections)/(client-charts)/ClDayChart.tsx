@@ -40,7 +40,7 @@ export default function RvDayChart({ data }: { data: ClientsByDay[] }) {
     labels: labels,
     datasets: [
       {
-        label: "Daily revenue",
+        label: "clients",
         data: clientsNumber,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",

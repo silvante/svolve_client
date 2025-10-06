@@ -51,7 +51,7 @@ export default function ClTypeChart({ data }: { data: ClientsByType[] }) {
     labels: labels,
     datasets: [
       {
-        label: "Revenue by type",
+        label: "clients",
         data: revenues,
         backgroundColor: labels.map((lb) => stringToColor(lb)),
         fill: true,

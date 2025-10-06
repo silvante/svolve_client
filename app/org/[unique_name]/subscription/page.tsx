@@ -10,6 +10,7 @@ import Image from "next/image";
 import PaymentSuccess from "@/app/lottie/PaymentSuccess";
 import Heading from "@/app/(global_components)/Heading";
 import OrgFooter from "../../(components)/OrgFooter";
+import VIP from "@/app/lottie/VIP";
 
 export default function ValidateOrganizationPage() {
   const { unique_name } = useParams();
@@ -103,23 +104,28 @@ export default function ValidateOrganizationPage() {
             />
           </div>
         </header>
-        {subscription && !url ? (
+        {org.is_vip && (
+          <div className="w-full flex-1 outline-none flex items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
+              <VIP />
+              <Heading text="Organization is VIP" />
+            </div>
+          </div>
+        )}
+        {!org.is_vip && subscription && !url && (
           <div className="w-full flex-1 outline-none flex items-center justify-center">
             <div className="flex flex-col items-center justify-center">
               <PaymentSuccess />
               <Heading text="Organization is subscribed" />
             </div>
           </div>
-        ) : (
-          <>
-            {url && (
-              <iframe
-                src={url}
-                className="w-full flex-1 outline-none"
-                allow="payment"
-              />
-            )}
-          </>
+        )}
+        {!org.is_vip && url && (
+          <iframe
+            src={url}
+            className="w-full flex-1 outline-none"
+            allow="payment"
+          />
         )}
         <div className="w-full flex items-center justify-between p-5">
           <OrgFooter />

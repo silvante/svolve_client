@@ -40,7 +40,7 @@ export default function ClMonthChart({ data }: { data: ClientsByMonth[] }) {
     labels: labels,
     datasets: [
       {
-        label: "Monthly revenue",
+        label: "clients",
         data: revenues,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",
