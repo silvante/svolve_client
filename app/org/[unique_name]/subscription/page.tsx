@@ -11,6 +11,7 @@ import PaymentSuccess from "@/app/lottie/PaymentSuccess";
 import Heading from "@/app/(global_components)/Heading";
 import OrgFooter from "../../(components)/OrgFooter";
 import VIP from "@/app/lottie/VIP";
+import DayCounter from "@/app/(global_components)/DayCounter";
 
 export default function SubScriptionPage() {
   const { unique_name } = useParams();
@@ -76,6 +77,8 @@ export default function SubScriptionPage() {
     return;
   }
 
+  console.log(org);
+
   return (
     <div className="w-full flex items-center justify-center h-screen">
       <div className="w-full flex flex-col h-full">
@@ -116,7 +119,10 @@ export default function SubScriptionPage() {
           <div className="w-full flex-1 outline-none flex items-center justify-center">
             <div className="flex flex-col items-center justify-center">
               <PaymentSuccess />
-              <Heading text="Organization is subscribed" />
+              <div className="flex flex-col items-center justify-center gap-2">
+                <Heading text="Organization is subscribed" />
+                <DayCounter date={org.renews_at} />
+              </div>
             </div>
           </div>
         )}
