@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://rebound-leaves-pace-stations.trycloudflare.com",
   headers: {
     Accept: "application/json",
   },
