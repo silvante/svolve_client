@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ProfileButton from "./ProfileButton";
 
 export default function UserProfile() {
-  const { currentUser, loading } = useSelector((state: any) => state.user);
   const router = useRouter();
 
   function HandleLogOut() {
@@ -22,54 +22,36 @@ export default function UserProfile() {
     router.push("/");
   }
 
-  if (loading) {
-    return <Spinner />;
-  } else {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex gap-2 rounded-full border border-gray-400 justify-center items-center p-1 lg:pr-3 cursor-pointer">
-          <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
-            {currentUser.avatar ? (
-              <img
-                src={currentUser.avatar}
-                alt="Your avatar"
-                className="w-full h-full aspect-square object-cover"
-              />
-            ) : (
-              <UserCircle />
-            )}
-          </div>
-          <div className="hidden lg:block">
-            <Menu />
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-56">
-          <Link href="/panel/profile">
-            <DropdownMenuItem>
-              <Eye /> view profile
-            </DropdownMenuItem>
-          </Link>
-          <Link href="/panel/profile/settings">
-            <DropdownMenuItem>
-              <Settings /> Settings
-            </DropdownMenuItem>
-          </Link>
-          <Link href="/signin">
-            <DropdownMenuItem>
-              <UserPen /> Change account
-            </DropdownMenuItem>
-          </Link>
-          <button
-            className="rounded-lg cursor-pointer w-full"
-            onClick={HandleLogOut}
-          >
-            <DropdownMenuItem className="cursor-pointer">
-              <LogOut color="#e7000b" />{" "}
-              <p className="text-red-600"> Log-out</p>
-            </DropdownMenuItem>
-          </button>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  }
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <ProfileButton />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <Link href="/panel/profile">
+          <DropdownMenuItem>
+            <Eye /> view profile
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/panel/profile/settings">
+          <DropdownMenuItem>
+            <Settings /> Settings
+          </DropdownMenuItem>
+        </Link>
+        <Link href="/signin">
+          <DropdownMenuItem>
+            <UserPen /> Change account
+          </DropdownMenuItem>
+        </Link>
+        <button
+          className="rounded-lg cursor-pointer w-full"
+          onClick={HandleLogOut}
+        >
+          <DropdownMenuItem className="cursor-pointer">
+            <LogOut color="#e7000b" /> <p className="text-red-600"> Log-out</p>
+          </DropdownMenuItem>
+        </button>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }

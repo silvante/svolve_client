@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
@@ -10,13 +11,17 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
+import { Menu, UserCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import ProfileButton from "./ProfileButton";
 
 export function MobileAside() {
+    const router = useRouter();
     return (
         <Sheet>
             <SheetTrigger asChild className="block lg:hidden">
-                <Menu />
+                <ProfileButton />
             </SheetTrigger>
             <SheetContent>
                 <SheetHeader>
