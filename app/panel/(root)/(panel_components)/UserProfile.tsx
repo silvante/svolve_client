@@ -27,7 +27,7 @@ export default function UserProfile() {
   } else {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex gap-2 rounded-full border border-gray-400 justify-center items-center p-1 pr-3 cursor-pointer">
+        <DropdownMenuTrigger className="flex gap-2 rounded-full border border-gray-400 justify-center items-center p-1 lg:pr-3 cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             {currentUser.avatar ? (
               <img
@@ -39,7 +39,9 @@ export default function UserProfile() {
               <UserCircle />
             )}
           </div>
-          <Menu />
+          <div className="hidden lg:block">
+            <Menu />
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
           <Link href="/panel/profile">
