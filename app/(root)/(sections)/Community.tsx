@@ -29,14 +29,13 @@ export default function Community() {
           />
         </div>
       )}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center text-center">
         <Heading text="Welcome to Svolve Community" />
       </div>
-      <div className="w-full grid grid-cols-2 gap-5">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
-          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
-            path !== "/" && "border-b-2 border-b-violet-600"
-          }`}
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${path !== "/" && "border-b-2 border-b-violet-600"
+            }`}
         >
           <div className="flex-1 space-y-2">
             <Heading text="Support & Care" />
@@ -47,9 +46,8 @@ export default function Community() {
           </div>
         </div>
         <div
-          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
-            path !== "/" && "border-b-2 border-b-violet-600"
-          }`}
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${path !== "/" && "border-b-2 border-b-violet-600"
+            }`}
         >
           <div className="flex-1 space-y-2">
             <Heading text="Q&A Streams" />
@@ -60,9 +58,8 @@ export default function Community() {
           </div>
         </div>
         <div
-          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
-            path !== "/" && "border-b-2 border-b-violet-600"
-          }`}
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${path !== "/" && "border-b-2 border-b-violet-600"
+            }`}
         >
           <div className="flex-1 space-y-2">
             <Heading text="Tutorials" />
@@ -73,9 +70,8 @@ export default function Community() {
           </div>
         </div>
         <div
-          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${
-            path !== "/" && "border-b-2 border-b-violet-600"
-          }`}
+          className={`rounded-xl flex items-center justify-between border border-gray-300 shadow-md p-5 ${path !== "/" && "border-b-2 border-b-violet-600"
+            }`}
         >
           <div className="flex-1 space-y-2">
             <Heading text="Live Chats" />
