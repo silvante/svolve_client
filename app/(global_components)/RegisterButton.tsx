@@ -22,7 +22,7 @@ export default function RegisterButton() {
       <div className="space-x-3">
         <Link
           href={"/"}
-          className="inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
+          className="inline-block hidden border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
         >
           Loading
         </Link>
@@ -40,7 +40,7 @@ export default function RegisterButton() {
     <div className="space-x-3 flex gap-2 items-center justify-center text-lg">
       <Link
         href={"/signin"}
-        className="px-4 py-2 rounded-xl flex gap-2 hover:text-violet-600"
+        className="px-4 py-2 hidden rounded-xl md:flex gap-2 hover:text-violet-600"
       >
         Sign in <LogIn />
       </Link>
