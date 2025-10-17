@@ -10,7 +10,6 @@ type Props = {
 
 export default function AsideLink({ href, children }: Props) {
   const pathname = usePathname();
-
   const isActive = pathname === href;
 
   return (

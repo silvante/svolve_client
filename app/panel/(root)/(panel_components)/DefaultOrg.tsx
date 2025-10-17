@@ -8,7 +8,6 @@ import {
   LockKeyhole,
   Menu,
   PenBox,
-  Pin,
   PlayCircle,
 } from "lucide-react";
 import Link from "next/link";
