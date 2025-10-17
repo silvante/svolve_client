@@ -22,7 +22,7 @@ export default function RegisterButton() {
       <div className="space-x-3">
         <Link
           href={"/"}
-          className="inline-block hidden border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
+          className="hidden md:inline-block border-2 px-4 py-2 rounded-xl bg-black/5 border-black/bg-black/5 text-black/5"
         >
           Loading
         </Link>
