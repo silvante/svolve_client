@@ -24,7 +24,7 @@ export default function UserProfile() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
+      <DropdownMenuTrigger className="hidden lg:block">
         <ProfileButton />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
