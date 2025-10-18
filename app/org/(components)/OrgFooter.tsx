@@ -14,18 +14,18 @@ export default function OrgFooter() {
           <a
             href="https://www.youtube.com/@svolveuz"
             target="_blanck"
-            className="hover:underline"
+            className="hover:underline hidden md:block"
           >
             YouTube
           </a>
           <a
             href="https://t.me/svolve"
             target="_blanck"
-            className="hover:underline"
+            className="hover:underline hidden md:block"
           >
             Telegram
           </a>
-          <span className="text-gray-400">|</span>
+          <span className="text-gray-400 hidden md:block">|</span>
           <a
             href="https://t.me/vanilla_valentine"
             target="_blanck"

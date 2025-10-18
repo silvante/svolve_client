@@ -8,7 +8,7 @@ export default function PanelHeader() {
   return (
     <header className="sticky top-0 px-5 py-2 bg-white border-b border-gray-300 shadow-sm flex justify-between items-center">
       <div className="lg:hidden">
-        <Svolve />
+        <Svolve link="/panel" />
       </div>
       <div className="hidden lg:flex">
         <Breadcrumbs />{" "}
