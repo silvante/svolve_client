@@ -108,7 +108,7 @@ export default function EditProfile() {
   }
 
   return (
-    <div className="w-full rounded-2xl p-10 border border-gray-300 shadow-md space-y-5">
+    <div className="w-full rounded-2xl p-4 md:p-8 border border-gray-300 shadow-md space-y-5">
       <Heading text="Update you profile" />
       <form className="space-y-5" onSubmit={HandleUpdateProfile}>
         {error !== "" && (
@@ -123,7 +123,7 @@ export default function EditProfile() {
         <div className="space-y-1">
           <label
             htmlFor="logo"
-            className="flex overflow-hidden items-center justify-center bg-gray-100 border border-gray-500 border-dashed rounded-full cursor-pointer hover:bg-gray-200 transition-colors w-64 h-64"
+            className="flex overflow-hidden items-center justify-center bg-gray-100 border border-gray-500 border-dashed rounded-full cursor-pointer hover:bg-gray-200 transition-colors w-48 h-48"
           >
             {!avatarBase64 ? (
               <div className="flex flex-col items-center gap-2 text-gray-700">
