@@ -134,7 +134,7 @@ export default function OrganizationList() {
                   </p>
                 </div>
               </Link>
-              <div className="border-t border-gray-300 p-4 flex justify-between items-center">
+              <div className="border-t border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center">
                 <p className="text-sm text-gray-500">
                   <span className="text-black">created at:</span>{" "}
                   {new Date(organization.created_at).toLocaleDateString(
