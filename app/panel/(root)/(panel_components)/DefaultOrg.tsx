@@ -83,7 +83,7 @@ export default function DefaultOrg() {
                 <PlayCircle /> Run Organization
               </Link>
             </div>
-            <div className="border-b border-gray-200 p-4 flex justify-between items-center">
+            <div className="border-b border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center">
               <p className="text-sm text-gray-500">
                 <span className="text-black">created at:</span>{" "}
                 {new Date(org.created_at).toLocaleDateString("en-US", {
