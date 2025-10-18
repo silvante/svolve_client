@@ -12,11 +12,7 @@ export default function Github({ setErrorMessage }: any) {
 
   const handleGithubLogin = () => {
     try {
-      const popup = window.open(
-        "http://localhost:8080/auth/github",
-        "_blank",
-        "width=900,height=600"
-      );
+      window.location.href = "http://localhost:8080/auth/github";
 
       const receiveMessage = async (event: MessageEvent) => {
         if (event.origin !== "http://localhost:8080") return;

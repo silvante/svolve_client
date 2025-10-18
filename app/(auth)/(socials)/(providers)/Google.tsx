@@ -11,11 +11,7 @@ export default function Google({ setErrorMessage }: any) {
 
   const handleGoogleLogin = () => {
     try {
-      const popup = window.open(
-        "http://localhost:8080/auth/google",
-        "_blank",
-        "width=900,height=600"
-      );
+      window.location.href = "http://localhost:8080/auth/google";
 
       const receiveMessage = async (event: MessageEvent) => {
         if (event.origin !== "http://localhost:8080") return;

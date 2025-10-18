@@ -24,16 +24,16 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-5`}
+      className={`${roboto.variable} antialiased flex justify-center items-center h-screen px-2`}
     >
       <Toaster position="top-right" reverseOrder={true} />
       <Image
         src="/backgraund/group.svg"
         alt="Backgraund"
         fill
-        className=" object-cover fixed top-0 left-0 z-0 select-none"
+        className="object-cover fixed top-0 left-0 z-0 select-none"
       />
-      <div className="z-10 bg-white rounded-2xl p-8 max-w-xl w-full space-y-4 shadow-2xl">
+      <div className="z-10 bg-white rounded-2xl p-5 sm:p-8 max-w-xl w-full space-y-4 shadow-2xl">
         <Svolve />
         {children}
       </div>
