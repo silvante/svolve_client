@@ -13,12 +13,12 @@ export default function ProfilePage() {
     <div className="w-full">
       <Heading text="Your profile" />
       <div className="w-full py-10 flex flex-col items-center justify-center gap-10">
-        <div className="w-full flex flex-col xl:flex-row gap-8">
+        <div className="w-full flex">
           {/* Profile Card */}
-          <div className="flex xl:flex-1 w-full xl:w-auto items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
+          <div className="w-full flex flex-col md:flex-row md:items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
             <Link
               href="/panel/profile/settings"
-              className="bg-gray-300 w-28 h-28 rounded-full overflow-hidden border border-gray-400 flex items-center justify-center"
+              className="bg-gray-300 w-28 h-28 rounded-full overflow-hidden border border-gray-400 flex items-center justify-center mx-auto"
             >
               {currentUser.avatar ? (
                 <img
@@ -31,56 +31,25 @@ export default function ProfilePage() {
               )}
             </Link>
 
-            <div className="flex-1 text-start">
-              <h2
-                className="font-semibold text-gray-900 
-             text-2xl sm:text-3xl 
-             w-full
-             overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
-              >
+            <div className="flex-1 md:text-start text-center">
+              <h2 className="font-semibold text-gray-900 text-2xl sm:text-3xl">
                 {currentUser.name}
               </h2>
 
-              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-full">
-                {currentUser.email}{" "}
-              </p>
+              <p className="text-gray-950">{currentUser.email}</p>
 
               <Link
                 href="/panel/profile/settings"
-                className="mt-5 flex items-center gap-2 text-violet-600"
+                className="mt-5 flex items-center gap-2 text-violet-600 mx-auto justify-center md:justify-start"
               >
                 Update Profile <Pen size={15} />
               </Link>
             </div>
           </div>
-
-          {/* Password Card */}
-          <div className="flex flex-1 items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
-            <Link
-              href="/panel/profile/settings"
-              className="flex items-center justify-center w-28 h-28 rounded-full border border-gray-400 bg-gradient-to-tr from-violet-600 via-purple-500 to-pink-600 text-white"
-            >
-              <KeyRound size={50} />
-            </Link>
-            <div className="flex-1 text-start">
-              <h2
-                className="font-semibold text-gray-900 
-             text-2xl sm:text-3xl 
-             w-full 
-             overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
-              >
-                Password
-              </h2>
-              <p className="text-gray-950">Your password is secure!</p>
-              <p className="mt-5 flex items-center gap-2 text-violet-600">
-                App is Passwordless <Lock size={15} />
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Details Section */}
-        <div className="w-full rounded-2xl border border-gray-300 shadow-md p-8 space-y-6">
+        <div className="w-full rounded-2xl border border-gray-300 shadow-md p-4 md:p-8 space-y-6">
           <div className="space-y-2 border-b border-gray-300 pb-3">
             <p className="text-lg font-semibold text-gray-950">Username:</p>
             <p className="text-gray-950">

@@ -13,9 +13,9 @@ export default function ProfileActions() {
     router.push("/");
   }
   return (
-    <div className="p-8 flex-1 rounded-2xl border border-gray-300 shadow-md w-full space-y-5">
+    <div className="p-4 md:p-8 flex-1 rounded-2xl border border-gray-300 shadow-md w-full space-y-5">
       <Heading text="Danger zone" />
-      <div className="flex gap-5">
+      <div className="flex gap-5 flex-wrap">
         <button
           onClick={HandleLogOut}
           className="bg-red-600/10 text-red-600 flex py-2 px-4 gap-2 items-center cursor-pointer rounded-lg hover:bg-red-600 hover:text-white transition-all"
