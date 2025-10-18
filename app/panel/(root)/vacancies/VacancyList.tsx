@@ -51,7 +51,7 @@ export default function VacancyList() {
     return (
       <div className="space-y-5">
         {vacancies && vacancies.length > 0 ? (
-          <div className="w-full grid grid-cols-3 gap-5">
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {vacancies.map((vacancy: Vacancy) => (
               <div
                 key={vacancy.id}
