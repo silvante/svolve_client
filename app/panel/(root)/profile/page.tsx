@@ -13,9 +13,9 @@ export default function ProfilePage() {
     <div className="w-full">
       <Heading text="Your profile" />
       <div className="w-full py-10 flex flex-col items-center justify-center gap-10">
-        <div className="w-full flex flex-col md:flex-row gap-8">
+        <div className="w-full flex flex-col xl:flex-row gap-8">
           {/* Profile Card */}
-          <div className="flex flex-1 items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
+          <div className="flex xl:flex-1 w-full xl:w-auto items-center gap-5 rounded-xl border border-gray-300 shadow-md p-5">
             <Link
               href="/panel/profile/settings"
               className="bg-gray-300 w-28 h-28 rounded-full overflow-hidden border border-gray-400 flex items-center justify-center"
@@ -35,13 +35,13 @@ export default function ProfilePage() {
               <h2
                 className="font-semibold text-gray-900 
              text-2xl sm:text-3xl 
-             w-[250px] sm:w-auto 
+             w-full
              overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
               >
                 {currentUser.name}
               </h2>
 
-              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-[300px]">
+              <p className="text-gray-950 truncate text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1 w-full">
                 {currentUser.email}{" "}
               </p>
 
@@ -66,7 +66,7 @@ export default function ProfilePage() {
               <h2
                 className="font-semibold text-gray-900 
              text-2xl sm:text-3xl 
-             w-[250px] sm:w-auto 
+             w-full 
              overflow-hidden text-ellipsis whitespace-nowrap sm:whitespace-normal sm:break-words text_clamp_1"
               >
                 Password
