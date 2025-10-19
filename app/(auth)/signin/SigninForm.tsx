@@ -2,21 +2,25 @@
 import authService from "@/app/api/services/authService";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
 import { ShieldAlert } from "lucide-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function SigninForm() {
   const router = useRouter();
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
+
+  const paramsError = useSearchParams().get("error");
+
+  useEffect(() => {
+    if (paramsError) {
+      setErrorMessage(paramsError);
+    }
+  }, []);
 
   const [acception, setAcception] = useState(false);
 
