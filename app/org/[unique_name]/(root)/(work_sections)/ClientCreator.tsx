@@ -21,11 +21,7 @@ import { Client, Type } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import { pushClient, setLoading } from "@/app/store/slices/clientSlice";
 import clientService from "@/app/api/services/clientService";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function ClientCreator() {
   const [open, setOpen] = useState(false);
@@ -117,7 +113,7 @@ export default function ClientCreator() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="text-muted-foreground text-sm flex gap-2">
+      <div className="text-muted-foreground text-sm hidden lg:flex gap-2">
         <p>Clear form with</p>
         <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
           <span className="text-xs">Ctrl + Delete</span>
@@ -131,7 +127,7 @@ export default function ClientCreator() {
         </Alert>
       )}
       <form className="w-full" onSubmit={HandleCreateClient}>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
             <label htmlFor="name">Name</label>
             <input

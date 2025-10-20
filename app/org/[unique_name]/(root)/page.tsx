@@ -29,7 +29,7 @@ export default function UniqueNamePage() {
   }
   return (
     <div className="space-y-5">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between">
         <Heading text={`Work Panel - ${organization.name}`} />
         {is_loading ? (
           <Spinner />
