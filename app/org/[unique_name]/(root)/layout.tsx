@@ -10,6 +10,7 @@ import OrgAside from "../../(components)/OrgAside";
 import { useSelector } from "react-redux";
 import { useParams, useRouter } from "next/navigation";
 import OrgFooter from "../../(components)/OrgFooter";
+import MobileNav from "../../(components)/MobileNav";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -50,6 +51,7 @@ export default function OrgLayout({
               </div>
               <div className="flex-1">{children}</div>
               <OrgFooter />
+              <MobileNav />
             </div>
           </main>
         </div>
