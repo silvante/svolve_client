@@ -45,7 +45,7 @@ export default function OrgLayout({
           <OrgHeader />
           <main className="w-full flex min-h-screen">
             <OrgAside />
-            <div className="flex-1 pt-20 px-5 max-w-[1480px] mx-auto space-y-5 pb-5 flex flex-col">
+            <div className="flex-1 pt-20 px-5 max-w-[1480px] mx-auto space-y-5 pb-10 flex flex-col">
               <div className="w-full flex items-center justify-start">
                 <OrgBreadcrumbs />
               </div>

@@ -15,16 +15,16 @@ import Link from "next/link";
 
 export default function MobileNav() {
   return (
-    <nav className="bg-white lg:hidden fixed overflow-x-scroll bottom-0 left-0 right-0 border-t border-gray-300">
+    <nav className="bg-white lg:hidden fixed overflow-x-scroll bottom-0 left-0 right-0 border-t border-gray-300 p-2">
       <div className="flex gap-5 flex-nowrap">
         <OrgAsideLink href="">
-          <BriefcaseBusiness /> Work Panel
+          <BriefcaseBusiness /> Panel
         </OrgAsideLink>
         <OrgAsideLink href="/statistics">
           <ChartArea /> Statistics
         </OrgAsideLink>
         <OrgAsideLink href="/clients">
-          <BookUser /> Clients & timeline
+          <BookUser /> Clients
         </OrgAsideLink>
         <OrgAsideLink href="/types">
           <Pilcrow /> Types
@@ -33,7 +33,7 @@ export default function MobileNav() {
           <Users /> Workers
         </OrgAsideLink>
         <OrgAsideLink href="/community">
-          <HandHeart /> Community & Support
+          <HandHeart /> Community
         </OrgAsideLink>
         <OrgAsideLink href="/subscription/?page=org">
           <Wallet /> Subscription
@@ -42,7 +42,7 @@ export default function MobileNav() {
           href="/panel"
           className="flex gap-2 items-center p-2 hover:bg-red-600/10 hover:text-red-600 rounded-lg transition-all"
         >
-          <ArrowBigLeftDash /> Back to panel
+          <ArrowBigLeftDash /> back
         </Link>
       </div>
     </nav>
