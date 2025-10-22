@@ -4,7 +4,7 @@ import OrgLink from "@/app/org/(components)/(meta-components)/OrgLink";
 
 export default function OrgTypes() {
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 w-full">
       <div className="flex justify-between items-center w-full">
         <Heading text="Types" />
         <OrgLink
