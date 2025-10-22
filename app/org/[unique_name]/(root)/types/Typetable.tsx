@@ -88,7 +88,7 @@ export default function TypeTable() {
 
             <div className="relative overflow-x-auto shadow-md rounded-lg border border-gray-300">
               <table className="w-full text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-300">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-300">
                   <tr>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
                       o/n
@@ -112,17 +112,28 @@ export default function TypeTable() {
                 </thead>
                 <tbody>
                   {types.map((type: Type, index: number) => (
-                    <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                    <tr
+                      key={type.id}
+                      className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200"
+                    >
                       <th
                         scope="row"
                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         {index + 1}
                       </th>
-                      <td className="px-6 py-4 whitespace-nowrap">{type.name}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{type.description}</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{type.price} uzs</td>
-                      <td className="px-6 py-4 whitespace-nowrap">{type._count.clients} clients</td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {type.name}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {type.description}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {type.price} uzs
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        {type._count.clients} clients
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <DropdownMenu>
                           <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-1 py-1 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">

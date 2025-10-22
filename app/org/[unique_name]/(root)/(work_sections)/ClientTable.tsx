@@ -111,108 +111,131 @@ export default function ClientTable() {
                 <Spinner />
               </div>
             )}
-            <table className="w-full rounded-lg overflow-hidden">
-              <thead className="bg-gray-200">
-                <tr className="">
-                  <th className="text-start p-3 w-20">No</th>
-                  <th className="text-start p-3">Name</th>
-                  <th className="text-start p-3">Year</th>
-                  <th className="text-start p-3">Origin</th>
-                  <th className="text-start p-3">Type</th>
-                  <th className="text-start p-3">Price</th>
-                  <th className="text-start p-3">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...clients].reverse().map((client: Client, index: number) => (
-                  <tr
-                    key={client.id}
-                    className={`border-b border-x border-gray-200`}
-                  >
-                    <td className="p-3 w-20 truncate">
-                      {clients.length - index}
-                    </td>
-                    <td className="p-3 truncate">
-                      {client.name} {client.surname}
-                    </td>
-                    <td className="p-3 truncate">{client.born_in}</td>
-                    <td className="p-3 truncate">{client.origin}</td>
-                    <td className="p-3 truncate">{client.type.name}</td>
-                    <td className="p-3 truncate">{client.price}</td>
-                    <td className="p-3 truncate">
-                      {!client.is_checked ? (
-                        <div className="flex gap-3 items-center">
-                          <div
-                            className={`${
-                              currentJob && currentJob.role !== "doctor"
-                                ? "hidden"
-                                : "block"
-                            }`}
-                          >
-                            <CheckClientBtn
-                              org_id={organization.id}
-                              client_id={client.id}
-                            />
-                          </div>
-                          <div
-                            className={`${
-                              currentJob && currentJob.role !== "receptionist"
-                                ? "hidden"
-                                : "block"
-                            }`}
-                          >
-                            <DropdownMenu>
-                              <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
-                                <Menu />
-                              </DropdownMenuTrigger>
-                              <DropdownMenuContent align="end" className="w-56">
-                                <Link
-                                  href={
-                                    currentJob &&
-                                    currentJob.role === "receptionist"
-                                      ? `/job/${organization.unique_name}/clients/${client.id}`
-                                      : `/org/${organization.unique_name}/clients/${client.id}/update`
-                                  }
-                                  className="rounded-lg flex"
-                                >
-                                  <DropdownMenuItem className="cursor-pointer w-full">
-                                    <PenBox /> Update
-                                  </DropdownMenuItem>
-                                </Link>
-                                <button
-                                  className="rounded-lg cursor-pointer w-full"
-                                  onClick={() => HandleDelete(client.id)}
-                                >
-                                  <DropdownMenuItem className="cursor-pointer">
-                                    <Trash color="#e7000b" />{" "}
-                                    <p className="text-red-600">Delete</p>
-                                  </DropdownMenuItem>
-                                </button>
-                              </DropdownMenuContent>
-                            </DropdownMenu>
-                          </div>
-                        </div>
-                      ) : (
-                        <p className="my-2 bg-green-600 text-white px-2 text-center">
-                          checked
-                        </p>
-                      )}
-                    </td>
+
+            <div className="relative overflow-x-auto shadow-md rounded-lg border border-gray-300">
+              <table className="w-full text-sm text-left rtl:text-right text-gray-800 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-300">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      o/n
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Name
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Year
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Origin
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Type
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Price
+                    </th>
+                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                      Actions
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-              <tfoot className="bg-gray-200">
-                <tr>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                  <th className="p-3"></th>
-                </tr>
-              </tfoot>
-            </table>
+                </thead>
+                <tbody>
+                  {[...clients]
+                    .reverse()
+                    .map((client: Client, index: number) => (
+                      <tr
+                        key={client.id}
+                        className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200"
+                      >
+                        <th
+                          scope="row"
+                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        >
+                          {index + 1}
+                        </th>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {client.name} {client.surname}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {client.born_in}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {client.origin}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {client.type.name}
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {client.price} uzs
+                        </td>
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          {!client.is_checked ? (
+                            <div className="flex gap-3 items-center">
+                              <div
+                                className={`${
+                                  currentJob && currentJob.role !== "doctor"
+                                    ? "hidden"
+                                    : "block"
+                                }`}
+                              >
+                                <CheckClientBtn
+                                  org_id={organization.id}
+                                  client_id={client.id}
+                                />
+                              </div>
+                              <div
+                                className={`${
+                                  currentJob &&
+                                  currentJob.role !== "receptionist"
+                                    ? "hidden"
+                                    : "block"
+                                }`}
+                              >
+                                <DropdownMenu>
+                                  <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
+                                    <Menu />
+                                  </DropdownMenuTrigger>
+                                  <DropdownMenuContent
+                                    align="end"
+                                    className="w-56"
+                                  >
+                                    <Link
+                                      href={
+                                        currentJob &&
+                                        currentJob.role === "receptionist"
+                                          ? `/job/${organization.unique_name}/clients/${client.id}`
+                                          : `/org/${organization.unique_name}/clients/${client.id}/update`
+                                      }
+                                      className="rounded-lg flex"
+                                    >
+                                      <DropdownMenuItem className="cursor-pointer w-full">
+                                        <PenBox /> Update
+                                      </DropdownMenuItem>
+                                    </Link>
+                                    <button
+                                      className="rounded-lg cursor-pointer w-full"
+                                      onClick={() => HandleDelete(client.id)}
+                                    >
+                                      <DropdownMenuItem className="cursor-pointer">
+                                        <Trash color="#e7000b" />{" "}
+                                        <p className="text-red-600">Delete</p>
+                                      </DropdownMenuItem>
+                                    </button>
+                                  </DropdownMenuContent>
+                                </DropdownMenu>
+                              </div>
+                            </div>
+                          ) : (
+                            <p className="my-2 bg-green-600 text-white px-2 text-center">
+                              checked
+                            </p>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         ) : (
           <ErrorMessage
