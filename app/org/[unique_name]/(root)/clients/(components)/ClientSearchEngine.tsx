@@ -78,7 +78,7 @@ export default function ClientSearchEngine({
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        <form className="w-full grid grid-cols-2 gap-5" onSubmit={HandleSearch}>
+        <form className="w-full grid grid-cols-1 md:grid-cols-2 gap-5" onSubmit={HandleSearch}>
           <div className="w-full flex flex-col space-y-1 justify-between">
             <label htmlFor="type_id">type</label>
             <TypeInput
@@ -137,7 +137,7 @@ export default function ClientSearchEngine({
           <HashLoader color="#7c3aed" size={58} />
         </div>
       ) : (
-        <div className="w-full p-5 rounded-xl border border-gray-300">
+        <div className="w-full p-2 md:p-5 rounded-xl border border-gray-300">
           {clients && clients.length > 0 ? (
             <div className="w-full space-y-5">
               {clients.map((client: Client) => (
