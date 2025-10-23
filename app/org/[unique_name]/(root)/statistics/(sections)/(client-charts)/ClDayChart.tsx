@@ -57,7 +57,7 @@ export default function RvDayChart({ data }: { data: ClientsByDay[] }) {
   };
 
   return (
-    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md w-full border-b-3 border-b-violet-600">
+    <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md w-full border-b-3 border-b-violet-600 overflow-x-auto">
       <Heading text="Last 30 days" />
       <div className="flex gap-4">
         <button
@@ -73,7 +73,7 @@ export default function RvDayChart({ data }: { data: ClientsByDay[] }) {
           <BarChart3 /> Bar
         </button>
       </div>
-      <div className="w-full h-[400px]">
+      <div className="w-[940px] lg:w-full h-[400px]">
         {chartType === "line" && (
           <Line options={options} data={chartData} className="w-full h-full" />
         )}

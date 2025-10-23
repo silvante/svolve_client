@@ -65,7 +65,7 @@ export default function ClientStatistics({
           {clients ? (
             <div className="space-y-5 w-full">
               <ClDayChart data={clients.clientsByDay} />
-              <div className="flex gap-5 justify-between items-center w-full">
+              <div className="flex flex-col lg:flex-row gap-5 justify-between items-center w-full">
                 <ClMonthChart data={clients.clientsByMonth} />
                 <ClTypeChart data={clients.clientsByType} />
               </div>
