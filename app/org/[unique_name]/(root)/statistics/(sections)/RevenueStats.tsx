@@ -72,7 +72,7 @@ export default function RevenueStatistics({
           {revenue ? (
             <div className="space-y-5 w-full">
               <RvDayChart data={revenue.revenueByDay} />
-              <div className="flex gap-5 justify-between items-center w-full">
+              <div className="flex flex-col lg:flex-row gap-5 justify-between items-center w-full">
                 <RvMonthChart data={revenue.revenueByMonth} />
                 <RvTypeChart data={revenue.revenueByType} />
               </div>
