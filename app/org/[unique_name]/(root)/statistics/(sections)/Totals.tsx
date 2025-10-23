@@ -12,7 +12,7 @@ export default function Totals({
   return (
     <div className="space-y-5">
       <Heading text="In total" />
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <div className="bg-white shadow-md border border-gray-300 rounded-xl p-5 border-b-3 border-b-violet-600 flex items-center justify-between">
           <div>
             <p className="text-2xl font-semibold text-violet-600">
