@@ -17,8 +17,8 @@ export default function OrgAside() {
   const { is_active } = useSelector((state: any) => state.aside);
   return (
     <aside
-      className={`bg-white h-screen max-w-72 hidden w-full sticky top-0 left-0 pt-20 px-5 pb-5 border-r border-gray-300 flex-col gap-5 ${
-        is_active ? "lg:flex" : "lg:hidden"
+      className={`bg-white h-screen min-w-72 hidden sticky top-0 left-0 pt-20 px-5 pb-5 border-r border-gray-300 flex-col gap-5 ${
+        is_active ? "xl:flex" : "xl:hidden"
       }`}
     >
       <div className="text-muted-foreground text-sm flex gap-2">

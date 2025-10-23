@@ -19,7 +19,7 @@ export default function OrgAsideLink({ href, children }: Props) {
   return (
     <Link
       className={clsx(
-        "p-2 w-auto flex gap-3 items-center border-b-2 lg:border-l-2 lg:border-b-0 border-transparent transition-all",
+        "p-2 w-auto flex gap-3 items-center border-b-2 xl:border-l-2 xl:border-b-0 border-transparent transition-all",
         isActive && "text-violet-600 border-violet-600"
       )}
       href={`/org/${organization.unique_name}/${href}`}

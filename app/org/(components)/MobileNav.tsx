@@ -15,7 +15,7 @@ import Link from "next/link";
 
 export default function MobileNav() {
   return (
-    <nav className="bg-white lg:hidden fixed overflow-x-scroll bottom-0 left-0 right-0 border-t border-gray-300 p-2">
+    <nav className="bg-white xl:hidden fixed overflow-x-scroll bottom-0 left-0 right-0 border-t border-gray-300 p-2">
       <div className="flex gap-5 flex-nowrap">
         <OrgAsideLink href="">
           <BriefcaseBusiness /> Panel
