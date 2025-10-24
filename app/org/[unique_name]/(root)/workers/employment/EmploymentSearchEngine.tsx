@@ -73,7 +73,7 @@ export default function EmpSearchEngine({
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        <form className="w-full gap-5 grid grid-cols-3" onSubmit={HandleSearch}>
+        <form className="w-full gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" onSubmit={HandleSearch}>
           <div className="flex flex-col space-y-1">
             <label htmlFor="job">Origin</label>
             <select

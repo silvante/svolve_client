@@ -24,7 +24,7 @@ export default function CollapseBtn() {
   return (
     <button
       onClick={handleCollapse}
-      className="text-gray-500 hover:text-gray-700 cursor-pointer hidden lg:flex"
+      className="text-gray-500 hover:text-gray-700 cursor-pointer hidden xl:flex"
     >
       <Menu />
     </button>
