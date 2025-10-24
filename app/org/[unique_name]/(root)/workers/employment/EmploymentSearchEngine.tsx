@@ -65,11 +65,11 @@ export default function EmpSearchEngine({
           </Alert>
         )}
         <form
-          className="flex w-full gap-5 flex-col md:flex-row"
+          className="w-full gap-5 grid grid-cols-3"
           onSubmit={HandleSearch}
         >
           <select
-            className="global_input flex-1 md:w-40"
+            className="global_input"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           >
@@ -87,11 +87,11 @@ export default function EmpSearchEngine({
             id="query"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="global_input flex-1"
+            className="global_input"
             placeholder="Search by name..."
           />
           <button
-            className="py-2 flex-1 md:w-40 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
+            className="py-2 text-center px-4 rounded-lg bg-violet-600 text-white cursor-pointer"
             type="submit"
           >
             {isLoading ? "searching..." : "Search"}
