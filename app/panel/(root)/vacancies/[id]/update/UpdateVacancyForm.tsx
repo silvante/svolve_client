@@ -168,7 +168,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
         <textarea
           rows={3}
           maxLength={500}
-          minLength={300}
+          minLength={200}
           id="about"
           name="about"
           value={about}
@@ -182,7 +182,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
             Description contains:{" "}
             <span
               className={`transition-all ${
-                about.length > 300 ? "text-green-600" : "text-red-600"
+                about.length > 200 ? "text-green-600" : "text-red-600"
               }`}
             >
               {about.length} characters
@@ -190,7 +190,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           </p>
         )}
         <p className="text-sm text-gray-500">
-          Min 300 characters, Max 500 characters
+          Min 200 characters, Max 500 characters
         </p>
       </div>
 
