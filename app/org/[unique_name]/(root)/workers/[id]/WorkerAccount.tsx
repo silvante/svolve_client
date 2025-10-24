@@ -7,7 +7,7 @@ export default function WorkerAccount({ worker }: { worker: Worker }) {
   const account = worker.worker;
   return (
     <div className="rounded-2xl border border-gray-300 shadow-md overflow-hidden">
-      <div className="p-8 border-b border-b-gray-300 space-y-5">
+      <div className="p-4 lg:p-8 border-b border-b-gray-300 space-y-5">
         <Avatar className="w-32 h-32">
           <AvatarImage src={account.avatar} />
           <AvatarFallback>
@@ -21,7 +21,7 @@ export default function WorkerAccount({ worker }: { worker: Worker }) {
           <p className="text-gray-700 truncate">{account.email}</p>
         </div>
       </div>
-      <div className="p-8 space-y-3">
+      <div className="p-4 lg:p-8 space-y-3">
         <h1 className="text-2xl font-semibold text_color">Info</h1>
         <div className="w-full space-y-1">
           <p className="text-gray-700">
