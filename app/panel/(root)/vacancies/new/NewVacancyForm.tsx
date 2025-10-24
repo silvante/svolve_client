@@ -131,7 +131,7 @@ export default function NewVacancyForm() {
         />
       </div>
 
-      {/* name */}
+      {/* role */}
       <div className="space-y-1 flex flex-col">
         <label htmlFor="role">Choose role*</label>
         <select

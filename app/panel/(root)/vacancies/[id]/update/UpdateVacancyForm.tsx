@@ -12,18 +12,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { Vacancy } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import vacancyService from "@/app/api/services/vacancyService";
-import { origins } from "@/app/global/data";
+import { origins, workerRoles } from "@/app/global/data";
 import { ShieldAlert, UserCircle } from "lucide-react";
 import {
   pushVacancy,
   replaceVacancy,
   setLoading,
 } from "@/app/store/slices/vacancySlice";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -52,6 +48,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
   const [age, setAge] = useState(`${vacancy.age}`);
   const [origin, setOrigin] = useState(vacancy.origin);
   const [job, setJob] = useState(vacancy.job);
+  const [role, setRole] = useState(vacancy.role);
   const [about, setAbout] = useState(vacancy.about);
   const [contact, setContact] = useState(formatPhone(vacancy.contact));
 
@@ -65,6 +62,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
         about,
         origin,
         job,
+        role,
         contact: `${contact}`,
       };
 
@@ -140,6 +138,28 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           Name also can not be changed, because it had been attached to your
           account!
         </p>
+      </div>
+
+      {/* role */}
+      <div className="space-y-1 flex flex-col">
+        <label htmlFor="role">Choose role*</label>
+        <select
+          name="role"
+          id="role"
+          className="global_input"
+          value={role}
+          onChange={(e) => {
+            setRole(e.target.value);
+          }}
+        >
+          {workerRoles.map((r) => {
+            return (
+              <option key={r.id} value={r.name}>
+                {r.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
 
       {/* name */}
@@ -256,7 +276,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Vacancy"}
+          {isLoading ? "updating..." : "Update Vacancy"}
         </button>
       </div>
     </form>
