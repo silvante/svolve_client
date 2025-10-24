@@ -99,7 +99,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {/* account */}
       <div className="space-y-1 flex items-start flex-col">
         <p className="block">Account*</p>
-        <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer opacity-50">
+        <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer opacity-50 z-10">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             {currentUser.avatar ? (
               <img
