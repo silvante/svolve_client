@@ -50,7 +50,7 @@ const apiEndpoints = {
   getAllMyVacancies: "/vacancy/mine",
   updateVacancy: (id: number) => `/vacancy/${id}/update`,
   deleteVacancy: (id: number) => `/vacancy/${id}/delete`,
-  searchVacancy: (origin: string, q: string, page: number, limit: number) => `/vacancy/search?origin=${origin}&q=${q}&page=${page}&limit=${limit}`,
+  searchVacancy: (origin: string, q: string, role:string | null, job: string | null, page: number, limit: number) => `/vacancy/search?origin=${origin}&q=${q}${role ? `&role=${role}` : ""}${job ? `&job=${job}` : ""}&page=${page}&limit=${limit}`,
 
   // workers
   hireWorker: (org_id: number, vacancy_id: number) => `/organizations/${org_id}/workers/${vacancy_id}/hire`,

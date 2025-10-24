@@ -1,6 +1,6 @@
 "use client";
 import vacancyService from "@/app/api/services/vacancyService";
-import { origins } from "@/app/global/data";
+import { origins, workerRoles } from "@/app/global/data";
 import { Organization, Vacancy } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import VacancyCard from "./VacancyCard";
@@ -17,6 +17,8 @@ export default function EmpSearchEngine({
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [origin, setOrigin] = useState(organization.origin);
+  const [role, setRole] = useState(workerRoles[0].name);
+  const [job, setJob] = useState("");
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
   const [meta, setMeta] = useState({ total: 0, page: 1, last_page: 1 });
@@ -25,7 +27,14 @@ export default function EmpSearchEngine({
   async function GetVacancies() {
     setIsLoading(true);
     try {
-      const res: any = await vacancyService.search(origin, query, page, 9);
+      const res: any = await vacancyService.search(
+        origin,
+        query,
+        role,
+        job,
+        page,
+        9
+      );
       const { data, meta } = res;
       setVacancies(data);
       setMeta(meta);
@@ -64,38 +73,72 @@ export default function EmpSearchEngine({
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        <form
-          className="w-full gap-5 grid grid-cols-3"
-          onSubmit={HandleSearch}
-        >
-          <select
-            className="global_input"
-            value={origin}
-            onChange={(e) => setOrigin(e.target.value)}
-          >
-            {origins.map((origin) => {
-              return (
-                <option key={origin.id} value={origin.name}>
-                  {origin.name}
-                </option>
-              );
-            })}
-          </select>
-          <input
-            type="text"
-            name="query"
-            id="query"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="global_input"
-            placeholder="Search by name..."
-          />
-          <button
-            className="py-2 text-center px-4 rounded-lg bg-violet-600 text-white cursor-pointer"
-            type="submit"
-          >
-            {isLoading ? "searching..." : "Search"}
-          </button>
+        <form className="w-full gap-5 grid grid-cols-3" onSubmit={HandleSearch}>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="job">Origin</label>
+            <select
+              className="global_input"
+              value={origin}
+              onChange={(e) => setOrigin(e.target.value)}
+            >
+              {origins.map((origin) => {
+                return (
+                  <option key={origin.id} value={origin.name}>
+                    {origin.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="job">Origin</label>
+            <select
+              className="global_input"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+            >
+              {workerRoles.map((w) => {
+                return (
+                  <option key={w.id} value={w.name}>
+                    {w.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="job">Name</label>
+            <input
+              type="text"
+              name="query"
+              id="query"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="global_input"
+              placeholder="Search by name..."
+            />
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="job">Profession</label>
+            <input
+              type="text"
+              name="job"
+              id="job"
+              placeholder="Workers profession"
+              className="global_input"
+              value={job}
+              onChange={(e) => setJob(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col space-y-1">
+            <label htmlFor="job">Submit</label>
+            <button
+              className="py-2 text-center px-4 rounded-lg bg-violet-600 text-white cursor-pointer"
+              type="submit"
+            >
+              {isLoading ? "searching..." : "Search"}
+            </button>
+          </div>
         </form>
       </div>
       {isLoading ? (

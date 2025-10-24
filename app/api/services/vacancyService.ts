@@ -43,9 +43,18 @@ const vacancyService = {
     }
   },
 
-  search: async (origin: string, q: string, page: number, limit: number) => {
+  search: async (
+    origin: string,
+    q: string,
+    role: string,
+    job: string,
+    page: number,
+    limit: number
+  ) => {
     try {
-      return await api.get(apiEndpoints.searchVacancy(origin, q, page, limit));
+      return await api.get(
+        apiEndpoints.searchVacancy(origin, q, role, job, page, limit)
+      );
     } catch (error) {
       throw error;
     }
