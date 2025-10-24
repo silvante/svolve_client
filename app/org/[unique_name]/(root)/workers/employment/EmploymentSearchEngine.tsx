@@ -64,9 +64,12 @@ export default function EmpSearchEngine({
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
-        <form className="flex w-full gap-5" onSubmit={HandleSearch}>
+        <form
+          className="flex w-full gap-5 flex-col md:flex-row"
+          onSubmit={HandleSearch}
+        >
           <select
-            className="global_input w-40"
+            className="global_input flex-1 md:w-40"
             value={origin}
             onChange={(e) => setOrigin(e.target.value)}
           >
@@ -88,7 +91,7 @@ export default function EmpSearchEngine({
             placeholder="Search by name..."
           />
           <button
-            className="py-2 w-40 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
+            className="py-2 flex-1 md:w-40 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
             type="submit"
           >
             {isLoading ? "searching..." : "Search"}
@@ -102,7 +105,7 @@ export default function EmpSearchEngine({
       ) : (
         <div className="w-full">
           {vacancies && vacancies.length > 0 ? (
-            <div className="w-full grid grid-cols-3 gap-5">
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {vacancies.map((vacancy: Vacancy) => (
                 <VacancyCard
                   key={vacancy.id}
