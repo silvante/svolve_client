@@ -12,14 +12,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Vacancy } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import vacancyService from "@/app/api/services/vacancyService";
-import { origins } from "@/app/global/data";
+import { origins, workerRoles } from "@/app/global/data";
 import { ShieldAlert, UserCircle } from "lucide-react";
 import { pushVacancy, setLoading } from "@/app/store/slices/vacancySlice";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/components/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function NewVacancyForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +45,7 @@ export default function NewVacancyForm() {
   const [origin, setOrigin] = useState(origins[0].name);
   const [job, setJob] = useState("");
   const [about, setAbout] = useState("");
+  const [role, setRole] = useState("");
   const [contact, setContact] = useState("");
 
   async function HandleCreateOrg(e: any) {
@@ -61,6 +58,7 @@ export default function NewVacancyForm() {
         about,
         origin,
         job,
+        role,
         contact: `${contact}`,
       };
 
@@ -131,6 +129,28 @@ export default function NewVacancyForm() {
           maxLength={100}
           required
         />
+      </div>
+
+      {/* name */}
+      <div className="space-y-1">
+        <label htmlFor="role">Choose role*</label>
+        <select
+          name="role"
+          id="role"
+          className="global_input"
+          value={role}
+          onChange={(e) => {
+            setRole(e.target.value);
+          }}
+        >
+          {workerRoles.map((r) => {
+            return (
+              <option key={r.id} value={r.name}>
+                {r.name}
+              </option>
+            );
+          })}
+        </select>
       </div>
 
       {/* name */}

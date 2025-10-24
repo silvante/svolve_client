@@ -79,6 +79,7 @@ export interface Vacancy {
   about: string;
   origin: string;
   job: string;
+  role:string
   contact: string;
   user: User;
   created_at: Date;

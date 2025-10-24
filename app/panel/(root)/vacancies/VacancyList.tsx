@@ -82,6 +82,9 @@ export default function VacancyList() {
                 </div>
                 <div className="p-5 space-y-1 border-b border-gray-200 w-full">
                   <p className="text_color font-medium w-full truncate">
+                    Role: <span className="font-semibold">{vacancy.role}</span>
+                  </p>
+                  <p className="text_color font-medium w-full truncate">
                     Job: <span className="font-semibold">{vacancy.job}</span>
                   </p>
                   <p className="text_color font-medium text_clamp_3">

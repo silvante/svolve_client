@@ -5,6 +5,7 @@ export type createVacancyData = {
   about: string;
   age: number;
   job: string;
+  role: string;
 };
 
 export type updateVacancyData = {
@@ -13,4 +14,5 @@ export type updateVacancyData = {
   about: string;
   age: number;
   job: string;
+  role: string;
 };
