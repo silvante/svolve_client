@@ -73,7 +73,7 @@ export default function WorkersList() {
                 <Spinner />
               </div>
             )}
-            <div className="grid w-full gap-5 grid-cols-4">
+            <div className="grid w-full gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
               {workers.map((worker: Worker) => {
                 return (
                   <div
