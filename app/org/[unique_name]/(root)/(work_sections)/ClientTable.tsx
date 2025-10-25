@@ -19,7 +19,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, PenBox, RefreshCcw, ShieldAlert, Trash } from "lucide-react";
+import {
+  Menu,
+  NotepadText,
+  PenBox,
+  RefreshCcw,
+  ShieldAlert,
+  Trash,
+  X,
+} from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
 import CheckClientForm from "./(meta-components)/ChechClientForm";
@@ -34,6 +42,8 @@ export default function ClientTable() {
   const { currentJob } = useSelector((state: any) => state.job);
   const { organization } = useSelector((state: any) => state.validator);
   const dispatch = useDispatch();
+  const [showDiagnosId, setShowDiagnosId] = useState(0);
+
   async function GetClients() {
     try {
       if (!ref && types && clients) {
@@ -218,12 +228,44 @@ export default function ClientTable() {
                                 </div>
                               </div>
                             ) : (
-                              <p className="my-2 bg-green-600 text-white px-2 text-center">
-                                checked
-                              </p>
+                              <div className="flex gap-2">
+                                <p className="my-2 bg-green-600 flex-1 text-white px-2 text-center">
+                                  checked
+                                </p>
+                                {showDiagnosId === client.id ? (
+                                  <button
+                                    className="cursor-pointer text-red-600"
+                                    onClick={() => setShowDiagnosId(0)}
+                                  >
+                                    <X />
+                                  </button>
+                                ) : (
+                                  <button
+                                    className="cursor-pointer text_color"
+                                    onClick={() => setShowDiagnosId(client.id)}
+                                  >
+                                    <NotepadText />
+                                  </button>
+                                )}
+                              </div>
                             )}
                           </td>
                         </tr>
+
+                        {client.id === showDiagnosId && client.is_checked && (
+                          <tr
+                            className={`border-gray-200 ${
+                              !isEven(index + 1) ? "bg-white" : "bg-gray-50"
+                            } border-b border-gray-300`}
+                          >
+                            <td colSpan={7} className="text_color px-6 py-3">
+                              <span className="font-semibold">
+                                {client.name} {client.surname}:{" "}
+                              </span>
+                              {client.diagnosis}
+                            </td>
+                          </tr>
+                        )}
 
                         {!client.is_checked && (
                           <tr
