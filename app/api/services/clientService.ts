@@ -19,9 +19,11 @@ const clientService = {
     }
   },
 
-  checkClient: async (org_id: number, client_id: number) => {
+  checkClient: async (org_id: number, client_id: number, diagnosis: string) => {
     try {
-      return await api.put(apiEndpoints.checkClient(org_id, client_id));
+      return await api.put(apiEndpoints.checkClient(org_id, client_id), {
+        diagnosis,
+      });
     } catch (error) {
       throw error;
     }

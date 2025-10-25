@@ -101,3 +101,11 @@ export const Socials = [
     icon: xamidovIcon,
   },
 ];
+
+export function isEven(n: number) {
+  if (n % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}

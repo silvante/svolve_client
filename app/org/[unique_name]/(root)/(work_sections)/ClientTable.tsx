@@ -11,7 +11,7 @@ import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CheckClientBtn from "./(meta-components)/CheckClientBtn";
+// import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
 import {
   DropdownMenu,
@@ -22,6 +22,8 @@ import {
 import { Menu, PenBox, RefreshCcw, ShieldAlert, Trash } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
+import CheckClientForm from "./(meta-components)/ChechClientForm";
+import { isEven } from "@/app/global/data";
 
 export default function ClientTable() {
   const [ref, setRef] = useState(false);
@@ -144,7 +146,11 @@ export default function ClientTable() {
                     .reverse()
                     .map((client: Client, index: number) => (
                       <React.Fragment key={client.id}>
-                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                        <tr
+                          className={`border-gray-200 ${
+                            !isEven(index + 1) ? "bg-white" : "bg-gray-50"
+                          }`}
+                        >
                           <th
                             scope="row"
                             className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -169,18 +175,6 @@ export default function ClientTable() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             {!client.is_checked ? (
                               <div className="flex gap-3 items-center">
-                                <div
-                                  className={`${
-                                    currentJob && currentJob.role !== "doctor"
-                                      ? "hidden"
-                                      : "block"
-                                  }`}
-                                >
-                                  <CheckClientBtn
-                                    org_id={organization.id}
-                                    client_id={client.id}
-                                  />
-                                </div>
                                 <div
                                   className={`${
                                     currentJob &&
@@ -231,10 +225,16 @@ export default function ClientTable() {
                           </td>
                         </tr>
 
-                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
-                          <td colSpan={7} className="px-6 py-4 whitespace-nowrap col-span-6">
-                            app Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit. Ut, maxime!
+                        <tr
+                          className={`border-gray-200 ${
+                            !isEven(index + 1) ? "bg-white" : "bg-gray-50"
+                          } border-b border-gray-300`}
+                        >
+                          <td colSpan={7} className="px-6 py-3">
+                            <CheckClientForm
+                              client={client}
+                              organization={organization}
+                            />
                           </td>
                         </tr>
                       </React.Fragment>
