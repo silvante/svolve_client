@@ -149,13 +149,13 @@ export default function ClientTable() {
                         <tr
                           className={`border-gray-200 ${
                             !isEven(index + 1) ? "bg-white" : "bg-gray-50"
-                          }`}
+                          } ${client.is_checked && "border-b border-gray-300"}`}
                         >
                           <th
                             scope="row"
                             className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                           >
-                            {index + 1}
+                            {clients.length - index}
                           </th>
                           <td className="px-6 py-4 whitespace-nowrap">
                             {client.name} {client.surname}
@@ -225,18 +225,20 @@ export default function ClientTable() {
                           </td>
                         </tr>
 
-                        <tr
-                          className={`border-gray-200 ${
-                            !isEven(index + 1) ? "bg-white" : "bg-gray-50"
-                          } border-b border-gray-300`}
-                        >
-                          <td colSpan={7} className="px-6 py-3">
-                            <CheckClientForm
-                              client={client}
-                              organization={organization}
-                            />
-                          </td>
-                        </tr>
+                        {!client.is_checked && (
+                          <tr
+                            className={`border-gray-200 ${
+                              !isEven(index + 1) ? "bg-white" : "bg-gray-50"
+                            } border-b border-gray-300`}
+                          >
+                            <td colSpan={7} className="px-6 py-3">
+                              <CheckClientForm
+                                client={client}
+                                organization={organization}
+                              />
+                            </td>
+                          </tr>
+                        )}
                       </React.Fragment>
                     ))}
                 </tbody>

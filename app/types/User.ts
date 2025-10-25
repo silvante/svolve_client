@@ -65,6 +65,7 @@ export interface Client {
   is_checked: boolean;
   price: number;
   created_at: Date;
+  diagnosis: string;
 }
 
 export type BannerData = {
@@ -79,7 +80,7 @@ export interface Vacancy {
   about: string;
   origin: string;
   job: string;
-  role:string
+  role: string;
   contact: string;
   user: User;
   created_at: Date;
