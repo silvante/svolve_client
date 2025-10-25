@@ -9,7 +9,7 @@ import {
 } from "@/app/store/slices/clientSlice";
 import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
@@ -143,95 +143,98 @@ export default function ClientTable() {
                   {[...clients]
                     .reverse()
                     .map((client: Client, index: number) => (
-                      <tr
-                        key={client.id}
-                        className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200"
-                      >
-                        <th
-                          scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                        >
-                          {index + 1}
-                        </th>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {client.name} {client.surname}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {client.born_in}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {client.origin}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {client.type.name}
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {client.price} uzs
-                        </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {!client.is_checked ? (
-                            <div className="flex gap-3 items-center">
-                              <div
-                                className={`${
-                                  currentJob && currentJob.role !== "doctor"
-                                    ? "hidden"
-                                    : "block"
-                                }`}
-                              >
-                                <CheckClientBtn
-                                  org_id={organization.id}
-                                  client_id={client.id}
-                                />
-                              </div>
-                              <div
-                                className={`${
-                                  currentJob &&
-                                  currentJob.role !== "receptionist"
-                                    ? "hidden"
-                                    : "block"
-                                }`}
-                              >
-                                <DropdownMenu>
-                                  <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
-                                    <Menu />
-                                  </DropdownMenuTrigger>
-                                  <DropdownMenuContent
-                                    align="end"
-                                    className="w-56"
-                                  >
-                                    <Link
-                                      href={
-                                        currentJob &&
-                                        currentJob.role === "receptionist"
-                                          ? `/job/${organization.unique_name}/clients/${client.id}`
-                                          : `/org/${organization.unique_name}/clients/${client.id}/update`
-                                      }
-                                      className="rounded-lg flex"
+                      <React.Fragment key={client.id}>
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                          <th
+                            scope="row"
+                            className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                          >
+                            {index + 1}
+                          </th>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {client.name} {client.surname}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {client.born_in}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {client.origin}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {client.type.name}
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {client.price} uzs
+                          </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            {!client.is_checked ? (
+                              <div className="flex gap-3 items-center">
+                                <div
+                                  className={`${
+                                    currentJob && currentJob.role !== "doctor"
+                                      ? "hidden"
+                                      : "block"
+                                  }`}
+                                >
+                                  <CheckClientBtn
+                                    org_id={organization.id}
+                                    client_id={client.id}
+                                  />
+                                </div>
+                                <div
+                                  className={`${
+                                    currentJob &&
+                                    currentJob.role !== "receptionist"
+                                      ? "hidden"
+                                      : "block"
+                                  }`}
+                                >
+                                  <DropdownMenu>
+                                    <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text-black font-semibold rounded-md hover:bg-violet-700 hover:text-white transition-colors">
+                                      <Menu />
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent
+                                      align="end"
+                                      className="w-56"
                                     >
-                                      <DropdownMenuItem className="cursor-pointer w-full">
-                                        <PenBox /> Update
-                                      </DropdownMenuItem>
-                                    </Link>
-                                    <button
-                                      className="rounded-lg cursor-pointer w-full"
-                                      onClick={() => HandleDelete(client.id)}
-                                    >
-                                      <DropdownMenuItem className="cursor-pointer">
-                                        <Trash color="#e7000b" />{" "}
-                                        <p className="text-red-600">Delete</p>
-                                      </DropdownMenuItem>
-                                    </button>
-                                  </DropdownMenuContent>
-                                </DropdownMenu>
+                                      <Link
+                                        href={
+                                          currentJob &&
+                                          currentJob.role === "receptionist"
+                                            ? `/job/${organization.unique_name}/clients/${client.id}`
+                                            : `/org/${organization.unique_name}/clients/${client.id}/update`
+                                        }
+                                        className="rounded-lg flex"
+                                      >
+                                        <DropdownMenuItem className="cursor-pointer w-full">
+                                          <PenBox /> Update
+                                        </DropdownMenuItem>
+                                      </Link>
+                                      <button
+                                        className="rounded-lg cursor-pointer w-full"
+                                        onClick={() => HandleDelete(client.id)}
+                                      >
+                                        <DropdownMenuItem className="cursor-pointer">
+                                          <Trash color="#e7000b" />{" "}
+                                          <p className="text-red-600">Delete</p>
+                                        </DropdownMenuItem>
+                                      </button>
+                                    </DropdownMenuContent>
+                                  </DropdownMenu>
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            <p className="my-2 bg-green-600 text-white px-2 text-center">
-                              checked
-                            </p>
-                          )}
-                        </td>
-                      </tr>
+                            ) : (
+                              <p className="my-2 bg-green-600 text-white px-2 text-center">
+                                checked
+                              </p>
+                            )}
+                          </td>
+                        </tr>
+
+                        <tr className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700 border-gray-200">
+                          <td>app</td>
+                        </tr>
+                      </React.Fragment>
                     ))}
                 </tbody>
               </table>

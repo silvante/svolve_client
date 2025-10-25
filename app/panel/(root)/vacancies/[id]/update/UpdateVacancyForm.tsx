@@ -15,9 +15,7 @@ import vacancyService from "@/app/api/services/vacancyService";
 import { origins, workerRoles } from "@/app/global/data";
 import { ShieldAlert, UserCircle } from "lucide-react";
 import {
-  pushVacancy,
   replaceVacancy,
-  setLoading,
 } from "@/app/store/slices/vacancySlice";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
