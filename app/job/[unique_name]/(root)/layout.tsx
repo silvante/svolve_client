@@ -94,7 +94,7 @@ export default function JobMainLayout({
           </div>
           <div className="w-full">{children}</div>
         </div>
-        <div className="p-3 w-full flex items-center justify-center">
+        <div className="pt-20 px-5 container mx-auto space-y-5 pb-5">
           <OrgFooter />
         </div>
       </div>

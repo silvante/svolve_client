@@ -267,20 +267,22 @@ export default function ClientTable() {
                           </tr>
                         )}
 
-                        {!client.is_checked && (
-                          <tr
-                            className={`border-gray-200 ${
-                              !isEven(index + 1) ? "bg-white" : "bg-gray-50"
-                            } border-b border-gray-300`}
-                          >
-                            <td colSpan={7} className="px-6 py-3">
-                              <CheckClientForm
-                                client={client}
-                                organization={organization}
-                              />
-                            </td>
-                          </tr>
-                        )}
+                        {!client.is_checked &&
+                          currentJob &&
+                          currentJob.role !== "receptionist" && (
+                            <tr
+                              className={`border-gray-200 ${
+                                !isEven(index + 1) ? "bg-white" : "bg-gray-50"
+                              } border-b border-gray-300`}
+                            >
+                              <td colSpan={7} className="px-6 py-3">
+                                <CheckClientForm
+                                  client={client}
+                                  organization={organization}
+                                />
+                              </td>
+                            </tr>
+                          )}
                       </React.Fragment>
                     ))}
                 </tbody>
