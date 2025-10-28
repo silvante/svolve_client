@@ -20,10 +20,10 @@ export default function JobsHeader() {
         )}
       </div>
       <div className="flex items-center gap-4">
-        <p className="text-lg font-semibold text_color">Your role:</p>
+        <p className="text-lg font-semibold text_color hidden lg:block">Your role:</p>
         <JobAside worker={currentJob}>
           <div className="p-1 pr-3 border border-gray-300 rounded-full cursor-pointer flex items-center gap-2 hover:text-violet-600 transition-all text-gray-700">
-            <Avatar className="w-8 h-8  ">
+            <Avatar className="w-8 h-8">
               <AvatarImage src={currentJob.worker.avatar} />
               <AvatarFallback>
                 {currentJob.worker.name.split("")[0].toUpperCase()}
