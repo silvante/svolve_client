@@ -49,7 +49,7 @@ export default function JobsList() {
       console.log(res);
       if (res && res.success == true) {
         setError("");
-        setSuccess("The organization has set as default!");
+        setSuccess("The organization has set been as default!");
       }
       setIsLoading(false);
     } catch (error: any) {
@@ -136,7 +136,7 @@ export default function JobsList() {
                 </p>
               </div>
             </Link>
-            <div className="border-t border-gray-300 p-4 flex justify-between items-center">
+            <div className="border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center border-t">
               <p className="text-sm text-gray-500">
                 <span className="text-black">created at:</span>{" "}
                 {new Date(
