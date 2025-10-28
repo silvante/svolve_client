@@ -18,7 +18,7 @@ export default function JobHome() {
   
   return (
     <div className="space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
         <Heading text={`Panel of ${organization.name}`} />
         <DateShower />
       </div>
