@@ -267,9 +267,7 @@ export default function ClientTable() {
                           </tr>
                         )}
 
-                        {!client.is_checked &&
-                          currentJob &&
-                          currentJob.role !== "receptionist" && (
+                        {!client.is_checked && currentJob?.role !== "receptionist" && (
                             <tr
                               className={`border-gray-200 ${
                                 !isEven(index + 1) ? "bg-white" : "bg-gray-50"
