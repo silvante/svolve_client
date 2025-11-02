@@ -11,7 +11,6 @@ import { updateTypes } from "@/app/store/slices/typesSlice";
 import { Client, Type } from "@/app/types/User";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import CheckClientBtn from "./(meta-components)/CheckClientBtn";
 
 import {
   DropdownMenu,
