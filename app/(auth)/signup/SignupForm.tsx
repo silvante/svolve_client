@@ -99,7 +99,7 @@ export default function SignupForm() {
       </div>
       <button
         type="submit"
-        className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer w-full"
+        className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer px-8"
       >
         {!loading ? "Sign up" : <BeatLoader color="#ffffff" size={10} />}
       </button>
