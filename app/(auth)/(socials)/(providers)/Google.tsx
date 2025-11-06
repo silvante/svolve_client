@@ -17,7 +17,7 @@ export default function Google({ setErrorMessage }: any) {
   return (
     <button
       onClick={handleGoogleLogin}
-      className={`flex gap-3 cursor-pointer w-full border border-gray-400 p-3 rounded-xl items-center justify-center ${
+      className={`flex gap-3 cursor-pointer border border-gray-400 p-3 rounded-xl items-center justify-center ${
         loading ? "opacity-70" : ""
       }`}
       disabled={loading}
