@@ -15,7 +15,7 @@ export default function SignUp() {
       <Heading text="Sign up to Svolve" />
       <SignupForm />
       <Socials />
-      <div className="flex text_color justify-center">
+      <div className="flex text_color justify-start">
         <p>Already have an account? <Link href={"/signin"} className="text-violet-600">Sign in</Link></p>
       </div>
     </div>

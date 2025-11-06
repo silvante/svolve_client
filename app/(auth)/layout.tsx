@@ -26,13 +26,13 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`${roboto.variable} antialiased flex items-center h-screen gap-8`}
+      className={`${roboto.variable} antialiased flex items-center h-screen`}
     >
       <Toaster position="top-right" reverseOrder={true} />
       <div className="bg-gray-200 max-w-lg w-full h-screen">
         <Image src={SignUp} alt="Background image" width={0} height={0} className="w-full h-full object-cover" />
       </div>
-      <div className="flex-1">
+      <div className="max-w-xl w-full px-8">
         <Svolve />
         {children}
       </div>
