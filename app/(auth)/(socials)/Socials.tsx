@@ -10,7 +10,7 @@ export default function Socials() {
 
   return (
     <div className="space-y-3">
-      <p className="text-center">OR</p>
+      <p className="text-start">Socials</p>
       {errorMessage !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
@@ -18,7 +18,7 @@ export default function Socials() {
           <AlertDescription>{errorMessage}</AlertDescription>
         </Alert>
       )}
-      <div className="space-y-3">
+      <div className="flex gap-4">
         <Google setErrorMessage={setErrorMessage} />
         <Github setErrorMessage={setErrorMessage} />
       </div>

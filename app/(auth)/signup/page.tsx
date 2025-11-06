@@ -13,11 +13,11 @@ export default function SignUp() {
   return (
     <div className="w-full space-y-4">
       <Heading text="Sign up to Svolve" />
-      <SignupForm />
       <Socials />
-      <div className="flex text_color justify-start">
+      <div className="flex text_color justify-starts">
         <p>Already have an account? <Link href={"/signin"} className="text-violet-600">Sign in</Link></p>
       </div>
+      <SignupForm />
     </div>
   );
 }
