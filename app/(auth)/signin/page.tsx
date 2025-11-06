@@ -13,9 +13,8 @@ export default function SignIn() {
   return (
     <div className="w-full space-y-4">
       <Heading text="Sing in to your account" />
-      <SigninForm />
       <Socials />
-      <div className="flex text_color justify-center">
+      <div className="flex text_color justify-start">
         <p>
           New to Svolve?{" "}
           <Link href={"/signup"} className="text-violet-600">
@@ -23,6 +22,7 @@ export default function SignIn() {
           </Link>
         </p>
       </div>
+      <SigninForm />
     </div>
   );
 }
