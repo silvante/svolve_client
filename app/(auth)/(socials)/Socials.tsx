@@ -18,7 +18,7 @@ export default function Socials() {
           <AlertDescription>{errorMessage}</AlertDescription>
         </Alert>
       )}
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-col sm:flex-row">
         <Google setErrorMessage={setErrorMessage} />
         <Github setErrorMessage={setErrorMessage} />
       </div>
