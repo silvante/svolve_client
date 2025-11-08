@@ -52,7 +52,7 @@ export default function Pricing() {
             Pay with Visa, Mastercard, Apple Pay, Google Pay, PayPal.
           </p>
           <Link
-            href={"/signin"}
+            href={"/signup"}
             className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
           >
             Get started
