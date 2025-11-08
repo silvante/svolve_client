@@ -28,7 +28,7 @@ export default function RootLayout({
       className={`${roboto.variable} antialiased flex items-center h-screen`}
     >
       <Toaster position="top-right" reverseOrder={true} />
-      <div className="bg-gray-200 max-w-lg w-full h-screen relative">
+      <div className="bg-gray-200 max-w-lg w-full h-screen relative hidden lg:block">
         <Image
           src={SignUp}
           alt="Background image"
