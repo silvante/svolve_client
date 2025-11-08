@@ -41,7 +41,7 @@ export default function Hero() {
           <h1
             className={`text-3xl md:text-6xl text_color text-shadow-2xs leading-18`}
           >
-            Effortless Management Solutions for Medical Diagnostic Centers.
+            Effortless Management Solutions for Medical Diagnostic Centers
           </h1>
           <p className="w-[80%] text_color">
             Simplisity and your security metters most for us
