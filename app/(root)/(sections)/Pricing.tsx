@@ -1,5 +1,6 @@
 import Heading from "@/app/(global_components)/Heading";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 export default function Pricing() {
   return (
@@ -16,14 +17,46 @@ export default function Pricing() {
           </h3>
           <p className="text-lg">No hidden fees, and extra costs</p>
         </div>
+
         <hr className="border-gray-300" />
+
         <div className="space-y-2">
           <p className="text-lg flex items-center gap-2">
-            <Check color="#000000" /> Request access today. No Credit Card Required.
+            <Check color="#000000" /> Unlimited client recording.
           </p>
           <p className="text-lg flex items-center gap-2">
-            <Check color="#000000" /> Request access today. No Credit Card Required.
+            <Check color="#000000" /> Monthly analysis of revenue and customer
+            flow.
           </p>
+          <p className="text-lg flex items-center gap-2">
+            <Check color="#000000" /> Multy-Organization management.
+          </p>
+          <p className="text-lg flex items-center gap-2">
+            <Check color="#000000" /> Hiring unlimited workers to single
+            organization.
+          </p>
+          <p className="text-lg flex items-center gap-2">
+            <Check color="#000000" /> Find every single client ever recorded
+            easily with search engine.
+          </p>
+          <p className="text-lg flex items-center gap-2">
+            <Check color="#000000" /> Free support from Community and creator
+            himself.
+          </p>
+        </div>
+
+        <hr className="border-gray-300" />
+
+        <div className="space-y-2 flex items-start flex-col">
+          <p className="text-lg flex items-center gap-2">
+            Pay with Visa, Mastercard, Apple Pay, Google Pay, PayPal.
+          </p>
+          <Link
+            href={"/signin"}
+            className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
+          >
+            Get started
+          </Link>
         </div>
       </div>
     </div>
