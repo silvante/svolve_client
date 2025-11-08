@@ -8,8 +8,8 @@ import SignUp from "@/public/backgraund/signup_bg.jpg";
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "700"], // Choose what you need
-  variable: "--font-roboto", // Optional: use in CSS
+  weight: ["400", "700"],
+  variable: "--font-roboto",
 });
 
 export const metadata: Metadata = {
