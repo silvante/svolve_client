@@ -26,12 +26,19 @@ export default function Hero() {
       </div>
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
-          <h1 className="text-3xl md:text-5xl font-semibold text-shadow-2xs">
+          {/* <h1 className="text-3xl md:text-5xl text_color text-shadow-2xs">
             Powerful and Easy to use{" "}
             <span className="text-violet-600">organization</span> management
             platform for <span className="text-violet-600">Uzbekistan</span>
+          </h1> */}
+          <h1 className="text-3xl md:text-5xl text_color text-shadow-2xs leading-16">
+            Simplifying Medical Diagnostics Management Across{" "}
+            <span className="text-violet-600">Uzbekistan</span> — Powerful,
+            Intuitive, and Efficient
           </h1>
-          <p className="w-[80%]">Simplisity and your security metters most for us</p>
+          <p className="w-[80%] text_color">
+            Simplisity and your security metters most for us
+          </p>
           <Link
             href={isRegistered ? "/panel" : "/signin"}
             className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
