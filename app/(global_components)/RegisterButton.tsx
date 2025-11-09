@@ -40,7 +40,7 @@ export default function RegisterButton() {
     <div className="space-x-3 flex gap-2 items-center justify-center text-lg">
       <Link
         href={"/signin"}
-        className="px-4 py-2 hidden rounded-xl md:flex gap-2 hover:text-violet-600"
+        className="px-4 py-2 hidden rounded-xl sm:flex gap-2 hover:text-violet-600"
       >
         Sign in <LogIn />
       </Link>

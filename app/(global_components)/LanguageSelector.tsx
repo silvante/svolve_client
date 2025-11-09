@@ -16,7 +16,7 @@ export default function LanguageSelect() {
   console.log(selected);
 
   return (
-    <div className="w-48 relative">
+    <div className="w-48 relative hidden md:flex">
       <Listbox value={selected} onChange={setSelected}>
         {/* Button */}
         <ListboxButton className="flex items-center gap-3 border p-2 rounded-xl w-full shadow-sm">

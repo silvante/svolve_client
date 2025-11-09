@@ -33,7 +33,7 @@ export default function Hero() {
       </div>
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
-          <h1 className="text-3xl md:text-5xl text_color text-shadow-2xs">
+          <h1 className="text-4xl md:text-6xl text_color text-shadow-2xs">
             Powerful and Easy to use{" "}
             <span className="text-violet-600">organization</span> management
             platform for <span className="text-violet-600">Uzbekistan</span>
