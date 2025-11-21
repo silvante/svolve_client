@@ -4,6 +4,7 @@ import Link from "next/link";
 import DocsAnimation from "../lottie/DocsAnimation";
 import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 // import { Montserrat } from "next/font/google";
 
 // const montserrat = Montserrat({
@@ -13,6 +14,8 @@ import { useEffect, useState } from "react";
 // });
 
 export default function Hero() {
+  const t = useTranslations();
+
   const [isRegistered, setIsRejistered] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -34,15 +37,8 @@ export default function Hero() {
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-6xl text_color text-shadow-2xs">
-            Powerful and Easy to use{" "}
-            <span className="text-violet-600">organization</span> management
-            platform for <span className="text-violet-600">Uzbekistan</span>
+            {t("hero_quote")}
           </h1>
-          {/* <h1
-            className={`text-3xl md:text-6xl text_color text-shadow-2xs leading-18`}
-          >
-            Effortless Management Solutions for Medical Diagnostic Centers
-          </h1> */}
           <p className="w-[80%] text_color">
             Simplisity and your security metters most for us
           </p>

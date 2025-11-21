@@ -17,13 +17,39 @@ const languages = [
 
 export default function LanguageSelect() {
   const [selected, setSelected] = useState(languages[0]);
+  const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    document.cookie = `lang=${selected.code}; path=/`;
-    window.location.reload()
-  }, [selected]);
+    if (typeof document === "undefined") return;
 
-  console.log(selected);
+    const saved = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("lang="))
+      ?.split("=")[1];
+
+    if (saved) {
+      const match = languages.find((l) => l.code === saved);
+      if (match) setSelected(match);
+    }
+
+    setHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated) {
+      return;
+    }
+    const current = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("lang="))
+      ?.split("=")[1];
+
+    // Prevent infinite reload loop
+    if (current !== selected.code) {
+      document.cookie = `lang=${selected.code}; path=/`;
+      window.location.reload();
+    }
+  }, [selected, hydrated]);
 
   return (
     <div className="w-48 relative hidden md:block">
