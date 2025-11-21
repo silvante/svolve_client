@@ -11,8 +11,8 @@ import Image from "next/image";
 
 const languages = [
   { code: "en", label: "English", flag: "/flags/en.svg" },
-  { code: "ru", label: "Russian", flag: "/flags/ru.svg" },
-  { code: "uz", label: "Uzbek", flag: "/flags/uz.svg" },
+  { code: "ru", label: "Русский", flag: "/flags/ru.svg" },
+  { code: "uz", label: "O'zbek", flag: "/flags/uz.svg" },
 ];
 
 export default function LanguageSelect() {

@@ -1,3 +1,7 @@
 {
-  "hero_quote": "Kuchli va oson foydalaniladigan tashkilotlarni boshqarish platformasi O‘zbekiston uchun"
+    "hero": {
+        "title": "O'zbekiston uchun kuchli va ishlatish uchun qulay tashkilot boshqaruv platformasi",
+        "desc": "Oddiylik va sizning xavfsizlik ko'rsatkichlaringiz biz uchun eng muhimi",
+        "start_button": "Boshlash"
+    }
 }

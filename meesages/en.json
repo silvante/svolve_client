@@ -1,3 +1,7 @@
 {
-    "hero_quote": "Powerful and Easy to use organization management platform for Uzbekistan"
+    "hero": {
+        "title": "Powerful and Easy to use organization management platform for Uzbekistan",
+        "desc": "Simplisity and your security metters most for us",
+        "start_button": "Get started"
+    }
 }
