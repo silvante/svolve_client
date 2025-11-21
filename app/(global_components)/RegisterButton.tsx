@@ -1,9 +1,12 @@
 "use client";
 import { CircleUserRound, DoorOpen, LogIn } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function RegisterButton() {
+  const t = useTranslations();
+
   const [isRegistered, setIsRejistered] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -42,21 +45,21 @@ export default function RegisterButton() {
         href={"/signin"}
         className="px-4 py-2 hidden rounded-xl sm:flex gap-2 hover:text-violet-600"
       >
-        Sign in <LogIn />
+        {t("register.sign_in")} <LogIn />
       </Link>
       {!isRegistered ? (
         <Link
           href={"/signup"}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          Sign up <CircleUserRound />
+          {t("register.sign_up")} <CircleUserRound />
         </Link>
       ) : (
         <Link
           href={"/panel"}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          Dashboard <DoorOpen />
+          {t("register.panel")} <DoorOpen />
         </Link>
       )}
     </div>

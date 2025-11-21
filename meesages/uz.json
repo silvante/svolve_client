@@ -3,5 +3,10 @@
         "title": "O'zbekiston uchun kuchli va ishlatish uchun qulay tashkilot boshqaruv platformasi",
         "desc": "Oddiylik va sizning xavfsizlik ko'rsatkichlaringiz biz uchun eng muhimi",
         "start_button": "Boshlash"
+    },
+    "register": {
+        "sign_in": "Kirish",
+        "sign_up": "Ro'yxatdan o'tish",
+        "panel": "Panel"
     }
 }

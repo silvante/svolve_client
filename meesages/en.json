@@ -3,5 +3,10 @@
         "title": "Powerful and Easy to use organization management platform for Uzbekistan",
         "desc": "Simplisity and your security metters most for us",
         "start_button": "Get started"
+    },
+    "register": {
+        "sign_in": "Sign in",
+        "sign_up": "Sign up",
+        "panel": "Dashboard"
     }
 }
