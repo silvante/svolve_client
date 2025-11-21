@@ -1,17 +1,27 @@
 "use client";
 
-import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
-import { useState } from "react";
+import {
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const languages = [
   { code: "en", label: "English", flag: "/flags/en.svg" },
   { code: "ru", label: "Russian", flag: "/flags/ru.svg" },
-  { code: "uz", label: "Uzbek",  flag: "/flags/uz.svg" },
+  { code: "uz", label: "Uzbek", flag: "/flags/uz.svg" },
 ];
 
 export default function LanguageSelect() {
   const [selected, setSelected] = useState(languages[0]);
+
+  useEffect(() => {
+    document.cookie = `lang=${selected.code}; path=/`;
+    window.location.reload()
+  }, [selected]);
 
   console.log(selected);
 
