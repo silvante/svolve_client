@@ -1,6 +1,5 @@
 "use client";
-import { origins } from "@/app/global/data";
-import { Client, Organization, Vacancy } from "@/app/types/User";
+import { Client, Organization } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { HashLoader } from "react-spinners";
@@ -9,7 +8,6 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ClientCard from "./(meta)/Client";
 import clientService from "@/app/api/services/clientService";
 import TypeInput from "./(meta)/TypeInput";
-import Heading from "@/app/(global_components)/Heading";
 
 export default function ClientSearchEngine({
   organization,
@@ -18,7 +16,7 @@ export default function ClientSearchEngine({
 }) {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [origin, setOrigin] = useState(organization.origin);
+  const [origin] = useState(organization.origin);
   const [page, setPage] = useState(1);
   const [meta, setMeta] = useState({ total: 0, page: 1, last_page: 1 });
   const [clients, setClients] = useState([]);

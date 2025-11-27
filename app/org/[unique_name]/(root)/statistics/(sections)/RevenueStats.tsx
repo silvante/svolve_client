@@ -1,11 +1,9 @@
+// "use client"
 import Heading from "@/app/(global_components)/Heading";
 import Spinner from "@/app/(global_components)/Spinner";
 import statsService from "@/app/api/services/statsService";
 import {
   Organization,
-  RevenueByDay,
-  RevenueByMonth,
-  RevenueByType,
   RevenueStats,
 } from "@/app/types/User";
 import { useEffect, useState } from "react";

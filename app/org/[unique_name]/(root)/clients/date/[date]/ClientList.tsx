@@ -1,6 +1,5 @@
 "use client";
-import { origins } from "@/app/global/data";
-import { Client, Organization, Vacancy } from "@/app/types/User";
+import { Client, Organization } from "@/app/types/User";
 import { useEffect, useState } from "react";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
 import { HashLoader } from "react-spinners";

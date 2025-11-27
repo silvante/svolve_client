@@ -1,7 +1,5 @@
 "use client";
 
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";

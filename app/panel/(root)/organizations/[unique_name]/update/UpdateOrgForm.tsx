@@ -1,11 +1,11 @@
 "use client";
-import { FileImage, ShieldAlert, Trash2 } from "lucide-react";
+import { FileImage, ShieldAlert } from "lucide-react";
 import { useState } from "react";
 import organizationService from "@/app/api/services/organizationService";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { replaceOrganization } from "@/app/store/slices/organizationSlice";
 import { BannerData, Organization } from "@/app/types/User";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 import uploadService from "@/app/api/services/uploadsService";
 import { origins } from "@/app/global/data";

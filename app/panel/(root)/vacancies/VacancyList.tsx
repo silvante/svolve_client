@@ -1,6 +1,5 @@
 "use client";
 import ErrorMessage from "@/app/(global_components)/ErrorMessage";
-import Heading from "@/app/(global_components)/Heading";
 import Spinner from "@/app/(global_components)/Spinner";
 import vacancyService from "@/app/api/services/vacancyService";
 import { updateVacancies } from "@/app/store/slices/vacancySlice";
