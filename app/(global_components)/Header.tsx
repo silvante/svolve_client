@@ -9,7 +9,7 @@ export default function Header() {
         <Svolve />
         <LangSelector />
       </div>
-      {/* <RegisterButton /> */}
+      <RegisterButton />
     </header>
   );
 }
