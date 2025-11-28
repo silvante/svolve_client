@@ -4,6 +4,7 @@ import Link from "next/link";
 
 const boren = Borel({
   weight: "400",
+  subsets: ['latin']
 });
 
 export default function Author() {

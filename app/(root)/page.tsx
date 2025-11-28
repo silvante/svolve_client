@@ -1,11 +1,6 @@
-import { Borel, Roboto } from "next/font/google";
 import Hero from "../(global_components)/Hero";
 import Community from "./(sections)/Community";
 import Pricing from "./(sections)/Pricing";
-
-const boren = Borel({
-  weight: "400",
-});
 
 export default function Home() {
   return (
