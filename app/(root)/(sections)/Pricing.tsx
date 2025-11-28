@@ -1,4 +1,3 @@
-import Heading from "@/app/(global_components)/Heading";
 import { Check } from "lucide-react";
 import Link from "next/link";
 
