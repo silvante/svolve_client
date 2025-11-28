@@ -1,7 +1,5 @@
 "use client";
-import Spinner from "@/app/(global_components)/Spinner";
-import { Eye, LogOut, Menu, Settings, UserCircle, UserPen } from "lucide-react";
-import { useSelector } from "react-redux";
+import { Eye, LogOut, Settings, UserPen } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
