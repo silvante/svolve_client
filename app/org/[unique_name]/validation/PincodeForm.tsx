@@ -17,7 +17,10 @@ import {
 import { useRouter } from "next/navigation";
 import Spinner from "@/app/(global_components)/Spinner";
 
-export default function PincodeForm({ unique_name }: { unique_name: string }) {
+export default function PincodeForm({ unique_name }: { unique_name: string | null }) {
+  if (!unique_name || unique_name === null) {
+    return;
+  }
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [pincode, setPincode] = useState("");
@@ -56,7 +59,7 @@ export default function PincodeForm({ unique_name }: { unique_name: string }) {
       if (error.response && error.response.data) {
         setErrorMessage(
           error.response.data.message ||
-            "An error occurred while validating the pincode."
+          "An error occurred while validating the pincode."
         );
       }
       const res = error?.response?.data || error?.response;

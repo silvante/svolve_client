@@ -1,12 +1,11 @@
+"use client"
 import Pincode from "@/app/lottie/Pincode";
 import PincodeForm from "./PincodeForm";
+import { useParams } from "next/navigation";
 
-export default async function ValidateOrganizationPage({
-  params,
-}: Readonly<{
-  params: { unique_name: string };
-}>) {
-  const { unique_name } = await params;
+export default function ValidateOrganizationPage() {
+  const params = useParams()
+  const unique_name = String(params.unique_name);
   return (
     <div className="flex flex-col items-center justify-center h-screen w-full gap-5">
       <Pincode />
