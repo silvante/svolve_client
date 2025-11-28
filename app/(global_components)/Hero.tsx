@@ -5,29 +5,22 @@ import DocsAnimation from "../lottie/DocsAnimation";
 import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-// import { Montserrat } from "next/font/google";
-
-// const montserrat = Montserrat({
-//   subsets: ['latin'], // required
-//   weight: ['400', '500', '600', '700'], // choose needed weights
-//   variable: '--font-montserrat', // optional CSS variable
-// });
 
 export default function Hero() {
   const t = useTranslations();
 
-  const [isRegistered, setIsRejistered] = useState(false);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const access_token = localStorage.getItem("access_token");
-    const reset_token = localStorage.getItem("reset_token");
-    if (reset_token && access_token) {
-      setIsRejistered(true);
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
-  }, []);
+  // const [isRegistered, setIsRejistered] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  // useEffect(() => {
+  //   const access_token = localStorage.getItem("access_token");
+  //   const reset_token = localStorage.getItem("reset_token");
+  //   if (reset_token && access_token) {
+  //     setIsRejistered(true);
+  //     setLoading(false);
+  //   } else {
+  //     setLoading(false);
+  //   }
+  // }, []);
 
   return (
     <div className="w-full space-y-5">
@@ -40,12 +33,12 @@ export default function Hero() {
             {t("hero.title")}
           </h1>
           <p className="w-[80%] text_color">{t("hero.desc")}</p>
-          <Link
+          {/* <Link
             href={isRegistered ? "/panel" : "/signin"}
             className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
           >
             {t("hero.start_button")} <Play />
-          </Link>
+          </Link> */}
         </div>
         <div className="flex-1 flex justify-end">
           <DocsAnimation />
