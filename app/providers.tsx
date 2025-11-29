@@ -9,9 +9,11 @@ interface Params {
   children: React.ReactNode;
 }
 
+const timeZone = "Asia/Tashkent";
+
 export default function LangProvider({ lang, messages, children }: Params) {
   return (
-    <NextIntlClientProvider locale={lang} messages={messages}>
+    <NextIntlClientProvider locale={lang} messages={messages} timeZone={timeZone}>
       {children}
     </NextIntlClientProvider>
   );
