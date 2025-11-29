@@ -8,11 +8,13 @@ import {
   MessageCircleMore,
   Podcast,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Community() {
+  const t = useTranslations()
   const path = usePathname();
   console.log(path);
 
@@ -30,7 +32,7 @@ export default function Community() {
         </div>
       )}
       <div className="flex items-center justify-center text-center">
-        <Heading text="Welcome to Svolve Community" />
+        <Heading text={t("community.welcome")} />
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
@@ -38,8 +40,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text="Support & Care" />
-            <p className="text-gray-600">Support from Creators</p>
+            <Heading text={t("community.features.care.title")} />
+            <p className="text-gray-600">{t("community.features.care.desc")}</p>
           </div>
           <div className="text-violet-600">
             <HandHeart size={50} />
@@ -50,8 +52,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text="Q&A Streams" />
-            <p className="text-gray-600">Streams whenever you want</p>
+            <Heading text={t("community.features.qa.title")} />
+            <p className="text-gray-600">{t("community.features.qa.desc")}</p>
           </div>
           <div className="text-violet-600">
             <Podcast size={50} />
@@ -62,8 +64,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text="Tutorials" />
-            <p className="text-gray-600">Tutorials on YouTube</p>
+            <Heading text={t("community.features.tutorials.title")} />
+            <p className="text-gray-600">{t("community.features.tutorials.desc")}</p>
           </div>
           <div className="text-violet-600">
             <BookMarked size={50} />
@@ -74,8 +76,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text="Live Chats" />
-            <p className="text-gray-600">You can chat with other users</p>
+            <Heading text={t("community.features.chat.title")} />
+            <p className="text-gray-600">{t("community.features.chat.desc")}</p>
           </div>
           <div className="text-violet-600">
             <MessageCircleMore size={50} />
@@ -83,7 +85,7 @@ export default function Community() {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <Heading text="Take your place" />
+        <Heading text={t("community.invite")} />
       </div>
       <div className="flex flex-wrap w-full items-center justify-center gap-4">
         {Socials.map((app: any) => {
