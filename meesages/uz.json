@@ -8,5 +8,42 @@
         "sign_in": "Kirish",
         "sign_up": "Ro'yxatdan o'tish",
         "panel": "Panel"
+    },
+    "pricing": {
+        "trial": "14 kun bepul sinov – Karta talab qilinmaydi",
+        "title": "Oddiy va toza to‘lov usullari",
+        "desc": "Bugun murojaat qiling. Karta kerak emas.",
+        "fees": "Yashirin to‘lovlar va qo‘shimcha xarajatlar yo‘q",
+        "features": {
+            "1": "Cheksiz mijoz qo‘shish imkoniyati.",
+            "2": "Daromad va mijoz oqimining oylik tahlili.",
+            "3": "Bir nechta tashkilotni boshqarish.",
+            "4": "Bitta tashkilotga cheksiz xodim qo‘shish.",
+            "5": "Qidiruv tizimi orqali har bir mijozni tez topish.",
+            "6": "Jamoat va yaratuvchidan bepul yordam."
+        },
+        "methods": "Visa, Mastercard, Apple Pay, Google Pay, PayPal orqali to‘lov."
+    },
+    "community": {
+        "welcome": "Svolve jamoasiga xush kelibsiz",
+        "features": {
+            "care": {
+                "title": "Qo‘llab-quvvatlash",
+                "desc": "Yaratuvchilardan yordam"
+            },
+            "qa": {
+                "title": "Savol-javob efirlari",
+                "desc": "Istagan vaqtingizda jonli efir"
+            },
+            "tutorials": {
+                "title": "Qo‘llanmalar",
+                "desc": "YouTube’dagi darsliklar"
+            },
+            "chat": {
+                "title": "Jonli chat",
+                "desc": "Boshqa foydalanuvchilar bilan suhbat"
+            }
+        },
+        "invite": "O‘z o‘rningizni egallang"
     }
 }
