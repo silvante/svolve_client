@@ -23,5 +23,27 @@
             "6": "Free support from Community and creator himself."
         },
         "methods": "Pay with Visa, Mastercard, Apple Pay, Google Pay, PayPal."
+    },
+    "community": {
+        "welcome": "Welcome to Svolve Community",
+        "features": {
+            "care": {
+                "title": "Support & Care",
+                "desc": "Support from Creators"
+            },
+            "qa": {
+                "title": "Q&A Streams",
+                "desc": "Streams whenever you want"
+            },
+            "tutorials": {
+                "title": "Tutorials",
+                "desc": "Tutorials on YouTube"
+            },
+            "chat": {
+                "title": "Live Chats",
+                "desc": "You can chat with other users"
+            }
+        },
+        "invite": "Take your place"
     }
 }
