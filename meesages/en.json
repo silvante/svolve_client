@@ -8,5 +8,20 @@
         "sign_in": "Sign in",
         "sign_up": "Sign up",
         "panel": "Dashboard"
+    },
+    "pricing": {
+        "trial": "14 Days Free Trial - No Credit Card",
+        "title": "Simple & Clean Payment Method",
+        "desc": "Request access today. No Credit Card Required.",
+        "fees": "No hidden fees, and extra costs",
+        "features": {
+            "1": "Unlimited client recording.",
+            "2": "Monthly analysis of revenue and customer flow.",
+            "3": "Multy-Organization management.",
+            "4": "Hiring unlimited workers to single organization.",
+            "5": "Find every single client ever recorded easily with search engine.",
+            "6": "Free support from Community and creator himself."
+        },
+        "methods": "Pay with Visa, Mastercard, Apple Pay, Google Pay, PayPal."
     }
 }
