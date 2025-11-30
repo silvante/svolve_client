@@ -44,7 +44,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
-        <NextTopLoader color="#7f22fe" />
+        <NextTopLoader color="#7f22fe" showSpinner={false} />
         <LangProvider lang={lang} messages={messages}>
           <StoreProvider>{children}</StoreProvider>
         </LangProvider>
