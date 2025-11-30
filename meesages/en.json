@@ -46,7 +46,24 @@
         },
         "invite": "Take your place"
     },
-    "sign_up": {
-        "title": "Sign up to Svolve"
+    "auth": {
+        "signup": {
+            "title": "Sign up to Svolve",
+            "socials": "Socials",
+            "google": "Continue with Google",
+            "github": "Continue with Github",
+            "haveAccount": "Already have an account?",
+            "signin": "Sign in",
+            "nameLabel": "Name",
+            "emailLabel": "Email",
+            "termsCheckbox": "Accept all",
+            "termsLink": "terms",
+            "submit": "Sign up"
+        },
+        "signin": {
+            "title": "Sing in to your account",
+            "haveNoAccount": "New to Svolve?",
+            "submit": "Sign in"
+        }
     }
 }
