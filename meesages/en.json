@@ -45,5 +45,8 @@
             }
         },
         "invite": "Take your place"
+    },
+    "sign_up": {
+        "title": "Sign up to Svolve"
     }
 }
