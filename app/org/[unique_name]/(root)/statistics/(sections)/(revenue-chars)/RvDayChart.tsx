@@ -40,7 +40,7 @@ export default function RvDayChart({ data }: { data: RevenueByDay[] }) {
     labels: labels,
     datasets: [
       {
-        label: "Daily revenue",
+        label: "Kunlik daromad",
         data: revenues,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",
@@ -58,19 +58,19 @@ export default function RvDayChart({ data }: { data: RevenueByDay[] }) {
 
   return (
     <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md w-full border-b-3 border-b-violet-600 overflow-x-auto">
-      <Heading text="Last 30 days" />
+      <Heading text="Oxirgi 30 kun" />
       <div className="flex gap-4">
         <button
           onClick={() => setChartType("line")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
         >
-          <LineChart /> Line
+          <LineChart /> Chiziq
         </button>
         <button
           onClick={() => setChartType("bar")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
         >
-          <BarChart3 /> Bar
+          <BarChart3 /> Ustun
         </button>
       </div>
       <div className="w-[940px] lg:w-full h-[400px]">

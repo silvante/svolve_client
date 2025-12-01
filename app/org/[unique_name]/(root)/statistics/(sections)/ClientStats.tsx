@@ -35,7 +35,7 @@ export default function ClientStatistics({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Error while fatching!");
+        setError("Yuklashda xatolik yuz berdi!");
       } else {
         setError(error.response.data.message);
       }
@@ -49,11 +49,11 @@ export default function ClientStatistics({
 
   return (
     <div className="space-y-5">
-      <Heading text="Statistics" />
+      <Heading text="Statistika" />
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
@@ -74,8 +74,8 @@ export default function ClientStatistics({
           ) : (
             <div className="flex justify-center items-center py-10">
               <ErrorMessage
-                text="We are having problems"
-                desc="There are some problems with loading Stats"
+                text="Muammolar mavjud"
+                desc="Statistikalarni yuklashda ba'zi muammolar mavjud"
               />
             </div>
           )}

@@ -40,7 +40,7 @@ export default function ClMonthChart({ data }: { data: ClientsByMonth[] }) {
     labels: labels,
     datasets: [
       {
-        label: "clients",
+        label: "mijozlar",
         data: revenues,
         borderColor: "#7f22fe",
         backgroundColor: "#7f22fe",
@@ -58,19 +58,19 @@ export default function ClMonthChart({ data }: { data: ClientsByMonth[] }) {
 
   return (
     <div className="p-5 space-y-5 rounded-2xl border border-gray-300 shadow-md border-b-3 border-b-violet-600 flex-1">
-      <Heading text="Last 12 months" />
+      <Heading text="Oxirgi 12 oy" />
       <div className="flex gap-4">
         <button
           onClick={() => setChartType("line")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
         >
-          <LineChart /> Line
+          <LineChart /> Chiziq
         </button>
         <button
           onClick={() => setChartType("bar")}
           className="border-gray-300 border rounded-lg py-2 px-4 flex gap-2 text_color hover:bg-gray-950/5 cursor-pointer"
         >
-          <BarChart3 /> Bar
+          <BarChart3 /> Ustun
         </button>
       </div>
       <div className="w-full h-[300px]">

@@ -39,7 +39,7 @@ export default function RevenueStatistics({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -53,11 +53,11 @@ export default function RevenueStatistics({
 
   return (
     <div className="space-y-5 w-full">
-      <Heading text="Revenue" />
+      <Heading text="Daromad" />
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
@@ -76,9 +76,7 @@ export default function RevenueStatistics({
               </div>
               <div>
                 <p>
-                  All charts display values in <b>UZS</b>. For clearer and more
-                  accurate statistics, please make sure to always record client
-                  prices in <b>UZS</b>.
+                  Barcha diagrammalar qiymatlarni <b>UZS</b>da ko'rsatadi. Aniqroq statistik ma'lumotlar uchun mijoz narxlarini har doim <b>UZS</b>da qayd etishingizga ishonch hosil qiling.
                 </p>
               </div>
               <RvTotal data={revenue} />
@@ -86,8 +84,8 @@ export default function RevenueStatistics({
           ) : (
             <div className="flex justify-center items-center py-10">
               <ErrorMessage
-                text="We are having problems"
-                desc="There are some problems with loading Stats"
+                text="Muammolar mavjud"
+                desc="Statistikalarni yuklashda ba'zi muammolar mavjud"
               />
             </div>
           )}
