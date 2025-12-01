@@ -46,12 +46,12 @@ export default function Verification() {
 
   return (
     <div className="space-y-4">
-      <Heading text="Veriying your email..." />
+      <Heading text="Hisobingiz tekshirilmoqda..." />
       <HashLoader color="#7c3aed" size={80} />
-      {loading1 && <p>Verifying your email and setting your accaunt...</p>}
-      {loading2 && <p>Receiving and saving you account data...</p>}
-      {!loading1 && !loading2 && <p>Welcome to Svolve!</p>}
-      <p className="text-violet-600">Do not close the page</p>
+      {loading1 && <p>Tekshirilmoqda...</p>}
+      {loading2 && <p>Malumotlaringiz yuklanmoqda...</p>}
+      {!loading1 && !loading2 && <p>Svolve ga hush kelibsiz!</p>}
+      <p className="text-violet-600">Sahifadan chiqib ketmang!</p>
     </div>
   );
 }
