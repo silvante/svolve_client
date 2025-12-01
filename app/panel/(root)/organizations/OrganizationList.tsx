@@ -61,12 +61,12 @@ export default function OrganizationList() {
       console.log(res);
       if (res && res.success == true) {
         setError("");
-        setSuccess("The organization has set as default!");
+        setSuccess("Tashkilot standart qilib belgilandi!");
       }
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -86,14 +86,14 @@ export default function OrganizationList() {
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         {success !== "" && (
           <Alert variant="default" className="text-green-600">
             <Check />
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle>Muvaffaqiyat</AlertTitle>
             <AlertDescription className="text-green-600/70">
               {success}
             </AlertDescription>
@@ -101,7 +101,7 @@ export default function OrganizationList() {
         )}
         {isLoading && (
           <div className="flex gap-2 items-center">
-            <p>Setting as default</p>
+            <p>Standart qilib belgilanyapti</p>
             <Spinner />
           </div>
         )}
@@ -129,14 +129,14 @@ export default function OrganizationList() {
                 <div className="p-4 flex flex-col gap-1 items-start">
                   <h3 className="text-xl font-semibold">{organization.name}</h3>
                   <p className="text-sm text-gray-600">
-                    <span className="text-black">Uniquename: </span>@
+                    <span className="text-black">Noyob nom: </span>@
                     {organization.unique_name}
                   </p>
                 </div>
               </Link>
               <div className="border-t border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center">
                 <p className="text-sm text-gray-500">
-                  <span className="text-black">created at:</span>{" "}
+                  <span className="text-black">yaratilgan sana:</span>{" "}
                   {new Date(organization.created_at).toLocaleDateString(
                     "en-US",
                     {
@@ -148,7 +148,7 @@ export default function OrganizationList() {
                 </p>
                 {organization.is_vip ? (
                   <p className="text-yellow-600 flex items-center gap-2">
-                    Organization is VIP <Crown />
+                    Tashkilot VIP <Crown />
                   </p>
                 ) : (
                   <p
@@ -158,12 +158,12 @@ export default function OrganizationList() {
                         : "text-red-600"
                     }`}
                   >
-                    <span className="text-black">status:</span>{" "}
+                    <span className="text-black">holat:</span>{" "}
                     {organization.subscription_status}
                   </p>
                 )}
                 <p className="text-sm text-gray-500">
-                  <span className="text-black">pincode:</span> present
+                  <span className="text-black">pinkod:</span> mavjud
                 </p>
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-1 py-1 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">
@@ -174,28 +174,28 @@ export default function OrganizationList() {
                       href={`/panel/organizations/${organization.unique_name}`}
                     >
                       <DropdownMenuItem>
-                        <Eye /> Review
+                        <Eye /> Ko'rib chiqish
                       </DropdownMenuItem>
                     </Link>
                     <Link
                       href={`/panel/organizations/${organization.unique_name}/update`}
                     >
                       <DropdownMenuItem>
-                        <PenBox /> Update
+                        <PenBox /> Yangilash
                       </DropdownMenuItem>
                     </Link>
                     <Link
                       href={`/panel/organizations/${organization.unique_name}/pincode`}
                     >
                       <DropdownMenuItem>
-                        <LockKeyhole /> Update Pincode
+                        <LockKeyhole /> Pinkodni yangilash
                       </DropdownMenuItem>
                     </Link>
                     <button
                       onClick={() => MakeItDefault(organization.unique_name)}
                     >
                       <DropdownMenuItem>
-                        <Pin /> Set as default
+                        <Pin /> Standart qilib belgilash
                       </DropdownMenuItem>
                     </button>
                   </DropdownMenuContent>
@@ -205,8 +205,8 @@ export default function OrganizationList() {
           ))
         ) : (
           <ErrorMessage
-            text="You have no organizations"
-            desc="you can create one now"
+            text="Sizda tashkilotlar yo'q"
+            desc="Hozir yaratishingiz mumkin"
           />
         )}
       </div>

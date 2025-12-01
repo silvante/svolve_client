@@ -88,7 +88,7 @@ export default function UpdatezrganisationForm({
           const new_banner: BannerData = res;
           bannerData = new_banner;
         } catch (error) {
-          setError("error while uploading banner");
+          setError("banner yuklashda xato");
           setIsLoading(false);
           return;
         }
@@ -102,7 +102,7 @@ export default function UpdatezrganisationForm({
           const res: any = await uploadService.uploadLogo(LogoformData);
           logoData = String(res);
         } catch (error) {
-          setError("error while uploading logo");
+          setError("logotip yuklashda xato");
           setIsLoading(false);
           return;
         }
@@ -127,7 +127,7 @@ export default function UpdatezrganisationForm({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -154,21 +154,21 @@ export default function UpdatezrganisationForm({
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Organization Name*
+          Tashkilot nomi*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organization name"
+          placeholder="Tashkilot nomini kiriting"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -179,7 +179,7 @@ export default function UpdatezrganisationForm({
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="description" className="block">
-          Organization Description*
+          Tashkilot tavsifi*
         </label>
         <textarea
           rows={3}
@@ -189,10 +189,10 @@ export default function UpdatezrganisationForm({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter organization description"
+          placeholder="Tashkilot tavsifini kiriting"
           required
         />
-        <p className="text-sm text-gray-500">Max 500 characters</p>
+        <p className="text-sm text-gray-500">Maksimal 500 belgi</p>
       </div>
 
       {/* Banner */}
@@ -204,7 +204,7 @@ export default function UpdatezrganisationForm({
           {!bannerBase64 ? (
             <div className="flex flex-col items-center gap-2 text-gray-700">
               <FileImage />
-              Upload Banner Image (optional)
+              Banner rasmini yuklash (ixtiyoriy)
             </div>
           ) : (
             <div className="w-full h-full relative">
@@ -217,7 +217,7 @@ export default function UpdatezrganisationForm({
               </button> */}
               <img
                 src={bannerBase64}
-                alt="You banner"
+                alt="Sizning banneringiz"
                 className="object-cover w-full h-full"
               />
             </div>
@@ -241,12 +241,12 @@ export default function UpdatezrganisationForm({
           {!logoBase64 ? (
             <div className="flex flex-col items-center gap-2 text-gray-700">
               <FileImage />
-              Upload Logo Image (optional)
+              Logotip rasmini yuklash (ixtiyoriy)
             </div>
           ) : (
             <img
               src={logoBase64}
-              alt="your logo"
+              alt="sizning logotipingiz"
               className="w-full max-h-full object-cover"
             />
           )}
@@ -272,19 +272,19 @@ export default function UpdatezrganisationForm({
       {/* origin */}
       <div className="space-y-1">
         <label htmlFor="origin" className="block">
-          Where is your organization?*
+          Manzil*
         </label>
         <select
           id="origin"
           name="origin"
-          className="global_input w-full none"
+          className="global_input w-full none text-black"
           value={origin}
           onChange={(e) => setOrigin(e.target.value)}
           required
         >
           {origins.map((origin) => {
             return (
-              <option key={origin.id} value={origin.name}>
+              <option key={origin.id} value={origin.name} className="text-black">
                 {origin.name}
               </option>
             );
@@ -298,7 +298,7 @@ export default function UpdatezrganisationForm({
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "updating..." : "Update Organization"}
+          {isLoading ? "yangilanmoqda..." : "Tashkilotni yangilash"}
         </button>
       </div>
     </form>

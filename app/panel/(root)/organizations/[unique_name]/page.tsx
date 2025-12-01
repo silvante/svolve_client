@@ -8,7 +8,7 @@ export default function Organization() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <Heading text={`Update - ${unique_name}`} />
+        <Heading text={`Yangilash - ${unique_name}`} />
         <BackBtn href={`/panel/organizations`} />
       </div>
     </div>

@@ -4,7 +4,7 @@ import OrganizationList from "./OrganizationList";
 export default function Organizations() {
   return (
     <div className="space-y-5">
-      <Heading text="Organizations" />
+      <Heading text="Tashkilotlar" />
       <OrganizationList />
     </div>
   );
