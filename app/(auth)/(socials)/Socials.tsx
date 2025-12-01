@@ -10,7 +10,7 @@ export default function Socials() {
 
   return (
     <div className="space-y-3">
-      <p className="text-start">Socials</p>
+      <p className="text-start">Ijtimoiy tarmoqlar</p>
       {errorMessage !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />

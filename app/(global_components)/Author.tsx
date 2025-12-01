@@ -15,7 +15,7 @@ export default function Author() {
         target="_blanck"
         className="flex gap-4 items-center justify-start"
       >
-        <p className={`${boren.className} hidden md:block`}>Created by</p>
+        <p className={`${boren.className} hidden md:block`}>Yaratuvchi</p>
         <Image
           src={"/images/author.jpg"}
           alt="Authors picture"

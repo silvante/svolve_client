@@ -28,7 +28,7 @@ export default function Google({ setErrorMessage }: any) {
         width={22}
         height={22}
       />{" "}
-      Continue with Google
+      Google bilan
     </button>
   );
 }
