@@ -49,7 +49,7 @@ export default function UpdateVacancyPage() {
     return (
       <div className="w-full space-y-5">
         <div className="flex w-full justify-between items-center">
-          <Heading text="Update vacancy" />
+          <Heading text="Vakansiyani yangilash" />
           <BackBtn href={`/panel/vacancies/${vacancy.id}`} />
         </div>
         <UpdateVacancyForm vacancy={vacancy} />

@@ -53,7 +53,7 @@ export default function UpdateOrganizationPincode() {
     return (
       <div className="space-y-5">
         <div className="flex justify-between items-center">
-          <Heading text={`Update pincode - ${unique_name}`} />
+          <Heading text={`Pinkodni yangilash - ${unique_name}`} />
           <BackBtn href={`/panel/organizations`} />
         </div>
         <UpdatePincodeForm organization={organization} />

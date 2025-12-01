@@ -74,7 +74,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       setError("");
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -87,20 +87,20 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
       {/* account */}
       <div className="space-y-1 flex items-start flex-col">
-        <p className="block">Account*</p>
+        <p className="block">Hisob*</p>
         <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer opacity-50 z-10">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             {currentUser.avatar ? (
               <img
                 src={currentUser.avatar}
-                alt="Your avatar"
+                alt="Sizning avataringiz"
                 className="w-full h-full aspect-square object-cover"
               />
             ) : (
@@ -110,22 +110,21 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           <p>{currentUser.name}</p>
         </div>
         <p className="text-sm text-gray-500">
-          account can not be changed, and if there is a problem with this,
-          delete and recreate vacancy!
+          Hisob o'zgartirilmaydi, agar muammo bo'lsa, vakansiyani o'chirib qayta yarating!
         </p>
       </div>
 
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Name*
+          Ism*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full opacity-50"
-          placeholder="Enter your name"
+          placeholder="Ismingizni kiriting"
           readOnly
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -133,14 +132,13 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           required
         />
         <p className="text-sm text-gray-500">
-          Name also can not be changed, because it had been attached to your
-          account!
+          Ism ham o'zgartirilmaydi, chunki u sizning hisobingizga biriktirilgan!
         </p>
       </div>
 
       {/* role */}
       <div className="space-y-1 flex flex-col">
-        <label htmlFor="role">Choose role*</label>
+        <label htmlFor="role">Lavozimni tanlang*</label>
         <select
           name="role"
           id="role"
@@ -163,14 +161,14 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="job" className="block">
-          What is your profession*
+          Sizning kasbingiz nima?*
         </label>
         <input
           type="text"
           id="job"
           name="job"
           className="global_input w-full"
-          placeholder="Your profession"
+          placeholder="Sizning kasbingiz"
           value={job}
           onChange={(e) => setJob(e.target.value)}
           maxLength={100}
@@ -181,7 +179,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="about" className="block">
-          Tell us about yourself*
+          O'zingiz haqingizda gapirib bering*
         </label>
         <textarea
           rows={3}
@@ -192,23 +190,23 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           value={about}
           onChange={(e) => setAbout(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Simple description"
+          placeholder="Oddiy tavsif"
           required
         />
         {about.length > 0 && (
           <p>
-            Description contains:{" "}
+            Tavsifda mavjud:{" "}
             <span
               className={`transition-all ${
                 about.length > 200 ? "text-green-600" : "text-red-600"
               }`}
             >
-              {about.length} characters
+              {about.length} belgilar
             </span>
           </p>
         )}
         <p className="text-sm text-gray-500">
-          Min 200 characters, Max 500 characters
+          Kamida 200 belgi, ko'pi bilan 500 belgi
         </p>
       </div>
 
@@ -227,7 +225,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {/* origin */}
       <div className="space-y-1">
         <label htmlFor="origin" className="block">
-          Where are you from?*
+          Siz qayerdansiz?*
         </label>
         <select
           id="origin"
@@ -250,7 +248,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
       {/* pincode */}
       <div className="space-y-1">
         <label htmlFor="age" className="block">
-          Your age*
+          Yoshingiz*
         </label>
         <InputOTP
           maxLength={6}
@@ -265,7 +263,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
             <InputOTPSlot index={1} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Numbers only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       {/* submit */}
@@ -274,7 +272,7 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "updating..." : "Update Vacancy"}
+          {isLoading ? "yangilanmoqda..." : "Vakansiyani yangilash"}
         </button>
       </div>
     </form>

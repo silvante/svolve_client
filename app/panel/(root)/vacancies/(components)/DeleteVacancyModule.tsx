@@ -40,7 +40,7 @@ export default function DeleteVacancyModule({ vacancy, children }: Props) {
       router.push("/panel/vacancies");
     } catch (error: any) {
       if (!error.response) {
-        setError("Internal server error pleace try again later");
+        setError("Ichki server xatosi, iltimos keyinroq qayta urinib ko'ring");
       } else {
         setError(error.response.data.message);
       }
@@ -53,16 +53,16 @@ export default function DeleteVacancyModule({ vacancy, children }: Props) {
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Haqiqatan ham ishonchingiz komilmi?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            vacancy ({vacancy.name}) and remove your data from our servers.
+            Bu amalni qaytarib bo'lmaydi. Bu sizning vakansiyangizni butunlay o'chirib tashlaydi
+            ({vacancy.name}) va ma'lumotlaringizni serverlarimizdan olib tashlaydi.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          {!isLoading && <AlertDialogCancel>Cancel</AlertDialogCancel>}
+          {!isLoading && <AlertDialogCancel>Bekor qilish</AlertDialogCancel>}
           <AlertDialogAction onClick={HandleDelete}>
-            {isLoading ? "deleting..." : "Continue & delete"}
+            {isLoading ? "o'chirilmoqda..." : "Davom etish va o'chirish"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

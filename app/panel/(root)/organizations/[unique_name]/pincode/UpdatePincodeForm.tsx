@@ -47,7 +47,7 @@ export default function UpdatePincodeForm({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -60,14 +60,14 @@ export default function UpdatePincodeForm({
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
       {/* old pincode */}
       <div className="space-y-1">
         <label htmlFor="old_pincode" className="block">
-          Old Pincode*
+          Eski pinkod*
         </label>
         <InputOTP
           maxLength={6}
@@ -86,7 +86,7 @@ export default function UpdatePincodeForm({
             <InputOTPSlot index={5} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Number only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       <div className="w-full border-b border-gray-200"></div>
@@ -94,7 +94,7 @@ export default function UpdatePincodeForm({
       {/* Banner */}
       <div className="space-y-1">
         <label htmlFor="new_pincode" className="block">
-          New Pincode*
+          Yangi pinkod*
         </label>
         <InputOTP
           maxLength={6}
@@ -113,13 +113,13 @@ export default function UpdatePincodeForm({
             <InputOTPSlot index={5} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Number only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       {/* logo */}
       <div className="space-y-1">
         <label htmlFor="pincode_contifmation" className="block">
-          Confirm Pincode*
+          Pinkodni tasdiqlang*
         </label>
         <InputOTP
           maxLength={6}
@@ -138,7 +138,7 @@ export default function UpdatePincodeForm({
             <InputOTPSlot index={5} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Number only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       {/* submit */}
@@ -147,7 +147,7 @@ export default function UpdatePincodeForm({
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "updating..." : "Update Organization"}
+          {isLoading ? "yangilanmoqda..." : "Pinkodni yangilash"}
         </button>
       </div>
     </form>

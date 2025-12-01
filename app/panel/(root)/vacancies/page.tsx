@@ -4,7 +4,7 @@ import VacancyList from "./VacancyList";
 export default function MyVocancies() {
   return (
     <div className="space-y-5">
-      <Heading text="Your vacancies" />
+      <Heading text="Sizning vakansiyalaringiz" />
       <VacancyList />
     </div>
   );

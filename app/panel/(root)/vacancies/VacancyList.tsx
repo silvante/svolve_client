@@ -30,7 +30,7 @@ export default function VacancyList() {
         dispatch(updateVacancies(vacancies));
       }
     } catch (error) {
-      console.error("Error fetching vacancies:", error);
+      console.error("Vakansiyalarni yuklashda xato:", error);
     }
   }
 
@@ -61,7 +61,7 @@ export default function VacancyList() {
                     {vacancy.user.avatar ? (
                       <img
                         src={vacancy.user.avatar}
-                        alt="Your avatar"
+                        alt="Sizning avataringiz"
                         className="w-full h-full aspect-square object-cover"
                       />
                     ) : (
@@ -81,22 +81,22 @@ export default function VacancyList() {
                 </div>
                 <div className="p-5 space-y-1 border-b border-gray-200 w-full">
                   <p className="text_color font-medium w-full truncate">
-                    Role: <span className="font-semibold">{vacancy.role}</span>
+                    Lavozim: <span className="font-semibold">{vacancy.role}</span>
                   </p>
                   <p className="text_color font-medium w-full truncate">
-                    Job: <span className="font-semibold">{vacancy.job}</span>
+                    Ish: <span className="font-semibold">{vacancy.job}</span>
                   </p>
                   <p className="text_color font-medium text_clamp_3">
-                    About:{" "}
+                    Haqida:{" "}
                     <span className="font-semibold">{vacancy.about}</span>
                   </p>
                   <p className="text_color font-medium w-full truncate">
-                    Age: <span className="font-semibold">{vacancy.age}</span>
+                    Yosh: <span className="font-semibold">{vacancy.age}</span>
                   </p>
                 </div>
                 <div className="p-5 space-y-1 border-b border-gray-200 w-full">
                   <p className="text_color font-medium">
-                    Contact:{" "}
+                    Aloqa:{" "}
                     <span className="font-semibold w-full truncate">
                       {vacancy.contact}
                     </span>
@@ -107,7 +107,7 @@ export default function VacancyList() {
                     href={`/panel/vacancies/${vacancy.id}`}
                     className="flex gap-2 items-center bg-violet-600 text-white py-1 px-2 rounded-lg"
                   >
-                    <Eye /> Details
+                    <Eye /> Batafsil
                   </Link>
                   <DropdownMenu>
                     <DropdownMenuTrigger className="flex gap-2 bg-violet-600/10 px-1 py-1 text_color font-semibold rounded-md hover:bg-violet-700/20 cursor-pointer transition-colors">
@@ -116,7 +116,7 @@ export default function VacancyList() {
                     <DropdownMenuContent align="end" className="w-56">
                       <Link href={`/panel/vacancies/${vacancy.id}/update`}>
                         <DropdownMenuItem>
-                          <PenBox /> Update
+                          <PenBox /> Yangilash
                         </DropdownMenuItem>
                       </Link>
                       <DropdownMenuItem
@@ -128,7 +128,7 @@ export default function VacancyList() {
                         <DeleteVacancyModule vacancy={vacancy}>
                           <div className="cursor-pointer rounded-lg w-full flex gap-2">
                             <Trash color="#e7000b" />{" "}
-                            <p className="text-red-600">Delete</p>
+                            <p className="text-red-600">O'chirish</p>
                           </div>
                         </DeleteVacancyModule>
                       </DropdownMenuItem>
@@ -140,8 +140,8 @@ export default function VacancyList() {
           </div>
         ) : (
           <ErrorMessage
-            text="You have no vacancies"
-            desc="you can create one now"
+            text="Sizda vakansiyalar yo'q"
+            desc="Hozir yaratishingiz mumkin"
           />
         )}
       </div>
