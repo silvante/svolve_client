@@ -30,14 +30,14 @@ export default function Hero() {
       <div className="w-full flex justify-center items-center flex-col">
         <div className="flex-1 space-y-4 flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-6xl text_color text-shadow-2xs">
-            {t("hero.title")}
+            O'zbekiston uchun kuchli va ishlatish uchun qulay tashkilot boshqaruv platformasi
           </h1>
-          <p className="w-[80%] text_color">{t("hero.desc")}</p>
+          <p className="w-[80%] text_color">Oddiylik va sizning xavfsizlik ko'rsatkichlaringiz biz uchun eng muhimi</p>
           <Link
             href={isRegistered ? "/panel" : "/signin"}
             className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
           >
-            {t("hero.start_button")} <Play />
+            Boshlash <Play />
           </Link>
         </div>
         <div className="flex-1 flex justify-end">

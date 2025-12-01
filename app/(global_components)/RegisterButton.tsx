@@ -45,21 +45,21 @@ export default function RegisterButton() {
         href={"/signin"}
         className="px-4 py-2 hidden rounded-xl sm:flex gap-2 hover:text-violet-600"
       >
-        {t("register.sign_in")} <LogIn />
+        Kirish <LogIn />
       </Link>
       {!isRegistered ? (
         <Link
           href={"/signup"}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          {t("register.sign_up")} <CircleUserRound />
+          Ro'yxatdan o'tish <CircleUserRound />
         </Link>
       ) : (
         <Link
           href={"/panel"}
           className="flex items-center gap-2 px-4 py-2 rounded-xl bg-violet-600 text-white"
         >
-          {t("register.panel")} <DoorOpen />
+          Panel <DoorOpen />
         </Link>
       )}
     </div>
