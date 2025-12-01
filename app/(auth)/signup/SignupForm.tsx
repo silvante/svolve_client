@@ -34,7 +34,7 @@ export default function SignupForm() {
       setLoading(true);
       if (!acception) {
         setLoading(false);
-        return setErrorMessage("Iltimos shartlarni o'qib rozi bo'lishni bosing.");
+        return setErrorMessage("Iltimos shartlarni o'qib rozi bo'lishni bosing");
       }
       const register_data = { name, email };
       await authService.signup(register_data);

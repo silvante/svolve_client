@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 export default function SignIn() {
   return (
     <div className="w-full space-y-4">
-      <Heading text="Sing in to your account" />
+      <Heading text="Hisobingizga kiring" />
       <Socials />
       <div className="flex text_color justify-start">
         <p>
-          New to Svolve?{" "}
+          Yangimisiz?{" "}
           <Link href={"/signup"} className="text-violet-600">
-            Sign up
+            Ro'yxatdan o'tish
           </Link>
         </p>
       </div>

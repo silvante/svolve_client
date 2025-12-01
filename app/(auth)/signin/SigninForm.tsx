@@ -34,7 +34,7 @@ export default function SigninForm() {
       setLoading(true);
       if (!acception) {
         setLoading(false);
-        return setErrorMessage("pleace read and accept the terms");
+        return setErrorMessage("Iltimos shartlarni o'qib rozi bo'lishni bosing");
       }
       const login_data = { email };
       await authService.login(login_data);
@@ -43,7 +43,7 @@ export default function SigninForm() {
     } catch (error: any) {
       setLoading(false);
       if (!error.response) {
-        setErrorMessage("Something went wrong, try again later!");
+        setErrorMessage("Nimadur xato ketti, keyinroq urunib koring!");
       } else {
         setErrorMessage(error.response.data.message);
       }
@@ -60,7 +60,7 @@ export default function SigninForm() {
         </Alert>
       )}
       <div className="flex flex-col space-x-0.5">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">E-pochta</label>
         <input
           type="email"
           name="email"
@@ -79,10 +79,11 @@ export default function SigninForm() {
           className="border-gray-400 data-[state=checked]:bg-violet-600 data-[state=checked]:text-white data-[state=checked]:border-violet-600"
         />
         <label htmlFor="check">
-          Accept all{" "}
+          Barcha{" "}
           <Link href={"/terms"} className="inline-block text-violet-600">
-            terms
-          </Link>
+            shartlarga
+          </Link> {" "}
+          roziman
         </label>
       </div>
       <button
