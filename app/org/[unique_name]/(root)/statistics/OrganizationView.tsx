@@ -29,7 +29,7 @@ export default function OrganizationView({
       <div className="w-full p-5 border-b border-gray-200 flex flex-col gap-1 items-start">
         <h3 className="text-xl font-semibold">{organization.name}</h3>
         <p className="text-sm text-gray-600">
-          <span className="text-black">Uniquename: </span>@
+          <span className="text-black">Takrorlanmas nom: </span>@
           {organization.unique_name}
         </p>
       </div>

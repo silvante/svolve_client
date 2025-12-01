@@ -7,7 +7,7 @@ export default function OrgFooter() {
             © <strong className="text-gray-800">svolve</strong>{" "}
             <span className="text-xs">2025</span>
           </span>
-          <span className="hidden sm:inline">• All rights reserved</span>
+          <span className="hidden sm:inline">• Barcha huquqlar himoyalangan</span>
         </div>
 
         <div className="flex items-center gap-4">
@@ -31,7 +31,7 @@ export default function OrgFooter() {
             target="_blanck"
             className="text-xs px-2 py-1 rounded-full bg-white/50 border border-gray-200"
           >
-            Creator & Support
+            Muallif va qo'llab-quvvatlash
           </a>
         </div>
       </div>

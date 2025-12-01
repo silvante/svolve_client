@@ -11,7 +11,7 @@ export default function StatisticsPage() {
 
   return (
     <div className="space-y-5">
-      <Heading text="Statistics" />
+      <Heading text="Statistika" />
       <OrganizationView organization={organization} />
       <Totals organization={organization} />
       <RevenueStatistics organization={organization} />
