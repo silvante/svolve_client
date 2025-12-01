@@ -21,22 +21,22 @@ export default function ClientCard({ client }: { client: Client }) {
           <span className="text-green-600 font-bold">{client.price} UZS</span>
           {client.is_checked ? (
             <span className="px-2 py-0.5 text-xs rounded-full bg-green-100 text-green-600">
-              Checked
+              Tekshirilgan
             </span>
           ) : (
             <span className="px-2 py-0.5 text-xs rounded-full bg-red-100 text-red-600">
-              Pending
+              Kutilmoqda
             </span>
           )}
         </div>
       </div>
       <div className="text_color px-4 py-2 space-y-2">
         <p>
-          <span className="font-semibold">visited on:</span>{" "}
+          <span className="font-semibold">tashrif buyurdi:</span>{" "}
           {date.toLocaleDateString()}
         </p>
         <p>
-          <span className="font-semibold">diagnosis:</span> {client.diagnosis}
+          <span className="font-semibold">diagnoz:</span> {client.diagnosis}
         </p>
       </div>
     </div>

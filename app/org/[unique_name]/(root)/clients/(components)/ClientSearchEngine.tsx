@@ -48,7 +48,7 @@ export default function ClientSearchEngine({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -72,13 +72,13 @@ export default function ClientSearchEngine({
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <form className="w-full grid grid-cols-1 md:grid-cols-2 gap-5" onSubmit={HandleSearch}>
           <div className="w-full flex flex-col space-y-1 justify-between">
-            <label htmlFor="type_id">type</label>
+            <label htmlFor="type_id">turi</label>
             <TypeInput
               setTypeId={setTypeId}
               organization={organization}
@@ -86,7 +86,7 @@ export default function ClientSearchEngine({
             />
           </div>
           <div className="w-full flex flex-col space-y-1">
-            <label htmlFor="born_in">birth year</label>
+            <label htmlFor="born_in">tug'ilgan yili</label>
             <input
               type="number"
               name="born_in"
@@ -94,11 +94,11 @@ export default function ClientSearchEngine({
               value={born_in}
               onChange={(e) => setBornIn(e.target.value)}
               className="global_input"
-              placeholder="Search by birth year..."
+              placeholder="Tug'ilgan yil bo'yicha qidirish..."
             />
           </div>
           <div className="w-full flex flex-col space-y-1">
-            <label htmlFor="name">name</label>
+            <label htmlFor="name">ism</label>
             <input
               type="text"
               name="name"
@@ -107,11 +107,11 @@ export default function ClientSearchEngine({
               onChange={(e) => setName(e.target.value)}
               className="global_input"
               autoFocus
-              placeholder="Search by name..."
+              placeholder="Ism bo'yicha qidirish..."
             />
           </div>
           <div className="w-full flex flex-col space-y-1">
-            <label htmlFor="surname">surname</label>
+            <label htmlFor="surname">familiya</label>
             <input
               type="text"
               name="surname"
@@ -119,14 +119,14 @@ export default function ClientSearchEngine({
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
               className="global_input"
-              placeholder="Search by surname..."
+              placeholder="Familiya bo'yicha qidirish..."
             />
           </div>
           <button
             className="py-2 text-center rounded-lg bg-violet-600 text-white cursor-pointer"
             type="submit"
           >
-            {isLoading ? "searching..." : "Search"}
+            {isLoading ? "qidirilmoqda..." : "Qidirish"}
           </button>
         </form>
       </div>
@@ -144,8 +144,8 @@ export default function ClientSearchEngine({
             </div>
           ) : (
             <ErrorMessage
-              text="There is no clients found!"
-              desc="try something else"
+              text="Mijozlar topilmadi!"
+              desc="boshqa narsani sinab ko'ring"
             />
           )}
         </div>
@@ -159,7 +159,7 @@ export default function ClientSearchEngine({
             disabled={page <= 1}
             onClick={() => setPage(page - 1)}
           >
-            Prev
+            Oldingi
           </button>
           <h3>
             {page} / {meta.last_page}
@@ -171,7 +171,7 @@ export default function ClientSearchEngine({
             disabled={page >= meta.last_page}
             onClick={() => setPage(page + 1)}
           >
-            Next
+            Keyingi
           </button>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default function ClientPage() {
   return (
     <div className="space-y-5">
       <div className="w-full flex items-center justify-between">
-        <Heading text="Search clients" />
+        <Heading text="Mijozlarni qidirish" />
       </div>
       <ClientSearchEngine organization={organization} />
       <SearchCalendar organization={organization} />

@@ -49,7 +49,7 @@ export default function TypeInput({
         const types: Type[] = response;
         dispatch(updateTypes(types));
       } catch (error) {
-        setError("error while fetching types, please try again later");
+        setError("turlarni yuklashda xatolik yuz berdi, iltimos keyinroq qayta urinib ko'ring");
       }
     }
 
@@ -70,16 +70,16 @@ export default function TypeInput({
           <p>
             {type_id
               ? valid_types.find((vt) => String(vt.id) === type_id)?.name
-              : "Select type..."}
+              : "Tur tanlang..."}
           </p>
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="p-0">
         <Command>
-          <CommandInput placeholder="Search type..." className="h-9" />
+          <CommandInput placeholder="Turni qidirish..." className="h-9" />
           <CommandList>
-            <CommandEmpty>There is no types.</CommandEmpty>
+            <CommandEmpty>Turlar mavjud emas.</CommandEmpty>
             <CommandGroup>
               {valid_types.map((vt) => (
                 <CommandItem
