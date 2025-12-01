@@ -28,20 +28,19 @@ export default function SubscriptionSuccess() {
       <div className="flex flex-col gap-4 items-center justify-center">
         <p className="text_color text-2xl">
           {free
-            ? "Thank you for subscription, your organization is ready!"
-            : "Processing your payment pleace wait...!"}
+            ? "Obunangiz uchun rahmat, tashkilotingiz tayyor!"
+            : "To'lovingiz qayta ishlanmoqda, iltimos kuting...!"}
         </p>
         {free ? (
           <Link
             href={`/org/${unique_name}/validation`}
             className="py-3 px-7 rounded-lg bg-violet-600 text-white"
           >
-            Continue
+            Davom etish
           </Link>
         ) : (
           <p>
-            <span className="text-violet-600 text-2xl">{sec}</span> second
-            remaining
+            <span className="text-violet-600 text-2xl">{sec}</span> soniya qoldi
           </p>
         )}
       </div>

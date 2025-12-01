@@ -30,11 +30,11 @@ export default function UniqueNamePage() {
   return (
     <div className="space-y-5">
       <div className="w-full flex flex-col lg:flex-row lg:items-center justify-between">
-        <Heading text={`Work Panel - ${organization.name}`} />
+        <Heading text={`Ish paneli - ${organization.name}`} />
         {is_loading ? (
           <Spinner />
         ) : (
-          <Heading text={`Today: ${total_revenue} uzs`} />
+          <Heading text={`Bugun: ${total_revenue} uzs`} />
         )}
       </div>
       <Accordion
@@ -44,7 +44,7 @@ export default function UniqueNamePage() {
       >
         <AccordionItem value="item-1">
           <AccordionTrigger className="no-underline hover:no-underline">
-            <p className="text-xl font-semibold text_color">Create clients</p>
+            <p className="text-xl font-semibold text_color">Mijozlarni yaratish</p>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <ClientCreator />
@@ -52,7 +52,7 @@ export default function UniqueNamePage() {
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger className="no-underline hover:no-underline">
-            <p className="text-xl font-semibold text_color">Today's Clients</p>
+            <p className="text-xl font-semibold text_color">Bugungi mijozlar</p>
           </AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance">
             <ClientTable />

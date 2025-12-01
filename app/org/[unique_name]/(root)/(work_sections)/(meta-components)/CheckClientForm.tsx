@@ -34,7 +34,7 @@ export default function CheckClientForm({
       }
     } catch (error: any) {
       if (!error.response) {
-        setError("Internal server error pleace try again later");
+        setError("Ichki server xatosi, iltimos keyinroq qayta urinib ko'ring");
       } else {
         setError(error.response.data.message);
       }
@@ -47,7 +47,7 @@ export default function CheckClientForm({
     return (
       <Alert variant="destructive">
         <ShieldAlert />
-        <AlertTitle>Warning</AlertTitle>
+        <AlertTitle>Ogohlantirish</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
     );
@@ -59,7 +59,7 @@ export default function CheckClientForm({
         type="text"
         name="diagnosis"
         id="diagnosis"
-        placeholder="Diagnosis..."
+        placeholder="Diagnoz..."
         className="flex-1 global_input"
         maxLength={150}
         required
@@ -68,10 +68,10 @@ export default function CheckClientForm({
       />
       <button className="bg-violet-600 py-2 px-4 text-white rounded-xl cursor-pointer flex gap-2 items-center">
         {isLoading ? (
-          "checking..."
+          "tekshirilmoqda..."
         ) : (
           <p className="flex gap-2 items-center">
-            Check <Check size={14} />
+            Tekshirish <Check size={14} />
           </p>
         )}
       </button>

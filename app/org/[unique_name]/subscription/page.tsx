@@ -43,7 +43,7 @@ export default function SubScriptionPage() {
       if (error.response && error.response.data) {
         setError(
           error.response.data.message ||
-            "An error occurred while validating the pincode."
+            "Pin-kodni tekshirishda xatolik yuz berdi."
         );
       }
     } finally {
@@ -87,14 +87,14 @@ export default function SubScriptionPage() {
             {!org.logo ? (
               <Image
                 src={"/icons/logo.svg"}
-                alt="Logotype svolve"
+                alt="Svolve logotipi"
                 width={140}
                 height={38.5}
               />
             ) : (
               <Image
                 src={org.logo}
-                alt="Logotype svolve"
+                alt="Svolve logotipi"
                 width={0}
                 height={0}
                 className="w-auto h-10"
@@ -111,7 +111,7 @@ export default function SubScriptionPage() {
           <div className="w-full flex-1 outline-none flex items-center justify-center">
             <div className="flex flex-col items-center justify-center">
               <VIP />
-              <Heading text="Organization is VIP" />
+              <Heading text="Tashkilot VIP hisoblanadi" />
             </div>
           </div>
         )}
@@ -120,7 +120,7 @@ export default function SubScriptionPage() {
             <div className="flex flex-col items-center justify-center">
               <PaymentSuccess />
               <div className="flex flex-col items-center justify-center gap-2">
-                <Heading text="Organization is subscribed" />
+                <Heading text="Tashkilot obuna bo'lgan" />
                 <DayCounter date={org.renews_at} />
               </div>
             </div>

@@ -79,7 +79,7 @@ export default function ClientCreator() {
         price: Number(price),
       };
       if (formData.type_id === 0) {
-        return setError("You have to select Type, create one if you dont have");
+        return setError("Tur tanlashingiz kerak, agar mavjud bo'lmasa, yangisini yarating");
       }
       const res: any = await clientService.createClient(
         organization.id,
@@ -92,7 +92,7 @@ export default function ClientCreator() {
       setError("");
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling");
       } else {
         setError(error.response.data.message);
       }
@@ -114,7 +114,7 @@ export default function ClientCreator() {
   return (
     <div className="w-full space-y-4">
       <div className="text-muted-foreground text-sm hidden lg:flex gap-2">
-        <p>Clear form with</p>
+        <p>Formani tozalash</p>
         <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
           <span className="text-xs">Ctrl + Delete</span>
         </kbd>
@@ -122,19 +122,19 @@ export default function ClientCreator() {
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
       <form className="w-full" onSubmit={HandleCreateClient}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Ism</label>
             <input
               type="text"
               name="name"
               id="name"
-              placeholder="Clients name"
+              placeholder="Mijoz ismi"
               className="global_input"
               value={name}
               onChange={(e) => setname(e.target.value)}
@@ -143,12 +143,12 @@ export default function ClientCreator() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="surname">Surname</label>
+            <label htmlFor="surname">Familiya</label>
             <input
               type="text"
               name="surname"
               id="surname"
-              placeholder="Clients surname"
+              placeholder="Mijoz familiyasi"
               className="global_input"
               value={surname}
               onChange={(e) => setsurname(e.target.value)}
@@ -156,12 +156,12 @@ export default function ClientCreator() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="born_in">Year</label>
+            <label htmlFor="born_in">Yil</label>
             <input
               type="number"
               name="born_in"
               id="born_in"
-              placeholder="Clients birth year"
+              placeholder="Mijozning tug'ilgan yili"
               className="global_input"
               value={born_in}
               onChange={(e) => setborn_in(e.target.value)}
@@ -169,12 +169,12 @@ export default function ClientCreator() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="origin">Origin</label>
+            <label htmlFor="origin">Manzil</label>
             <input
               type="text"
               name="origin"
               id="origin"
-              placeholder="Client's hometown"
+              placeholder="Mijozning tug'ilgan shahri"
               className="global_input"
               value={origin}
               onChange={(e) => setorigin(e.target.value)}
@@ -183,7 +183,7 @@ export default function ClientCreator() {
           </div>
 
           <div className="flex flex-col space-y-1">
-            <label htmlFor="type">Type</label>
+            <label htmlFor="type">Turi</label>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -196,16 +196,16 @@ export default function ClientCreator() {
                     {type_id
                       ? valid_types.find((vt) => String(vt.id) === type_id)
                           ?.name
-                      : "Select type..."}
+                      : "Tur tanlang..."}
                   </p>
                   <ChevronsUpDown className="opacity-50" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="p-0">
                 <Command>
-                  <CommandInput placeholder="Search type..." className="h-9" />
+                  <CommandInput placeholder="Turni qidirish..." className="h-9" />
                   <CommandList>
-                    <CommandEmpty>No types found.</CommandEmpty>
+                    <CommandEmpty>Turlar topilmadi.</CommandEmpty>
                     <CommandGroup>
                       {valid_types.map((vt) => (
                         <CommandItem
@@ -242,12 +242,12 @@ export default function ClientCreator() {
             </Popover>
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">Narxi</label>
             <input
               type="number"
               name="price"
               id="price"
-              placeholder="How much paid"
+              placeholder="Qancha to'landi"
               className="global_input"
               value={price}
               onChange={(e) => setprice(e.target.value)}
@@ -259,7 +259,7 @@ export default function ClientCreator() {
               type="submit"
               className="w-full h-full bg-violet-600 text-white p-2 rounded-xl cursor-pointer"
             >
-              {isLoading ? "creating..." : "Submit Client"}
+              {isLoading ? "yaratilmoqda..." : "Mijozni qo'shish"}
             </button>
           </div>
         </div>

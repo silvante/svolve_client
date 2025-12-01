@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import Link from "next/link";
-import CheckClientForm from "./(meta-components)/ChechClientForm";
+import CheckClientForm from "./(meta-components)/CheckClientForm";
 import { isEven } from "@/app/global/data";
 
 export default function ClientTable() {
@@ -82,7 +82,7 @@ export default function ClientTable() {
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Internal server error pleace try again later");
+        setError("Ichki server xatosi, iltimos keyinroq qayta urinib ko'ring");
       } else {
         setError(error.response.data.message);
       }
@@ -104,7 +104,7 @@ export default function ClientTable() {
             onClick={() => setRef(true)}
             className="text-white py-2 px-4 bg-violet-600 rounded-xl flex gap-2 items-center cursor-pointer"
           >
-            <RefreshCcw /> Refresh
+            <RefreshCcw /> Yangilash
           </button>
         </div>
         {clients && clients.length !== 0 ? (
@@ -112,13 +112,13 @@ export default function ClientTable() {
             {error !== "" && (
               <Alert variant="destructive">
                 <ShieldAlert />
-                <AlertTitle>Warning</AlertTitle>
+                <AlertTitle>Ogohlantirish</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             {isLoading && (
               <div className="flex gap-2 items-center">
-                <p>Deleting</p>
+                <p>O'chirilmoqda</p>
                 <Spinner />
               </div>
             )}
@@ -128,25 +128,25 @@ export default function ClientTable() {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-300">
                   <tr>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      o/n
+                      t/r
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Name
+                      Ism
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Year
+                      Yil
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Origin
+                      Manzil
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Type
+                      Turi
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Price
+                      Narxi
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Actions
+                      Amallar
                     </th>
                   </tr>
                 </thead>
@@ -210,7 +210,7 @@ export default function ClientTable() {
                                         className="rounded-lg flex"
                                       >
                                         <DropdownMenuItem className="cursor-pointer w-full">
-                                          <PenBox /> Update
+                                          <PenBox /> Yangilash
                                         </DropdownMenuItem>
                                       </Link>
                                       <button
@@ -219,7 +219,7 @@ export default function ClientTable() {
                                       >
                                         <DropdownMenuItem className="cursor-pointer">
                                           <Trash color="#e7000b" />{" "}
-                                          <p className="text-red-600">Delete</p>
+                                          <p className="text-red-600">O'chirish</p>
                                         </DropdownMenuItem>
                                       </button>
                                     </DropdownMenuContent>
@@ -229,7 +229,7 @@ export default function ClientTable() {
                             ) : (
                               <div className="flex gap-2">
                                 <p className="my-2 bg-green-600 flex-1 text-white px-2 text-center">
-                                  checked
+                                  tekshirildi
                                 </p>
                                 {showDiagnosId === client.id ? (
                                   <button
@@ -288,8 +288,8 @@ export default function ClientTable() {
           </div>
         ) : (
           <ErrorMessage
-            text="There is no clients today"
-            desc="It will be a good beginning"
+            text="Bugun mijozlar yo'q"
+            desc="Bu yaxshi boshlanish bo'ladi"
           />
         )}
       </>
