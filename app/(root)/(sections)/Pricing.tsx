@@ -7,8 +7,8 @@ export default function Pricing() {
   const t = useTranslations()
   return (
     <div className="text_color space-y-4">
-      <p className="text-md md:text-lg">14 kun bepul sinov – Karta talab qilinmaydi</p>
-      <h2 className="text-3xl md:text-5xl">Oddiy va toza to‘lov usullari</h2>
+      <p className="text-md md:text-lg">14 kun bepul sinov - Karta talab qilinmaydi</p>
+      <h2 className="text-3xl md:text-5xl">Oddiy va toza to'lov usullari</h2>
       <p className="text-md md:text-lg">Bugun murojaat qiling. Karta kerak emas.</p>
 
       <div className="p-5 md:p-8 border border-gray-300 rounded-2xl space-y-5">
@@ -17,14 +17,14 @@ export default function Pricing() {
             99,000 UZS <span className="text-lg">Oyiga</span> /{" "}
             <span className="text-lg">organizatsiya</span>
           </h3>
-          <p className="text-md md:text-lg">Yashirin to‘lovlar va qo‘shimcha xarajatlar yo‘q</p>
+          <p className="text-md md:text-lg">Yashirin to'lovlar va qo'shimcha xarajatlar yo'q</p>
         </div>
 
         <hr className="border-gray-300" />
 
         <div className="space-y-2">
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> Cheksiz mijoz qo‘shish imkoniyati.
+            <Check color="#000000" /> Cheksiz mijoz qo'shish imkoniyati.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
             <Check color="#000000" /> Daromad va mijoz oqimining oylik tahlili.
@@ -33,7 +33,7 @@ export default function Pricing() {
             <Check color="#000000" /> Bir nechta tashkilotni boshqarish.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> Bitta tashkilotga cheksiz xodim qo‘shish.
+            <Check color="#000000" /> Bitta tashkilotga cheksiz xodim qo'shish.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
             <Check color="#000000" /> Qidiruv tizimi orqali har bir mijozni tez topish.
@@ -47,7 +47,7 @@ export default function Pricing() {
 
         <div className="space-y-2 flex items-start flex-col">
           <p className="text-md md:text-lg flex items-center gap-2">
-             Visa, Mastercard, Apple Pay, Google Pay, PayPal orqali to‘lov.
+             Visa, Mastercard, Apple Pay, Google Pay, PayPal orqali to'lov.
           </p>
           <Link
             href={"/signup"}

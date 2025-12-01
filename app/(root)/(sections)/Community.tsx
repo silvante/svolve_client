@@ -32,7 +32,7 @@ export default function Community() {
         </div>
       )}
       <div className="flex items-center justify-center text-center">
-        <Heading text={t("community.welcome")} />
+        <Heading text="Svolve jamiatiga xush kelibsiz" />
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
         <div
@@ -40,8 +40,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text={t("community.features.care.title")} />
-            <p className="text-gray-600">{t("community.features.care.desc")}</p>
+            <Heading text="Qo'llab-quvvatlash" />
+            <p className="text-gray-600">Yaratuvchilardan yordam</p>
           </div>
           <div className="text-violet-600">
             <HandHeart size={50} />
@@ -52,8 +52,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text={t("community.features.qa.title")} />
-            <p className="text-gray-600">{t("community.features.qa.desc")}</p>
+            <Heading text="Savol-javob efirlari" />
+            <p className="text-gray-600">Istagan vaqtingizda jonli efir</p>
           </div>
           <div className="text-violet-600">
             <Podcast size={50} />
@@ -64,8 +64,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text={t("community.features.tutorials.title")} />
-            <p className="text-gray-600">{t("community.features.tutorials.desc")}</p>
+            <Heading text="Qo'llanmalar" />
+            <p className="text-gray-600">YouTube'dagi darsliklar</p>
           </div>
           <div className="text-violet-600">
             <BookMarked size={50} />
@@ -76,8 +76,8 @@ export default function Community() {
             }`}
         >
           <div className="flex-1 space-y-2">
-            <Heading text={t("community.features.chat.title")} />
-            <p className="text-gray-600">{t("community.features.chat.desc")}</p>
+            <Heading text="Jonli chat" />
+            <p className="text-gray-600">Boshqa foydalanuvchilar bilan suhbat</p>
           </div>
           <div className="text-violet-600">
             <MessageCircleMore size={50} />
@@ -85,7 +85,7 @@ export default function Community() {
         </div>
       </div>
       <div className="flex items-center justify-center">
-        <Heading text={t("community.invite")} />
+        <Heading text="O'z o'rningizni egallang" />
       </div>
       <div className="flex flex-wrap w-full items-center justify-center gap-4">
         {Socials.map((app: any) => {

@@ -1,7 +1,6 @@
 import youtubeIcon from "@/public/social_icons/youtube.svg";
 import telegramIcon from "@/public/social_icons/telegram.svg";
 import xamidovIcon from "@/public/social_icons/xamidov.svg";
-import chatIcon from "@/public/social_icons/chat.svg";
 
 export const origins = [
   {
@@ -78,13 +77,13 @@ export const workerRoles = [
 export const Socials = [
   {
     id: 1,
-    name: "YouTube Official Channel",
+    name: "YouTube rasmiy kanal",
     url: "https://www.youtube.com/@svolveuz",
     icon: youtubeIcon,
   },
   {
     id: 2,
-    name: "Telegram Official Channel",
+    name: "Telegram rasmiy kanal",
     url: "https://t.me/svolve",
     icon: telegramIcon,
   },
@@ -96,7 +95,7 @@ export const Socials = [
   },
   {
     id: 4,
-    name: "Reach creator's contacts",
+    name: "Yaratuvchi haqida",
     url: "https://xamidov.uz",
     icon: xamidovIcon,
   },
