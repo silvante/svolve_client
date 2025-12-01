@@ -21,7 +21,7 @@ export default function DayCounter({ date }: { date: string | Date }) {
 
   return (
     <p className="py-1 px-4 rounded-full bg-green-100 text_color">
-      <span>{days}</span> {days > 1 ? "days left" : "day left"}
+      <span>{days}</span> Kun qoldi
     </p>
   );
 }
