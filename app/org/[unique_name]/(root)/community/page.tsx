@@ -9,19 +9,21 @@ export default function OrgPanelPage() {
   return (
     <div className="space-y-8">
       <div className="w-full overflow-hidden">
-        <Heading text={`👋 Hey ${organization.name}`} />
+        <Heading text={`👋 Salom ${organization.name}`} />
       </div>
       <Community />
       <div className="space-y-2">
-        <Heading text="# From Creator" />
+        <Heading text="# Yaratuvchidan" />
         <p className="text_color">
-          Following our social media channels at the top is highly recommended,
-          as they are managed directly by the creator and remain highly active.
-          You can easily access support, tutorials, and updates in real time. In
-          addition, you may reach out directly to the CEO of Svolve for
-          insights, feedback, and important announcements. Staying connected
-          through these channels ensures you are always up to date with the
-          latest features, improvements, and opportunities within our community.
+          Yuqoridagi ijtimoiy tarmoqlarimizga obuna bo'lish tavsiya etiladi,
+          chunki ular to'g'ridan-to'g'ri yaratuvchi tomonidan boshqariladi va
+          doimiy ravishda faol bo'ladi. Siz real vaqt rejimida qo'llab-quvvatlash,
+          qo'llanmalar va yangilanishlarga osongina kirishingiz mumkin. Bundan
+          tashqari, Svolve bosh direktori bilan to'g'ridan-to'g'ri bog'lanib,
+          fikr-mulohazalar, takliflar va muhim e'lonlarni olishingiz mumkin.
+          Ushbu kanallar orqali bog'lanib turish sizni hamjamiyatimizdagi eng
+          so'nggi xususiyatlar, yaxshilanishlar va imkoniyatlardan doimo
+          xabardor bo'lishingizni ta'minlaydi.
         </p>
       </div>
     </div>
