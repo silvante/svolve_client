@@ -6,12 +6,12 @@ export default function OrgTypes() {
   return (
     <div className="space-y-5 w-full">
       <div className="flex justify-between items-center w-full">
-        <Heading text="Types" />
+        <Heading text="Turlar" />
         <OrgLink
           href="/types/new"
           className="bg-violet-600 px-4 py-2 rounded-lg text-white"
         >
-          Create new
+          Yangi yaratish
         </OrgLink>
       </div>
       <TypeTable />

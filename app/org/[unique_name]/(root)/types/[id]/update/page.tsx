@@ -9,7 +9,7 @@ export default function UpdateTypePage() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <Heading text="Update Type" />
+        <Heading text="Turni yangilash" />
         <BackBtn href={`/org/${organization.unique_name}/types`} />
       </div>
       <UpdateTypeForm />

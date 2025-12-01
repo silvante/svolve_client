@@ -56,7 +56,7 @@ export default function UpdateTypeForm() {
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -69,21 +69,21 @@ export default function UpdateTypeForm() {
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Type Name*
+          Turi nomi*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter type name"
+          placeholder="Turi nomini kiriting"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -94,7 +94,7 @@ export default function UpdateTypeForm() {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="description" className="block">
-          Type Description*
+          Turi tavsifi*
         </label>
         <textarea
           rows={3}
@@ -104,23 +104,23 @@ export default function UpdateTypeForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter type description"
+          placeholder="Turi tavsifini kiriting"
           required
         />
-        <p className="text-sm text-gray-500">Max 500 characters</p>
+        <p className="text-sm text-gray-500">Maksimal 500 belgi</p>
       </div>
 
       {/* price */}
       <div className="space-y-1">
         <label htmlFor="price" className="block">
-          Type price*
+          Turi narxi*
         </label>
         <input
           type="number"
           id="price"
           name="price"
           className="global_input w-full"
-          placeholder="Enter type name"
+          placeholder="Tur narxini kiriting"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           required
@@ -133,9 +133,10 @@ export default function UpdateTypeForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "updating..." : "update type"}
+          {isLoading ? "yangilanmoqda..." : "Turni yangilash"}
         </button>
       </div>
     </form>
   );
 }
+

@@ -33,7 +33,7 @@ export default function TypeTable() {
         dispatch(updateTypes(types));
       }
     } catch (error: any) {
-      setError("Error fetching types:" + error.message);
+      setError("Turlarni yuklashda xatolik:" + error.message);
     }
   }
 
@@ -53,7 +53,7 @@ export default function TypeTable() {
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Internal server error pleace try again later");
+        setError("Ichki server xatosi, iltimos keyinroq qayta urinib ko'ring");
       } else {
         setError(error.response.data.message);
       }
@@ -75,13 +75,13 @@ export default function TypeTable() {
             {error !== "" && (
               <Alert variant="destructive">
                 <ShieldAlert />
-                <AlertTitle>Warning</AlertTitle>
+                <AlertTitle>Ogohlantirish</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             {isLoading && (
               <div className="flex gap-2 items-center">
-                <p>Deleting</p>
+                <p>O'chirilmoqda</p>
                 <Spinner />
               </div>
             )}
@@ -91,22 +91,22 @@ export default function TypeTable() {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400 border-b border-gray-300">
                   <tr>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      o/n
+                      t/r
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Name
+                      Nomi
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Description
+                      Tavsifi
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Price
+                      Narxi
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Total
+                      Jami
                     </th>
                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                      Action
+                      Harakat
                     </th>
                   </tr>
                 </thead>
@@ -132,7 +132,7 @@ export default function TypeTable() {
                         {type.price} uzs
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {type._count.clients} clients
+                        {type._count.clients} mijozlar
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <DropdownMenu>
@@ -145,7 +145,7 @@ export default function TypeTable() {
                               className="rounded-lg flex"
                             >
                               <DropdownMenuItem className="cursor-pointer w-full">
-                                <PenBox /> Update
+                                <PenBox /> Yangilash
                               </DropdownMenuItem>
                             </OrgLink>
                             <button
@@ -154,7 +154,7 @@ export default function TypeTable() {
                             >
                               <DropdownMenuItem className="cursor-pointer">
                                 <Trash color="#e7000b" />{" "}
-                                <p className="text-red-600">Delete</p>
+                                <p className="text-red-600">O'chirish</p>
                               </DropdownMenuItem>
                             </button>
                           </DropdownMenuContent>
@@ -168,8 +168,8 @@ export default function TypeTable() {
           </div>
         ) : (
           <ErrorMessage
-            text="There is no Types now"
-            desc="You can create one now"
+            text="Hozirda turlar mavjud emas"
+            desc="Hozir yangisini yaratishingiz mumkin"
           />
         )}
       </>
