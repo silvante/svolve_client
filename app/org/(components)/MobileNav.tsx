@@ -21,28 +21,28 @@ export default function MobileNav() {
           <BriefcaseBusiness /> Panel
         </OrgAsideLink>
         <OrgAsideLink href="/statistics">
-          <ChartArea /> Statistics
+          <ChartArea /> Statistika
         </OrgAsideLink>
         <OrgAsideLink href="/clients">
-          <BookUser /> Clients
+          <BookUser /> Mijozlar
         </OrgAsideLink>
         <OrgAsideLink href="/types">
-          <Pilcrow /> Types
+          <Pilcrow /> Turlar
         </OrgAsideLink>
         <OrgAsideLink href="/workers">
-          <Users /> Workers
+          <Users /> Ishchilar
         </OrgAsideLink>
         <OrgAsideLink href="/community">
-          <HandHeart /> Community
+          <HandHeart /> Hamjamiyat
         </OrgAsideLink>
         <OrgAsideLink href="/subscription/?page=org">
-          <Wallet /> Subscription
+          <Wallet /> Obunalar
         </OrgAsideLink>
         <Link
           href="/panel"
           className="flex gap-2 items-center p-2 hover:bg-red-600/10 hover:text-red-600 rounded-lg transition-all"
         >
-          <ArrowBigLeftDash /> back
+          <ArrowBigLeftDash /> Panelga
         </Link>
       </div>
     </nav>

@@ -22,39 +22,39 @@ export default function OrgAside() {
       }`}
     >
       <div className="text-muted-foreground text-sm flex gap-2">
-        <p>Focus</p>
+        <p>Fokus</p>
         <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
           <span className="text-xs">Ctrl + Shift + F</span>
         </kbd>
       </div>
       <div className="flex-1">
         <OrgAsideLink href="">
-          <BriefcaseBusiness /> Work Panel
+          <BriefcaseBusiness /> Ish paneli
         </OrgAsideLink>
         <OrgAsideLink href="/statistics">
-          <ChartArea /> Statistics
+          <ChartArea /> Statistika
         </OrgAsideLink>
         <OrgAsideLink href="/clients">
-          <BookUser /> Clients & timeline
+          <BookUser /> Mijozlar va jadvali
         </OrgAsideLink>
         <OrgAsideLink href="/types">
-          <Pilcrow /> Types
+          <Pilcrow /> Turlar
         </OrgAsideLink>
         <OrgAsideLink href="/workers">
-          <Users /> Workers
+          <Users /> Ishchilar
         </OrgAsideLink>
         <OrgAsideLink href="/community">
-          <HandHeart /> Community & Support
+          <HandHeart /> Hamjamiyat va yordam
         </OrgAsideLink>
         <OrgAsideLink href="/subscription/?page=org">
-          <Wallet /> Subscription
+          <Wallet /> Obunalar
         </OrgAsideLink>
       </div>
       <Link
         href="/panel"
         className="flex gap-2 items-center p-2 hover:bg-red-600/10 hover:text-red-600 rounded-lg transition-all"
       >
-        <ArrowBigLeftDash /> Back to panel
+        <ArrowBigLeftDash /> Panelga qaytish
       </Link>
     </aside>
   );
