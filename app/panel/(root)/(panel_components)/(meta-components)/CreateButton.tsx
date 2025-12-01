@@ -11,17 +11,17 @@ export default function CreateButton() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-3 py-2 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">
-        <p className="hidden md:flex">Create</p> <Plus />
+        <p className="hidden md:flex">Yaratish</p> <Plus />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <Link href="/panel/organizations/new">
           <DropdownMenuItem>
-            <GitFork /> An Organization
+            <GitFork /> Tashkilot
           </DropdownMenuItem>
         </Link>
         <Link href="/panel/vacancies/new">
           <DropdownMenuItem>
-            <FileUser /> A vacancy
+            <FileUser /> Vakansiya
           </DropdownMenuItem>
         </Link>
       </DropdownMenuContent>

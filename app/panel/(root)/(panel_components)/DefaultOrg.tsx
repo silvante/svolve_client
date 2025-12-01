@@ -39,9 +39,9 @@ export default function DefaultOrg() {
           <div className="border border-gray-300 shadow-md rounded-2xl w-full overflow-hidden">
             <div className="w-full p-5 border-b border-gray-200 flex flex-col gap-1 items-start">
               <h3 className="text-xl font-semibold">
-                Role:{" "}
+                Rol:{" "}
                 <span className="text-violet-600">
-                  {org.owner_id === user.id ? "Owner" : "Worker"}
+                  {org.owner_id === user.id ? "Ega" : "Ishchi"}
                 </span>
               </h3>
             </div>
@@ -66,7 +66,7 @@ export default function DefaultOrg() {
             <div className="w-full p-5 border-b border-gray-200 flex flex-col gap-1 items-start">
               <h3 className="text-xl font-semibold">{org.name}</h3>
               <p className="text-sm text-gray-600">
-                <span className="text-black">Uniquename: </span>@
+                <span className="text-black">Takrorlanmas nom: </span>@
                 {org.unique_name}
               </p>
             </div>
@@ -80,12 +80,12 @@ export default function DefaultOrg() {
                 }
                 className="bg-violet-600 w-full py-2 flex gap-3 text-white rounded-lg items-center justify-center"
               >
-                <PlayCircle /> Run Organization
+                <PlayCircle /> Tashkilotni ishga tushirish
               </Link>
             </div>
             <div className="border-b border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center">
               <p className="text-sm text-gray-500">
-                <span className="text-black">created at:</span>{" "}
+                <span className="text-black">yaratilgan sana:</span>{" "}
                 {new Date(org.created_at).toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "long",
@@ -94,7 +94,7 @@ export default function DefaultOrg() {
               </p>
               {org.is_vip ? (
                 <p className="text-yellow-600 flex items-center gap-2">
-                  Organization is VIP <Crown />
+                  Tashkilot VIP <Crown />
                 </p>
               ) : (
                 <p
@@ -104,12 +104,12 @@ export default function DefaultOrg() {
                       : "text-red-600"
                   }`}
                 >
-                  <span className="text-black">status:</span>{" "}
+                  <span className="text-black">holat:</span>{" "}
                   {org.subscription_status}
                 </p>
               )}
               <p className="text-sm text-gray-500">
-                <span className="text-black">pincode:</span> present
+                <span className="text-black">pinkod:</span> mavjud
               </p>
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-1 py-1 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">
@@ -118,19 +118,19 @@ export default function DefaultOrg() {
                 <DropdownMenuContent align="end" className="w-56">
                   <Link href={`/panel/organizations/${org.unique_name}`}>
                     <DropdownMenuItem>
-                      <Eye /> Review
+                      <Eye /> Ko'rib chiqish
                     </DropdownMenuItem>
                   </Link>
                   <Link href={`/panel/organizations/${org.unique_name}/update`}>
                     <DropdownMenuItem>
-                      <PenBox /> Update
+                      <PenBox /> Yangilash
                     </DropdownMenuItem>
                   </Link>
                   <Link
                     href={`/panel/organizations/${org.unique_name}/pincode`}
                   >
                     <DropdownMenuItem>
-                      <LockKeyhole /> Update Pincode
+                      <LockKeyhole /> Pinkodni yangilash
                     </DropdownMenuItem>
                   </Link>
                 </DropdownMenuContent>
@@ -139,8 +139,8 @@ export default function DefaultOrg() {
           </div>
         ) : (
           <ErrorMessage
-            text="You do not have default organization"
-            desc="You can create organization"
+            text="Sizda standart tashkilot yo'q"
+            desc="Siz tashkilot yaratishingiz mumkin"
           />
         )}
       </>
