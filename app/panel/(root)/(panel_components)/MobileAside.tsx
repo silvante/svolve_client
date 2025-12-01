@@ -35,50 +35,50 @@ export function MobileAside() {
 
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Navigation</SheetTitle>
+          <SheetTitle>Navigatsiya</SheetTitle>
         </SheetHeader>
 
         <aside className="p-2 flex flex-col gap-1">
           <SheetClose asChild>
             <AsideLink href="/panel">
-              <House /> Dashboard
+              <House /> Boshqaruv paneli
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/organizations">
-              <GitFork /> Organizations
+              <GitFork /> Tashkilotlar
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/vacancies">
-              <FileUser /> Vacancies
+              <FileUser /> Vakansiyalar
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/jobs">
-              <WorkflowIcon /> Jobs
+              <WorkflowIcon /> Ishlar
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/profile">
-              <CircleUser /> Profile
+              <CircleUser /> Profil
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/community">
-              <HandHeart /> Community & support
+              <HandHeart /> Hamjamiyat va yordam
             </AsideLink>
           </SheetClose>
           <SheetClose asChild>
             <AsideLink href="/panel/profile/settings">
-              <Settings /> Settings
+              <Settings /> Sozlamalar
             </AsideLink>
           </SheetClose>
         </aside>
 
         <SheetFooter>
           <SheetClose asChild>
-            <Button variant="outline">Close</Button>
+            <Button variant="outline">Yopish</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

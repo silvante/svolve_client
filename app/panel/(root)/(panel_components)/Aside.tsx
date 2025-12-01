@@ -16,25 +16,25 @@ export default function Aside() {
       <Svolve link="/panel" />
       <div>
         <AsideLink href="/panel">
-          <House /> Dashboard
+          <House /> Boshqaruv paneli
         </AsideLink>
         <AsideLink href="/panel/organizations">
-          <GitFork /> Organizations
+          <GitFork /> Tashkilotlar
         </AsideLink>
         <AsideLink href="/panel/vacancies">
-          <FileUser /> Vacancies
+          <FileUser /> Vakansiyalar
         </AsideLink>
         <AsideLink href="/panel/jobs">
-          <WorkflowIcon /> Jobs
+          <WorkflowIcon /> Ishlar
         </AsideLink>
         <AsideLink href="/panel/profile">
-          <CircleUser /> Profile
+          <CircleUser /> Profil
         </AsideLink>
         <AsideLink href="/panel/community">
-          <HandHeart /> Community & support
+          <HandHeart /> Hamjamiyat va yordam
         </AsideLink>
         <AsideLink href="/panel/profile/settings">
-          <Settings /> Settings
+          <Settings /> Sozlamalar
         </AsideLink>
       </div>
     </aside>

@@ -28,17 +28,17 @@ export default function UserProfile() {
       <DropdownMenuContent align="end" className="w-56">
         <Link href="/panel/profile">
           <DropdownMenuItem>
-            <Eye /> view profile
+            <Eye /> profilni ko'rish
           </DropdownMenuItem>
         </Link>
         <Link href="/panel/profile/settings">
           <DropdownMenuItem>
-            <Settings /> Settings
+            <Settings /> Sozlamalar
           </DropdownMenuItem>
         </Link>
         <Link href="/signin">
           <DropdownMenuItem>
-            <UserPen /> Change account
+            <UserPen /> Hisobni o'zgartirish
           </DropdownMenuItem>
         </Link>
         <button
@@ -46,7 +46,7 @@ export default function UserProfile() {
           onClick={HandleLogOut}
         >
           <DropdownMenuItem className="cursor-pointer">
-            <LogOut color="#e7000b" /> <p className="text-red-600"> Log-out</p>
+            <LogOut color="#e7000b" /> <p className="text-red-600"> Chiqish</p>
           </DropdownMenuItem>
         </button>
       </DropdownMenuContent>
