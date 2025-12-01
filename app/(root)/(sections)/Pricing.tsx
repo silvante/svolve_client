@@ -7,17 +7,17 @@ export default function Pricing() {
   const t = useTranslations()
   return (
     <div className="text_color space-y-4">
-      <p className="text-md md:text-lg">{t("pricing.trial")}</p>
-      <h2 className="text-3xl md:text-5xl">{t("pricing.title")}</h2>
-      <p className="text-md md:text-lg">{t("pricing.desc")}</p>
+      <p className="text-md md:text-lg">14 kun bepul sinov – Karta talab qilinmaydi</p>
+      <h2 className="text-3xl md:text-5xl">Oddiy va toza to‘lov usullari</h2>
+      <p className="text-md md:text-lg">Bugun murojaat qiling. Karta kerak emas.</p>
 
       <div className="p-5 md:p-8 border border-gray-300 rounded-2xl space-y-5">
         <div className="space-y-2">
           <h3 className="text-3xl md:text-5xl">
-            99,000 UZS <span className="text-lg">per month</span> /{" "}
-            <span className="text-lg">organization</span>
+            99,000 UZS <span className="text-lg">Oyiga</span> /{" "}
+            <span className="text-lg">organizatsiya</span>
           </h3>
-          <p className="text-md md:text-lg">{t("pricing.fees")}</p>
+          <p className="text-md md:text-lg">Yashirin to‘lovlar va qo‘shimcha xarajatlar yo‘q</p>
         </div>
 
         <hr className="border-gray-300" />
@@ -47,13 +47,13 @@ export default function Pricing() {
 
         <div className="space-y-2 flex items-start flex-col">
           <p className="text-md md:text-lg flex items-center gap-2">
-             {t("pricing.methods")}
+             Visa, Mastercard, Apple Pay, Google Pay, PayPal orqali to‘lov.
           </p>
           <Link
             href={"/signup"}
             className="py-2 px-4 font-medium flex gap-2 items-center text-lg  text-white bg-violet-600 rounded-xl"
           >
-            {t("hero.start_button")}
+            Boshlash
           </Link>
         </div>
       </div>
