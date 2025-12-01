@@ -86,7 +86,7 @@ export default function UpdateClientForm() {
       setError("");
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling");
       } else {
         setError(error.response.data.message);
       }
@@ -107,24 +107,24 @@ export default function UpdateClientForm() {
   return (
     <div className="w-full space-y-4">
       <div className="text-muted-foreground text-sm flex gap-2">
-        <p>You can update client only before checking him/her</p>
+        <p>Mijozni faqat tekshirishdan oldin yangilashingiz mumkin</p>
       </div>
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
       <form className="w-full" onSubmit={HandleCreateClient}>
         <div className="grid grid-cols-3 gap-5">
           <div className="flex flex-col space-y-1">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Ism</label>
             <input
               type="text"
               name="name"
               id="name"
-              placeholder="Clients name"
+              placeholder="Mijoz ismi"
               className="global_input"
               value={name}
               onChange={(e) => setname(e.target.value)}
@@ -133,12 +133,12 @@ export default function UpdateClientForm() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="surname">Surname</label>
+            <label htmlFor="surname">Familiya</label>
             <input
               type="text"
               name="surname"
               id="surname"
-              placeholder="Clients surname"
+              placeholder="Mijoz familiyasi"
               className="global_input"
               value={surname}
               onChange={(e) => setsurname(e.target.value)}
@@ -146,12 +146,12 @@ export default function UpdateClientForm() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="born_in">Year</label>
+            <label htmlFor="born_in">Yil</label>
             <input
               type="number"
               name="born_in"
               id="born_in"
-              placeholder="Clients birth year"
+              placeholder="Mijozning tug'ilgan yili"
               className="global_input"
               value={born_in}
               onChange={(e) => setborn_in(e.target.value)}
@@ -159,12 +159,12 @@ export default function UpdateClientForm() {
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="origin">Origin</label>
+            <label htmlFor="origin">Manzil</label>
             <input
               type="text"
               name="origin"
               id="origin"
-              placeholder="Client's hometown"
+              placeholder="Mijozning tug'ilgan shahri"
               className="global_input"
               value={origin}
               onChange={(e) => setorigin(e.target.value)}
@@ -173,7 +173,7 @@ export default function UpdateClientForm() {
           </div>
 
           <div className="flex flex-col space-y-1">
-            <label htmlFor="type">Type</label>
+            <label htmlFor="type">Turi</label>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -186,16 +186,16 @@ export default function UpdateClientForm() {
                     {type_id
                       ? valid_types.find((vt) => String(vt.id) === type_id)
                           ?.name
-                      : "Select type..."}
+                      : "Tur tanlang..."}
                   </p>
                   <ChevronsUpDown className="opacity-50" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="p-0">
                 <Command>
-                  <CommandInput placeholder="Search type..." className="h-9" />
+                  <CommandInput placeholder="Turni qidirish..." className="h-9" />
                   <CommandList>
-                    <CommandEmpty>No framework found.</CommandEmpty>
+                    <CommandEmpty>Turlar topilmadi.</CommandEmpty>
                     <CommandGroup>
                       {valid_types.map((vt) => (
                         <CommandItem
@@ -232,12 +232,12 @@ export default function UpdateClientForm() {
             </Popover>
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">Narxi</label>
             <input
               type="number"
               name="price"
               id="price"
-              placeholder="How much paid"
+              placeholder="Qancha to'landi"
               className="global_input"
               value={price}
               onChange={(e) => setprice(e.target.value)}
@@ -249,7 +249,7 @@ export default function UpdateClientForm() {
               type="submit"
               className="w-full h-full bg-violet-600 text-white p-2 rounded-xl cursor-pointer"
             >
-              {isLoading ? "updating..." : "update Client"}
+              {isLoading ? "yangilanmoqda..." : "Mijozni yangilash"}
             </button>
           </div>
         </div>

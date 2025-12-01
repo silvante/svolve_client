@@ -70,7 +70,7 @@ export default function OrganizationTimeline({
 
   return (
     <div className="w-full space-y-5">
-      <Heading text="Timeline" />
+      <Heading text="Vaqt jadvali" />
 
       {/* Years */}
       <div className="flex flex-wrap gap-2 mb-4">

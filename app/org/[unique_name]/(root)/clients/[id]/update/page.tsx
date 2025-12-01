@@ -9,7 +9,7 @@ export default function UpdateClient() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <Heading text="Update Client" />
+        <Heading text="Mijozni yangilash" />
         <BackBtn href={`/org/${organization.unique_name}`} />
       </div>
       <UpdateClientForm />

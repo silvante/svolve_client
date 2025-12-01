@@ -11,7 +11,7 @@ export default function DayPage() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <Heading text="All clients" />
+        <Heading text="Barcha mijozlar" />
         <BackBtn href={`/org/${organization.unique_name}/clients`} />
       </div>
       <ClientList organization={organization} date={String(date)} />

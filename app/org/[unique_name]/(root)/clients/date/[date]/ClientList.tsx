@@ -37,7 +37,7 @@ export default function ClientList({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -63,17 +63,17 @@ export default function ClientList({
     <div className="space-y-8">
       <p className="text-lg flex flex-col">
         <span className="font-mono">
-          Selected date: <span className="text-violet-600">{date}</span>
+          Tanlangan sana: <span className="text-violet-600">{date}</span>
         </span>
         <span className="font-mono">
-          total revenue:{" "}
+          umumiy daromad:{" "}
           <span className="text-violet-600">{total_revenue} uzs</span>
         </span>
       </p>
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
@@ -91,8 +91,8 @@ export default function ClientList({
             </div>
           ) : (
             <ErrorMessage
-              text="There is no clients found!"
-              desc="try something else"
+              text="Mijozlar topilmadi!"
+              desc="boshqa narsani sinab ko'ring"
             />
           )}
         </div>
@@ -106,7 +106,7 @@ export default function ClientList({
             disabled={page <= 1}
             onClick={() => setPage(page - 1)}
           >
-            Prev
+            Oldingi
           </button>
           <h3>
             {page} / {meta.last_page}
@@ -118,7 +118,7 @@ export default function ClientList({
             disabled={page >= meta.last_page}
             onClick={() => setPage(page + 1)}
           >
-            Next
+            Keyingi
           </button>
         </div>
       </div>
