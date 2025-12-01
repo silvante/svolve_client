@@ -24,22 +24,22 @@ export default function Pricing() {
 
         <div className="space-y-2">
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.1")}
+            <Check color="#000000" /> Cheksiz mijoz qo‘shish imkoniyati.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.2")}
+            <Check color="#000000" /> Daromad va mijoz oqimining oylik tahlili.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.3")}
+            <Check color="#000000" /> Bir nechta tashkilotni boshqarish.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.4")}
+            <Check color="#000000" /> Bitta tashkilotga cheksiz xodim qo‘shish.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.5")}
+            <Check color="#000000" /> Qidiruv tizimi orqali har bir mijozni tez topish.
           </p>
           <p className="text-md md:text-lg flex flex-col md:flex-row md:items-center gap-2">
-            <Check color="#000000" /> {t("pricing.features.6")}
+            <Check color="#000000" /> Jamoat va yaratuvchidan bepul yordam.
           </p>
         </div>
 
