@@ -49,12 +49,12 @@ export default function JobsList() {
       console.log(res);
       if (res && res.success == true) {
         setError("");
-        setSuccess("The organization has set been as default!");
+        setSuccess("Tashkilot standart qilib belgilandi!");
       }
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -74,14 +74,14 @@ export default function JobsList() {
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         {success !== "" && (
           <Alert variant="default" className="text-green-600">
             <Check />
-            <AlertTitle>Success</AlertTitle>
+            <AlertTitle>Muvaffaqiyat</AlertTitle>
             <AlertDescription className="text-green-600/70">
               {success}
             </AlertDescription>
@@ -89,7 +89,7 @@ export default function JobsList() {
         )}
         {isLoading && (
           <div className="flex gap-2 items-center">
-            <p>Setting as default</p>
+            <p>Standart qilib belgilanyapti</p>
             <Spinner />
           </div>
         )}
@@ -108,7 +108,7 @@ export default function JobsList() {
                 </div>
               )}
               <p className="text-xl font-semibold text_color">
-                Working as{" "}
+                Ishlayapsiz{" "}
                 <span className="text-violet-600">
                   {currentJob.role.toUpperCase()}
                 </span>
@@ -131,14 +131,14 @@ export default function JobsList() {
                   {currentJob.organization.name}
                 </h3>
                 <p className="text-sm text-gray-600">
-                  <span className="text-black">Uniquename: </span>@
+                  <span className="text-black">Noyob nom: </span>@
                   {currentJob.organization.unique_name}
                 </p>
               </div>
             </Link>
             <div className="border-gray-200 p-4 flex flex-col items-start gap-2 md:flex-row md:justify-between md:items-center border-t">
               <p className="text-sm text-gray-500">
-                <span className="text-black">created at:</span>{" "}
+                <span className="text-black">yaratilgan sana:</span>{" "}
                 {new Date(
                   currentJob.organization.created_at
                 ).toLocaleDateString("en-US", {
@@ -148,10 +148,10 @@ export default function JobsList() {
                 })}
               </p>
               <p className="text-sm text-green-600">
-                <span className="text-black">status:</span> active
+                <span className="text-black">holat:</span> faol
               </p>
               <p className="text-sm text-gray-500">
-                <span className="text-black">pincode:</span> present
+                <span className="text-black">pinkod:</span> mavjud
               </p>
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex gap-2 bg-violet-600 px-1 py-1 text-white font-semibold rounded-md hover:bg-violet-700 transition-colors">
@@ -165,7 +165,7 @@ export default function JobsList() {
                     className="w-full"
                   >
                     <DropdownMenuItem>
-                      <Pin /> Set as default
+                      <Pin /> Standart qilib belgilash
                     </DropdownMenuItem>
                   </button>
                 </DropdownMenuContent>
@@ -174,8 +174,8 @@ export default function JobsList() {
           </div>
         ) : (
           <ErrorMessage
-            text="You do not have Job now"
-            desc="it will appear here when you get one"
+            text="Sizda hozir ish yo'q"
+            desc="ishga kirganingizda u shu yerda paydo bo'ladi"
           />
         )}
       </div>

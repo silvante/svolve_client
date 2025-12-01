@@ -11,7 +11,7 @@ export default function ProfilePage() {
 
   return (
     <div className="w-full">
-      <Heading text="Your profile" />
+      <Heading text="Sizning profilingiz" />
       <div className="w-full py-10 flex flex-col items-center justify-center gap-10">
         <div className="w-full flex">
           {/* Profile Card */}
@@ -23,7 +23,7 @@ export default function ProfilePage() {
               {currentUser.avatar ? (
                 <img
                   src={currentUser.avatar}
-                  alt="Your avatar"
+                  alt="Sizning avataringiz"
                   className="w-full h-full object-cover"
                 />
               ) : (
@@ -42,7 +42,7 @@ export default function ProfilePage() {
                 href="/panel/profile/settings"
                 className="mt-5 flex items-center gap-2 text-violet-600 mx-auto justify-center md:justify-start"
               >
-                Update Profile <Pen size={15} />
+                Profilni yangilash <Pen size={15} />
               </Link>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function ProfilePage() {
         {/* Details Section */}
         <div className="w-full rounded-2xl border border-gray-300 shadow-md p-4 md:p-8 space-y-6">
           <div className="space-y-2 border-b border-gray-300 pb-3">
-            <p className="text-lg font-semibold text-gray-950">Username:</p>
+            <p className="text-lg font-semibold text-gray-950">Foydalanuvchi nomi:</p>
             <p className="text-gray-950">
               <span className="text-gray-700">svolve.uz/u/</span>@
               {currentUser.username}
@@ -59,7 +59,7 @@ export default function ProfilePage() {
           </div>
 
           <div className="space-y-2 border-b border-gray-300 pb-3">
-            <p className="text-lg font-semibold text-gray-950">Bio:</p>
+            <p className="text-lg font-semibold text-gray-950">Biografiya:</p>
             {currentUser.bio ? (
               <p className="text-gray-900">{currentUser.bio}</p>
             ) : (
@@ -67,13 +67,13 @@ export default function ProfilePage() {
                 href="/panel/profile/settings"
                 className="flex items-center gap-2 text-violet-600"
               >
-                You can add now <Pen size={15} />
+                Hozir qo'shishingiz mumkin <Pen size={15} />
               </Link>
             )}
           </div>
 
           <div className="space-y-2 border-b border-gray-300 pb-3">
-            <p className="text-lg font-semibold text-gray-950">Contact:</p>
+            <p className="text-lg font-semibold text-gray-950">Aloqa:</p>
             {currentUser.contact ? (
               <p className="text-gray-900">{currentUser.contact}</p>
             ) : (
@@ -81,15 +81,15 @@ export default function ProfilePage() {
                 href="/panel/profile/settings"
                 className="flex items-center gap-2 text-violet-600"
               >
-                You can add now <Pen size={15} />
+                Hozir qo'shishingiz mumkin <Pen size={15} />
               </Link>
             )}
           </div>
 
           <div className="space-y-2">
-            <p className="text-lg font-semibold text-gray-950">In Total:</p>
+            <p className="text-lg font-semibold text-gray-950">Jami:</p>
             <p className="text-gray-900">
-              {currentUser._count.organizations} organizations
+              {currentUser._count.organizations} tashkilotlar
             </p>
           </div>
         </div>

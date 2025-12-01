@@ -92,7 +92,7 @@ export default function NewOrganizationForm() {
           const new_banner: BannerData = res;
           bannerData = new_banner;
         } catch (error) {
-          setError("error while uploading banner");
+          setError("banner yuklashda xato");
           setIsLoading(false);
           return;
         }
@@ -106,7 +106,7 @@ export default function NewOrganizationForm() {
           const res: any = await uploadService.uploadLogo(LogoformData);
           logoData = String(res);
         } catch (error) {
-          setError("error while uploading logo");
+          setError("logotip yuklashda xato");
           setIsLoading(false);
           return;
         }
@@ -134,7 +134,7 @@ export default function NewOrganizationForm() {
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -160,20 +160,20 @@ export default function NewOrganizationForm() {
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
       {/* account */}
       <div className="space-y-1 flex items-start flex-col">
-        <p className="block">Owner*</p>
+        <p className="block">Egasi*</p>
         <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             {currentUser.avatar ? (
               <img
                 src={currentUser.avatar}
-                alt="Your avatar"
+                alt="Sizning avataringiz"
                 className="w-full h-full aspect-square object-cover"
               />
             ) : (
@@ -183,22 +183,21 @@ export default function NewOrganizationForm() {
           <p>{currentUser.name}</p>
         </div>
         <p className="text-sm text-gray-500">
-          This accaunt will become owner of this organization, if you want to
-          change it, switch account or customize it.{" "}
+          Bu hisob ushbu tashkilotning egasi bo'ladi, agar uni o'zgartirmoqchi bo'lsangiz, hisobni almashtiring yoki sozlang.
         </p>
       </div>
 
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Organization Name*
+          Tashkilot nomi*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organization name"
+          placeholder="Tashkilot nomini kiriting"
           value={name}
           onChange={(e) => setName(e.target.value)}
           maxLength={100}
@@ -209,7 +208,7 @@ export default function NewOrganizationForm() {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="description" className="block">
-          Organization Description*
+          Tashkilot tavsifi*
         </label>
         <textarea
           rows={3}
@@ -219,10 +218,10 @@ export default function NewOrganizationForm() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Enter organization description"
+          placeholder="Tashkilot tavsifini kiriting"
           required
         />
-        <p className="text-sm text-gray-500">Max 500 characters</p>
+        <p className="text-sm text-gray-500">Maksimal 500 belgi</p>
       </div>
 
       {/* Banner */}
@@ -234,7 +233,7 @@ export default function NewOrganizationForm() {
           {!bannerBase64 ? (
             <div className="flex flex-col items-center gap-2 text-gray-700">
               <FileImage />
-              Upload Banner Image (optional)
+              Banner rasmini yuklash (ixtiyoriy)
             </div>
           ) : (
             <div className="w-full h-full relative">
@@ -247,7 +246,7 @@ export default function NewOrganizationForm() {
               </button>
               <img
                 src={bannerBase64}
-                alt="You banner"
+                alt="Sizning banneringiz"
                 className="object-cover w-full h-full"
               />
             </div>
@@ -271,12 +270,12 @@ export default function NewOrganizationForm() {
           {!logoBase64 ? (
             <div className="flex flex-col items-center gap-2 text-gray-700">
               <FileImage />
-              Upload Logo Image (optional)
+              Logotip rasmini yuklash (ixtiyoriy)
             </div>
           ) : (
             <img
               src={logoBase64}
-              alt="your logo"
+              alt="sizning logotipingiz"
               className="w-full max-h-full object-cover"
             />
           )}
@@ -287,7 +286,7 @@ export default function NewOrganizationForm() {
             className="mt-3 py-2 px-4 rounded-full hover:text-violet-600 border border-gray-400 bg-white flex gap-1 items-center transition-all cursor-pointer"
             onClick={ClearLogoData}
           >
-            <Trash2 /> Delete Logo
+            <Trash2 /> Logotipni o'chirish
           </button>
         )}
         <input
@@ -302,7 +301,7 @@ export default function NewOrganizationForm() {
       {/* origin */}
       <div className="space-y-1">
         <label htmlFor="origin" className="block">
-          Where is your organization?*
+          Tashkilotingiz qayerda joylashgan?*
         </label>
         <select
           id="origin"
@@ -325,7 +324,7 @@ export default function NewOrganizationForm() {
       {/* pincode */}
       <div className="space-y-1">
         <label htmlFor="pincode" className="block">
-          Pincode*
+          Pinkod*
         </label>
         <InputOTP
           maxLength={6}
@@ -344,13 +343,12 @@ export default function NewOrganizationForm() {
             <InputOTPSlot index={5} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Number only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       {/* warning */}
       <p className="text_color">
-        One created, organizations can not be deleted, you can just freez them
-        or pay for them for monthly bill!
+        Yaratilgandan so'ng, tashkilotlarni o'chirib bo'lmaydi, ularni faqat muzlatishingiz yoki oylik to'lov uchun to'lashingiz mumkin!
       </p>
 
       {/* submit */}
@@ -359,7 +357,7 @@ export default function NewOrganizationForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Organization"}
+          {isLoading ? "yaratilmoqda..." : "Tashkilot yaratish"}
         </button>
       </div>
     </form>

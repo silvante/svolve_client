@@ -71,7 +71,7 @@ export default function NewVacancyForm() {
       setError("");
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -84,20 +84,20 @@ export default function NewVacancyForm() {
       {error !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
+          <AlertTitle>Ogohlantirish</AlertTitle>
           <AlertDescription>{error}</AlertDescription>
         </Alert>
       )}
 
       {/* account */}
       <div className="space-y-1 flex items-start flex-col">
-        <p className="block">Account*</p>
+        <p className="block">Hisob*</p>
         <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             {currentUser.avatar ? (
               <img
                 src={currentUser.avatar}
-                alt="Your avatar"
+                alt="Sizning avataringiz"
                 className="w-full h-full aspect-square object-cover"
               />
             ) : (
@@ -107,22 +107,21 @@ export default function NewVacancyForm() {
           <p>{currentUser.name}</p>
         </div>
         <p className="text-sm text-gray-500">
-          This accaunt will be attached to your vacancy, if you want to change
-          it, switch account or customize it.{" "}
+          Bu hisob sizning vakansiyangizga biriktiriladi, agar uni o'zgartirmoqchi bo'lsangiz, hisobni almashtiring yoki sozlang.
         </p>
       </div>
 
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="name" className="block">
-          Name*
+          Ism*
         </label>
         <input
           type="text"
           id="name"
           name="name"
           className="global_input w-full"
-          placeholder="Enter organization name"
+          placeholder="Tashkilot nomini kiriting"
           readOnly
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -133,7 +132,7 @@ export default function NewVacancyForm() {
 
       {/* role */}
       <div className="space-y-1 flex flex-col">
-        <label htmlFor="role">Choose role*</label>
+        <label htmlFor="role">Lavozimni tanlang*</label>
         <select
           name="role"
           id="role"
@@ -156,14 +155,14 @@ export default function NewVacancyForm() {
       {/* name */}
       <div className="space-y-1">
         <label htmlFor="job" className="block">
-          What is your profession*
+          Sizning kasbingiz nima?*
         </label>
         <input
           type="text"
           id="job"
           name="job"
           className="global_input w-full"
-          placeholder="Your profession"
+          placeholder="Sizning kasbingiz"
           value={job}
           onChange={(e) => setJob(e.target.value)}
           maxLength={100}
@@ -174,7 +173,7 @@ export default function NewVacancyForm() {
       {/* desctiprion */}
       <div className="space-y-1">
         <label htmlFor="about" className="block">
-          Tell us about yourself*
+          O'zingiz haqingizda gapirib bering*
         </label>
         <textarea
           rows={3}
@@ -185,23 +184,23 @@ export default function NewVacancyForm() {
           value={about}
           onChange={(e) => setAbout(e.target.value)}
           className="global_input w-full resize-none"
-          placeholder="Simple description"
+          placeholder="Oddiy tavsif"
           required
         />
         {about.length > 0 && (
           <p>
-            Description contains:{" "}
+            Tavsifda mavjud:{" "}
             <span
               className={`transition-all ${
                 about.length > 200 ? "text-green-600" : "text-red-600"
               }`}
             >
-              {about.length} characters
+              {about.length} belgilar
             </span>
           </p>
         )}
         <p className="text-sm text-gray-500">
-          Min 200 characters, Max 500 characters
+          Kamida 200 belgi, ko'pi bilan 500 belgi
         </p>
       </div>
 
@@ -220,7 +219,7 @@ export default function NewVacancyForm() {
       {/* origin */}
       <div className="space-y-1">
         <label htmlFor="origin" className="block">
-          Where are you from?*
+          Siz qayerdansiz?*
         </label>
         <select
           id="origin"
@@ -243,7 +242,7 @@ export default function NewVacancyForm() {
       {/* pincode */}
       <div className="space-y-1">
         <label htmlFor="age" className="block">
-          Your age*
+          Yoshingiz*
         </label>
         <InputOTP
           maxLength={6}
@@ -258,7 +257,7 @@ export default function NewVacancyForm() {
             <InputOTPSlot index={1} className="border-gray-400" />
           </InputOTPGroup>
         </InputOTP>
-        <p className="text-sm text-gray-500">Numbers only</p>
+        <p className="text-sm text-gray-500">Faqat raqamlar</p>
       </div>
 
       {/* submit */}
@@ -267,7 +266,7 @@ export default function NewVacancyForm() {
           type="submit"
           className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
         >
-          {isLoading ? "creating..." : "Create Vacancy"}
+          {isLoading ? "yaratilmoqda..." : "Vakansiya yaratish"}
         </button>
       </div>
     </form>

@@ -6,7 +6,7 @@ export default function SettingsPage() {
   return (
     <div className="space-y-5">
       <div className="flex justify-between items-center">
-        <Heading text={`Settings`} />
+        <Heading text={`Sozlamalar`} />
         <BackBtn href={`/panel/profile`} />
       </div>
       <EditProfile />

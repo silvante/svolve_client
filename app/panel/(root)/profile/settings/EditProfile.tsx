@@ -78,7 +78,7 @@ export default function EditProfile() {
           const res: any = await uploadService.uploadAvatar(AvatarFormData);
           AvatarData = String(res);
         } catch (error) {
-          setError("error while uploading avatar, try again later");
+          setError("avatar yuklashda xato, keyinroq qayta urinib ko'ring");
           setIsLoading(false);
           return;
         }
@@ -99,7 +99,7 @@ export default function EditProfile() {
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -109,12 +109,12 @@ export default function EditProfile() {
 
   return (
     <div className="w-full rounded-2xl p-4 md:p-8 border border-gray-300 shadow-md space-y-5">
-      <Heading text="Update you profile" />
+      <Heading text="Profilingizni yangilash" />
       <form className="space-y-5" onSubmit={HandleUpdateProfile}>
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
@@ -128,12 +128,12 @@ export default function EditProfile() {
             {!avatarBase64 ? (
               <div className="flex flex-col items-center gap-2 text-gray-700">
                 <FileImage />
-                Upload Avatar Image
+                Avatar rasmini yuklash
               </div>
             ) : (
               <img
                 src={avatarBase64}
-                alt="your logo"
+                alt="sizning logotipingiz"
                 className="w-full max-h-full object-cover"
               />
             )}
@@ -159,14 +159,14 @@ export default function EditProfile() {
         {/* name */}
         <div className="space-y-1">
           <label htmlFor="name" className="block">
-            Name*
+            Ism*
           </label>
           <input
             type="text"
             id="name"
             name="name"
             className="global_input w-full"
-            placeholder="Enter organization name"
+            placeholder="Tashkilot nomini kiriting"
             value={name}
             onChange={(e) => setName(e.target.value)}
             maxLength={100}
@@ -177,14 +177,14 @@ export default function EditProfile() {
         {/* bio */}
         <div className="space-y-1">
           <label htmlFor="bio" className="block">
-            Enter Bio (optional)
+            Biografiya kiriting (ixtiyoriy)
           </label>
           <input
             type="text"
             id="bio"
             name="bio"
             className="global_input w-full"
-            placeholder="Cool Bio"
+            placeholder="Ajoyib Biografiya"
             value={bio ? bio : ""}
             onChange={(e) => setBio(e.target.value)}
             maxLength={100}
@@ -208,7 +208,7 @@ export default function EditProfile() {
             type="submit"
             className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
           >
-            {isLoading ? "updating..." : "Update profile"}
+            {isLoading ? "yangilanmoqda..." : "Profilni yangilash"}
           </button>
         </div>
       </form>

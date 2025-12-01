@@ -4,7 +4,7 @@ import NewOrganizationForm from "./NewOrgForm";
 export default function NewOrganizationPage() {
   return (
     <div className="space-y-5">
-      <Heading text="New organization" />
+      <Heading text="Yangi tashkilot" />
       <NewOrganizationForm />
     </div>
   );
