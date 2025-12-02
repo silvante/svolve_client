@@ -59,7 +59,7 @@ export default function VacancyCard({
           href={`/org/${organization.unique_name}/workers/employment/${vacancy.id}`}
           className="flex gap-2 items-center bg-violet-600 text-white py-2 px-4 rounded-lg w-full justify-center"
         >
-          <Eye /> Batafsil ko'rish
+          <Eye /> Batafsil
         </Link>
       </div>
     </div>

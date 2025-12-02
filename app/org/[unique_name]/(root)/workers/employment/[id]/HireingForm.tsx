@@ -94,7 +94,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
         const types: Type[] = response;
         dispatch(updateTypes(types));
       } catch (error) {
-        setError("error while fetching types, please try again later");
+        setError("turlarni yuklashda xatolik yuz berdi, iltimos keyinroq qayta urining");
       }
     }
 
@@ -108,14 +108,14 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
     try {
       setIsLoading(true)
       if (role === "doctor" && attached_types.length < 1) {
-        return setError("Doctor should at least one type attached to him/her!");
+        return setError("Shifokorga kamida bitta tur biriktirilishi kerak!");
       }
       const data = {
         role,
         attached_types,
       };
       if (!acception) {
-        return setError("Please read terms and accept them to continue!");
+        return setError("Davom etish uchun shartlarni o'qing va qabul qiling!");
       }
       const res: any = await workerService.hire(
         organization.id,
@@ -128,7 +128,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
       router.push(`/org/${organization.unique_name}/workers`);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -138,22 +138,22 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
 
   return (
     <div className="w-full border border-gray-300 shadow-md rounded-2xl p-4 lg:p-8 space-y-5 bg-white">
-      <Heading text="Fill the form!" />
+      <Heading text="Formani to'ldiring!" />
       <form className="space-y-5" onSubmit={HandleHiring}>
         <Alert variant="default">
           <MailWarning />
-          <AlertTitle>Terms of "{currentRole.name}" role!</AlertTitle>
+          <AlertTitle>"{currentRole.name}" roli ning shartlari!</AlertTitle>
           <AlertDescription>{currentRole.terms}</AlertDescription>
         </Alert>
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <div className="space-y-2 flex flex-col">
-          <label htmlFor="role">Worker role*</label>
+          <label htmlFor="role">Ishchi roli*</label>
           <select
             name="role"
             id="role"
@@ -174,7 +174,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
         </div>
         {currentRole.include_types && (
           <div className="flex flex-col space-y-1">
-            <label htmlFor="type">Attached types (for doctor)*</label>
+            <label htmlFor="type">Biriktirilgan turlar (shifokor uchun)*</label>
             <Popover open={open} onOpenChange={setOpen}>
               <PopoverTrigger asChild>
                 <Button
@@ -187,16 +187,16 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
                     {type_id
                       ? valid_types.find((vt) => String(vt.id) === type_id)
                         ?.name
-                      : "Select type..."}
+                      : "Turni tanlang..."}
                   </p>
                   <ChevronsUpDown className="opacity-50" />
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="p-0">
                 <Command>
-                  <CommandInput placeholder="Search type..." className="h-9" />
+                  <CommandInput placeholder="Turni qidirish..." className="h-9" />
                   <CommandList>
-                    <CommandEmpty>There is no types.</CommandEmpty>
+                    <CommandEmpty>Hech qanday tur mavjud emas.</CommandEmpty>
                     <CommandGroup>
                       {valid_types.map((vt) => (
                         <CommandItem
@@ -225,7 +225,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
               </PopoverContent>
             </Popover>
             <div>
-              <p>Selected types</p>
+              <p>Tanlangan turlar</p>
               <div className="py-2 flex gap-2">
                 {selectedTypes.map((st) => {
                   return (
@@ -246,7 +246,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
                 })}
                 {selectedTypes.length <= 0 && (
                   <p className="text-gray-950/50">
-                    Please select types to attach...
+                    Iltimos, biriktirish uchun turlarni tanlang...
                   </p>
                 )}
               </div>
@@ -261,7 +261,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
             className="border-gray-400 data-[state=checked]:bg-violet-600 data-[state=checked]:text-white data-[state=checked]:border-violet-600"
           />
           <label htmlFor="check">
-            I have read terms of current worker role
+            Men joriy ishchi rolining shartlarini o'qidim
           </label>
         </div>
         <div>
@@ -270,7 +270,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
             disabled={isLoading}
             className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
           >
-            {!isLoading ? `Hire as ${currentRole.name}` : "hiring..."}
+            {!isLoading ? `${currentRole.name} sifatida ishga olish` : "ishga olinmoqda..."}
           </button>
         </div>
       </form>

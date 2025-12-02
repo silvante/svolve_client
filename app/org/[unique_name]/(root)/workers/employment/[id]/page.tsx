@@ -40,17 +40,17 @@ export default function VacancyDetailsPage() {
     return (
       <div className="space-y-5">
         <div className="w-full flex justify-between items-center">
-          <Heading text={`Vacancy - ${vacancy.id}`} />
+          <Heading text={`Vakansiya - ${vacancy.id}`} />
           <BackBtn href={`/org/${unique_name}/workers/employment`} />
         </div>
         <div className="w-full border border-gray-300 shadow-md rounded-2xl p-4 lg:p-8 space-y-5 bg-white">
-          <Heading text="Account" />
+          <Heading text="Hisob" />
           <div className="space-y-2">
             <div className="bg-gray-300 max-w-24 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
               {vacancy.user.avatar ? (
                 <img
                   src={vacancy.user.avatar}
-                  alt="Your avatar"
+                  alt="Sizning avataringiz"
                   className="w-full h-full aspect-square object-cover"
                 />
               ) : (
@@ -68,33 +68,33 @@ export default function VacancyDetailsPage() {
           </div>
         </div>
         <div className="w-full border border-gray-300 shadow-md rounded-2xl p-4 lg:p-8 space-y-5 bg-white">
-          <Heading text="Info" />
+          <Heading text="Ma'lumot" />
           <div className="space-y-3 w-full">
             <p className="text_color font-semibold w-full truncate">
-              Role: <span className="font-medium">{vacancy.role}</span>
+              Rol: <span className="font-medium">{vacancy.role}</span>
             </p>
             <p className="text_color font-semibold w-full truncate">
-              Job: <span className="font-medium">{vacancy.job}</span>
+              Ish: <span className="font-medium">{vacancy.job}</span>
             </p>
             <p className="text_color font-semibold">
-              About: <span className="font-medium">{vacancy.about}</span>
+              Haqida: <span className="font-medium">{vacancy.about}</span>
             </p>
             <p className="text_color font-semibold w-full truncate">
-              Age: <span className="font-medium">{vacancy.age}</span>
+              Yosh: <span className="font-medium">{vacancy.age}</span>
             </p>
           </div>
         </div>
         <div className="w-full border border-gray-300 shadow-md rounded-2xl p-4 lg:p-8 space-y-5 bg-white">
-          <Heading text="Contact" />
+          <Heading text="Aloqa" />
           <div className="space-y-3 w-full">
             <p className="text_color font-semibold w-full truncate">
-              Phone number:{" "}
+              Telefon raqami:{" "}
               <span className="font-medium">{vacancy.contact}</span>
             </p>
           </div>
         </div>
         <div className="w-full flex justify-center items-center">
-          <Heading text="Want to hire?" />
+          <Heading text="Ishga olmoqchimisiz?" />
         </div>
         <HireingForm vacancy={vacancy} />
       </div>
