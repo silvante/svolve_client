@@ -46,7 +46,7 @@ export default function DeleteWorkerDialog({ worker, children }: Props) {
       router.push(`/org/${organization.unique_name}/workers`);
     } catch (error: any) {
       if (!error.response) {
-        setError("Internal server error pleace try again later");
+        setError("Ichki server xatosi, iltimos keyinroq qayta urining");
       } else {
         setError(error.response.data.message);
       }
@@ -59,23 +59,22 @@ export default function DeleteWorkerDialog({ worker, children }: Props) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Delete worker</DialogTitle>
+          <DialogTitle>Ishchini o'chirish</DialogTitle>
           <DialogDescription>
-            To delete worker you have to enter his username{" "}
-            <span className="font-semibold">{worker.worker.username}</span> for
-            safety reasons.
+            Ishchini o'chirish uchun uning foydalanuvchi nomini kiritishingiz kerak{" "}
+            <span className="font-semibold">{worker.worker.username}</span> xavfsizlik sabablarga ko'ra.
           </DialogDescription>
         </DialogHeader>
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <div className="grid gap-4">
           <div className="grid gap-3">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Foydalanuvchi nomi</label>
             <Input
               id="username"
               name="username"
@@ -86,14 +85,14 @@ export default function DeleteWorkerDialog({ worker, children }: Props) {
         </div>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="outline">Cancel</Button>
+            <Button variant="outline">Bekor qilish</Button>
           </DialogClose>
           <Button
             className="cursor-pointer"
             disabled={username !== worker.worker.username}
             onClick={HandleDelete}
           >
-            {isLoading ? "Submitting..." : "Unemployee"}
+            {isLoading ? "Yuborilmoqda..." : "Ishdan bo'shatish"}
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -106,6 +106,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
   async function HandleHiring(e: any) {
     e.preventDefault();
     try {
+      setIsLoading(true)
       if (role === "doctor" && attached_types.length < 1) {
         return setError("Doctor should at least one type attached to him/her!");
       }
@@ -185,7 +186,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
                   <p>
                     {type_id
                       ? valid_types.find((vt) => String(vt.id) === type_id)
-                          ?.name
+                        ?.name
                       : "Select type..."}
                   </p>
                   <ChevronsUpDown className="opacity-50" />
@@ -266,6 +267,7 @@ export default function HireingForm({ vacancy }: { vacancy: Vacancy }) {
         <div>
           <button
             type="submit"
+            disabled={isLoading}
             className="bg-violet-600 text-white py-2 px-5 rounded-md hover:bg-violet-700 transition-colors cursor-pointer"
           >
             {!isLoading ? `Hire as ${currentRole.name}` : "hiring..."}

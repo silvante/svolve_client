@@ -37,7 +37,7 @@ export default function WorkersList() {
         dispatch(updateWorkers(res_workers));
       }
     } catch (error: any) {
-      setError("Error fetching workers:" + error.message);
+      setError("Ishchilarni olishda xatolik:" + error.message);
     }
   }
 
@@ -58,18 +58,18 @@ export default function WorkersList() {
           <div className="space-y-5">
             <OverallWorkers workers={workers} />
             <h3 className="text-xl font-semibold text_color">
-              List of workers
+              Ishchilar ro'yxati
             </h3>
             {error !== "" && (
               <Alert variant="destructive">
                 <ShieldAlert />
-                <AlertTitle>Warning</AlertTitle>
+                <AlertTitle>Ogohlantirish</AlertTitle>
                 <AlertDescription>{error}</AlertDescription>
               </Alert>
             )}
             {isLoading && (
               <div className="flex gap-2 items-center">
-                <p>Loading </p>
+                <p>Yuklanmoqda </p>
                 <Spinner />
               </div>
             )}
@@ -111,13 +111,13 @@ export default function WorkersList() {
                           >
                             <ViewWorkerDetails worker={worker}>
                               <div className="cursor-pointer rounded-lg w-full flex gap-2">
-                                <Eye /> <p>View details</p>
+                                <Eye /> <p>Tafsilotlarni ko'rish</p>
                               </div>
                             </ViewWorkerDetails>
                           </DropdownMenuItem>
                           <OrgLink href={`/workers/${worker.id}`} className="">
                             <DropdownMenuItem className="cursor-pointer">
-                              <Settings /> Settings
+                              <Settings /> Sozlamalar
                             </DropdownMenuItem>
                           </OrgLink>
                         </DropdownMenuContent>
@@ -130,8 +130,8 @@ export default function WorkersList() {
           </div>
         ) : (
           <ErrorMessage
-            text="There is no workers now"
-            desc="You can hire one now"
+            text="Hozircha ishchilar yo'q"
+            desc="Hozir ishga olishingiz mumkin"
           />
         )}
       </>

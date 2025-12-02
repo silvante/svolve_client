@@ -18,11 +18,10 @@ export default function OverallWorkers({ workers }: { workers: Worker[] }) {
 
   return (
     <div className="border border-gray-300 shadow-md p-5 border-b-4 border-b-violet-600 rounded-xl space-y-3">
-      <Heading text="Overall" />
+      <Heading text="Umumiy" />
       <div className="flex flex-col items-start gap-2">
         <h2 className="font-semibold text_color text-lg">
-          Wou have <span className="text-violet-600">{workers.length}</span>{" "}
-          workers
+          Sizda <span className="text-violet-600">{workers.length} ta</span> ishchi bor
         </h2>
         <div className="flex gap-4 flex-wrap">
           {grouped.map((g: any, index) => {
