@@ -9,7 +9,7 @@ const EmploymentPage = () => {
   return (
     <div className="w-full space-y-5">
       <div className="flex items-center justify-between w-full">
-        <Heading text="Employ new workers" />
+        <Heading text="Ishga olish" />
         <BackBtn href={`/org/${organization.unique_name}/workers`} />
       </div>
       <EmpSearchEngine organization={organization} />

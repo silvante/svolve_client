@@ -16,7 +16,7 @@ export default function VacancyCard({
           {vacancy.user.avatar ? (
             <img
               src={vacancy.user.avatar}
-              alt="Your avatar"
+              alt="Sizning avataringiz"
               className="w-full h-full aspect-square object-cover"
             />
           ) : (
@@ -34,21 +34,21 @@ export default function VacancyCard({
       </div>
       <div className="p-5 space-y-1 border-b border-gray-200 w-full">
         <p className="text_color font-medium w-full truncate">
-          Role: <span className="font-semibold">{vacancy.role}</span>
+          Rol: <span className="font-semibold">{vacancy.role}</span>
         </p>
         <p className="text_color font-medium w-full truncate">
-          Job: <span className="font-semibold">{vacancy.job}</span>
+          Ish: <span className="font-semibold">{vacancy.job}</span>
         </p>
         <p className="text_color font-medium text_clamp_3">
-          About: <span className="font-semibold">{vacancy.about}</span>
+          Haqida: <span className="font-semibold">{vacancy.about}</span>
         </p>
         <p className="text_color font-medium w-full truncate">
-          Age: <span className="font-semibold">{vacancy.age}</span>
+          Yosh: <span className="font-semibold">{vacancy.age}</span>
         </p>
       </div>
       <div className="p-5 space-y-1 border-b border-gray-200 w-full">
         <p className="text_color font-medium">
-          Contact:{" "}
+          Aloqa:{" "}
           <span className="font-semibold w-full truncate">
             {vacancy.contact}
           </span>
@@ -59,7 +59,7 @@ export default function VacancyCard({
           href={`/org/${organization.unique_name}/workers/employment/${vacancy.id}`}
           className="flex gap-2 items-center bg-violet-600 text-white py-2 px-4 rounded-lg w-full justify-center"
         >
-          <Eye /> See details
+          <Eye /> Batafsil ko'rish
         </Link>
       </div>
     </div>

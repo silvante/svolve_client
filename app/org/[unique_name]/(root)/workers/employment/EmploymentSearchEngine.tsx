@@ -42,7 +42,7 @@ export default function EmpSearchEngine({
       setIsLoading(false);
     } catch (error: any) {
       if (!error.response) {
-        setError("Make sure that you filled all fields correct!");
+        setError("Barcha maydonlarni to'g'ri to'ldirganingizga ishonch hosil qiling!");
       } else {
         setError(error.response.data.message);
       }
@@ -69,13 +69,13 @@ export default function EmpSearchEngine({
         {error !== "" && (
           <Alert variant="destructive">
             <ShieldAlert />
-            <AlertTitle>Warning</AlertTitle>
+            <AlertTitle>Ogohlantirish</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
         <form className="w-full gap-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" onSubmit={HandleSearch}>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="job">Origin</label>
+            <label htmlFor="job">Viloyat</label>
             <select
               className="global_input"
               value={origin}
@@ -91,7 +91,7 @@ export default function EmpSearchEngine({
             </select>
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="job">Origin</label>
+            <label htmlFor="job">Rol</label>
             <select
               className="global_input"
               value={role}
@@ -107,7 +107,7 @@ export default function EmpSearchEngine({
             </select>
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="job">Name</label>
+            <label htmlFor="job">Ism</label>
             <input
               type="text"
               name="query"
@@ -115,28 +115,28 @@ export default function EmpSearchEngine({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="global_input"
-              placeholder="Search by name..."
+              placeholder="Ism bo'yicha qidirish..."
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="job">Profession</label>
+            <label htmlFor="job">Kasb</label>
             <input
               type="text"
               name="job"
               id="job"
-              placeholder="Workers profession"
+              placeholder="Ishchi kasbi"
               className="global_input"
               value={job}
               onChange={(e) => setJob(e.target.value)}
             />
           </div>
           <div className="flex flex-col space-y-1">
-            <label htmlFor="job">Submit</label>
+            <label htmlFor="job">Trasdiqlang</label>
             <button
               className="py-2 text-center px-4 rounded-lg bg-violet-600 text-white cursor-pointer"
               type="submit"
             >
-              {isLoading ? "searching..." : "Search"}
+              {isLoading ? "qidirilmoqda..." : "Qidirish"}
             </button>
           </div>
         </form>
@@ -159,8 +159,8 @@ export default function EmpSearchEngine({
             </div>
           ) : (
             <ErrorMessage
-              text="There is no vacancies found!"
-              desc="try something else"
+              text="Bo'sh ish o'rinlari topilmadi!"
+              desc="boshqa narsani sinab ko'ring"
             />
           )}
         </div>
@@ -174,7 +174,7 @@ export default function EmpSearchEngine({
             disabled={page <= 1}
             onClick={() => setPage(page - 1)}
           >
-            Prev
+            Oldingi
           </button>
           <h3>
             {page} / {meta.last_page}
@@ -186,7 +186,7 @@ export default function EmpSearchEngine({
             disabled={page >= meta.last_page}
             onClick={() => setPage(page + 1)}
           >
-            Next
+            Keyingi
           </button>
         </div>
       </div>
