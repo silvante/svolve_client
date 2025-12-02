@@ -28,7 +28,7 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
       <SheetContent>
         <SheetHeader className="w-full flex">
           <SheetTitle className="w-full truncate">{worker.role}</SheetTitle>
-          <SheetDescription>Account of worker</SheetDescription>
+          <SheetDescription>Ishchi hisobi</SheetDescription>
         </SheetHeader>
         <div className="w-full px-5 flex justify-center items-center flex-col space-y-4">
           <Avatar className="w-32 h-32">
@@ -48,28 +48,28 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
         </div>
         <div className="w-full px-5 flex flex-col space-y-2">
           <SheetDescription className="font-semibold text-black text-md">
-            Other information
+            Boshqa ma'lumotlar
           </SheetDescription>
           <div className="space-y-1 w-full">
             <p className="text_color font-semibold w-full truncate">
-              <span className="font-medium">phone number:</span>{" "}
+              <span className="font-medium">telefon raqami:</span>{" "}
               {worker.worker.contact}
             </p>
             <p className="text_color font-semibold w-full truncate">
-              <span className="font-medium">username:</span> @
+              <span className="font-medium">foydalanuvchi nomi:</span> @
               {worker.worker.username}
             </p>
             {worker.role === "doctor" && (
               <p className="text_color font-semibold w-full truncate">
-                <span className="font-medium">in total: </span>
-                {worker.attached_types.length} types
+                <span className="font-medium">jami: </span>
+                {worker.attached_types.length} tur
               </p>
             )}
           </div>
         </div>
         <div className="w-full px-5">
           <SheetDescription className="font-semibold text-black text-md">
-            Attached types
+            Biriktirilgan turlar
           </SheetDescription>
         </div>
         <div className="w-full px-5 flex-1 overflow-scroll border-b border-gray-300">
@@ -86,7 +86,7 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
                       {at.type.name}
                     </p>
                     <p className="text_color font-semibold">
-                      <span className="font-medium">desc: </span>
+                      <span className="font-medium">tavsif: </span>
                       {at.type.description}
                     </p>
                   </div>
@@ -98,9 +98,9 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
               <EmptyList width={32} />
               <div className="w-full text-center">
                 <p className="text_color text-lg font-semibold w-full truncate">
-                  Receptionists have no types attached
+                  Turlar mavjud emas
                 </p>
-                <p className="text_color w-full truncate">Only doctors have</p>
+                <p className="text_color w-full truncate">Faqat shifokorlarda mavjud</p>
               </div>
             </div>
           )}
@@ -112,14 +112,14 @@ export default function ViewWorkerDetails({ worker, children }: Props) {
               className="flex gap-2 items-center justify-center flex-1 border border-gray-300 rounded-lg hover:text-white hover:bg-violet-600 hover:border-violet-600"
             >
               <OrgLink href={`/workers/${worker.id}`} className="">
-                <Settings /> <p>Settings</p>
+                <Settings /> <p>Sozlamalar</p>
               </OrgLink>
             </SheetClose>
             <SheetClose
               asChild
               className="flex-1 bg-gray-900 text-white border-none hover:bg-gray-950 hover:text-white cursor-pointer"
             >
-              <Button variant="outline">Close</Button>
+              <Button variant="outline">Yopish</Button>
             </SheetClose>
           </div>
         </SheetFooter>

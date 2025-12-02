@@ -10,7 +10,7 @@ export default function WorkersDangerZone({ worker }: { worker: Worker }) {
           variant="outline"
           className="bg-red-600/10 text-red-600 flex py-2 px-4 gap-2 items-center cursor-pointer rounded-lg hover:bg-red-600 hover:text-white transition-all border-red-600"
         >
-          Unemployee
+          Ishdan bo'shatish
         </Button>
       </DeleteWorkerDialog>
     </div>

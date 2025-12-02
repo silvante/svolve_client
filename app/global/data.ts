@@ -63,14 +63,14 @@ export const workerRoles = [
     name: "receptionist",
     include_types: false,
     terms:
-      "Receptionist will have access to your WorkPanel but can not commit clients, they will only register and records clients, they can not watch statitics and monthly fee",
+      "Qabulxona xodimi sizning IshPanelingizga kirish huquqiga ega bo'ladi, ammo mijozlarni tasdiqlay olmaydi, ular faqat mijozlarni ro'yxatdan o'tkazadi va qayd etadi, ular statistikani va oylik to'lovni ko'ra olmaydi.",
   },
   {
     id: 2,
     name: "doctor",
     include_types: true,
     terms:
-      "Doctor can commit clients with types that you attached to them, also they will only recieve clients with types that attached to them, Just like receptionists they will only have access to WorkPanel nothing more.I",
+      "Shifokor mijozlarni o'ziga biriktirilgan turlar bilan tasdiqlashi mumkin, shuningdek ular faqat o'ziga biriktirilgan turlar bilan mijozlarni qabul qiladi. Qabulxona xodimlari singari ular faqat IshPaneliga kirish huquqiga ega bo'ladi, boshqa hech narsa emas.",
   },
 ];
 

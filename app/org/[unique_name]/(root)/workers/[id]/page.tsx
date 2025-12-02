@@ -50,14 +50,14 @@ export default function WorkerSettings() {
     return (
       <div className="space-y-5">
         <div className="flex justify-between items-center">
-          <Heading text="Worker settings" />
+          <Heading text="Ishchi sozlamalari" />
           <BackBtn href={`/org/${organization.unique_name}/workers`} />
         </div>
-        <h2 className="text_color font-semibold text-xl">Account</h2>
+        <h2 className="text_color font-semibold text-xl">Hisob</h2>
         <WorkerAccount worker={worker} />
-        <h2 className="text_color font-semibold text-xl">Update worker</h2>
+        <h2 className="text_color font-semibold text-xl">Ishchini yangilash</h2>
         <UpdateWorkerForm worker={worker} />
-        <h2 className="text-red-500 font-semibold text-xl">Danger zone</h2>
+        <h2 className="text-red-500 font-semibold text-xl">Xavfli hudud</h2>
         <WorkersDangerZone worker={worker} />
       </div>
     );

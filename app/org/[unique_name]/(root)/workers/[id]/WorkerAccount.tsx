@@ -22,10 +22,10 @@ export default function WorkerAccount({ worker }: { worker: Worker }) {
         </div>
       </div>
       <div className="p-4 lg:p-8 space-y-3">
-        <h1 className="text-2xl font-semibold text_color">Info</h1>
+        <h1 className="text-2xl font-semibold text_color">Ma'lumot</h1>
         <div className="w-full space-y-1">
           <p className="text-gray-700">
-            username:{" "}
+            foydalanuvchi nomi:{" "}
             <span className="text-gray-900 font-semibold">
               @{account.username}
             </span>
@@ -33,13 +33,13 @@ export default function WorkerAccount({ worker }: { worker: Worker }) {
           <p className="text-gray-700">
             bio:{" "}
             <span className="text-gray-900 font-semibold">
-              {account.bio ? account.bio : "user has no bio"}
+              {account.bio ? account.bio : "foydalanuvchida bio yo'q"}
             </span>
           </p>
           <p className="text-gray-700">
-            contact:{" "}
+            aloqa:{" "}
             <span className="text-gray-900 font-semibold">
-              {account.contact ? account.contact : "user has no contact"}
+              {account.contact ? account.contact : "foydalanuvchida aloqa ma'lumoti yo'q"}
             </span>
           </p>
         </div>
