@@ -43,7 +43,7 @@ export default function SubScriptionPage() {
       if (error.response && error.response.data) {
         setError(
           error.response.data.message ||
-            "Pin-kodni tekshirishda xatolik yuz berdi."
+          "Pin-kodni tekshirishda xatolik yuz berdi."
         );
       }
     } finally {
@@ -66,7 +66,7 @@ export default function SubScriptionPage() {
   if (error) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
-        <p className="text-red-600 bg-red-600/10 rounded-xl px-4 py-2 text-center w-full">
+        <p className="text-red-600 bg-red-600/10 px-4 py-2 text-center w-full">
           {error}
         </p>
       </div>
@@ -77,7 +77,9 @@ export default function SubScriptionPage() {
     return;
   }
 
-  console.log(org);
+  if (!org.is_vip && url) {
+    return window.location.href = url
+  }
 
   return (
     <div className="w-full flex items-center justify-center h-screen">
