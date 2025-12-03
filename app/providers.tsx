@@ -1,5 +1,7 @@
 "use client";
 
+// out of service now
+
 import { NextIntlClientProvider } from "next-intl";
 import React from "react";
 
