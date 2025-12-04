@@ -4,11 +4,8 @@ import Link from "next/link";
 import DocsAnimation from "../lottie/DocsAnimation";
 import { Play } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
 
 export default function Hero() {
-  const t = useTranslations();
-
   const [isRegistered, setIsRejistered] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {

@@ -8,13 +8,11 @@ import {
   MessageCircleMore,
   Podcast,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Community() {
-  const t = useTranslations()
   const path = usePathname();
   console.log(path);
 

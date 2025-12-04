@@ -1,10 +1,8 @@
 "use client";
 import { Check } from "lucide-react";
 import Link from "next/link";
-import { useTranslations } from "use-intl";
 
 export default function Pricing() {
-  const t = useTranslations()
   return (
     <div className="text_color space-y-4">
       <p className="text-md md:text-lg">14 kun bepul sinov - Karta talab qilinmaydi</p>

@@ -1,12 +1,9 @@
 "use client";
 import { CircleUserRound, DoorOpen, LogIn } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function RegisterButton() {
-  const t = useTranslations();
-
   const [isRegistered, setIsRejistered] = useState(false);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
