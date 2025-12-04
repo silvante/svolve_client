@@ -55,6 +55,15 @@ export default function SubScriptionPage() {
     getCheckout();
   }, []);
 
+  useEffect(() => {
+    if (!loading && !org?.is_vip && url) {
+      setTimeout(() => {
+        window.location.href = url;
+      }, 150);
+    }
+  }, [loading, org, url]);
+
+
   if (loading) {
     return (
       <div className="w-full h-screen flex items-center justify-center">
@@ -78,7 +87,9 @@ export default function SubScriptionPage() {
   }
 
   if (!org.is_vip && url) {
-    return window.location.href = url
+    return <div className="w-full h-screen flex items-center justify-center">
+      <Spinner />
+    </div>
   }
 
   return (
