@@ -1,6 +1,7 @@
 "use client";
 import Heading from "@/app/(global_components)/Heading";
 import { Camera, KeyRound, Lock, Pen } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import ProfileActions from "./(profilesections)/ProfileActions";
@@ -20,15 +21,12 @@ export default function ProfilePage() {
               href="/panel/profile/settings"
               className="bg-gray-300 w-28 h-28 rounded-full overflow-hidden border border-gray-400 flex items-center justify-center mx-auto"
             >
-              {currentUser.avatar ? (
-                <img
-                  src={currentUser.avatar}
-                  alt="Sizning avataringiz"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <Camera size={40} className="text-gray-500" />
-              )}
+              <Avatar className="w-full h-full text-3xl">
+                <AvatarImage src={currentUser.avatar} />
+                <AvatarFallback>
+                  {currentUser.name.split("")[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
             </Link>
 
             <div className="flex-1 md:text-start text-center">

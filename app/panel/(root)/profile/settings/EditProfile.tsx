@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function EditProfile() {
   const { currentUser } = useSelector((state: any) => state.user);
@@ -131,11 +132,12 @@ export default function EditProfile() {
                 Avatar rasmini yuklash
               </div>
             ) : (
-              <img
-                src={avatarBase64}
-                alt="sizning logotipingiz"
-                className="w-full max-h-full object-cover"
-              />
+              <Avatar className="w-full h-full text-4xl">
+                <AvatarImage src={avatarBase64} />
+                <AvatarFallback>
+                  {currentUser.name.split("")[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
             )}
           </label>
           {/* {avatarBase64 && (

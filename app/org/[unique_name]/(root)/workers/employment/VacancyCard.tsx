@@ -1,6 +1,7 @@
 import { Organization, Vacancy } from "@/app/types/User";
 import { Camera, Eye } from "lucide-react";
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function VacancyCard({
   vacancy,
@@ -13,17 +14,12 @@ export default function VacancyCard({
     <div className="rounded-xl border border-gray-200 shadow-md flex flex-col">
       <div className="p-5 space-y-2 border-b border-gray-200">
         <div className="bg-gray-300 max-w-16 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
-          {vacancy.user.avatar ? (
-            <img
-              src={vacancy.user.avatar}
-              alt="Sizning avataringiz"
-              className="w-full h-full aspect-square object-cover"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-500">
-              <Camera size={18} />
-            </div>
-          )}
+          <Avatar className="w-full h-full">
+                      <AvatarImage src={vacancy.user.avatar} />
+                      <AvatarFallback>
+                        {vacancy.user.name.split("")[0].toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
         </div>
         <div className="w-full">
           <h2 className="text_color text-xl font-semibold w-full truncate">
