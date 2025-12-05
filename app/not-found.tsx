@@ -1,6 +1,5 @@
 import Animation404 from "./lottie/404";
 
-// app/not-found.tsx
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
