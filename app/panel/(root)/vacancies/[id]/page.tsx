@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import VacancyActions from "./VacancyActions";
 import BackBtn from "@/app/(global_components)/BackBtn";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function VacancyDetailsPage() {
   const { vacancies } = useSelector((state: any) => state.vacancy);
@@ -61,17 +62,12 @@ export default function VacancyDetailsPage() {
           <Heading text="Hisob" />
           <div className="space-y-2">
             <div className="bg-gray-300 max-w-24 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
-              {vacancy.user.avatar ? (
-                <img
-                  src={vacancy.user.avatar}
-                  alt="Sizning avataringiz"
-                  className="w-full h-full aspect-square object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  <Camera size={24} />
-                </div>
-              )}
+              <Avatar className="w-full h-full">
+                <AvatarImage src={vacancy.user.avatar} />
+                <AvatarFallback>
+                  {vacancy.user.name.split("")[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
             </div>
             <div className="w-full">
               <h2 className="text_color text-xl font-semibold w-full truncate">

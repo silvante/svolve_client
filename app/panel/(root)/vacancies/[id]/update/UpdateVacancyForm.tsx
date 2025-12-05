@@ -18,6 +18,7 @@ import {
   replaceVacancy,
 } from "@/app/store/slices/vacancySlice";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -97,15 +98,12 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
         <p className="block">Hisob*</p>
         <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer opacity-50 z-10">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
-            {currentUser.avatar ? (
-              <img
-                src={currentUser.avatar}
-                alt="Sizning avataringiz"
-                className="w-full h-full aspect-square object-cover"
-              />
-            ) : (
-              <UserCircle />
-            )}
+            <Avatar className="w-full h-full">
+              <AvatarImage src={vacancy.user.avatar} />
+              <AvatarFallback>
+                {vacancy.user.name.split("")[0].toUpperCase()}
+              </AvatarFallback>
+            </Avatar>
           </div>
           <p>{currentUser.name}</p>
         </div>
@@ -197,9 +195,8 @@ export default function UpdateVacancyForm({ vacancy }: { vacancy: Vacancy }) {
           <p>
             Tavsifda mavjud:{" "}
             <span
-              className={`transition-all ${
-                about.length > 200 ? "text-green-600" : "text-red-600"
-              }`}
+              className={`transition-all ${about.length > 200 ? "text-green-600" : "text-red-600"
+                }`}
             >
               {about.length} belgilar
             </span>

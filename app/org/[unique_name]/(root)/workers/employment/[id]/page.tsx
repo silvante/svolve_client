@@ -3,11 +3,11 @@ import Heading from "@/app/(global_components)/Heading";
 import Spinner from "@/app//(global_components)/Spinner";
 import vacancyService from "@/app/api/services/vacancyService";
 import { Vacancy } from "@/app/types/User";
-import { Camera } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import BackBtn from "@/app/(global_components)/BackBtn";
 import HireingForm from "./HireingForm";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function VacancyDetailsPage() {
   const router = useRouter();
@@ -47,17 +47,12 @@ export default function VacancyDetailsPage() {
           <Heading text="Hisob" />
           <div className="space-y-2">
             <div className="bg-gray-300 max-w-24 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
-              {vacancy.user.avatar ? (
-                <img
-                  src={vacancy.user.avatar}
-                  alt="Sizning avataringiz"
-                  className="w-full h-full aspect-square object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center text-gray-500">
-                  <Camera size={24} />
-                </div>
-              )}
+              <Avatar className="w-full h-full">
+                <AvatarImage src={vacancy.user.avatar} />
+                <AvatarFallback>
+                  {vacancy.user.name.split("")[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
             </div>
             <div className="w-full">
               <h2 className="text_color text-xl font-semibold w-full truncate">

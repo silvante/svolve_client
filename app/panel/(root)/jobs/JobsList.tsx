@@ -18,6 +18,7 @@ import { ShieldAlert } from "lucide-react";
 import userService from "@/app/api/services/userService";
 import { updateJob } from "@/app/store/slices/jobSlice";
 import organizationService from "@/app/api/services/organizationService";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function JobsList() {
   const [isLoading, setIsLoading] = useState(false);
@@ -96,17 +97,12 @@ export default function JobsList() {
         {currentJob ? (
           <div className="bg-white shadow-md rounded-md transition-colors border border-gray-300 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600">
             <div className="border-b border-gray-300 p-4 flex gap-3 items-center">
-              {currentJob.worker.avatar ? (
-                <img
-                  src={currentJob.worker.avatar}
-                  alt={currentJob.worker.name}
-                  className="w-10 h-10 rounded-lg"
-                />
-              ) : (
-                <div className="w-10 h-10 rounded-lg bg-gray-300 text-gray-500 flex items-center justify-center">
-                  <UserCircle2 />
-                </div>
-              )}
+              <Avatar className="w-full h-full">
+                <AvatarImage src={currentJob.user.avatar} />
+                <AvatarFallback>
+                  {currentJob.user.name.split("")[0].toUpperCase()}
+                </AvatarFallback>
+              </Avatar>
               <p className="text-xl font-semibold text_color">
                 Ishlayapsiz{" "}
                 <span className="text-violet-600">

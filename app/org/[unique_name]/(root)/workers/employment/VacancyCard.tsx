@@ -15,11 +15,11 @@ export default function VacancyCard({
       <div className="p-5 space-y-2 border-b border-gray-200">
         <div className="bg-gray-300 max-w-16 w-full aspect-square rounded-full overflow-hidden border border-gray-400">
           <Avatar className="w-full h-full">
-                      <AvatarImage src={vacancy.user.avatar} />
-                      <AvatarFallback>
-                        {vacancy.user.name.split("")[0].toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
+            <AvatarImage src={vacancy.user.avatar} />
+            <AvatarFallback>
+              {vacancy.user.name.split("")[0].toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
         </div>
         <div className="w-full">
           <h2 className="text_color text-xl font-semibold w-full truncate">
