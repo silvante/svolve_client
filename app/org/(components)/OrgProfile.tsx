@@ -9,7 +9,7 @@ export default function OrgProfile() {
   }
   
   return (
-    <Avatar className="w-8 h-8  ">
+    <Avatar className="w-8 h-8">
       <AvatarImage src={currentUser.avatar} />
       <AvatarFallback>
         {currentUser.name.split("")[0].toUpperCase()}
