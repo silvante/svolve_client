@@ -2,6 +2,7 @@ import Heading from "@/app/(global_components)/Heading";
 import Image from "next/image";
 import Link from "next/link";
 import BoardingMessage from "./BoardingMessage";
+import { Suspense } from "react";
 
 export default function Onboarding() {
   return (
@@ -13,7 +14,9 @@ export default function Onboarding() {
         width={120}
         height={120}
       />
-      <BoardingMessage />
+      <Suspense fallback={<div>Yuklanmoqda...</div>}>
+        <BoardingMessage />
+      </Suspense>
       <Link href={"/"} className="text-violet-600 inline-block">
         go to main page
       </Link>

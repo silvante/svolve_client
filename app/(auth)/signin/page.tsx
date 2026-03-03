@@ -3,6 +3,7 @@ import SigninForm from "./SigninForm";
 import Socials from "../(socials)/Socials";
 import Link from "next/link";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Svolve | Sign In",
@@ -22,7 +23,9 @@ export default function SignIn() {
           </Link>
         </p>
       </div>
-      <SigninForm />
+      <Suspense fallback={<div>Yuklanmoqda...</div>}>
+        <SigninForm />
+      </Suspense>
     </div>
   );
 }
