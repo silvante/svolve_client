@@ -3,6 +3,7 @@ import SignupForm from "./SignupForm";
 import Socials from "@/app/(auth)/(socials)/Socials";
 import Link from "next/link";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Svolve | Sign Up",
@@ -15,9 +16,16 @@ export default function SignUp() {
       <Heading text="Osson ro'yxatdan o'ting" />
       <Socials />
       <div className="flex text_color justify-starts">
-        <p>Ro'yxatdan o'tganmisiz? <Link href={"/signin"} className="text-violet-600">Kirish</Link></p>
+        <p>
+          Ro'yxatdan o'tganmisiz?{" "}
+          <Link href={"/signin"} className="text-violet-600">
+            Kirish
+          </Link>
+        </p>
       </div>
-      <SignupForm />
+      <Suspense fallback={<div>Yuklanmoqda...</div>}>
+        <SignupForm />
+      </Suspense>
     </div>
   );
 }
