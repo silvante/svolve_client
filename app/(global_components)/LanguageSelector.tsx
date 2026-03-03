@@ -92,7 +92,7 @@ export default function LanguageSelect() {
     //   </Listbox>
     // </div>
 
-    <div className={`flex items-center gap-3 p-2`}>
+    <div className={`items-center gap-3 p-2 hidden md:flex`}>
       <Image
         src={"/flags/uz.svg"}
         width={28}
