@@ -10,8 +10,40 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Organization management",
-  description: "Manage your organization easily",
+  title: "Svolve | Tashkilot boshqaruvi",
+  description: "Tashkilotingizni osongina boshqaring",
+  keywords: ["Svolve", "tashkilot", "boshqaruv", "tashkilotni boshqarish"],
+  alternates: {
+    canonical: "https://svolve.uz/org",
+  },
+  openGraph: {  
+    title: "Svolve | Tashkilot boshqaruvi",
+    description: "Tashkilotingizni osongina boshqaring",
+    type: "website",
+    url: "https://svolve.uz/org",
+    images: [
+      {
+        url: "https://svolve.uz/icons/profile.svg",
+        width: 800,
+        height: 600,
+        alt: "Svolve Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Svolve | Tashkilot boshqaruvi",
+    description: "Tashkilotingizni osongina boshqaring",
+    images: ["https://svolve.uz/icons/profile.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: "/icons/icon.svg",
   },

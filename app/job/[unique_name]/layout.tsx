@@ -9,8 +9,40 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Job room",
-  description: "Your work room",
+  title: "Svolve | Ish xonasi",
+  description: "Sizning ish xonangiz",
+  keywords: ["Svolve", "ish xonasi", "ish", "vakansiyalar", "ish boshqaruvi"],
+  alternates: {
+    canonical: "https://svolve.uz/job",
+  },
+  openGraph: {
+    title: "Svolve | Ish xonasi",
+    description: "Sizning ish xonangiz",
+    type: "website",
+    url: "https://svolve.uz/job",
+    images: [
+      {
+        url: "https://svolve.uz/icons/profile.svg",
+        width: 800,
+        height: 600,
+        alt: "Svolve Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Svolve | Ish xonasi",
+    description: "Sizning ish xonangiz",
+    images: ["https://svolve.uz/icons/profile.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: "/icons/icon.svg",
   },

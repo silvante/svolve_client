@@ -18,8 +18,40 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Payment SaaS of Uzbekistan",
-  description: "Easy to use payment API for startups",
+  title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+  description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
+  keywords: ["Svolve", "tashkilot boshqaruvi", "ish boshqaruvi", "xodimlar", "vakansiyalar", "O'zbekiston"],
+  alternates: {
+    canonical: "https://svolve.uz",
+  },
+  openGraph: {
+    title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+    description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
+    type: "website",
+    url: "https://svolve.uz",
+    images: [
+      {
+        url: "https://svolve.uz/icons/profile.svg",
+        width: 800,
+        height: 600,
+        alt: "Svolve Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+    description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
+    images: ["https://svolve.uz/icons/profile.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: "/icons/icon.svg",
   },

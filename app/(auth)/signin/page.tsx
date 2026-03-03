@@ -6,8 +6,40 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Svolve | Sign In",
-  description: "Easy to use payment API for startups | sign in page",
+  title: "Svolve | Kirish",
+  description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
+  keywords: ["Svolve", "kirish", "tizimga kirish", "hisobga kirish", "to'lov API", "startaplar"],
+  alternates: {
+    canonical: "https://svolve.uz/signin",
+  },
+  openGraph: {
+    title: "Svolve | Kirish",
+    description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
+    type: "website",
+    url: "https://svolve.uz/signin",
+    images: [
+      {
+        url: "https://svolve.uz/icons/profile.svg",
+        width: 800,
+        height: 600,
+        alt: "Svolve Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Svolve | Kirish",
+    description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
+    images: ["https://svolve.uz/icons/profile.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function SignIn() {

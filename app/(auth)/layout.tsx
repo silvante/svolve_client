@@ -13,6 +13,40 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  title: "Svolve",
+  description: "Svolve - ish topish va boshqarish uchun platforma.",
+  keywords: ["Svolve", "ish", "ish topish", "ish boshqarish", "platforma", "onlayn ish", "vakansiyalar"],
+  alternates: {
+    canonical: "https://svolve.uz",
+  },
+  openGraph: {
+    title: "Svolve",
+    description: "Svolve - ish topish va boshqarish uchun platforma.",
+    type: "website",
+    url: "https://svolve.uz",
+    images: [
+      {
+        url: "https://svolve.uz/icons/profile.svg",
+        width: 800,
+        height: 600,
+        alt: "Svolve Profile",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Svolve",
+    description: "Svolve - ish topish va boshqarish uchun platforma.",
+    images: ["https://svolve.uz/icons/profile.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: "/icons/icon.svg",
   },
