@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { StoreProvider } from "@/app/store/StoreProvider";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -55,7 +55,7 @@ export default function OrgMainLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${roboto.className} antialiased`}>
+    <div className={`${inter.className} antialiased`}>
       <StoreProvider>{children}</StoreProvider>
     </div>
   );

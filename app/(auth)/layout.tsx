@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../globals.css";
 import Image from "next/image";
 import Svolve from "../(global_components)/Svolve";
 import { Toaster } from "react-hot-toast";
 import SignUp from "@/public/backgraund/signup_bg.jpg";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -59,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`${roboto.variable} antialiased flex items-center h-screen`}
+      className={`${inter.variable} antialiased flex items-center h-screen`}
     >
       <Toaster position="top-right" reverseOrder={true} />
       <div className="bg-gray-200 max-w-lg w-full h-screen relative hidden lg:block">

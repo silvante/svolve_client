@@ -1,6 +1,6 @@
 "use client";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import OrgValidator from "./OrgValidation";
 import PanelAuthDirector from "@/app/panel/(root)/PanelAuthDirector";
@@ -12,10 +12,10 @@ import { useParams, useRouter } from "next/navigation";
 import OrgFooter from "../../(components)/OrgFooter";
 import MobileNav from "../../(components)/MobileNav";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export default function OrgLayout({
@@ -41,7 +41,7 @@ export default function OrgLayout({
           <OrgValidator unique_name={unique_name} />
         </>
       ) : (
-        <div className={`${roboto.className} antialiased w-full h-screen`}>
+        <div className={`${inter.className} antialiased w-full h-screen`}>
           <OrgHeader />
           <main className="w-full flex min-h-screen">
             <OrgAside />

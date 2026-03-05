@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StoreProvider } from "./store/StoreProvider";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 // import { cookies } from "next/headers";
 
@@ -11,10 +11,10 @@ import NextTopLoader from "nextjs-toploader";
 // import ru from "@/meesages/ru.json";
 // import LangProvider from "./providers";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -75,7 +75,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
+      <body className={`${inter.className} antialiased`}>
         <NextTopLoader color="#7f22fe" showSpinner={false} />
         {/* <LangProvider lang={lang} messages={messages}> */}
           <StoreProvider>{children}</StoreProvider>

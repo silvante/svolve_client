@@ -1,6 +1,6 @@
 "use client";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../../globals.css";
 import { useSelector } from "react-redux";
 import PanelAuthDirector from "./PanelAuthDirector";
@@ -8,10 +8,10 @@ import Aside from "./(panel_components)/Aside";
 import PanelHeader from "./(panel_components)/PanelHeader";
 import OrgFooter from "@/app/org/(components)/OrgFooter";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
       {loading ? (
         <PanelAuthDirector />
       ) : (
-        <div className={`${roboto.className} antialiased flex min-h-screen`}>
+        <div className={`${inter.className} antialiased flex min-h-screen`}>
           <Aside />
           <main className="flex-1 flex flex-col">
             <PanelHeader />

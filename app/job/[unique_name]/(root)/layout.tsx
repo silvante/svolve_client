@@ -1,5 +1,5 @@
 "use client";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import "@/app/globals.css";
 import { useParams, useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,10 +16,10 @@ import JobsHeader from "../../(components)/JobsHeader";
 import JobBreadcrumbs from "../../(components)/JobBreadcrumbs";
 import OrgFooter from "@/app/org/(components)/OrgFooter";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "700"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
 export default function JobMainLayout({
@@ -86,7 +86,7 @@ export default function JobMainLayout({
     );
   } else if (organization && validation) {
     return (
-      <div className={`${roboto.className} antialiased`}>
+      <div className={`${inter.className} antialiased`}>
         <JobsHeader />
         <div className="pt-20 px-5 container mx-auto space-y-5 pb-5">
           <div className="w-full flex justify-start">
