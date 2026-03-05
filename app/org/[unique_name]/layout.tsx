@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Diagnos Uz | Tashkilot boshqaruvi",
   description: "Tashkilotingizni osongina boshqaring",
   keywords: [
+    "diagnos",
+    "Diagnos",
+    "DIAGNOS",
     "Diagnos Uz",
     "diagnos uz",
     "DIAGNOS UZ",

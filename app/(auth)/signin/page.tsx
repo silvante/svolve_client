@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: "Diagnos Uz | Kirish",
   description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
   keywords: [
+    "diagnos",
+    "Diagnos",
+    "DIAGNOS",
     "Diagnos Uz",
     "diagnos uz",
     "DIAGNOS UZ",

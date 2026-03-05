@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "Diagnos Uz | Ish xonasi",
   description: "Sizning ish xonangiz",
   keywords: [
+    "diagnos",
+    "Diagnos",
+    "DIAGNOS",
     "Diagnos Uz",
     "diagnos uz",
     "DIAGNOS UZ",

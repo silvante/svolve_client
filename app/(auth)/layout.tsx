@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Diagnos Uz",
   description: "Diagnos Uz - ish topish va boshqarish uchun platforma.",
   keywords: [
+    "diagnos",
+    "Diagnos",
+    "DIAGNOS",
     "Diagnos Uz",
     "diagnos uz",
     "DIAGNOS UZ",
