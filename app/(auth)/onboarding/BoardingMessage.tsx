@@ -6,10 +6,7 @@ export default function BoardingMessage() {
   const email = searchParams.get("email");
   return (
     <p>
-      We have send magic link to{" "}
-      <span className="font-semibold">{email ? email : "your email"}</span>, you
-      can verify your email by just clicking to it, it will redirect you to{" "}
-      <span className="font-semibold">Dashboard of Svalve</span>
+      Biz <span className="font-semibold">{email ? email : "sizning emailingizga"}</span> sehrli havola yubordik, siz shunchaki uni bosish orqali o'z emailingizni tasdiqlashingiz mumkin, u sizni <span className="font-semibold">Svolve boshqaruv paneliga</span> yo'naltiradi
     </p>
   );
 }

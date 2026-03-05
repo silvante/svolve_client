@@ -45,7 +45,7 @@ export const metadata: Metadata = {
 export default function SignUp() {
   return (
     <div className="w-full space-y-4">
-      <Heading text="Osson ro'yxatdan o'ting" />
+      <Heading text="Oson ro'yxatdan o'ting" />
       <Socials />
       <div className="flex text_color justify-starts">
         <p>

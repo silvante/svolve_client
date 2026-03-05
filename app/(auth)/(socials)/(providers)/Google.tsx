@@ -10,7 +10,7 @@ export default function Google({ setErrorMessage }: any) {
       setLoading(true);
       window.location.href = "http://localhost:8080/auth/google";
     } catch (error) {
-      setErrorMessage("Something went wrong, please try again later");
+      setErrorMessage("Nimadir xato ketdi, iltimos keyinroq qayta urinib ko'ring");
     }
   };
 
@@ -24,7 +24,7 @@ export default function Google({ setErrorMessage }: any) {
     >
       <Image
         src={"/social_icons/Google.svg"}
-        alt="google icon"
+        alt="google ikonkasi"
         width={22}
         height={22}
       />{" "}

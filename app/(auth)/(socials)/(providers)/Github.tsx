@@ -10,7 +10,7 @@ export default function Github({ setErrorMessage }: any) {
       setLoading(true);
       window.location.href = "http://localhost:8080/auth/github";
     } catch (error) {
-      setErrorMessage("something went wrong, please try again later");
+      setErrorMessage("nimadir xato ketdi, iltimos keyinroq qayta urinib ko'ring");
     }
   };
 
@@ -24,7 +24,7 @@ export default function Github({ setErrorMessage }: any) {
     >
       <Image
         src={"/social_icons/GitHub.svg"}
-        alt="github icon"
+        alt="github ikonkasi"
         width={22}
         height={22}
       />{" "}

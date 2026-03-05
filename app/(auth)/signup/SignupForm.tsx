@@ -102,7 +102,7 @@ export default function SignupForm() {
         type="submit"
         className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer px-8"
       >
-        {!loading ? "Sign up" : <BeatLoader color="#ffffff" size={10} />}
+        {!loading ? "Ro'yxatdan o'tish" : <BeatLoader color="#ffffff" size={10} />}
       </button>
     </form>
   );

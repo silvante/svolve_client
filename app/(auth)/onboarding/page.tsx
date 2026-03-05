@@ -7,10 +7,10 @@ import { Suspense } from "react";
 export default function Onboarding() {
   return (
     <div className="space-y-4">
-      <Heading text="Verify your email" />
+      <Heading text="Emailingizni tasdiqlang" />
       <Image
         src={"/images/magic_link.svg"}
-        alt="Magic link"
+        alt="Sehrli havola"
         width={120}
         height={120}
       />
@@ -18,7 +18,7 @@ export default function Onboarding() {
         <BoardingMessage />
       </Suspense>
       <Link href={"/"} className="text-violet-600 inline-block">
-        go to main page
+        bosh sahifaga o'tish
       </Link>
     </div>
   );

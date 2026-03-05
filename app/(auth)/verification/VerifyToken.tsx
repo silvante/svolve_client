@@ -35,7 +35,7 @@ export default function Verification() {
       router.push("/panel");
       setLoading2(false);
     } catch (error) {
-      toast.error("Sothing went wrong");
+      toast.error("Nimadir xato ketdi");
       router.push("/signup");
     }
   }

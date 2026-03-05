@@ -55,43 +55,43 @@ export default function SigninForm() {
       {errorMessage !== "" && (
         <Alert variant="destructive">
           <ShieldAlert />
-          <AlertTitle>Warning</AlertTitle>
-          <AlertDescription>{errorMessage}</AlertDescription>
-        </Alert>
-      )}
-      <div className="flex flex-col space-x-0.5">
-        <label htmlFor="email">E-pochta</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          className="global_input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
-      <div className="flex gap-2 items-center">
-        <Checkbox
-          id="check"
-          checked={acception}
-          onCheckedChange={handleCheckbox}
-          className="border-gray-400 data-[state=checked]:bg-violet-600 data-[state=checked]:text-white data-[state=checked]:border-violet-600"
-        />
-        <label htmlFor="check">
-          Barcha{" "}
-          <Link href={"/terms"} className="inline-block text-violet-600">
-            shartlarga
-          </Link> {" "}
-          roziman
-        </label>
-      </div>
-      <button
-        type="submit"
-        className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer px-8"
-      >
-        {!loading ? "Sign in" : <BeatLoader color="#ffffff" size={10} />}
-      </button>
+          <AlertTitle>Ogohlantirish</AlertTitle>
+                    <AlertDescription>{errorMessage}</AlertDescription>
+                  </Alert>
+                )}
+                <div className="flex flex-col space-x-0.5">
+                  <label htmlFor="email">E-pochta</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    className="global_input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="flex gap-2 items-center">
+                  <Checkbox
+                    id="check"
+                    checked={acception}
+                    onCheckedChange={handleCheckbox}
+                    className="border-gray-400 data-[state=checked]:bg-violet-600 data-[state=checked]:text-white data-[state=checked]:border-violet-600"
+                  />
+                  <label htmlFor="check">
+                    Barcha{" "}
+                    <Link href={"/terms"} className="inline-block text-violet-600">
+                      shartlarga
+                    </Link>{" "}
+                    roziman
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  className="bg-violet-600 text-white font-medium py-2 rounded-xl cursor-pointer px-8"
+                >
+                  {!loading ? "Kirish" : <BeatLoader color="#ffffff" size={10} />}
+                </button>
     </form>
   );
 }
