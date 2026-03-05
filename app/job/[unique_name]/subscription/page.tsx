@@ -17,7 +17,7 @@ export default function NotSubscribedPage() {
           <div className="flex items-center gap-4">
             <Image
               src={"/icons/logo.svg"}
-              alt="Logotype svolve"
+              alt="Logotype Diagnos"
               width={140}
               height={38.5}
             />{" "}

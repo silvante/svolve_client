@@ -100,14 +100,14 @@ export default function SubScriptionPage() {
             {!org.logo ? (
               <Image
                 src={"/icons/logo.svg"}
-                alt="Svolve logotipi"
+                alt="Diagnos logotipi"
                 width={140}
                 height={38.5}
               />
             ) : (
               <Image
                 src={org.logo}
-                alt="Svolve logotipi"
+                alt="Diagnos logotipi"
                 width={0}
                 height={0}
                 className="w-auto h-10"

@@ -6,31 +6,31 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Svolve | Kirish",
+  title: "Diagnos Uz | Kirish",
   description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
-  keywords: ["Svolve", "kirish", "tizimga kirish", "hisobga kirish", "to'lov API", "startaplar"],
+  keywords: ["Diagnos Uz", "kirish", "tizimga kirish", "hisobga kirish", "to'lov API", "startaplar"],
   alternates: {
-    canonical: "https://svolve.uz/signin",
+    canonical: "https://diagnos.uz/signin",
   },
   openGraph: {
-    title: "Svolve | Kirish",
+    title: "Diagnos Uz | Kirish",
     description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
     type: "website",
-    url: "https://svolve.uz/signin",
+    url: "https://diagnos.uz/signin",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve | Kirish",
+    title: "Diagnos Uz | Kirish",
     description: "Startaplar uchun qulay to'lov API | Kirish sahifasi",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,

@@ -18,31 +18,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+  title: "Diagnos Uz | O'zbekistondagi Tashkilot Boshqaruvi",
   description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
-  keywords: ["Svolve", "tashkilot boshqaruvi", "ish boshqaruvi", "xodimlar", "vakansiyalar", "O'zbekiston"],
+  keywords: ["Diagnos Uz", "tashkilot boshqaruvi", "ish boshqaruvi", "xodimlar", "vakansiyalar", "O'zbekiston"],
   alternates: {
-    canonical: "https://svolve.uz",
+    canonical: "https://diagnos.uz",
   },
   openGraph: {
-    title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+    title: "Diagnos Uz | O'zbekistondagi Tashkilot Boshqaruvi",
     description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
     type: "website",
-    url: "https://svolve.uz",
+    url: "https://diagnos.uz",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve | O'zbekistondagi Tashkilot Boshqaruvi",
+    title: "Diagnos Uz | O'zbekistondagi Tashkilot Boshqaruvi",
     description: "O'zbekistondagi bizneslar uchun qulay tashkilot va ish boshqaruvi platformasi",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,

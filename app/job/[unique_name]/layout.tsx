@@ -9,31 +9,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Ish xonasi",
+  title: "Diagnos Uz | Ish xonasi",
   description: "Sizning ish xonangiz",
-  keywords: ["Svolve", "ish xonasi", "ish", "vakansiyalar", "ish boshqaruvi"],
+  keywords: ["Diagnos Uz", "ish xonasi", "ish", "vakansiyalar", "ish boshqaruvi"],
   alternates: {
-    canonical: "https://svolve.uz/job",
+    canonical: "https://diagnos.uz/job",
   },
   openGraph: {
-    title: "Svolve | Ish xonasi",
+    title: "Diagnos Uz | Ish xonasi",
     description: "Sizning ish xonangiz",
     type: "website",
-    url: "https://svolve.uz/job",
+    url: "https://diagnos.uz/job",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve | Ish xonasi",
+    title: "Diagnos Uz | Ish xonasi",
     description: "Sizning ish xonangiz",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,

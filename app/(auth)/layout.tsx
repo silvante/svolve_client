@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Image from "next/image";
-import Svolve from "../(global_components)/Svolve";
+import Diagnos from "../(global_components)/Diagnos";
 import { Toaster } from "react-hot-toast";
 import SignUp from "@/public/backgraund/signup_bg.jpg";
 
@@ -13,31 +13,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve",
-  description: "Svolve - ish topish va boshqarish uchun platforma.",
-  keywords: ["Svolve", "ish", "ish topish", "ish boshqarish", "platforma", "onlayn ish", "vakansiyalar"],
+  title: "Diagnos Uz",
+  description: "Diagnos Uz - ish topish va boshqarish uchun platforma.",
+  keywords: ["Diagnos Uz", "ish", "ish topish", "ish boshqarish", "platforma", "onlayn ish", "vakansiyalar"],
   alternates: {
-    canonical: "https://svolve.uz",
+    canonical: "https://diagnos.uz",
   },
   openGraph: {
-    title: "Svolve",
-    description: "Svolve - ish topish va boshqarish uchun platforma.",
+    title: "Diagnos Uz",
+    description: "Diagnos Uz - ish topish va boshqarish uchun platforma.",
     type: "website",
-    url: "https://svolve.uz",
+    url: "https://diagnos.uz",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve",
-    description: "Svolve - ish topish va boshqarish uchun platforma.",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    title: "Diagnos Uz",
+    description: "Diagnos Uz - ish topish va boshqarish uchun platforma.",
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,
@@ -73,7 +73,7 @@ export default function RootLayout({
         />
       </div>
       <div className="max-w-xl w-full px-8">
-        <Svolve />
+        <Diagnos />
         {children}
       </div>
     </div>

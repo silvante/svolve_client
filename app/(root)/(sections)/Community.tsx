@@ -22,7 +22,7 @@ export default function Community() {
         <div className="flex items-center justify-center py-5">
           <Image
             src={profile}
-            alt="Svolve Community icons"
+            alt="Diagnos Uz Community icons"
             width={200}
             height={200}
             className="rounded-full"
@@ -30,7 +30,7 @@ export default function Community() {
         </div>
       )}
       <div className="flex items-center justify-center text-center">
-        <Heading text="Svolve jamiatiga xush kelibsiz" />
+        <Heading text="Diagnos Uz jamiatiga xush kelibsiz" />
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
         <div

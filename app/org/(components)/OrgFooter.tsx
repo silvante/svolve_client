@@ -4,7 +4,7 @@ export default function OrgFooter() {
       <div className="w-full flex items-center justify-between">
         <div className="flex items-center gap-3 text-gray-600">
           <span>
-            © <strong className="text-gray-800">svolve</strong>{" "}
+            © <strong className="text-gray-800">Diagnos Uz</strong>{" "}
             <span className="text-xs">2025</span>
           </span>
           <span className="hidden sm:inline">• Barcha huquqlar himoyalangan</span>
@@ -12,14 +12,14 @@ export default function OrgFooter() {
 
         <div className="flex items-center gap-4">
           <a
-            href="https://www.youtube.com/@svolveuz"
+            href="https://www.youtube.com/@diagnosuz"
             target="_blanck"
             className="hover:underline hidden md:block"
           >
             YouTube
           </a>
           <a
-            href="https://t.me/svolve"
+            href="https://t.me/diagnos"
             target="_blanck"
             className="hover:underline hidden md:block"
           >

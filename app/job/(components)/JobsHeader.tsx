@@ -1,5 +1,5 @@
 "use client";
-import Svolve from "@/app/(global_components)/Svolve";
+import Diagnos from "@/app/(global_components)/Diagnos";
 import { useSelector } from "react-redux";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import GoBackToPanel from "./GoBackToPanel";
@@ -14,7 +14,7 @@ export default function JobsHeader() {
       <div className="flex items-center gap-4">
         <GoBackToPanel />
         {!organization.logo ? (
-          <Svolve link={`/job/${organization.unique_name}`} />
+          <Diagnos link={`/job/${organization.unique_name}`} />
         ) : (
           <JobLogo org={organization} />
         )}

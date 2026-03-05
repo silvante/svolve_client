@@ -1,5 +1,5 @@
 "use client";
-import Svolve from "@/app/(global_components)/Svolve";
+import Diagnos from "@/app/(global_components)/Diagnos";
 import CollapseBtn from "./CollapseBtn";
 import LockOrgBtn from "./LockOrgBtn";
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ export default function OrgHeader() {
         <div className="flex items-center gap-4">
           <CollapseBtn />
           {!organization.logo ? (
-            <Svolve link={`/org/${organization.unique_name}`} />
+            <Diagnos link={`/org/${organization.unique_name}`} />
           ) : (
             <OrgLogo />
           )}

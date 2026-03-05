@@ -15,7 +15,7 @@ export default function CommunityPanelPage() {
       <div className="space-y-2">
         <Heading text="# Yaratuvchidan" />
         <p className="text_color">
-          Yuqoridagi ijtimoiy media kanallarimizni kuzatib borish juda tavsiya etiladi, chunki ular bevosita yaratuvchi tomonidan boshqariladi va juda faol. Siz real vaqt rejimida qo'llab-quvvatlash, darsliklar va yangilanishlarga osonlik bilan kirishingiz mumkin. Bundan tashqari, Svolve kompaniyasining bosh direktoriga bevosita murojaat qilib, tushunchalar, fikr-mulohazalar va muhim e'lonlarni olishingiz mumkin. Ushbu kanallar orqali bog'lanish har doim bizning hamjamiyatimizdagi eng so'nggi xususiyatlar, yaxshilanishlar va imkoniyatlardan xabardor bo'lishingizni ta'minlaydi.
+          Yuqoridagi ijtimoiy media kanallarimizni kuzatib borish juda tavsiya etiladi, chunki ular bevosita yaratuvchi tomonidan boshqariladi va juda faol. Siz real vaqt rejimida qo'llab-quvvatlash, darsliklar va yangilanishlarga osonlik bilan kirishingiz mumkin. Bundan tashqari, Diagnos Uz kompaniyasining bosh direktoriga bevosita murojaat qilib, tushunchalar, fikr-mulohazalar va muhim e'lonlarni olishingiz mumkin. Ushbu kanallar orqali bog'lanish har doim bizning hamjamiyatimizdagi eng so'nggi xususiyatlar, yaxshilanishlar va imkoniyatlardan xabardor bo'lishingizni ta'minlaydi.
         </p>
       </div>
     </div>

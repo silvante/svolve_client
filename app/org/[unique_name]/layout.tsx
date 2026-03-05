@@ -10,31 +10,31 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Svolve | Tashkilot boshqaruvi",
+  title: "Diagnos Uz | Tashkilot boshqaruvi",
   description: "Tashkilotingizni osongina boshqaring",
-  keywords: ["Svolve", "tashkilot", "boshqaruv", "tashkilotni boshqarish"],
+  keywords: ["Diagnos Uz", "tashkilot", "boshqaruv", "tashkilotni boshqarish"],
   alternates: {
-    canonical: "https://svolve.uz/org",
+    canonical: "https://diagnos.uz/org",
   },
   openGraph: {  
-    title: "Svolve | Tashkilot boshqaruvi",
+    title: "Diagnos Uz | Tashkilot boshqaruvi",
     description: "Tashkilotingizni osongina boshqaring",
     type: "website",
-    url: "https://svolve.uz/org",
+    url: "https://diagnos.uz/org",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve | Tashkilot boshqaruvi",
+    title: "Diagnos Uz | Tashkilot boshqaruvi",
     description: "Tashkilotingizni osongina boshqaring",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,

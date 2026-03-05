@@ -78,19 +78,19 @@ export const Socials = [
   {
     id: 1,
     name: "YouTube rasmiy kanal",
-    url: "https://www.youtube.com/@svolveuz",
+    url: "https://www.youtube.com/@diagnosuz",
     icon: youtubeIcon,
   },
   {
     id: 2,
     name: "Telegram rasmiy kanal",
-    url: "https://t.me/svolve",
+    url: "https://t.me/diagnos",
     icon: telegramIcon,
   },
   {
     id: 3,
     name: "Telegram Chat",
-    url: "https://t.me/svolvechat",
+    url: "https://t.me/diagnoschat",
     icon: telegramIcon,
   },
   {

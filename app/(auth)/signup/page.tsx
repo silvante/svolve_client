@@ -6,31 +6,31 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Svolve | Ro'yxatdan o'tish",
+  title: "Diagnos Uz | Ro'yxatdan o'tish",
   description: "Startaplar uchun qulay to'lov API | Ro'yxatdan o'tish sahifasi",
-  keywords: ["Svolve", "ro'yxatdan o'tish", "yangi hisob", "to'lov API", "startaplar"],
+  keywords: ["Diagnos Uz", "ro'yxatdan o'tish", "yangi hisob", "to'lov API", "startaplar"],
   alternates: {
-    canonical: "https://svolve.uz/signup",
+    canonical: "https://diagnos.uz/signup",
   },
   openGraph: {
-    title: "Svolve | Ro'yxatdan o'tish",
+    title: "Diagnos Uz | Ro'yxatdan o'tish",
     description: "Startaplar uchun qulay to'lov API | Ro'yxatdan o'tish sahifasi",
     type: "website",
-    url: "https://svolve.uz/signup",
+    url: "https://diagnos.uz/signup",
     images: [
       {
-        url: "https://svolve.uz/icons/profile.svg",
+        url: "https://diagnos.uz/icons/profile.svg",
         width: 800,
         height: 600,
-        alt: "Svolve Profile",
+        alt: "Diagnos Uz Profile",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Svolve | Ro'yxatdan o'tish",
+    title: "Diagnos Uz | Ro'yxatdan o'tish",
     description: "Startaplar uchun qulay to'lov API | Ro'yxatdan o'tish sahifasi",
-    images: ["https://svolve.uz/icons/profile.svg"],
+    images: ["https://diagnos.uz/icons/profile.svg"],
   },
   robots: {
     index: true,

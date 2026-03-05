@@ -1,16 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface SvolveProps {
+interface DiagnosProps {
   link?: string;
 }
 
-export default function Svolve({ link }: SvolveProps) {
+export default function Diagnos({ link }: DiagnosProps) {
   return (
     <Link href={link ? link : "/"} className="inline-block">
       <Image
         src={"/icons/logo.svg"}
-        alt="Logotype svolve"
+        alt="Logotype Diagnos"
         width={140}
         height={38.5}
       />

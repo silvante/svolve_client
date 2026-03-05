@@ -25,7 +25,7 @@
         "methods": "Pay with Visa, Mastercard, Apple Pay, Google Pay, PayPal."
     },
     "community": {
-        "welcome": "Welcome to Svolve Community",
+        "welcome": "Welcome to Diagnos Uz Community",
         "features": {
             "care": {
                 "title": "Support & Care",
@@ -48,7 +48,7 @@
     },
     "auth": {
         "signup": {
-            "title": "Sign up to Svolve",
+            "title": "Sign up to Diagnos Uz",
             "socials": "Socials",
             "google": "Continue with Google",
             "github": "Continue with Github",
@@ -62,7 +62,7 @@
         },
         "signin": {
             "title": "Sing in to your account",
-            "haveNoAccount": "New to Svolve?",
+            "haveNoAccount": "New to Diagnos Uz?",
             "submit": "Sign in"
         }
     }

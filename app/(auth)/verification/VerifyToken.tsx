@@ -50,7 +50,7 @@ export default function Verification() {
       <HashLoader color="#7c3aed" size={80} />
       {loading1 && <p>Tekshirilmoqda...</p>}
       {loading2 && <p>Malumotlaringiz yuklanmoqda...</p>}
-      {!loading1 && !loading2 && <p>Svolve ga hush kelibsiz!</p>}
+      {!loading1 && !loading2 && <p>Diagnos Uz ga hush kelibsiz!</p>}
       <p className="text-violet-600">Sahifadan chiqib ketmang!</p>
     </div>
   );

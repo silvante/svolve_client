@@ -51,7 +51,7 @@ export default function ProfilePage() {
           <div className="space-y-2 border-b border-gray-300 pb-3">
             <p className="text-lg font-semibold text-gray-950">Foydalanuvchi nomi:</p>
             <p className="text-gray-950">
-              <span className="text-gray-700">svolve.uz/u/</span>@
+              <span className="text-gray-700">diagnos.uz/u/</span>@
               {currentUser.username}
             </p>
           </div>

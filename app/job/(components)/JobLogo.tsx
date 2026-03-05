@@ -7,7 +7,7 @@ export default function JobLogo({ org }: { org: Organization }) {
     <Link href={`/job/${org.unique_name}`} className="inline-block">
       <Image
         src={org.logo}
-        alt="Logotype svolve"
+        alt="Logotype Diagnos"
         width={0}
         height={0}
         className="w-auto h-10"
