@@ -71,6 +71,8 @@ export default async function RootLayout({
   //   ru,
   // };
 
+  // for language
+
   // const messages = translations[lang] || translations.en;
 
   return (
