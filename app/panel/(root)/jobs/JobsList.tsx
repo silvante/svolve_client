@@ -97,10 +97,10 @@ export default function JobsList() {
         {currentJob ? (
           <div className="bg-white shadow-md rounded-md transition-colors border border-gray-300 flex flex-col border-b-2 border-b-transparent hover:border-b-violet-600">
             <div className="border-b border-gray-300 p-4 flex gap-3 items-center">
-              <Avatar className="w-full h-full">
-                <AvatarImage src={currentJob.user.avatar} />
+              <Avatar>
+                <AvatarImage src={currentJob.worker.avatar} />
                 <AvatarFallback>
-                  {currentJob.user.name.split("")[0].toUpperCase()}
+                  {currentJob.worker.name.split("")[0].toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               <p className="text-xl font-semibold text_color">
