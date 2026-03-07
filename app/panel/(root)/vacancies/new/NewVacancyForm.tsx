@@ -46,7 +46,7 @@ export default function NewVacancyForm() {
   const [origin, setOrigin] = useState(origins[0].name);
   const [job, setJob] = useState("");
   const [about, setAbout] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(workerRoles[0].name);
   const [contact, setContact] = useState("");
 
   async function HandleCreateOrg(e: any) {
@@ -93,7 +93,7 @@ export default function NewVacancyForm() {
       {/* account */}
       <div className="space-y-1 flex items-start flex-col">
         <p className="block">Hisob*</p>
-        <div className="p-1 border-gray-300 border-1 rounded-full pr-3 flex gap-2 items-center cursor-pointer">
+        <div className="p-1 border-gray-300 border rounded-full pr-3 flex gap-2 items-center cursor-pointer">
           <div className="w-8 h-8 rounded-full bg-gray-300 overflow-hidden flex justify-center items-center text-gray-500">
             <Avatar className="w-full h-full">
               <AvatarImage src={currentUser.avatar} />
